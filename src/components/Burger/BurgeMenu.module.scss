@@ -13,6 +13,34 @@
   animation: drawerFadeIn 0.3s ease-in-out !important; /* Имя анимации, длительность и эффект */
   transition: opacity 0.3s ease-in-out !important; /* Плавное изменение прозрачности */
 }
+.ant-drawer-header-title {
+  background-color: white !important;
+}
+.drawer {
+  background: var(--color-beige, #dfdad8) !important;
+  box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.1) !important;
+  height: 100vh !important;
+  .drawer_content {
+    height: 100%;
+    display: flex !important;
+    justify-content: space-between !important;
+    flex-direction: column !important;
+  }
+  .nav_link {
+    color: var(--color-black, #000);
+    /* Body 3 */
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 160%; /* 22.407px */
+    display: flex;
+    padding: 15px 213px 15px 10px;
+    text-align: start;
+    align-items: center;
+    border-bottom: 1px solid var(--color-grey, rgba(163, 163, 163, 0.5));
+  }
+}
 .btn_nav {
   display: flex;
   .burger_btn {
@@ -26,7 +54,7 @@
     align-items: center;
     cursor: pointer;
   }
-  .active{
+  .active {
     margin-right: 30px;
   }
 }

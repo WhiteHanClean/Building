@@ -13,12 +13,9 @@ const BurgerDrawer: React.FC = () => {
   const onClose = () => {
     setOpen(false);
   };
-  
+
   return (
     <>
-      {/* <Button type="primary" onClick={showDrawer}>
-        Open
-      </Button> */}
       <div className={s.btn_nav}>
         <div className={`${s.burger_btn} ${s.active}`}>
           <Image src={"/Phone.png"} width={16} height={16} alt="logo"></Image>
@@ -29,14 +26,28 @@ const BurgerDrawer: React.FC = () => {
         </div>
       </div>
       <Drawer
-        title="Basic Drawer"
         placement="right"
         onClose={onClose}
+        className={s.drawer}
         visible={open} // Используйте "visible" вместо "open"
       >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+        <div className={s.drawer_content}>
+          <div>
+            <p className={s.nav_link}>Главная</p>
+            <p className={s.nav_link}>Покупка</p>
+            <p className={s.nav_link}>Аренда</p>
+            <p className={s.nav_link}>Размещение</p>
+            <p className={s.nav_link}>О нас</p>
+          </div>
+
+          <div className={s.social_media}>
+            <p className={s.nav_link}>Главная</p>
+            <p className={s.nav_link}>Покупка</p>
+            <p className={s.nav_link}>Аренда</p>
+            <p className={s.nav_link}>Размещение</p>
+            <p className={s.nav_link}>О нас</p>
+          </div>
+        </div>
       </Drawer>
     </>
   );
