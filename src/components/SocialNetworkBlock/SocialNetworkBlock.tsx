@@ -14,7 +14,7 @@ const SocialNetworkBlock = () => {
           </p>
         </div>
 
-        <button className={style.btnToInstagram}>
+        <button className={style.btnToInstagram} onClick={() =>window.open('https://www.instagram.com/', '_blank')}>
           <div className={style.btnContent}>
             <p>Перейти</p>
             <img src="tabler_arrow-up.png" alt="arrow" width={17} height={16} />
