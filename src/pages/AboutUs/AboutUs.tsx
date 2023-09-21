@@ -1,12 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SocialNetworkBlock from "../../components/SocialNetworkBlock/SocialNetworkBlock";
 
-
 const AboutUs = () => {
-  return <div>AboutUs
+  const [width, setWidth] = useState(window.innerWidth);
 
-    <SocialNetworkBlock/>
-  </div>;
+  useEffect(() => {
+    const handleResize = (event) => {
+      setWidth(event.target.innerWidth);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+  return (
+    <div>
+      AboutUs
+      {width <= 768 ? "" : <SocialNetworkBlock />}
+    </div>
+  );
 };
 
 export default AboutUs;

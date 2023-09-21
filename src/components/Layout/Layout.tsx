@@ -2,7 +2,6 @@ import React from "react";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import s from "./Layout.module.scss";
-import SocialNetworkBlock from "../SocialNetworkBlock/SocialNetworkBlock";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
@@ -10,7 +9,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       <Header />
        <div className={s.content}>{children}</div>
       <Footer />
-      <SocialNetworkBlock/>
     </>
   );
 };
