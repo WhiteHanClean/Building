@@ -1,0 +1,124 @@
+.header {
+  max-width: 100%;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  background-color: #fff;
+  height: 69px;
+  .burger {
+    display: none;
+  }
+  .header_content {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .navigation_links {
+      display: flex;
+      .nav_link {
+        margin-right: 55px;
+        a {
+          text-decoration: none;
+          color: var(--color-text, #6c6c6a);
+          font-family: "Inter", sans-serif;
+          font-size: 14.004px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 160%;
+          transition: 0.1s ease;
+        }
+
+        a:hover {
+          color: var(--color-black, #000);
+        }
+        .active {
+          color: black !important;
+        }
+        .nav_link:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+    .header_item {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      max-width: 440px;
+      width: 100%;
+      .header_location {
+        display: flex;
+        align-items: center;
+        max-width: 177px;
+        justify-content: space-between;
+        span {
+          margin-left: 4px;
+          color: var(--color-black, #000);
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 160%;
+          cursor: pointer;
+        }
+      }
+      button {
+        border-radius: 100px;
+        background: var(--color-black, #000);
+        width: 201px;
+        padding: 10px 35px;
+        color: white;
+        text-align: center;
+      }
+      ul {
+        display: flex;
+        li {
+          color: var(--color-black, #000);
+          font-family: "Inter", sans-serif;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 160%;
+          cursor: pointer;
+        }
+        li:first-child {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1300px) {
+  .header {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media only screen and (max-width: 1250px) {
+  .header {
+    .nav_link {
+      margin-right: 1rem !important;
+    }
+    .header_item {
+      max-width: 400px !important;
+    }
+  }
+}
+
+@media only screen and (max-width: 1040px) {
+  .header {
+    .nav {
+      display: none !important;
+    }
+    .aprove {
+      display: none;
+    }
+    .burger {
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,32 @@
+/* Создайте анимацию с именем "drawerFadeIn" */
+@keyframes drawerFadeIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* Примените анимацию к Drawer */
+.ant-drawer-wrapper-body {
+  animation: drawerFadeIn 0.3s ease-in-out !important; /* Имя анимации, длительность и эффект */
+  transition: opacity 0.3s ease-in-out !important; /* Плавное изменение прозрачности */
+}
+.btn_nav {
+  display: flex;
+  .burger_btn {
+    border-radius: 100px;
+    background: var(--color-beige, #f0edec);
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+  .active{
+    margin-right: 30px;
+  }
+}
