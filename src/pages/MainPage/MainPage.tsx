@@ -2,11 +2,11 @@ import React from "react";
 import SocialNetworkBlock from "../../components/SocialNetworkBlock/SocialNetworkBlock";
 
 
-const AboutUs = () => {
-  return <div>AboutUs
+const MainPage = () => {
+  return <div>MainPage
 
     <SocialNetworkBlock/>
   </div>;
 };
 
-export default AboutUs;
+export default MainPage;

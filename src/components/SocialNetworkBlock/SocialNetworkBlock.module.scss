@@ -1,0 +1,170 @@
+.blockContainer,
+.infoBlock {
+  display: flex;
+  background: #dfdad8;
+  max-width: 1280px;
+  margin: 0 auto;
+  border-radius: 15px;
+  justify-content: space-between;
+}
+
+.infoBlock {
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 30px;
+  .textContent {
+    display: flex;
+    flex-direction: column;
+    max-width: 372px;
+    gap: 20px;
+    p {
+      max-width: 333px;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 150%;
+      color: #6c6c6a;
+    }
+  }
+  .btnToInstagram {
+    width: 164px;
+    height: 39px;
+    border-radius: 100px;
+    background-color: #000000;
+    .btnContent {
+      color: #f1efec;
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+    }
+    p {
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+    }
+  }
+}
+.photoBlock {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-areas:
+    "photo1 photo3 photo3"
+    "photo2 photo3 photo3 ";
+  margin: 20px;
+  gap: 20px;
+
+  .photo1 {
+    grid-area: photo1;
+  }
+  .photo2 {
+    grid-area: photo2;
+  }
+  .photo3 {
+    grid-area: photo3;
+  }
+}
+@media only screen and (max-width: 1250px) {
+  .blockContainer {
+    margin: 80px;
+  }
+}
+@media only screen and (max-width: 1040px) {
+  .blockContainer {
+    margin: 20px;
+  }
+  .infoBlock {
+    .textContent {
+      h1 {
+        font-size: 26px;
+      }
+    }
+  }
+  .photoBlock {
+    .photo1,
+    .photo2 {
+      width: 159px;
+      height: 159px;
+    }
+    .photo3 {
+      width: 337px;
+      height: 337px;
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .blockContainer {
+    margin: 15px;
+  }
+  .textContent {
+    h1 {
+      font-size: 26px;
+    }
+  }
+  .photoBlock {
+    .photo1,
+    .photo2 {
+      width: 166px;
+      height: 166px;
+    }
+    .photo3 {
+      width: 346px;
+      height: 166px;
+      object-fit: cover;
+      object-position: 10% 70%;
+      border-radius: 8px;
+    }
+    gap: 15px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "photo1 photo2"
+      "photo3 photo3";
+  }
+}
+@media only screen and (max-width: 428px) {
+  .blockContainer {
+    flex-direction: column;
+    margin: 15px;
+    justify-content: space-between;
+  }
+  .infoBlock {
+    flex-direction: row;
+    position: relative;
+    margin: 25px;
+
+    .btnToInstagram {
+      min-width: 36px;
+      min-height: 36px;
+      width: 36px;
+      height: 36px;
+      flex-shrink: 0;
+    }
+    .textContent {
+      max-width: 398px;
+    }
+  }
+  .btnContent p {
+    display: none;
+  }
+  .photoBlock {
+    margin: 10px;
+    .photo3,
+    .photo2 {
+      width: 184px;
+      height: 184px;
+    }
+    .photo1 {
+      width: 378px;
+      height: 378px;
+    }
+    gap: 10px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas:
+      "photo1 photo1"
+      "photo1 photo1"
+      "photo2 photo3";
+  }
+}
