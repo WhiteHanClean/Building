@@ -1,7 +1,12 @@
+
+import Statistics from "@/components/Statistics/Statistics";
 import React from "react";
 
 const AboutUs = () => {
-  return <div>AboutUs</div>;
+  return <div>
+<Statistics/>
+    AboutUs
+    </div>;
 };
 
 export default AboutUs;
