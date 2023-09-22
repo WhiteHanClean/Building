@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import SocialNetworkBlock from "../../components/SocialNetworkBlock/SocialNetworkBlock";
 
@@ -19,6 +20,7 @@ const AboutUs = () => {
       {width <= 768 ? "" : <SocialNetworkBlock />}
     </div>
   );
+
 };
 
 export default AboutUs;
