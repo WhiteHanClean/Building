@@ -1,5 +1,4 @@
-@import url('https://rsms.me/inter/inter.css');
-
+@import url("https://rsms.me/inter/inter.css");
 
 *,
 *::before,
@@ -19,6 +18,7 @@ html {
 
 body {
   -webkit-font-smoothing: antialiased;
+  font-family: "Inter", sans-serif;
 }
 
 img,
