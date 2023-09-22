@@ -28,7 +28,7 @@
         }
     }
     .questions_accordion {
-        width: 50%;
+        width: 48%;
         .questions_accordion_button {
             display: flex;
             flex-direction: row-reverse;
@@ -50,6 +50,36 @@
                 font-weight: 600;
                 line-height: normal;
             }
+        }
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .questions {
+        .questions_description {
+            h3 {
+                font-size: 26px;
+            }
+        }
+        .questions_accordion {
+            .questions_accordion_button {
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .questions {
+        flex-direction: column;
+        gap: 12px;
+        .questions_description {
+            h3 {
+                padding-bottom: 24px;
+            }
+        }
+        .questions_accordion {
+            width: 100%;
         }
     }
 }

@@ -27,7 +27,7 @@ const Questions: React.FC = () => {
                 <p>Быстрые ответы на вопросы, которые могут у вас возникнуть. Не нашли то, что ищите? Закажите бесплатную консультацию.</p>
             </div>
             <div className={s.questions_accordion}>
-                <Collapse bordered={false} defaultActiveKey={['1']} expandIcon={({ isActive }) => null}>
+                <Collapse bordered={false} expandIcon={({ isActive }) => null}>
                     <Panel header={<div className={s.questions_accordion_button}><img src="/accordionBtn.svg" alt="accordionBtn" />Вопросы аренды</div>} key="1" style={customPanelStyle}>
                         <Collapse bordered={false} expandIcon={({ isActive }) => null}>
                             <Panel header={<div className={s.questions_accordion_button}><img src="/accordionBtn.svg" alt="accordionBtn" /> <p>От чего зависит цена аренды?</p></div>} key="nasted" style={customPanelStyle}>
