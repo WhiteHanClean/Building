@@ -1,11 +1,12 @@
-import React from 'react';
+import FilterForm from "@/components/FilterForm/FilterForm";
+import React from "react";
 
 const Rent = () => {
-    return (
-        <div>
-            Rent
-        </div>
-    );
+  return (
+    <>
+      <FilterForm />
+    </>
+  );
 };
 
 export default Rent;
