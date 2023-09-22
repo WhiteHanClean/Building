@@ -1,9 +1,9 @@
-import Statistics from "@/components/Statistics/Statistics";
+import FounderQuoteBanner from "@/components/FounderQuoteBanner/FounderQuoteBanner";
 import React from "react";
 
 const AboutUs = () => {
   return <div>
-    <Statistics/>
+   <FounderQuoteBanner/>
   </div>;
 };
 
