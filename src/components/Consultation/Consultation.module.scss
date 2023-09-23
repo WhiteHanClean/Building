@@ -8,6 +8,7 @@
   padding-top: 30px;
   padding-bottom: 30px;
   margin-bottom: 130px;
+  margin-top: 130px;
   position: relative;
   .consultation_content_text {
     h2 {
@@ -151,6 +152,11 @@
         }
         .consultation_content_form{
             position: relative !important;
+            .check_consultation{
+                .check_consultation_item{
+                    margin-right: 30px !important;
+                }
+            }
         }
         .security{
             display: none;

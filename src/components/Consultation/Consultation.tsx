@@ -65,7 +65,7 @@ const Consultation = () => {
           </button>
         </form>
       </div>
-
+      
       <div className={s.security2}>
         <p>
           Нажимая на кнопку «Отправить заявку», вы соглашаетесь с{" "}
