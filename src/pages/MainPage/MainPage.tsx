@@ -1,12 +1,12 @@
-import Services from '@/components/Services/Services';
-import React from 'react';
+import TypesOfServices from "@/components/TypesOfServices/TypesOfServices";
+import React from "react";
 
 const MainPage = () => {
-    return (
-        <div>
-            <Services/>
-        </div>
-    );
+  return (
+    <div>
+      <TypesOfServices />
+    </div>
+  );
 };
 
 export default MainPage;
