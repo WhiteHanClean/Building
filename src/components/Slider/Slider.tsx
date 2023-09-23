@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import s from './Slider.module.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Pagination, Navigation, Scrollbar } from 'swiper/modules';
-
+import {  Scrollbar } from 'swiper/modules';
 import BuildCard from '@/components/BuildCard/BuildCard';
 
 import 'swiper/css';
@@ -12,31 +11,6 @@ import 'swiper/css/navigation';
 import Image from 'next/image';
 
 const Slider = () => {
-  const [screenWidth, setScreenWidth] = useState(0);
-
-  useEffect(() => {
-    const updateScreenWidth = () => {
-      setScreenWidth(window.innerWidth);
-    };
-
-    updateScreenWidth();
-
-    window.addEventListener('resize', updateScreenWidth);
-
-    return () => {
-      window.removeEventListener('resize', updateScreenWidth);
-    };
-  }, []);
-
-  const isWideScreen = screenWidth >= 1024;
-
-  const paginationConfig = isWideScreen
-    ? {
-        type: 'progressbar',
-        clickable: true,
-        
-      }
-    : false;
 
   return (
     <>
@@ -68,18 +42,7 @@ const Slider = () => {
         <div className="slider-scrollbar"></div>
       </div>
       <Swiper
-        slidesPerView={1}
-        breakpoints={{
-          428: {
-            slidesPerView: 1,
-          },
-          768: {
-            slidesPerView: 2,
-          },
-          1024: {
-            slidesPerView: 3,
-          },
-        }}
+        slidesPerView={3}
         scrollbar={{
           draggable: true
           
