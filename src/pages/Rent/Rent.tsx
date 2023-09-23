@@ -4,7 +4,7 @@ import React from "react";
 const Rent = () => {
   return (
     <>
-      <FilterForm />
+      <FilterForm titleSection="Аренда недвижимости" />
     </>
   );
 };

@@ -55,19 +55,23 @@ const validationSchema = Yup.object({
     .required("Выберите пожалуйста кол-во комнат"),
   pricMin: Yup.string()
     .matches(/^[1-9][0-9]*$/, "Поле должно содержать только цифры")
-    .required("Поле обязательно для заполнения"),
+    .max(15, "Не более 15 символов"),
   pricMax: Yup.string()
     .matches(/^[1-9][0-9]*$/, "Поле должно содержать только цифры")
-    .required("Поле обязательно для заполнения"),
+    .max(15, "Не более 15 символов"),
   areaMin: Yup.string()
     .matches(/^[1-9][0-9]*$/, "Поле должно содержать только цифры")
-    .required("Поле обязательно для заполнения"),
+    .max(15, "Не более 15 символов"),
   areaMax: Yup.string()
     .matches(/^[1-9][0-9]*$/, "Поле должно содержать только цифры")
-    .required("Поле обязательно для заполнения"),
+    .max(15, "Не более 15 символов"),
 });
 
-const FilterForm = () => {
+interface Props {
+  titleSection: string;
+}
+
+const FilterForm = ({ titleSection }: Props) => {
   const formik = useFormik({
     initialValues: {
       RealEstate: "",
@@ -88,9 +92,9 @@ const FilterForm = () => {
   return (
     <section className={s.filter_section}>
       <div className="">
-        <h2 className={s.filter_title}>Аренда недвижимости</h2>
+        <h2 className={s.filter_title}>{titleSection}</h2>
         <div className={s.filter_wrapper}>
-          <h3>Фильтрация</h3>
+          <h3 className={s.form_title}>Фильтрация</h3>
           <form onSubmit={formik.handleSubmit} className="contactsForm__form">
             <div className={s.form_wrapper}>
               <div className={s.form_wrapper_grup}>
@@ -202,54 +206,74 @@ const FilterForm = () => {
                   <label className={s.form_label} htmlFor="pricMin">
                     Цена
                   </label>
-                  <div>
-                    <input
-                      className={s.form_input}
-                      placeholder="min"
-                      type="text"
-                      id="pricMin"
-                      name="pricMin"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.pricMin}
-                    />
-                    <input
-                      className={`${s.form_input} ${s.form_inputSecond}`}
-                      placeholder="max"
-                      type="text"
-                      id="pricMax"
-                      name="pricMax"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.pricMax}
-                    />
+                  <div className={s.form_inputsWrapper}>
+                    <div className={s.form_inputWrapper}>
+                      <span className={s.form_prefix}>min</span>
+                      <input
+                        className={s.form_input}
+                        type="text"
+                        id="pricMin"
+                        name="pricMin"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.pricMin}
+                      />
+                    </div>
+                    <div
+                      className={`${s.form_inputWrapper} ${s.form_inputSecond}`}
+                    >
+                      <span className={s.form_prefix}>max</span>
+                      <input
+                        className={s.form_input}
+                        type="text"
+                        id="pricMax"
+                        name="pricMax"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.pricMax}
+                      />
+                    </div>
                   </div>
+                  {formik.touched.pricMin && formik.errors.pricMin ? (
+                    <div className={s.form_error}>{formik.errors.pricMin}</div>
+                  ) : null}
+                  {formik.touched.pricMax && formik.errors.pricMax ? (
+                    <div className={s.form_error}>{formik.errors.pricMax}</div>
+                  ) : null}
                 </div>
                 <div className={s.form_wrapper_item}>
                   <label className={s.form_label} htmlFor="areaMin">
                     Общая площадь
                   </label>
-                  <div>
-                    <input
-                      className={s.form_input}
-                      placeholder="от"
-                      type="text"
-                      id="areaMin"
-                      name="areaMin"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.areaMin}
-                    />
-                    <input
-                      className={`${s.form_input} ${s.form_inputSecond}`}
-                      placeholder="от"
-                      type="text"
-                      id="areaMax"
-                      name="areaMax"
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.areaMax}
-                    />
+                  <div className={s.form_inputsWrapper}>
+                    <div className={s.form_inputWrapper}>
+                      <span className={s.form_prefix}>от</span>
+                      <input
+                        className={s.form_input}
+                        type="text"
+                        id="areaMin"
+                        name="areaMin"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.areaMin}
+                      />
+                      <span className={s.form_suffix}>m2</span>
+                    </div>
+                    <div
+                      className={`${s.form_inputWrapper} ${s.form_inputSecond}`}
+                    >
+                      <span className={s.form_prefix}>до</span>
+                      <input
+                        className={s.form_input}
+                        type="text"
+                        id="areaMax"
+                        name="areaMax"
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.areaMax}
+                      />
+                      <span className={s.form_suffix}>m2</span>
+                    </div>
                   </div>
                 </div>
                 <button type="submit" className={s.form_button}>

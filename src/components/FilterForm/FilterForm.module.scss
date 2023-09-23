@@ -5,7 +5,7 @@
 }
 
 .filter_title {
-  @include sizer(22px);
+  @include sizer(35px);
   margin-bottom: 40px;
 }
 
@@ -32,6 +32,7 @@
 }
 
 .form_wrapper_item {
+  position: relative;
   display: flex;
   flex-direction: column;
 }
@@ -48,7 +49,7 @@
 }
 
 .form_input {
-  padding: 10px;
+  padding: 10px 10px 10px 40px;
   width: 191px;
   height: 42px;
   border-radius: 6px;
@@ -65,4 +66,45 @@
   border-radius: 100px;
   padding: 11px 158px;
   gap: 10px;
+}
+
+.form_title {
+  margin-bottom: 20px;
+  @include sizer(22px);
+}
+
+.form_inputsWrapper {
+  display: flex;
+}
+
+.form_inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.form_prefix,
+.form_suffix {
+  color: var(--color-text, #6c6c6a);
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 160%;
+}
+
+.form_prefix {
+  position: absolute;
+  left: 10px;
+}
+
+.form_suffix {
+  position: absolute;
+  right: 10px;
+}
+
+.form_error {
+  position: absolute;
+  top: 0;
+  right: 0;
 }
