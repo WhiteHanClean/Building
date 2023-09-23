@@ -6,6 +6,7 @@ import TypesOfServices from "@/components/TypesOfServices/TypesOfServices";
 import Service from "@/components/Services/Service";
 import BuildBanner from "@/components/BuildBanner/BuildBanner";
 import Statistics from "@/components/Statistics/Statistics";
+import Consultation from "@/components/Consultation/Consultation";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,8 +27,8 @@ export default function Home() {
 
       <TypesOfServices />
       <Statistics />
-
       <Service />
+      <Consultation />
     </>
   );
 }
