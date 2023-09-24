@@ -37,7 +37,7 @@ const BurgerDrawer: React.FC = () => {
         placement="right"
         onClose={onClose}
         className={s.drawer}
-        visible={open}
+        open={open}
         closeIcon={customCloseButton}
       >
         <div className={s.drawer_content}>

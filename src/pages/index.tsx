@@ -2,7 +2,14 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
 import dynamic from "next/dynamic";
+
+import Slider from '@/components/Slider/Slider'
+
+import TypesOfServices from "@/components/TypesOfServices/TypesOfServices";
 import Service from "@/components/Services/Service";
+import BuildBanner from "@/components/BuildBanner/BuildBanner";
+import Statistics from "@/components/Statistics/Statistics";
+import Consultation from "@/components/Consultation/Consultation";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,7 +26,15 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Service/>
+
+      <Slider/>
+
+      <BuildBanner />
+
+      <TypesOfServices />
+      <Statistics />
+      <Service />
+      <Consultation />
     </>
   );
 }
