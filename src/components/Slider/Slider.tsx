@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import s from './Slider.module.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import {  Scrollbar } from 'swiper/modules';
-import BuildCard from '@/components/BuildCard/BuildCard';
+import BuildCard from '../BuildCard/BuildCard';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
