@@ -8,13 +8,14 @@
   }
 }
 
-/* Примените анимацию к Drawer */
-.ant-drawer-wrapper-body {
-  animation: drawerFadeIn 0.3s ease-in-out !important; /* Имя анимации, длительность и эффект */
-  transition: opacity 0.3s ease-in-out !important; /* Плавное изменение прозрачности */
-}
-.ant-drawer-header-title {
-  background-color: white !important;
+.custom_close_button {
+  background-color: #fff;
+  width: 36px !important;
+  height: 36px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
 }
 
 .drawer {
@@ -29,7 +30,7 @@
   }
   .nav_link {
     color: var(--color-black, #000);
-    /* Body 3 */
+    cursor: pointer;
     font-family: Inter;
     font-size: 15px;
     font-style: normal;
@@ -40,13 +41,17 @@
     text-align: start;
     align-items: center;
     border-bottom: 1px solid var(--color-grey, rgba(163, 163, 163, 0.5));
+    a {
+      text-decoration: none;
+      color: var(--color-black, #000);
+    }
   }
 }
 .btn_nav {
   display: flex;
   .burger_btn {
     border-radius: 100px;
-    background: var(--color-beige, #f0edec);
+    background: var(--color-beige, #DFDAD8);
     padding: 10px;
     width: 50px;
     height: 50px;
@@ -58,4 +63,7 @@
   .active {
     margin-right: 30px;
   }
+}
+.burger_img {
+  margin-right: 10px;
 }
