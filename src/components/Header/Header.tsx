@@ -3,7 +3,12 @@ import s from "./Header.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import BurgerDrawer from "../Burger/BurgerMenu";
+import dynamic from 'next/dynamic';
+
+const BurgerDrawer = dynamic(() => import("../Burger/BurgerMenu"), {
+  ssr: false, 
+});
+
 
 const Header = () => {
   const router = useRouter();
