@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Inter } from "@next/font/google";
 import dynamic from "next/dynamic";
 
-import Slider from '@/components/Slider/Slider'
+import Slider from "@/components/Slider/Slider";
 
 import TypesOfServices from "@/components/TypesOfServices/TypesOfServices";
 import Service from "@/components/Services/Service";
@@ -26,8 +26,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-
-      <Slider/>
+      {/* <Slider/> */}
 
       <BuildBanner />
 

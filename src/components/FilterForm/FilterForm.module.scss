@@ -4,6 +4,11 @@
   padding: 40px 0 15px 0;
 }
 
+.filter_section_wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
 .filter_title {
   @include sizer(35px);
   margin-bottom: 40px;
@@ -156,6 +161,9 @@
 }
 
 @media only screen and (max-width: 1024px) {
+  .filter_title {
+    font-size: 24px;
+  }
   .form_button {
     padding: 11px 134px;
   }
@@ -166,5 +174,71 @@
 
   .form_select {
     width: 344px;
+  }
+}
+
+@media only screen and (max-width: 428px) {
+  .form_button {
+    padding: 11px 161px;
+  }
+
+  .form_inputSecond {
+    margin-left: 15px;
+  }
+
+  .form_select {
+    width: 398px;
+  }
+  .form_input {
+    width: 195px;
+  }
+  .filter_title {
+    margin-bottom: 0;
+    width: 212px;
+  }
+
+  .filter_wrapper {
+    display: none;
+  }
+
+  .filter_section {
+    padding: 24px 0;
+  }
+
+  .filter_wrapperBurger {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+  }
+}
+
+.burgerFilter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.burgerTitle {
+  margin-right: 15px;
+  color: #000;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.48px;
+}
+.burger_button_wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #dfdad8;
+}
+@media only screen and (min-width: 429px) {
+  .burgerFilter {
+    display: none;
   }
 }
