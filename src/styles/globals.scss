@@ -1,5 +1,4 @@
-@import url('https://rsms.me/inter/inter.css');
-
+@import url("https://rsms.me/inter/inter.css");
 
 *,
 *::before,
@@ -19,10 +18,10 @@ html {
 
 body {
   -webkit-font-smoothing: antialiased;
-  font-family: 'Inter', sans-serif; 
+  font-family: "Inter", sans-serif;
+  background: var(--color-background, #f1efec);
 }
 
-img,
 picture,
 video,
 canvas,
@@ -81,4 +80,30 @@ select {
 #root,
 #__next {
   isolation: isolate;
+}
+
+.ant-drawer-wrapper-body {
+  animation: drawerFadeIn 0.3s ease-in-out !important; /* Имя анимации, длительность и эффект */
+  transition: opacity 0.3s ease-in-out !important; /* Плавное изменение прозрачности */
+}
+.ant-drawer-header-title {
+  display: flex !important;
+  justify-content: end !important;
+}
+
+.ant-checkbox-checked {
+  .ant-checkbox-inner {
+    background-color: black !important;
+    border-color: black !important;
+  }
+  .ant-checkbox-inner:hover {
+    border: 1px solid black !important;
+  }
+}
+
+.ant-checkbox-input:hover {
+  border-color: black; 
+}
+.swiper-slide{
+  width: 433px !important;
 }

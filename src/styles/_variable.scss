@@ -1,8 +1,8 @@
 @mixin sizer($size) {
-    color: var(--color-black, #000);
-    font-family: Inter;
-    font-size: $size;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-  }
+  color: var(--color-black, #000);
+  font-family: Inter;
+  font-size: $size;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}

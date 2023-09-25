@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { Button, Drawer } from "antd";
+import { Drawer } from "antd";
 import s from "./BurgeMenu.module.scss";
 import Image from "next/image";
+import Link from "next/link";
+import { CloseOutlined } from "@ant-design/icons";
 
 const BurgerDrawer: React.FC = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -13,12 +15,15 @@ const BurgerDrawer: React.FC = () => {
   const onClose = () => {
     setOpen(false);
   };
-  
+
+  const customCloseButton = (
+    <div className={s.custom_close_button} onClick={onClose}>
+      <CloseOutlined />
+    </div>
+  );
+
   return (
     <>
-      {/* <Button type="primary" onClick={showDrawer}>
-        Open
-      </Button> */}
       <div className={s.btn_nav}>
         <div className={`${s.burger_btn} ${s.active}`}>
           <Image src={"/Phone.png"} width={16} height={16} alt="logo"></Image>
@@ -29,14 +34,74 @@ const BurgerDrawer: React.FC = () => {
         </div>
       </div>
       <Drawer
-        title="Basic Drawer"
         placement="right"
         onClose={onClose}
-        visible={open} // Используйте "visible" вместо "open"
+        className={s.drawer}
+        open={open}
+        closeIcon={customCloseButton}
       >
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+        <div className={s.drawer_content}>
+          <div>
+            <p className={s.nav_link}>
+              <Link href={"/"}>Главная</Link>
+            </p>
+            <p className={s.nav_link}>
+              <Link href={"/Purchase/Purchase"}>Покупка</Link>
+            </p>
+            <p className={s.nav_link}>
+              <Link href={"/Rent/Rent"}>Аренда</Link>
+            </p>
+            <p className={s.nav_link}>
+              <Link href={"/Accommodation/Accommodation"}>Размещение</Link>
+            </p>
+            <p className={s.nav_link}>
+              <Link href={"/AboutUs/AboutUs"}>О нас</Link>
+            </p>
+          </div>
+
+          <div className={s.social_media}>
+            <a href="+79990000000" className={s.nav_link}>
+              <Image
+                className={s.burger_img}
+                src={"/telephone.png"}
+                width={15}
+                height={15}
+                alt="logo"
+              ></Image>
+              +79990000000
+            </a>
+            <a href="" className={s.nav_link}>
+              <Image
+                className={s.burger_img}
+                src={"/whatsapp.png"}
+                width={15}
+                height={15}
+                alt="logo"
+              ></Image>
+              Telegram
+            </a>
+            <a href="" className={s.nav_link}>
+              <Image
+                className={s.burger_img}
+                src={"/whatsapp.png"}
+                width={15}
+                height={15}
+                alt="logo"
+              ></Image>
+              WhatsApp
+            </a>
+            <a href="" className={s.nav_link}>
+              <Image
+                className={s.burger_img}
+                src={"/insta.png"}
+                width={15}
+                height={15}
+                alt="logo"
+              ></Image>
+              Instagram
+            </a>
+          </div>
+        </div>
       </Drawer>
     </>
   );
