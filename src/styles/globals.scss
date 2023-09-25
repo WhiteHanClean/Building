@@ -90,3 +90,20 @@ select {
   display: flex !important;
   justify-content: end !important;
 }
+
+.ant-checkbox-checked {
+  .ant-checkbox-inner {
+    background-color: black !important;
+    border-color: black !important;
+  }
+  .ant-checkbox-inner:hover {
+    border: 1px solid black !important;
+  }
+}
+
+.ant-checkbox-input:hover {
+  border-color: black; 
+}
+.swiper-slide{
+  width: 433px !important;
+}
