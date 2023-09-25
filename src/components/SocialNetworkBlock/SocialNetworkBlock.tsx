@@ -1,5 +1,6 @@
 import React from "react";
 import style from "./SocialNetworkBlock.module.scss";
+import Image from "next/image";
 
 const SocialNetworkBlock = () => {
   return (
@@ -17,25 +18,31 @@ const SocialNetworkBlock = () => {
         <button className={style.btnToInstagram} onClick={() =>window.open('https://www.instagram.com/', '_blank')}>
           <div className={style.btnContent}>
             <p>Перейти</p>
-            <img src="tabler_arrow-up.png" alt="arrow" width={17} height={16} />
+            <Image src="/tabler_arrow-up.png" width={17} height={16} alt="arrow" />
           </div>
         </button>
       </div>
 
       <div className={style.photoBlock}>
-        <img
+        <Image
           className={style.photo1}
-          src="SocialNetworkBlock1.png"
-          alt="SocialNetworkBlock1"
+          src="/Image.png"
+          width={190}
+          height={190}
+          alt="/Image"
         />
-        <img
+        <Image
           className={style.photo2}
-          src="SocialNetworkBlock2.png"
+          src="/SocialNetworkBlock2.png"
+            width={190}
+          height={190}
           alt="SocialNetworkBlock2"
         />
-        <img
+        <Image
           className={style.photo3}
-          src="SocialNetworkBlock3.png"
+          src="/SocialNetworkBlock3.png"
+            width={400}
+          height={400}
           alt="SocialNetworkBlock3"
         />
       </div>
