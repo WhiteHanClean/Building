@@ -1,5 +1,4 @@
-@import url('https://rsms.me/inter/inter.css');
-
+@import url("https://rsms.me/inter/inter.css");
 
 *,
 *::before,
@@ -85,7 +84,7 @@ select {
   animation: drawerFadeIn 0.3s ease-in-out !important; /* Имя анимации, длительность и эффект */
   transition: opacity 0.3s ease-in-out !important; /* Плавное изменение прозрачности */
 }
-.ant-drawer-header-title{
-    display: flex !important;
-    justify-content: end !important;
+.ant-drawer-header-title {
+  display: flex !important;
+  justify-content: end !important;
 }
