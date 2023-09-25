@@ -1,0 +1,123 @@
+.card_container {
+  width: 413px;
+
+  .card_name {
+    display: flex;
+    width: 413px;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+
+    p {
+      color: var(--color-black, #000);
+      font-family: 'Inter', sans-serif;
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+  }
+
+  .card_details {
+    .card_detail_wrapper {
+      display: flex;
+    }
+
+    span {
+      display: flex;
+      align-items: center;
+      margin-top: 6.5px;
+      margin-right: 20px;
+      color: var(--color-text, #6c6c6a);
+
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+
+      .card_icons {
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1440px) {
+  .card_container {
+    width: 413px;
+    margin: auto;
+
+    .card_name {
+      display: flex;
+      width: 413px;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 15px;
+
+      p {
+        color: var(--color-black, #000);
+        font-family: 'Inter', sans-serif;
+        font-size: 22px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .card_container {
+    width: 315px;
+    margin: auto;
+
+    .card_name {
+      display: flex;
+      width: 315px;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 12px;
+
+      p {
+        color: var(--color-black, #000);
+        font-family: 'Inter', sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .card_container {
+    width: 362px;
+    margin: auto;
+
+    .card_name {
+      display: flex;
+      width: 362px;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 12px;
+
+      p {
+        color: var(--color-black, #000);
+        font-family: 'Inter', sans-serif;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 428px) {
+  .card_container {
+    width: 398px;
+    margin: auto;
+  }
+}

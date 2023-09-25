@@ -15,11 +15,14 @@
     "@types/react": "18.2.22",
     "@types/react-dom": "18.2.7",
     "antd": "^5.9.2",
+    "formik": "^2.4.5",
     "next": "13.5.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-redux": "^8.1.2",
     "sass": "^1.67.0",
-    "typescript": "5.2.2"
+    "typescript": "5.2.2",
+    "yup": "^1.2.0",
+    "swiper": "^10.3.0"
   }
 }
