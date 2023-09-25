@@ -3,6 +3,14 @@ import Image from "next/image";
 import { Inter } from "@next/font/google";
 import dynamic from "next/dynamic";
 
+import Slider from '@/components/Slider/Slider'
+
+import TypesOfServices from "@/components/TypesOfServices/TypesOfServices";
+import Service from "@/components/Services/Service";
+import BuildBanner from "@/components/BuildBanner/BuildBanner";
+import Statistics from "@/components/Statistics/Statistics";
+import Consultation from "@/components/Consultation/Consultation";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
@@ -17,6 +25,16 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+
+
+      <Slider/>
+
+      <BuildBanner />
+
+      <TypesOfServices />
+      <Statistics />
+      <Service />
+      <Consultation />
     </>
   );
 }

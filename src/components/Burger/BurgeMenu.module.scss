@@ -8,16 +8,50 @@
   }
 }
 
-/* Примените анимацию к Drawer */
-.ant-drawer-wrapper-body {
-  animation: drawerFadeIn 0.3s ease-in-out !important; /* Имя анимации, длительность и эффект */
-  transition: opacity 0.3s ease-in-out !important; /* Плавное изменение прозрачности */
+.custom_close_button {
+  background-color: #fff;
+  width: 36px !important;
+  height: 36px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 100px;
+}
+
+.drawer {
+  background: var(--color-beige, #dfdad8) !important;
+  box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.1) !important;
+  height: 100vh !important;
+  .drawer_content {
+    height: 100%;
+    display: flex !important;
+    justify-content: space-between !important;
+    flex-direction: column !important;
+  }
+  .nav_link {
+    color: var(--color-black, #000);
+    cursor: pointer;
+    font-family: Inter;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 160%; /* 22.407px */
+    display: flex;
+    padding: 15px 213px 15px 10px;
+    text-align: start;
+    align-items: center;
+    border-bottom: 1px solid var(--color-grey, rgba(163, 163, 163, 0.5));
+    a {
+      text-decoration: none;
+      color: var(--color-black, #000);
+    }
+  }
 }
 .btn_nav {
   display: flex;
   .burger_btn {
     border-radius: 100px;
-    background: var(--color-beige, #f0edec);
+    background: var(--color-beige, #DFDAD8);
     padding: 10px;
     width: 50px;
     height: 50px;
@@ -26,7 +60,10 @@
     align-items: center;
     cursor: pointer;
   }
-  .active{
+  .active {
     margin-right: 30px;
   }
+}
+.burger_img {
+  margin-right: 10px;
 }
