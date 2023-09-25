@@ -1,33 +1,47 @@
-import React, { useEffect, useRef, useState } from 'react';
-import s from './Slider.module.scss';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import {  Scrollbar } from 'swiper/modules';
-import BuildCard from '../BuildCard/BuildCard';
+import React, { useRef } from "react";
+import s from "./Slider.module.scss";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Scrollbar } from "swiper/modules";
+import BuildCard from "../BuildCard/BuildCard";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import Image from "next/image";
 
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
+const Slider: React.FC = () => {
+  // Create a ref for the Swiper instance
+  const swiperRef = useRef<any | null>(null);
 
-import Image from 'next/image';
+  // Function to go to the previous slide
+  const goToPrevSlide = () => {
+    if (swiperRef.current) {
+      swiperRef.current.slidePrev();
+    }
+  };
 
-const Slider = () => {
+  // Function to go to the next slide
+  const goToNextSlide = () => {
+    if (swiperRef.current) {
+      swiperRef.current.slideNext();
+    }
+  };
 
   return (
     <>
       <div className={s.header_slider}>
         <p>Топ-10 проектов</p>
         <div className={s.btn_group}>
-          <button className={s.left_btn}>
+          <button className={s.left_btn} onClick={goToPrevSlide}>
             <Image
-              src={'/BtnSliderIcon.png'}
+              src={"/BtnSliderIcon.png"}
               width={16}
               height={16}
               alt="slider icon"
             />
           </button>
-          <button className={s.right_btn}>
+          <button className={s.right_btn} onClick={goToNextSlide}>
             <Image
-              src={'/BtnSliderIcon.png'}
+              src={"/BtnSliderIcon.png"}
               width={16}
               height={16}
               alt="slider icon"
@@ -36,39 +50,31 @@ const Slider = () => {
           </button>
         </div>
       </div>
-      <div className="slider-progress-wrap">
-        <div className="slider-progress"></div>
-        <div className="slider-progress2"></div>
-        <div className="slider-scrollbar"></div>
-      </div>
       <Swiper
         slidesPerView={3}
         scrollbar={{
-          draggable: true
-          
+          draggable: true,
         }}
         modules={[Scrollbar]}
+        onSwiper={(swiper) => {
+          swiperRef.current = swiper;
+        }}
       >
         <SwiperSlide>
           <BuildCard />
         </SwiperSlide>
-
         <SwiperSlide>
           <BuildCard />
         </SwiperSlide>
-
         <SwiperSlide>
           <BuildCard />
         </SwiperSlide>
-
         <SwiperSlide>
           <BuildCard />
         </SwiperSlide>
-
         <SwiperSlide>
           <BuildCard />
         </SwiperSlide>
-
         <SwiperSlide>
           <BuildCard />
         </SwiperSlide>
