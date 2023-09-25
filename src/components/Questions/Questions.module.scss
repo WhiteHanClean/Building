@@ -31,6 +31,7 @@
         width: 48%;
         .questions_accordion_button {
             display: flex;
+            position: relative;
             flex-direction: row-reverse;
             justify-content: space-between;
             color: #000;
@@ -50,7 +51,14 @@
                 font-weight: 600;
                 line-height: normal;
             }
-           
+            h3 {
+                color: #000;
+                font-family: "Inter", sans-serif;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+            }
         }
     }
 }
