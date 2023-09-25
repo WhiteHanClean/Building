@@ -25,6 +25,9 @@
             display: flex;
             gap: 20px;
             .company_items_img {
+                img {
+                    width: 100%;
+                }
                 br {
                     display: none;
                 }
@@ -132,7 +135,7 @@
     }
 }
 
-@media only screen and (max-width: 522px) {
+@media only screen and (max-width: 689px) {
     .company {
         gap: 0;
         flex-direction: column;
