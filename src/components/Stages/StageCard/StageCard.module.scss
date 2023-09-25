@@ -1,13 +1,14 @@
-.stage_card_container {
+@import '../../../styles/variable';
+
+.stage_card_content {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
   max-width: 48%;
-  height: 180px;
   border-radius: 10px;
   background: var(--color-beige, #dfdad8);
-  position: relative;
+  margin-bottom: 15px;
 
   .stage_header_info {
     display: inline-flex;
@@ -15,7 +16,7 @@
     align-items: center;
     width: fit-content;
     margin: 15px;
-    border-radius: 10000px;
+    border-radius: 50px;
     background: rgba(186, 170, 163, 0.26);
 
     .stage_number_wrapper {
@@ -29,43 +30,55 @@
       border-radius: 50%;
       margin-right: 5px;
 
-      .stage_number {
-        color: var(--color-white, #fff);
+      h1 {
+        @include sizer(13px);
+        color: var(--color-white, #fff) !important;
+        font-weight: 500 !important;
         text-align: center;
-        font-family: 'Inter', sans-serif;
-        font-size: 13px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: normal;
       }
     }
 
-    .stage_text {
-      color: var(--color-black, #000);
-      text-align: center;
-      font-family: Inter;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: normal;
+    h1 {
+      @include sizer(14px);
+      font-weight: 500 !important;
     }
   }
 
   p {
+    @include sizer(14px);
     max-width: 299px;
-    color: var(--color-text, #6c6c6a);
-    font-family: 'Inter', sans-serif;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 150%;
-    margin: 20px;
+
+    color: var(--color-text, #6c6c6a) !important;
+    font-weight: 500 !important;
+    line-height: 150% !important;
+    padding: 20px;
   }
 }
 
 @media only screen and (max-width: 1024px) {
-  .stage_card_container {
-    .stage_description {
-    }
+  .stage_card_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 31%;
+    width: 100%;
+    height: 180px;
+  }
+}
+
+@media only screen and (max-width: 941px) {
+  .stage_card_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 48%;
+    width: 100%;
+    height: 180px;
+  }
+}
+
+@media only screen and (max-width: 620px) {
+  .stage_card_content {
+    max-width: 100% !important;
   }
 }

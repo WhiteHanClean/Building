@@ -1,10 +1,15 @@
-.stages_container {
+@import '../../styles/variable';
+
+.stages_header_content {
+  display: none;
+}
+.stages_content {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-top: 130px;
 
-  .stages_picture_wrapper {
+  .stages_picture {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -12,58 +17,76 @@
     flex-shrink: 0;
     position: relative;
     margin-right: 20px;
-
-    img {
-      border-radius: 10px;
-      box-shadow: 0px 0px 8px 0px rgba(0, 0, 0, 0.05);
-    }
-
-    .info_overlay {
-      position: absolute;
-      padding: 30px;
-      width: 80%;
-      z-index: 1;
-
-      h1 {
-        color: var(--color-white, #fff);
-        font-family: 'Inter', sans-serif;
-        font-size: 35px;
-        font-style: normal;
-        font-weight: 600;
-        line-height: normal;
-        margin-bottom: 361px;
-      }
-
-      p {
-        color: var(--color-white-80, rgba(255, 255, 255, 0.8));
-        width: 462px;
-        font-family: 'Inter', sans-serif;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 500;
-        line-height: 150%; /* 21px */
-      }
-    }
   }
 
-  .stages_cards_wrapper {
+  .stages_cards {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 20px; // ??
   }
 }
 
 @media only screen and (max-width: 1024px) {
-  .stages_picture_wrapper {
-    display: flex;
+  .stages_header_content {
+    display: block;
 
-    img {
-      display: none;
+    .stages_header {
+      display: flex;
+      align-items: center;
+
+      h1 {
+        @include sizer(26px);
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+      p {
+        @include sizer(14px);
+
+        width: 649px;
+        color: var(--color-text, #6c6c6a) !important;
+        font-weight: 500 !important;
+        line-height: 150% !important;
+        margin-right: 20px;
+      }
     }
+  }
 
-    .info_overlay {
+  .stages_content {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
 
+    .stages_picture {
+      img {
+        display: none;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 941px) {
+  .stages_content {
+    .stages_cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+  }
+}
+
+@media only screen and (max-width: 620px) {
+  .stages_header_content {
+    
+    .stages_header {
+      display: block;
+      h1 {
+        margin: 0;
+      }
+      p {
+        width: 398px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
     }
   }
 }
