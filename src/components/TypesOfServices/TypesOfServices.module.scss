@@ -70,6 +70,10 @@
       }
     }
   }
+  .typesOfServices_content_block:nth-child(-n + 1),
+  .typesOfServices_content_block:nth-last-child(-n + 2) {
+    margin-bottom: 0;
+  }
 }
 
 @media only screen and (max-width: 1300px) {
@@ -128,6 +132,12 @@
       top: unset !important;
       bottom: 20px !important;
     }
+  }
+  .typesOfServices_content_block {
+    margin-bottom: 20px !important;
+  }
+  .typesOfServices_content_block:last-child {
+    margin-bottom: 0 !important;
   }
 }
 
