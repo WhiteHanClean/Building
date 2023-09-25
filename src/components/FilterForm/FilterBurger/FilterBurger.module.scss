@@ -1,0 +1,27 @@
+.filter_drawer {
+  background-color: #dfdad8 !important;
+}
+
+.burger_wrapperClose_block {
+  margin-left: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.filter_wrapperBurger {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.extra_wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
