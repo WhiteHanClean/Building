@@ -50,6 +50,7 @@
                 font-weight: 600;
                 line-height: normal;
             }
+           
         }
     }
 }
@@ -69,10 +70,11 @@
     }
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 768px) {
     .questions {
+        padding: 25px;
         flex-direction: column;
-        gap: 12px;
+        gap: 24px;
         .questions_description {
             h3 {
                 padding-bottom: 24px;
