@@ -26,13 +26,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-
-      <Slider/>
-
       <BuildBanner />
-
-      <TypesOfServices />
       <Statistics />
+      <Slider/>
+      <TypesOfServices />
       <Service />
       <Consultation />
     </>

@@ -1,0 +1,89 @@
+@import "../../styles/variable";
+
+.full_service {
+  width: 100%;
+  border-radius: 10px;
+  background: var(--color-green, #d5d7c4);
+  padding: 20px;
+  margin-top: 130px;
+  margin-bottom: 130px;
+  display: flex;
+
+  .full_service_photo {
+    max-width: 400px;
+    width: 100%;
+    height: 378px;
+    border-radius: 10px;
+    background: url("../../../public/full.jpeg"),
+      lightgray -33.682px -96.433px / 111.841% 174.73% no-repeat;
+    background-size: cover;
+    background-position-y: 39%;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    margin-right: 20px;
+    h4 {
+      @include sizer(35px);
+      color: var(--color-white, #fff);
+    }
+
+    .full_text_paragrapf {
+      position: absolute;
+      border-radius: 479px;
+      opacity: 0.4;
+      background: var(--color-black, #000);
+      filter: blur(62.5px);
+      width: 479px;
+      height: 133px;
+      bottom: -33px;
+      left: -62px;      
+    }
+    p {
+      max-width: 360px;
+      margin-top: 191px;
+      @include sizer(14px);
+      font-weight: 500;
+      color: white;
+      position: absolute;
+      line-height: 150%; /* 21px */
+    }
+  }
+
+  .service {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .service_content_blocks {
+      padding: 20px;
+      max-width: 400px;
+      border-radius: 10px;
+      background: var(--color-background, #f1efec);
+      max-height: 179px;
+      height: 100%;
+      .service_content_block {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 40px;
+       
+        h6 {
+          @include sizer(22px);
+        }
+        .service_icon {
+          width: 36px;
+          height: 36px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 100px;
+          background: var(--color-beige, #dfdad8);
+        }
+      }
+
+      p{
+        @include sizer(14px);
+        color: var(--color-text, #6C6C6A);
+       
+      }
+    }
+  }
+}
