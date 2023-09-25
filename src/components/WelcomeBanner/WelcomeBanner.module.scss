@@ -21,14 +21,14 @@
 
   .welcome_text_content {
     color: var(--color-white, #fff);
-    max-width: 407px;
+    max-width: 523px;
     width: 100%;
     padding-top: 40px;
     padding-left: 40px;
     h1 {
       color: var(--color-white, #fff);
       font-family: 'Inter', sans-serif;
-      font-size: 35px;
+      font-size: 45px;
       font-style: normal;
       font-weight: 600;
       line-height: normal;
@@ -81,8 +81,19 @@
   .welcome_text_content{
     padding-top: 30px !important;
     padding-left: 30px !important;
+    max-width: 321px !important;
     h1{
       @include sizer(26px !important);
+    }
+  }
+  .founder{
+    width: 246px !important;
+    height: 126px !important;
+    padding: 20px 35px 20px 20px !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    h2{
+      @include sizer(20px !important);
     }
   }
 }
@@ -94,12 +105,16 @@
       padding-left: 25px !important;
    }
    }
+   .founder{
+    bottom: 15px !important;
+    right: 15px !important;
+   }
 }
 @media only screen and (max-width: 666px) {
   .welcome_banner {
     height: 780px !important;
     background-size: 300% !important;
-    background-position: center !important;
+    background-position: top !important;
    
   }
 }
@@ -107,4 +122,8 @@
   .welcome_banner {
   background-size: 365% !important;
 }
+.founder{
+  bottom: 10px !important;
+  right: 10px !important;
+ }
 }
