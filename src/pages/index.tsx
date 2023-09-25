@@ -2,6 +2,9 @@ import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
 import dynamic from "next/dynamic";
+
+import Slider from '@/components/Slider/Slider'
+
 import TypesOfServices from "@/components/TypesOfServices/TypesOfServices";
 import Service from "@/components/Services/Service";
 import BuildBanner from "@/components/BuildBanner/BuildBanner";
@@ -24,9 +27,9 @@ export default function Home() {
       </Head>
 
       <BuildBanner />
-
-      <TypesOfServices />
       <Statistics />
+      <Slider/>
+      <TypesOfServices />
       <Service />
       <Consultation />
     </>
