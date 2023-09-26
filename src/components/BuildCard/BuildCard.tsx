@@ -4,7 +4,8 @@ import Image from "next/image";
 import { useWindowSize } from "../../hook/useSize";
 
 const BuildCard = () => {
-  const { width } = useWindowSize();
+  const { width = 0 } = useWindowSize();
+
   const isScreenTable = width <= 1024;
 
   const imageWidth = isScreenTable ? 315 : 413;
