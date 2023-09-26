@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 export function useWindowSize() {
-  const isClient = typeof window === "object"; 
+  const isClient = typeof window === "object"; // Check if we're in a browser environment
 
   const [windowSize, setWindowSize] = useState({
     width: isClient ? window.innerWidth : undefined,

@@ -7,17 +7,25 @@ import React, { useEffect, useState } from "react";
 import SocialNetworkBlock from "../../components/SocialNetworkBlock/SocialNetworkBlock";
 
 const AboutUs = () => {
-  const [width, setWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState(0); // Initialize with an initial width value
 
   useEffect(() => {
-    const handleResize = (event: UIEvent) => {
-      setWidth((event.target as Window).innerWidth);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    // Check if we're in a browser environment
+    if (typeof window !== "undefined") {
+      setWidth(window.innerWidth);
+
+      const handleResize = () => {
+        setWidth(window.innerWidth);
+      };
+
+      window.addEventListener("resize", handleResize);
+
+      return () => {
+        window.removeEventListener("resize", handleResize);
+      };
+    }
   }, []);
+
   return (
     <div>
       <WelcomeBanner />
@@ -29,4 +37,5 @@ const AboutUs = () => {
     </div>
   );
 };
+
 export default AboutUs;
