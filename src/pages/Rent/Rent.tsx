@@ -5,9 +5,10 @@ import React from "react";
 const Rent = () => {
   return (
     <>
-    <div>  
-      <FilterForm titleSection="Аренда недвижимости" />
-      <ListOffers />
+      <div>
+        <FilterForm titleSection="Аренда недвижимости" />
+        <ListOffers />
+      </div>
     </>
   );
 };
