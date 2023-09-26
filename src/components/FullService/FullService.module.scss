@@ -22,7 +22,7 @@
     display: flex;
     flex-flow: column;
     justify-content: space-between;
-
+    overflow: hidden;
     .full_text_paragrapf {
       position: absolute;
       border-radius: 479px;
@@ -45,8 +45,9 @@
     }
 
     p {
+      position: absolute;
       max-width: 360px;
-      margin-top: 191px;
+      bottom: 20px;
       @include sizer(14px);
       font-weight: 500;
       color: white;
@@ -126,6 +127,11 @@
     grid-template-rows: 1fr 2fr !important;
   }
 
+  .full_service_photo {
+    p{
+      max-width: 290px !important;
+    }
+  }
   .service {
     grid-template-columns: 1fr !important;
     grid-template-rows: 1fr 1fr 1fr 1fr !important;
