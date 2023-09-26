@@ -1,0 +1,82 @@
+.listOffer_label {
+  color: #6c6c6a;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 160%;
+}
+
+.listOffer_select {
+  padding: 10px;
+  width: 392px;
+  border-radius: 6px;
+  border: 1px solid #a3a3a3;
+}
+
+.listOffer_option {
+  color: #000;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 160%;
+}
+
+.listOffer_text {
+  color: #000;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 160%;
+}
+
+.listOffer_text_wrapper {
+  height: 42px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 10px;
+  padding: 10px;
+  border-bottom: 1px solid #a3a3a3;
+}
+
+.listOffer_wraper {
+  display: flex;
+  align-items: end;
+  margin-bottom: 30px;
+}
+
+.listOffer_list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  list-style-type: none;
+  gap: 20px;
+}
+
+.listOffer_item {
+  margin-bottom: 40px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .listOffer_list {
+    gap: 19px;
+  }
+
+  .listOffer_select {
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .listOffer_list {
+    gap: 12px;
+  }
+
+  .listOffer_select {
+    width: 213px;
+  }
+}
