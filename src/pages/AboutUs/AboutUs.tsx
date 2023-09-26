@@ -1,3 +1,4 @@
+import Company from "@/components/Company/Company";
 import FullService from "@/components/FullService/FullService";
 import Statistics from "@/components/Statistics/Statistics";
 import WelcomeBanner from "@/components/WelcomeBanner/WelcomeBanner";
@@ -8,6 +9,7 @@ const AboutUs = () => {
     <div>
       <WelcomeBanner />
       <Statistics />
+      <Company/>
       <FullService />
     </div>
   );
