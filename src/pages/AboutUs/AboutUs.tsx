@@ -1,4 +1,5 @@
 import Company from "@/components/Company/Company";
+import FounderQuoteBanner from "@/components/FounderQuoteBanner/FounderQuoteBanner";
 import FullService from "@/components/FullService/FullService";
 import Statistics from "@/components/Statistics/Statistics";
 import WelcomeBanner from "@/components/WelcomeBanner/WelcomeBanner";
@@ -21,7 +22,8 @@ const AboutUs = () => {
     <div>
       <WelcomeBanner />
       <Statistics />
-      <Company/>
+      <Company />
+      <FounderQuoteBanner />
       <FullService />
       {width <= 768 ? "" : <SocialNetworkBlock />}
     </div>
