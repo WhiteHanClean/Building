@@ -7,13 +7,10 @@ import Slider from '@/components/Slider/Slider'
 
 import TypesOfServices from "@/components/TypesOfServices/TypesOfServices";
 import Service from "@/components/Services/Service";
-<<<<<<< HEAD
 import Stages from "@/components/Stages/Stages";
-=======
 import BuildBanner from "@/components/BuildBanner/BuildBanner";
 import Statistics from "@/components/Statistics/Statistics";
 import Consultation from "@/components/Consultation/Consultation";
->>>>>>> 732f37c2e35638d6990d3404f838bcd713978c21
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -29,22 +26,14 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-<<<<<<< HEAD
       
-      <Stages />
-      <Service/>
-=======
-
-
-      <Slider/>
 
       <BuildBanner />
-
       <TypesOfServices />
+      <Stages/>
       <Statistics />
       <Service />
       <Consultation />
->>>>>>> 732f37c2e35638d6990d3404f838bcd713978c21
     </>
   );
 }
