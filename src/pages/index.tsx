@@ -10,6 +10,7 @@ import Service from "@/components/Services/Service";
 import BuildBanner from "@/components/BuildBanner/BuildBanner";
 import Statistics from "@/components/Statistics/Statistics";
 import Consultation from "@/components/Consultation/Consultation";
+import SocialNetworkBlock from "@/components/SocialNetworkBlock/SocialNetworkBlock";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,6 +31,7 @@ export default function Home() {
       <Slider/>
       <TypesOfServices />
       <Service />
+      <SocialNetworkBlock/>
       <Consultation />
     </>
   );
