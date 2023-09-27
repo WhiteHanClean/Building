@@ -260,6 +260,24 @@
     }
 }
 
+@media only screen and (max-width: 800px) {
+    .statistic {
+        .statistic_fields {
+            .statistic_fields_right {
+                .statistic_fields_right_bottom {
+                    .statistic_fields_right_bottom_segment {
+                        p {
+                            &.statistic_fields_right_bottom_segment_fourth::before {
+                                width: 10%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 @media only screen and (max-width: 774px) {
     .statistic {
         .statistic_fields {
@@ -339,7 +357,7 @@
         }
     }
 }
-@media only screen and (max-width: 370px) {
+@media only screen and (max-width: 405px) {
     .statistic {
         .statistic_fields {
             .statistic_fields_right {
@@ -367,6 +385,87 @@
                             &.statistic_fields_right_bottom_segment_fourth::before {
                                 left: -40px;
                                 width: 30px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 390px) {
+    .statistic {
+        .statistic_fields {
+            .statistic_fields_right {
+                .statistic_fields_right_top {
+                    .statistic_fields_right_top_segment {
+                        p {
+                            &.statistic_fields_right_top_segment_second::before {
+                                left: -60px;
+                            }
+                        }
+                    }
+                }
+                .statistic_fields_right_bottom {
+                    .statistic_fields_right_bottom_segment {
+                        p {
+                            &.statistic_fields_right_bottom_segment_fourth::before {
+                                left: -25px;
+                                width: 17px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 375px) {
+    .statistic {
+        .statistic_fields {
+            .statistic_fields_right {
+                .statistic_fields_right_top {
+                    .statistic_fields_right_top_segment {
+                        p {
+                            &.statistic_fields_right_top_segment_second::before {
+                                left: -50px;
+                            }
+                        }
+                    }
+                }
+                .statistic_fields_right_bottom {
+                    .statistic_fields_right_bottom_segment {
+                        p {
+                            &.statistic_fields_right_bottom_segment_fourth::before {
+                                left: -15px;
+                                width: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 365px) {
+    .statistic {
+        .statistic_fields {
+            .statistic_fields_right {
+                .statistic_fields_right_top {
+                    .statistic_fields_right_top_segment {
+                        p {
+                            &.statistic_fields_right_top_segment_second::before {
+                                left: -50px;
+                            }
+                        }
+                    }
+                }
+                .statistic_fields_right_bottom {
+                    .statistic_fields_right_bottom_segment {
+                        p {
+                            &.statistic_fields_right_bottom_segment_fourth::before {
+                                left: -8px;
+                                width: 6px;
                             }
                         }
                     }
