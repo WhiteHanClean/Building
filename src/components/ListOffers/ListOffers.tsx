@@ -59,7 +59,9 @@ const ListOffers = () => {
           </div>
         </div>
         <div className={s.listOffer_text_wrapper}>
-          <p className={s.listOffer_text}>Всего объектов: 5 760</p>
+          <p className={s.listOffer_text}>
+            Всего объектов: <span>5 760</span>
+          </p>
         </div>
       </div>
       <ul className={s.listOffer_list}>

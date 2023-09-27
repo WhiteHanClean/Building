@@ -8,7 +8,6 @@ const Rent = () => {
     <>
       <FilterForm titleSection="Аренда недвижимости" />
       <ListOffers />
-      <ProductSlider />
     </>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import s from "./ProductSlider.module.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Scrollbar } from "swiper/modules";
@@ -6,8 +6,25 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import Image from "next/image";
+import { useWindowSize } from "../../hook/useSize";
+import { Arapey } from "@next/font/google";
 
 const ProductSlider: React.FC = () => {
+  const [number, setNumber] = useState(1);
+  const { width = 0 } = useWindowSize();
+
+  const isScreenTable = width <= 1300;
+  const isScreenTablemMini = width <= 768;
+  const isScreenMob = width <= 428;
+
+  const heightImg = isScreenTable
+    ? 520
+    : isScreenTablemMini
+    ? 470
+    : isScreenMob
+    ? 270
+    : 460;
+
   const items = Array.from({ length: 24 }, (_, index) => index);
   // Create a ref for the Swiper instance
   const swiperRef = useRef<any | null>(null);
@@ -16,6 +33,9 @@ const ProductSlider: React.FC = () => {
   const goToPrevSlide = () => {
     if (swiperRef.current) {
       swiperRef.current.slidePrev();
+      if (number !== 1) {
+        setNumber((prevNumber) => prevNumber - 1);
+      }
     }
   };
 
@@ -23,14 +43,17 @@ const ProductSlider: React.FC = () => {
   const goToNextSlide = () => {
     if (swiperRef.current) {
       swiperRef.current.slideNext();
+      if (number < items.length) {
+        setNumber((prevNumber) => prevNumber + 1);
+      }
     }
   };
 
   return (
-    <>
-      <div>
-        <div className={s.btn_group}>
-          <button className={s.left_btn} onClick={goToPrevSlide}>
+    <div className={s.productSlider_wrapper_section}>
+      <div className={s.productSlider_wrapper_btn}>
+        <div className={s.productSlider_btn_group}>
+          <button className={s.productSlider_left_btn} onClick={goToPrevSlide}>
             <Image
               src={"/BtnSliderIcon.png"}
               width={16}
@@ -38,15 +61,20 @@ const ProductSlider: React.FC = () => {
               alt="slider icon"
             />
           </button>
-          <button className={s.right_btn} onClick={goToNextSlide}>
+          <button className={s.productSlider_right_btn} onClick={goToNextSlide}>
             <Image
               src={"/BtnSliderIcon.png"}
               width={16}
               height={16}
               alt="slider icon"
-              className={s.right_icon_img}
+              className={s.productSlider_right_icon_img}
             />
           </button>
+        </div>
+        <div className={s.productSlider_wrapper_btnText}>
+          <p className={s.productSlider_number}>
+            <span>{number}</span> из <span>{items.length}</span>
+          </p>
         </div>
       </div>
       <Swiper
@@ -65,9 +93,9 @@ const ProductSlider: React.FC = () => {
               <div className={s.productSlider_wrapper_img}>
                 <Image
                   src={"/FotoHouse.jpg"}
-                  alt=""
+                  alt="Foto House"
                   width={847}
-                  height={460}
+                  height={heightImg}
                   style={{ width: "100%" }}
                 />
               </div>
@@ -100,7 +128,7 @@ const ProductSlider: React.FC = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-    </>
+    </div>
   );
 };
 

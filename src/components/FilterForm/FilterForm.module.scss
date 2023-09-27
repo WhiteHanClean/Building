@@ -135,7 +135,7 @@
 
 @media only screen and (max-width: 1300px) {
   .form_wrapper {
-    justify-content: center;
+    justify-content: space-between;
     gap: 9px;
   }
   .form_select {
@@ -174,6 +174,12 @@
 
   .form_select {
     width: 344px;
+  }
+}
+
+@media only screen and (max-width: 786px) {
+  .form_wrapper {
+    justify-content: center;
   }
 }
 
