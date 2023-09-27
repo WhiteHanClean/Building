@@ -12,6 +12,10 @@ const Consultation = () => {
     console.log("checked = ", checkedValues);
   };
 
+  const closeMessage = () => {
+    setIsSubmitted(prevState => !prevState)
+  }
+
   const handleClickConsultation = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
     setIsSubmitted(true);
@@ -38,6 +42,9 @@ const Consultation = () => {
 
       {isSubmitted ? (
         <div className={s.consultation_success_message}>
+          <button onClick={closeMessage}>
+            <img src="/successCross.png" alt="successCross" />
+          </button>
           <h2>Заявка отправлена</h2>
           <img src="/Success.png" alt="Success" />
           <p>Наш менеджер свяжется с вами в течении 15 минут</p>
