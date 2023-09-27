@@ -5,6 +5,7 @@ import { Scrollbar } from "swiper/modules";
 import BuildCard from "../BuildCard/BuildCard";
 import "swiper/css";
 import "swiper/css/pagination";
+import 'swiper/css/scrollbar';
 import "swiper/css/navigation";
 import Image from "next/image";
 
@@ -52,14 +53,35 @@ const Slider: React.FC = () => {
       </div>
       <Swiper
         slidesPerView={3}
-        scrollbar={{
-          draggable: true,
+        scrollbar={true}
+        spaceBetween={20}
+        breakpoints={{
+          968: {
+            slidesPerView: 3,
+          },
+          624: {
+            slidesPerView: 2,
+          },
+          360: {
+            slidesPerView: 1,
+          },
         }}
         modules={[Scrollbar]}
-        onSwiper={(swiper) => {
+        onSwiper={(swiper: any) => {
           swiperRef.current = swiper;
         }}
+        className="build_swiper"
       >
+        {" "}
+        <SwiperSlide>
+          <BuildCard />
+        </SwiperSlide>
+        <SwiperSlide>
+          <BuildCard />
+        </SwiperSlide>
+        <SwiperSlide>
+          <BuildCard />
+        </SwiperSlide>
         <SwiperSlide>
           <BuildCard />
         </SwiperSlide>
