@@ -8,6 +8,7 @@ import Stages from "@/components/Stages/Stages";
 import BuildBanner from "@/components/BuildBanner/BuildBanner";
 import Statistics from "@/components/Statistics/Statistics";
 import Consultation from "@/components/Consultation/Consultation";
+import SocialNetworkBlock from "@/components/SocialNetworkBlock/SocialNetworkBlock";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,6 +31,7 @@ export default function Home() {
       <TypesOfServices />
       <Stages/>
       <Service />
+      <SocialNetworkBlock/>
       <Consultation />
     </>
   );
