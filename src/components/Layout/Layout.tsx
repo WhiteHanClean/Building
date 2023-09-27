@@ -3,6 +3,7 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import s from "./Layout.module.scss";
 import AsideButton from "../shared/ui/AsideButton/AsideButton";
+import MainPage from "@/pages/MainPage/MainPage";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
