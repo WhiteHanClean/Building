@@ -59,7 +59,7 @@ const Slider: React.FC = () => {
           968: {
             slidesPerView: 3,
           },
-          624: {
+          629: {
             slidesPerView: 2,
           },
           360: {
