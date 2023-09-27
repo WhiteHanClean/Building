@@ -27,7 +27,7 @@
     padding-left: 40px;
     h1 {
       color: var(--color-white, #fff);
-      font-family: 'Inter', sans-serif;
+      font-family: "Inter", sans-serif;
       font-size: 45px;
       font-style: normal;
       font-weight: 600;
@@ -41,7 +41,7 @@
       font-size: 14px;
       font-style: normal;
       font-weight: 500;
-      line-height: 150%; 
+      line-height: 150%;
     }
   }
   .founder {
@@ -68,31 +68,32 @@
       font-size: 14px;
       font-style: normal;
       font-weight: 500;
-      line-height: 150%; 
+      line-height: 150%;
     }
   }
 }
 @media only screen and (max-width: 1440px) {
   .welcome_banner {
-    background-size: 100% !important; }
+    background-size: 100% !important;
+  }
 }
 
 @media only screen and (max-width: 1024px) {
-  .welcome_text_content{
+  .welcome_text_content {
     padding-top: 30px !important;
     padding-left: 30px !important;
     max-width: 321px !important;
-    h1{
+    h1 {
       @include sizer(26px !important);
     }
   }
-  .founder{
+  .founder {
     width: 246px !important;
     height: 126px !important;
     padding: 20px 35px 20px 20px !important;
     bottom: 20px !important;
     right: 20px !important;
-    h2{
+    h2 {
       @include sizer(20px !important);
     }
   }
@@ -103,27 +104,26 @@
     .welcome_text_content {
       padding-top: 25px !important;
       padding-left: 25px !important;
-   }
-   }
-   .founder{
+    }
+  }
+  .founder {
     bottom: 15px !important;
     right: 15px !important;
-   }
+  }
 }
 @media only screen and (max-width: 666px) {
   .welcome_banner {
     height: 780px !important;
     background-size: 300% !important;
     background-position: top !important;
-   
   }
 }
 @media only screen and (max-width: 425px) {
   .welcome_banner {
-  background-size: 365% !important;
-}
-.founder{
-  bottom: 10px !important;
-  right: 10px !important;
- }
+    background-size: 365% !important;
+  }
+  .founder {
+    bottom: 10px !important;
+    right: 10px !important;
+  }
 }
