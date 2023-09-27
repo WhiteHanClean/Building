@@ -9,7 +9,7 @@ const FullService = () => {
         <h4>Полный спектр услуг</h4>
         <div className={s.full_text_paragrapf}></div>
         <p>
-          Присоединяйтесь к нашему сообществу успешных инвесторов и довольных
+          Присоединяйтесь к нашему сообществууспешных инвесторов и довольных
           владельцев жилья на Пхукете.
         </p>
       </div>
@@ -24,7 +24,7 @@ const FullService = () => {
                 src={"/like.png"}
                 width={16}
                 height={16}
-                alt="logo"
+                alt="like icon"
               ></Image>
             </div>
           </div>
@@ -37,61 +37,61 @@ const FullService = () => {
 
         <div className={s.service_content_blocks}>
           <div className={s.service_content_block}>
-            <h6>Профессионализм</h6>
+            <h6>Качество</h6>
 
             <div className={s.service_icon}>
               <Image
-                src={"/like.png"}
+                src={"/medal_lcon.png"}
                 width={16}
                 height={16}
-                alt="logo"
+                alt="medal icon"
               ></Image>
             </div>
           </div>
 
           <p>
-            Мы гордимся своим сервисом, который включает подбор самых ликвидных
-            объектов недвижимости.
+            Проводим детальное изучение репутации застройщика, проверяем наличие
+            всех документов и отсутствия обременений.
           </p>
         </div>
 
         <div className={s.service_content_blocks}>
           <div className={s.service_content_block}>
-            <h6>Профессионализм</h6>
+            <h6>Безопасность</h6>
 
             <div className={s.service_icon}>
               <Image
-                src={"/like.png"}
+                src={"/checkMark_icon.png"}
                 width={16}
                 height={16}
-                alt="logo"
+                alt="check-mark icon"
               ></Image>
             </div>
           </div>
 
           <p>
-            Мы гордимся своим сервисом, который включает подбор самых ликвидных
-            объектов недвижимости.
+            Важность соблюдения норм качества и безопасности для нас в
+            приоритете, а наши юристы сопровождают вас на этапе всей сделки.
           </p>
         </div>
 
         <div className={s.service_content_blocks}>
           <div className={s.service_content_block}>
-            <h6>Профессионализм</h6>
+            <h6>Строительство</h6>
 
             <div className={s.service_icon}>
               <Image
-                src={"/like.png"}
+                src={"/house_icon.png"}
                 width={16}
                 height={16}
-                alt="logo"
+                alt="house icon"
               ></Image>
             </div>
           </div>
 
           <p>
-            Мы гордимся своим сервисом, который включает подбор самых ликвидных
-            объектов недвижимости.
+            Строительство с полным циклом услуг, а также эксклюзивные права на
+            сотрудничество: бонусы, выгодная цена, одни из лучших видовых лотов.
           </p>
         </div>
       </div>
