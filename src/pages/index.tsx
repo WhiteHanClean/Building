@@ -10,6 +10,7 @@ import Service from "@/components/Services/Service";
 import BuildBanner from "@/components/BuildBanner/BuildBanner";
 import Statistics from "@/components/Statistics/Statistics";
 import Consultation from "@/components/Consultation/Consultation";
+import Benefits from "@/components/Benefits/Benefits";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,8 +28,9 @@ export default function Home() {
       </Head>
       <BuildBanner />
       <Statistics />
-      <Slider/>
+      <Slider />
       <TypesOfServices />
+      <Benefits />
       <Service />
       <Consultation />
     </>

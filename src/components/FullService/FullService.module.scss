@@ -10,7 +10,6 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 20px;
-
   .full_service_photo {
     background: url("../../../public/full.jpeg"),
       lightgray -33.682px -96.433px / 111.841% 174.73% no-repeat;
@@ -23,6 +22,7 @@
     flex-flow: column;
     justify-content: space-between;
 
+    overflow: hidden;
     .full_text_paragrapf {
       position: absolute;
       border-radius: 479px;
@@ -45,8 +45,9 @@
     }
 
     p {
+      position: absolute;
       max-width: 360px;
-      margin-top: 191px;
+      bottom: 20px;
       @include sizer(14px);
       font-weight: 500;
       color: white;
