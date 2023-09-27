@@ -170,7 +170,7 @@
                         }
                         &.statistic_fields_right_bottom_segment_fourth::before {
                             left: 0;
-                            width: 15%;
+                            width: 5%;
                             transform: translateY(-50%);
                         }
                         &.statistic_fields_right_bottom_segment_fourth::after {
@@ -211,6 +211,11 @@
                         }
                         p {
                             font-size: 30px;
+                            &.statistic_fields_right_bottom_segment_fourth::before {
+                                left: 0;
+                                width: 11%;
+                                transform: translateY(-50%);
+                            }
                         }
                     }
                 }
