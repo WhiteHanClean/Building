@@ -1,5 +1,4 @@
-@import url('https://rsms.me/inter/inter.css');
-
+@import url("https://rsms.me/inter/inter.css");
 
 *,
 *::before,
@@ -80,4 +79,11 @@ select {
 #root,
 #__next {
   isolation: isolate;
+}
+
+.ant-collapse-content-box {
+  padding: 0 !important;
+  .questions_accordion_button_title {
+    padding: 15px 16px
+  }
 }
