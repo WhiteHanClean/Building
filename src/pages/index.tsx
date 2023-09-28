@@ -34,7 +34,6 @@ export default function Home() {
       <Slider />
       <TypesOfServices />
       <Stages/>
-      <Benefits />
       <Service />
       <SocialNetworkBlock/>
       <Questions/>
