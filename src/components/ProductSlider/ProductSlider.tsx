@@ -77,19 +77,19 @@ const ProductSlider: React.FC = () => {
           </p>
         </div>
       </div>
-      <Swiper
-        slidesPerView={1}
-        scrollbar={{
-          draggable: true,
-        }}
-        modules={[Scrollbar]}
-        onSwiper={(swiper) => {
-          swiperRef.current = swiper;
-        }}
-      >
-        {items.map(() => (
-          <SwiperSlide>
-            <div className={s.productSlider_wrapper}>
+      <div className={s.productSlider_wrapper}>
+        <Swiper
+          slidesPerView={1}
+          scrollbar={{
+            draggable: true,
+          }}
+          modules={[Scrollbar]}
+          onSwiper={(swiper) => {
+            swiperRef.current = swiper;
+          }}
+        >
+          {items.map(() => (
+            <SwiperSlide>
               <div className={s.productSlider_wrapper_img}>
                 <Image
                   src={"/FotoHouse.jpg"}
@@ -99,35 +99,35 @@ const ProductSlider: React.FC = () => {
                   style={{ width: "100%" }}
                 />
               </div>
-              <div className={s.productSlider_wrapper_info}>
-                <div className={s.productSlider_wrapper_title}>
-                  <p>Icon Park</p>
-                  <p>15 000 000 ₽</p>
-                </div>
-                <div className={s.productSlider_wrapper_text}>
-                  <p>Камала, Катху, Пхукет</p>
-                  <p>310 000 ₽/м²</p>
-                </div>
-                <ul className={s.productSlider_list}>
-                  <li className={s.productSlider_items}>
-                    <p>3-комнатная квартира</p>
-                  </li>
-                  <li className={s.productSlider_items}>
-                    <p>Площадь квартиры: 234 м²</p>
-                  </li>
-                  <li className={s.productSlider_items}>
-                    <p>Год постройки: 2020</p>
-                  </li>
-                  <li className={s.productSlider_items}>
-                    <p>Пляж Камала: 0.5 км</p>
-                  </li>
-                </ul>
-                <button className={s.productSlider_btn}>Заказать звонок</button>
-              </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        <div className={s.productSlider_wrapper_info}>
+          <div className={s.productSlider_wrapper_title}>
+            <p>Icon Park</p>
+            <p>15 000 000 ₽</p>
+          </div>
+          <div className={s.productSlider_wrapper_text}>
+            <p>Камала, Катху, Пхукет</p>
+            <p>310 000 ₽/м²</p>
+          </div>
+          <ul className={s.productSlider_list}>
+            <li className={s.productSlider_items}>
+              <p>3-комнатная квартира</p>
+            </li>
+            <li className={s.productSlider_items}>
+              <p>Площадь квартиры: 234 м²</p>
+            </li>
+            <li className={s.productSlider_items}>
+              <p>Год постройки: 2020</p>
+            </li>
+            <li className={s.productSlider_items}>
+              <p>Пляж Камала: 0.5 км</p>
+            </li>
+          </ul>
+          <button className={s.productSlider_btn}>Заказать звонок</button>
+        </div>
+      </div>
     </div>
   );
 };

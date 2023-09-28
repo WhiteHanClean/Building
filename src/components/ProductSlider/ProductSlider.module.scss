@@ -80,7 +80,7 @@
 
 .productSlider_wrapper_info {
   padding: 30px 20px;
-  width: 413px;
+  min-width: 413px;
   height: 460px;
   border-radius: 10px;
   background-color: #d5d7c4;
@@ -139,6 +139,9 @@
 }
 
 .productSlider_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   @include button;
   padding: 12px 121px;
   border-radius: 30px;
@@ -158,12 +161,11 @@
     padding: 12px 0 20px 0;
   }
   .productSlider_wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    display: block;
   }
 
   .productSlider_wrapper_img {
+    max-width: 1300px;
     width: 100%;
   }
 
