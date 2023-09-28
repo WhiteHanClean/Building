@@ -1,13 +1,11 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
-import dynamic from "next/dynamic";
 import Questions from "@/components/Questions/Questions";
-
 import Slider from "@/components/Slider/Slider";
-
 import TypesOfServices from "@/components/TypesOfServices/TypesOfServices";
 import Service from "@/components/Services/Service";
+import Stages from "@/components/Stages/Stages";
 import BuildBanner from "@/components/BuildBanner/BuildBanner";
 import Statistics from "@/components/Statistics/Statistics";
 import Consultation from "@/components/Consultation/Consultation";
@@ -16,6 +14,7 @@ import SocialNetworkBlock from "@/components/SocialNetworkBlock/SocialNetworkBlo
 
 
 const inter = Inter({ subsets: ["latin"] });
+
 
 export default function Home() {
   return (
@@ -34,6 +33,7 @@ export default function Home() {
       <Statistics />
       <Slider />
       <TypesOfServices />
+      <Stages/>
       <Benefits />
       <Service />
       <SocialNetworkBlock/>
