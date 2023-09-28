@@ -8,8 +8,8 @@ const BuildCard = () => {
 
   const isScreenTable = width <= 1024;
 
-  const imageWidth = isScreenTable ? 315 : 413;
-  const imageHeight = isScreenTable ? 236 : 270;
+  const imageWidth = 413;
+  const imageHeight = 270;
   return (
     <div className={s.card_container}>
       <Image
@@ -64,3 +64,4 @@ const BuildCard = () => {
 };
 
 export default BuildCard;
+
