@@ -317,3 +317,46 @@
         }
     }
 }
+
+@media only screen and (max-width: 410px) {
+    .statistic {
+        .statistic_fields {
+            .statistic_fields_right {
+                .statistic_fields_right_top {
+                    .statistic_fields_right_top_segment {
+                        
+                        p {
+                            &.statistic_fields_right_top_segment_first::before {
+                                display: none;
+                            }
+                            &.statistic_fields_right_top_segment_second::before {
+                                display: none;
+                            }
+                            &.statistic_fields_right_top_segment_first::after,
+                            &.statistic_fields_right_top_segment_second::after {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+                .statistic_fields_right_bottom {
+                    .statistic_fields_right_bottom_segment {
+                        p {
+                            
+                            &.statistic_fields_right_bottom_segment_third::before {
+                                display: none;
+                            }
+                            &.statistic_fields_right_bottom_segment_fourth::before {
+                                display: none;
+                            }
+                            &.statistic_fields_right_bottom_segment_third::after,
+                            &.statistic_fields_right_bottom_segment_fourth::after {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

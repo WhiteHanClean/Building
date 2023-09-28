@@ -1,0 +1,96 @@
+.questions {
+    width: 100%;
+    padding: 30px;
+    border-radius: 15px;
+    background: #d5d7c4;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 80px;
+    .questions_description {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        h3 {
+            color: #000;
+            font-family: "Inter", sans-serif;
+            font-size: 35px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+        }
+        p {
+            max-width: 312px;
+            color: var(--color-text, #6c6c6a);
+            font-family: "Inter", sans-serif;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 150%; /* 21px */
+        }
+    }
+    .questions_accordion {
+        width: 48%;
+        .questions_accordion_button {
+            display: flex;
+            position: relative;
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            color: #000;
+            font-family: "Inter", sans-serif;
+            font-size: 22px;
+            font-style: normal;
+            font-weight: 600;
+            line-height: normal;
+            p {
+                display: flex;
+                flex-direction: row-reverse;
+                justify-content: space-between;
+                color: #000;
+                font-family: "Inter", sans-serif;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+            }
+            h3 {
+                color: #000;
+                font-family: "Inter", sans-serif;
+                font-size: 18px;
+                font-style: normal;
+                font-weight: 600;
+                line-height: normal;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .questions {
+        .questions_description {
+            h3 {
+                font-size: 26px;
+            }
+        }
+        .questions_accordion {
+            .questions_accordion_button {
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .questions {
+        padding: 25px;
+        flex-direction: column;
+        gap: 24px;
+        .questions_description {
+            h3 {
+                padding-bottom: 24px;
+            }
+        }
+        .questions_accordion {
+            width: 100%;
+        }
+    }
+}

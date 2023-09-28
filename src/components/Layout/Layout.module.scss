@@ -9,12 +9,10 @@
   .content {
     padding-left: 20px;
     padding-right: 20px;
-  }
-}
 
-@media only screen and (max-width: 768px) {
-  .content {
-    padding-left: 15px;
-    padding-right: 15px;
+    @media (max-width: 840px) {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
   }
 }

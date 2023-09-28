@@ -1,0 +1,96 @@
+@import "../../styles/variable";
+
+.ListingHero_content {
+  background: url("../../../public/BuildBanner.png");
+  width: 100%;
+  height: 603px;
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+  border-radius: 10px;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.ListingHero_wrapper_title {
+  margin-top: 20px;
+  margin-left: 20px;
+  max-width: 549px;
+}
+
+.ListingHero_content_title {
+  color: #fff;
+  font-family: Inter;
+  font-size: 35px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -1.05px;
+}
+
+.ListingHero_description {
+  max-width: 406px;
+  position: absolute;
+  left: 50px;
+  bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ListingHero_description_title {
+  color: #fff;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+}
+
+@media only screen and (max-width: 1024px) {
+  .ListingHero_content {
+    height: 571px;
+  }
+
+  .ListingHero_wrapper_title {
+    margin-top: 10px;
+    margin-left: 10px;
+  }
+
+  .ListingHero_content_title {
+    font-size: 26px;
+    letter-spacing: normal;
+  }
+
+  .ListingHero_description {
+    max-width: 406px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .ListingHero_content {
+    height: 561px;
+  }
+  .ListingHero_description {
+    max-width: 310px;
+  }
+
+  .ListingHero_wrapper_title {
+    margin-top: 5px;
+    margin-left: 5px;
+    max-width: 454px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .ListingHero_description {
+    display: none;
+  }
+
+  .ListingHero_content {
+    height: 780px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
