@@ -17,7 +17,7 @@ const Header = () => {
     <header className={s.header}>
       <div className={s.header_content}>
         <div>
-          <Image src={"/logo.png"} width={168} height={38} alt="logo"></Image>
+          <Image src={"/Logo.png"} width={168} height={38} alt="logo"></Image>
           
         </div>
 
