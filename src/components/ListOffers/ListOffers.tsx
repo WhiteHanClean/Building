@@ -1,11 +1,26 @@
 import React, { useState } from "react";
 import s from "./ListOffers.module.scss";
 import BuildCard from "../BuildCard/BuildCard";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
+import { RealEstateArray } from "@/api/Api";
+import { setAllOffers } from "@/redux/libraryPhukeSlice";
+import axios from "axios";
+import { GetStaticProps } from "next";
 // import Pagination from "../Pagination/Pagination";
 // import { useGetObjectsQuery } from "../../api/Api";
+interface Props {
+  props: [];
+}
 
-const ListOffers = () => {
+const ListOffers = ({ props }: Props) => {
+  console.log(props);
+
   const [selectedValue, setSelectedValue] = useState("");
+  const allOffers = useSelector(
+    (state: RootState) => state.libraryPhuket.allOffers
+  );
+  console.log(allOffers);
   //   const [currentPage, setCurrentPage] = useState(1);
   //   const { data, error, isLoading } = useGetObjectsQuery(currentPage);
 
@@ -79,3 +94,30 @@ const ListOffers = () => {
 };
 
 export default ListOffers;
+
+export const getStaticProps: GetStaticProps<{
+  realEstates: RealEstateArray;
+}> = async () => {
+  try {
+    const response = await axios
+      .get("https://propertylibphuket-production.up.railway.app/realEstates/")
+      .then((res) => res);
+    const realEstates: RealEstateArray = response.data;
+    const dispatch = useDispatch();
+    dispatch(setAllOffers(realEstates));
+
+    return {
+      props: {
+        realEstates,
+      },
+    };
+  } catch (error) {
+    console.error("Ошибка при выполнении GET-запроса:", error);
+
+    return {
+      props: {
+        realEstates: [],
+      },
+    };
+  }
+};
