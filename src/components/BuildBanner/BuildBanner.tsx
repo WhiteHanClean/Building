@@ -3,16 +3,17 @@ import s from "./BuildBanner.module.scss";
 import Image from "next/image";
 import CustomTabs from "@/shared/ui/Tabs/Tabs";
 import CustomSelect from "@/shared/ui/Select/Select";
+import SearchBar from "../SearchBar/SearchBar";
 
 const BuildBanner = () => {
   const tabData = [
-    { key: 1, title: "Купить" },
-    { key: 2, title: "Арендовать" },
+    { key:  "1", title: "Купить" },
+    { key: "2", title: "Арендовать" },
   ];
 
   const contentData = {
-    "1": [<CustomSelect />, <CustomSelect />],
-    "2": [<CustomSelect />, <CustomSelect />],
+    "1": [<SearchBar key="1-SearchBar" />],
+    "2": [<SearchBar key="2-SearchBar" />],
   };
 
   return (
@@ -43,7 +44,7 @@ const BuildBanner = () => {
       <div className={s.build_application}>
         <h2>Фильтр для поиска вашего идеального жилья</h2>
 
-        {/* <CustomTabs tabData={tabData} contentData={contentData} /> */}
+        <CustomTabs tabData={tabData} contentData={contentData} />
       </div>
     </section>
   );

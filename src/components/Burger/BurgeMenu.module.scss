@@ -51,7 +51,7 @@
   display: flex;
   .burger_btn {
     border-radius: 100px;
-    background: var(--color-beige, #DFDAD8);
+    background: var(--color-beige, #dfdad8);
     padding: 10px;
     width: 50px;
     height: 50px;
@@ -66,4 +66,10 @@
 }
 .burger_img {
   margin-right: 10px;
+}
+@media only screen and (max-width: 800px) {
+  .burger_btn {
+    width: 36px !important;
+    height: 36px !important;
+  }
 }
