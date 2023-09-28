@@ -10,7 +10,6 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   gap: 20px;
-
   .full_service_photo {
     background: url("../../../public/full.jpeg"),
       lightgray -33.682px -96.433px / 111.841% 174.73% no-repeat;
@@ -22,6 +21,7 @@
     display: flex;
     flex-flow: column;
     justify-content: space-between;
+
     overflow: hidden;
     .full_text_paragrapf {
       position: absolute;
@@ -127,11 +127,6 @@
     grid-template-rows: 1fr 2fr !important;
   }
 
-  .full_service_photo {
-    p{
-      max-width: 290px !important;
-    }
-  }
   .service {
     grid-template-columns: 1fr !important;
     grid-template-rows: 1fr 1fr 1fr 1fr !important;
