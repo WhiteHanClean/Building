@@ -95,7 +95,42 @@
       }
     }
   }
-
+  .consultation_success_message {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 340px;
+    top: 20px;
+    right: 20px;
+    bottom: 20px;
+    border-radius: 10px;
+    padding: 70px 64px 70px 64px;
+    background: var(--color-background, #f1efec);
+    button {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+    }
+    h2 {
+      color: var(--color-black, #000);
+      font-family: "Inter", sans-serif;
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+    p {
+      color: var(--color-text, #6C6C6A);
+      text-align: center;
+      font-family: "Inter", sans-serif;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 150%;
+    }
+  }
   .security2 {
     display: none;
     p {
@@ -146,29 +181,32 @@
 }
 
 @media only screen and (max-width: 750px) {
-    .consultation{
-        .consultation_content_text{           
-            margin-bottom: 20px !important;
-        }
-        .consultation_content_form{
-            position: relative !important;
-            .check_consultation{
-                .check_consultation_item{
-                    margin-right: 30px !important;
-                }
-            }
-        }
-        .security{
-            display: none;
-        }
-        .security2{
-            display: flex !important;
-            margin-top: 30px;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            padding-right: 30px;
-        }
+  .consultation {
+    .consultation_content_text {
+      margin-bottom: 20px !important;
     }
-   
+    .consultation_success_message {
+      position: relative !important;
+      max-width: 100%;
+    }
+    .consultation_content_form {
+      position: relative !important;
+      .check_consultation {
+        .check_consultation_item {
+          margin-right: 30px !important;
+        }
+      }
+    }
+    .security {
+      display: none;
+    }
+    .security2 {
+      display: flex !important;
+      margin-top: 30px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      padding-right: 30px;
+    }
+  }
 }
