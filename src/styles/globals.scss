@@ -18,9 +18,10 @@ html {
 
 body {
   -webkit-font-smoothing: antialiased;
+  font-family: "Inter", sans-serif;
+  background: var(--color-background, #f1efec);
 }
 
-img,
 picture,
 video,
 canvas,
@@ -81,9 +82,61 @@ select {
   isolation: isolate;
 }
 
-.ant-collapse-content-box {
-  padding: 0 !important;
-  .questions_accordion_button_title {
-    padding: 15px 16px
+.ant-drawer-wrapper-body {
+  animation: drawerFadeIn 0.3s ease-in-out !important; /* Имя анимации, длительность и эффект */
+  transition: opacity 0.3s ease-in-out !important; /* Плавное изменение прозрачности */
+}
+.ant-drawer-header-title {
+  display: flex !important;
+  justify-content: end !important;
+}
+
+.ant-checkbox-checked {
+  .ant-checkbox-inner {
+    background-color: black !important;
+    border-color: black !important;
+  }
+  .ant-checkbox-inner:hover {
+    border: 1px solid black !important;
+  }
+}
+
+.ant-checkbox-input:hover {
+  border-color: black;
+}
+
+.build_swiper {
+  width: 100%;
+}
+
+.swiper-scrollbar {
+  display: none;
+  width: 100% !important;
+  left: 0 !important;
+  right: 0 !important;
+  height: 2px !important;
+  background: var(--color-grey-dark, #a3a3a3) !important;
+  position: absolute !important;
+  top: 0 !important;
+}
+.swiper-scrollbar-drag {
+  background: var(--color-black, #000) !important;
+}
+
+@media only screen and (max-width: 1024px) {
+  .swiper {
+    padding-top: 26px !important;
+  }
+  .swiper-scrollbar {
+    display: block !important;
+  }
+}
+
+@media only screen and (max-width: 428px) {
+  .swiper {
+    padding-top: 16px !important;
+  }
+  .swiper-scrollbar {
+    height: 1px !important;
   }
 }

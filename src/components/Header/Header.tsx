@@ -3,16 +3,22 @@ import s from "./Header.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import BurgerDrawer from "../Burger/BurgerMenu";
+import dynamic from 'next/dynamic';
+
+const BurgerDrawer = dynamic(() => import("../Burger/BurgerMenu"), {
+  ssr: false, 
+});
+
 
 const Header = () => {
   const router = useRouter();
 
   return (
-    <div className={s.header}>
+    <header className={s.header}>
       <div className={s.header_content}>
         <div>
-          <Image src={"/logo.png"} width={160} height={38} alt="logo"></Image>
+          <Image src={"/Logo.png"} width={168} height={38} alt="logo"></Image>
+          
         </div>
 
         <nav className={s.nav}>
@@ -75,7 +81,7 @@ const Header = () => {
             <span>Пхукет</span>
           </div>
 
-          <ul>
+          <ul className={s.language}>
             <li>RU</li>
             <li>EN</li>
           </ul>
@@ -87,7 +93,7 @@ const Header = () => {
           </div>
         </div>
       </div>
-    </div>
+    </header>
   );
 };
 
