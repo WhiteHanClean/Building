@@ -1,9 +1,9 @@
 .aside_button {
-    z-index: 1;
+    z-index: 10000;
     max-width: 100%;
     width: 100%;
     position: fixed;
-    top: 45%;
+    top: 60%;
     .aside_button_items {
         position: relative;
         max-width: 1280px;
