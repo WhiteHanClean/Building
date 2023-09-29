@@ -1,9 +1,9 @@
+@import '../../styles/variable';
+
 .form_label {
-  color: #6c6c6a;
-  font-family: Inter;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
+  @include sizer(14px);
+  color: #6c6c6a !important;
+  font-weight: 500 !important;
 }
 .form_inputsWrapper {
   display: flex;
@@ -20,11 +20,9 @@
     border: 1px solid #a3a3a3;
     padding: 10px, 35px, 10px, 10px;
     .form_prefix {
-      color: #6c6c6a;
-      font-family: Inter;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 500;
+      @include sizer(14px);
+      color: #6c6c6a !important;
+      font-weight: 500 !important;
     }
     .form_input {
       width: 80%;

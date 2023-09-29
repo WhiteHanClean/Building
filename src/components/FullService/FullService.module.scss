@@ -36,12 +36,9 @@
     }
 
     h4 {
-      color: var(--color-white, #fff);
-      font-family: Inter;
-      font-size: 35px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: 130%; /* 45.5px */
+      @include sizer(35px);
+      color: var(--color-white, #fff) !important;
+      line-height: 130% !important; /* 45.5px */
     }
 
     p {
@@ -49,9 +46,9 @@
       max-width: 360px;
       bottom: 20px;
       @include sizer(14px);
-      font-weight: 500;
-      color: white;
-      line-height: 150%; /* 21px */
+      font-weight: 500 !important;
+      color: white !important;
+      line-height: 150% !important; /* 21px */
     }
   }
 
