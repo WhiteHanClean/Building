@@ -1,41 +1,58 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import s from "./ListOffers.module.scss";
 import BuildCard from "../BuildCard/BuildCard";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
-import { RealEstateArray } from "@/api/Api";
-import { setAllOffers } from "@/redux/libraryPhukeSlice";
-import axios from "axios";
-import { GetStaticProps } from "next";
-// import Pagination from "../Pagination/Pagination";
-// import { useGetObjectsQuery } from "../../api/Api";
-interface Props {
-  props: [];
-}
+import { RealEstate } from "../../redux/libraryPhukeSlice";
 
-const ListOffers = ({ props }: Props) => {
-  console.log(props);
-
+const ListOffers = () => {
   const [selectedValue, setSelectedValue] = useState("");
-  const allOffers = useSelector(
-    (state: RootState) => state.libraryPhuket.allOffers
+  const [allOffers, setAllOffers] = useState<RealEstate[]>([]);
+  const sliceOffers = useSelector(
+    (state: RootState) => state.libraryPhuket.allOffers as RealEstate[]
   );
-  console.log(allOffers);
-  //   const [currentPage, setCurrentPage] = useState(1);
-  //   const { data, error, isLoading } = useGetObjectsQuery(currentPage);
 
-  //   const handlePageChange = (newPage: React.SetStateAction<number>) => {
-  //     setCurrentPage(newPage);
-  //   };
+  console.log(sliceOffers);
 
-  const items = Array.from({ length: 99 }, (_, index) => index);
+  useEffect(() => {
+    setAllOffers(sliceOffers);
+  }, [sliceOffers]);
+
+  //сортировка по убыванию
+  function sortByPriceAscending() {
+    const sortedOffers = sliceOffers.slice().sort((a, b) => a.price - b.price);
+    setAllOffers(sortedOffers);
+  }
+  //сортировка по возрастанию
+  function sortByPriceDescending() {
+    const sortedOffers = sliceOffers.slice().sort((a, b) => b.price - a.price);
+    setAllOffers(sortedOffers);
+  }
+
+  //сортировка в случайном порядке
+  function sortByPriceRandom() {
+    const randomSortedOffers = sliceOffers
+      .slice()
+      .sort(() => Math.random() - 0.5);
+    setAllOffers(randomSortedOffers);
+  }
 
   const handleSelectChange = (e: { target: { value: any } }) => {
     const newValue = e.target.value;
     setSelectedValue(newValue);
   };
 
-  console.log(selectedValue);
+  useEffect(() => {
+    if (selectedValue === "expensive") {
+      sortByPriceDescending();
+    }
+    if (selectedValue === "cheap") {
+      sortByPriceAscending();
+    }
+    if (selectedValue === "all") {
+      sortByPriceRandom();
+    }
+  }, [selectedValue]);
 
   return (
     <section className={s.listOffer_section}>
@@ -55,32 +72,37 @@ const ListOffers = ({ props }: Props) => {
               <option value="" disabled className={s.listOffer_option}>
                 Выбрать
               </option>
-              <option value="Все" className={s.listOffer_option}>
+              <option value="all" className={s.listOffer_option}>
                 Все
               </option>
-              <option
-                value="По цене: сначала дорогие"
-                className={s.listOffer_option}
-              >
+              <option value="expensive" className={s.listOffer_option}>
                 По цене: сначала дорогие
               </option>
-              <option
-                value="По цене: сначала дешевые"
-                className={s.listOffer_option}
-              >
+              <option value="cheap" className={s.listOffer_option}>
                 По цене: сначала дешевые
               </option>
             </select>
           </div>
         </div>
         <div className={s.listOffer_text_wrapper}>
-          <p className={s.listOffer_text}>Всего объектов: 5 760</p>
+          <p className={s.listOffer_text}>
+            Всего объявлений: {allOffers.length}
+          </p>
         </div>
       </div>
       <ul className={s.listOffer_list}>
-        {items.map((item, index) => (
-          <li key={index} className={s.listOffer_item}>
-            <BuildCard />
+        {allOffers.map((card: RealEstate, _id: number) => (
+          <li key={_id} className={s.listOffer_item}>
+            <BuildCard
+              img={card.mainImage}
+              alt={card.alt}
+              name={card.title}
+              price={card.price}
+              rooms={card.roomsAmount}
+              builtUpArea={card.builtUpArea}
+              landArea={card.landArea}
+              location={card.location}
+            />
           </li>
         ))}
       </ul>
@@ -94,30 +116,3 @@ const ListOffers = ({ props }: Props) => {
 };
 
 export default ListOffers;
-
-export const getStaticProps: GetStaticProps<{
-  realEstates: RealEstateArray;
-}> = async () => {
-  try {
-    const response = await axios
-      .get("https://propertylibphuket-production.up.railway.app/realEstates/")
-      .then((res) => res);
-    const realEstates: RealEstateArray = response.data;
-    const dispatch = useDispatch();
-    dispatch(setAllOffers(realEstates));
-
-    return {
-      props: {
-        realEstates,
-      },
-    };
-  } catch (error) {
-    console.error("Ошибка при выполнении GET-запроса:", error);
-
-    return {
-      props: {
-        realEstates: [],
-      },
-    };
-  }
-};

@@ -4,6 +4,8 @@ import s from "./FilterForm.module.scss";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import dynamic from "next/dynamic";
+import { useDispatch } from "react-redux";
+import { fetchFilteredOffers } from "@/redux/libraryPhukeSlice";
 
 const validationSchema = Yup.object({
   RealEstate: Yup.string()
@@ -77,6 +79,7 @@ const FilterBurger = dynamic(() => import("./FilterBurger/FilterBurger"), {
 });
 
 const FilterForm = ({ titleSection }: Props) => {
+  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       RealEstate: "",
@@ -89,11 +92,19 @@ const FilterForm = ({ titleSection }: Props) => {
     },
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
-      console.log(values);
+      const filterParams = {
+        buildingType: values.RealEstate,
+        district: values.district,
+        roomsAmount: values.rooms,
+        price: {
+          min: Number(values.pricMin),
+          max: Number(values.pricMax),
+        },
+      };
+      dispatch(fetchFilteredOffers(filterParams) as any);
       resetForm();
     },
   });
-
   return (
     <section className={s.filter_section}>
       <div className={s.filter_section_wrapper}>
