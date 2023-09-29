@@ -1,4 +1,5 @@
 import Benefits from "@/components/Benefits/Benefits";
+import Conditions from "@/components/Conditions/Conditions";
 import Consultation from "@/components/Consultation/Consultation";
 import ListingHero from "@/components/ListingHero/ListingHero";
 import Questions from "@/components/Questions/Questions";
@@ -8,6 +9,7 @@ const Accommodation = () => {
   return (
     <div>
       <ListingHero />
+      <Conditions/>
       <Benefits />
       <Questions/>
       <Consultation/>
