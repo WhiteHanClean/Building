@@ -1,14 +1,13 @@
 import ListOffers from "@/components/ListOffers/ListOffers";
 import FilterForm from "@/components/FilterForm/FilterForm";
+import ProductSlider from "@/components/ProductSlider/ProductSlider";
 import React from "react";
 
 const Rent = () => {
   return (
     <>
-      <div>
-        <FilterForm titleSection="Аренда недвижимости" />
-        <ListOffers />
-      </div>
+      <FilterForm titleSection="Аренда недвижимости" />
+      <ListOffers />
     </>
   );
 };
