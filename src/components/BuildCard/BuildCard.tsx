@@ -3,7 +3,9 @@ import s from "./BuildCard.module.scss";
 import Image from "next/image";
 
 interface Props {
-  img: string;
+  img: {
+    url: string;
+  };
   alt: string;
   name: string;
   price: number;
@@ -14,7 +16,9 @@ interface Props {
 }
 
 const BuildCard = ({
-  img = "/413x270.png",
+  img = {
+    url: "/413x270.png"
+  },
   alt = "foto",
   name = "Housing",
   price = 0,
@@ -28,7 +32,12 @@ const BuildCard = ({
   return (
     <div className={s.card_container}>
       <div className={s.card_wrapper_img}>
-        <Image src={img} width={imageWidth} height={imageHeight} alt={alt} />
+        <Image
+          src={img.url}
+          width={imageWidth}
+          height={imageHeight}
+          alt={alt}
+        />
       </div>
       <div className={s.card_name}>
         <p>{name}</p>
