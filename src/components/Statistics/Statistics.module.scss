@@ -1,362 +1,339 @@
+@import '../../styles/variable';
+
 .statistic {
-    width: 100%;
-    .statistic_fields {
-        display: flex;
-        justify-content: space-between;
-        gap: 20px;
-        .statistic_fields_left {
-            width: 50%;
-            border-radius: 10px;
-            background: #dfdad8;
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            .statistic_fields_left_title {
-                h3 {
-                    width: 199px;
-                    color: #000;
-                    font-family: "Inter", sans-serif;
-                    font-size: 22px;
-                    font-style: normal;
-                    font-weight: 600;
-                    line-height: normal;
-                }
-            }
-            .statistic_fields_left_desc {
-                p {
-                    padding: 10px;
-                    border-bottom: 1px solid #6c6c6a;
-                    color: #6c6c6a;
-                    font-family: "Inter", sans-serif;
-                    font-size: 14px;
-                    font-style: normal;
-                    font-weight: 500;
-                    line-height: 160%;
-                }
-            }
+  width: 100%;
+  .statistic_fields {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    .statistic_fields_left {
+      width: 50%;
+      border-radius: 10px;
+      background: #dfdad8;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .statistic_fields_left_title {
+        h3 {
+          width: 199px;
+          @include sizer(22px);
         }
-        .statistic_fields_right {
-            display: flex;
-            flex-direction: column;
-            width: 50%;
-            gap: 20px;
-            .statistic_fields_right_top {
-                display: flex;
-                gap: 20px;
-                .statistic_fields_right_top_segment {
-                    position: relative;
-                    width: 305px;
-                    border-radius: 10px;
-                    background: #dfdad8;
-                    padding: 30px;
-                    h3 {
-                        color: #000;
-                        font-family: "Inter", sans-serif;
-                        font-size: 22px;
-                        font-style: normal;
-                        font-weight: 500;
-                        line-height: normal;
-                        margin-bottom: 44px;
-                    }
-                    p {
-                        color: #000;
-                        font-family: "Inter", sans-serif;
-                        font-size: 40px;
-                        font-style: normal;
-                        font-weight: 700;
-                        line-height: normal;
-                        text-align: end;
-                        position: relative;
-                        padding-right: 30px;
-                        &.statistic_fields_right_top_segment_first::before,
-                        &.statistic_fields_right_top_segment_first::after {
-                            content: "";
-                            display: block;
-                            height: 2px;
-                            background-color: #000;
-                            position: absolute;
-                            top: 50%;
-                            width: 10%;
-                        }
-                        &.statistic_fields_right_top_segment_first::before {
-                            left: 0;
-                            width: 55%;
-                            transform: translateY(-50%);
-                        }
-                        &.statistic_fields_right_top_segment_first::after {
-                            right: 0;
-                            transform: translateY(-50%);
-                        }
-                        &.statistic_fields_right_top_segment_second::before,
-                        &.statistic_fields_right_top_segment_second::after {
-                            content: "";
-                            display: block;
-                            height: 2px;
-                            background-color: #000;
-                            position: absolute;
-                            top: 50%;
-                            width: 10%;
-                        }
-                        &.statistic_fields_right_top_segment_second::before {
-                            left: 0;
-                            width: 37%;
-                            transform: translateY(-50%);
-                        }
-                        &.statistic_fields_right_top_segment_second::after {
-                            right: 0;
-                            transform: translateY(-50%);
-                        }
-                    }
-                }
-            }
-            .statistic_fields_right_bottom {
-                display: flex;
-                gap: 20px;
-                .statistic_fields_right_bottom_segment {
-                    width: 305px;
-                    border-radius: 10px;
-                    background: #dfdad8;
-                    padding: 30px;
-                    h3 {
-                        color: #000;
-                        font-family: "Inter", sans-serif;
-                        font-size: 22px;
-                        font-style: normal;
-                        font-weight: 500;
-                        line-height: normal;
-                        margin-bottom: 44px;
-                    }
-                    p {
-                        color: #000;
-                        font-family: "Inter", sans-serif;
-                        font-size: 40px;
-                        font-style: normal;
-                        font-weight: 700;
-                        line-height: normal;
-                        text-align: end;
-                        position: relative;
-                        padding-right: 10%;
-                        &.statistic_fields_right_bottom_segment_third::before,
-                        &.statistic_fields_right_bottom_segment_third::after {
-                            content: "";
-                            display: block;
-                            height: 2px;
-                            background-color: #000;
-                            position: absolute;
-                            top: 50%;
-                            width: 10%;
-                        }
-                        &.statistic_fields_right_bottom_segment_third::before {
-                            left: 0;
-                            width: 35%;
-                            transform: translateY(-50%);
-                        }
-                        &.statistic_fields_right_bottom_segment_third::after {
-                            right: 0;
-                            transform: translateY(-50%);
-                        }
-                        &.statistic_fields_right_bottom_segment_fourth::before,
-                        &.statistic_fields_right_bottom_segment_fourth::after {
-                            content: "";
-                            display: block;
-                            height: 2px;
-                            background-color: #000;
-                            position: absolute;
-                            top: 50%;
-                            width: 10%;
-                        }
-                        &.statistic_fields_right_bottom_segment_fourth::before {
-                            left: 0;
-                            width: 15%;
-                            transform: translateY(-50%);
-                        }
-                        &.statistic_fields_right_bottom_segment_fourth::after {
-                            right: 0;
-                            transform: translateY(-50%);
-                        }
-                    }
-                }
-            }
+      }
+      .statistic_fields_left_desc {
+        p {
+          padding: 10px;
+          border-bottom: 1px solid #6c6c6a;
+          @include sizer(14px);
+          color: #6c6c6a !important;
+          font-weight: 500 !important;
+          line-height: 160% !important;
         }
+      }
     }
+    .statistic_fields_right {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+      gap: 20px;
+      .statistic_fields_right_top {
+        display: flex;
+        gap: 20px;
+        .statistic_fields_right_top_segment {
+          position: relative;
+          width: 305px;
+          border-radius: 10px;
+          background: #dfdad8;
+          padding: 30px;
+          h3 {
+            @include sizer(22px);
+            font-weight: 500 !important;
+            margin-bottom: 44px;
+          }
+          p {
+            @include sizer(40px);
+            font-weight: 700 !important;
+            text-align: end;
+            position: relative;
+            padding-right: 30px;
+            &.statistic_fields_right_top_segment_first::before,
+            &.statistic_fields_right_top_segment_first::after {
+              content: '';
+              display: block;
+              height: 2px;
+              background-color: #000;
+              position: absolute;
+              top: 50%;
+              width: 10%;
+            }
+            &.statistic_fields_right_top_segment_first::before {
+              left: 0;
+              width: 55%;
+              transform: translateY(-50%);
+            }
+            &.statistic_fields_right_top_segment_first::after {
+              right: 0;
+              transform: translateY(-50%);
+            }
+            &.statistic_fields_right_top_segment_second::before,
+            &.statistic_fields_right_top_segment_second::after {
+              content: '';
+              display: block;
+              height: 2px;
+              background-color: #000;
+              position: absolute;
+              top: 50%;
+              width: 10%;
+            }
+            &.statistic_fields_right_top_segment_second::before {
+              left: 0;
+              width: 37%;
+              transform: translateY(-50%);
+            }
+            &.statistic_fields_right_top_segment_second::after {
+              right: 0;
+              transform: translateY(-50%);
+            }
+          }
+        }
+      }
+      .statistic_fields_right_bottom {
+        display: flex;
+        gap: 20px;
+        .statistic_fields_right_bottom_segment {
+          width: 305px;
+          border-radius: 10px;
+          background: #dfdad8;
+          padding: 30px;
+          h3 {
+            @include sizer(22px);
+            font-weight: 500 !important;
+            margin-bottom: 44px;
+          }
+          p {
+            @include sizer(40px);
+            font-weight: 700 !important;
+            text-align: end;
+            position: relative;
+            padding-right: 10%;
+            &.statistic_fields_right_bottom_segment_third::before,
+            &.statistic_fields_right_bottom_segment_third::after {
+              content: '';
+              display: block;
+              height: 2px;
+              background-color: #000;
+              position: absolute;
+              top: 50%;
+              width: 10%;
+            }
+            &.statistic_fields_right_bottom_segment_third::before {
+              left: 0;
+              width: 35%;
+              transform: translateY(-50%);
+            }
+            &.statistic_fields_right_bottom_segment_third::after {
+              right: 0;
+              transform: translateY(-50%);
+            }
+            &.statistic_fields_right_bottom_segment_fourth::before,
+            &.statistic_fields_right_bottom_segment_fourth::after {
+              content: '';
+              display: block;
+              height: 2px;
+              background-color: #000;
+              position: absolute;
+              top: 50%;
+              width: 10%;
+            }
+            &.statistic_fields_right_bottom_segment_fourth::before {
+              left: 0;
+              width: 15%;
+              transform: translateY(-50%);
+            }
+            &.statistic_fields_right_bottom_segment_fourth::after {
+              right: 0;
+              transform: translateY(-50%);
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 @media only screen and (max-width: 1200px) {
-    .statistic {
-        .statistic_fields {
-            .statistic_fields_right {
-                width: 47%;
-                .statistic_fields_right_top {
-                    .statistic_fields_right_top_segment {
-                        h3 {
-                            font-size: 18px;
-                        }
-                        p {
-                            font-size: 30px;
-                        }
-                    }
-                }
-                .statistic_fields_right_bottom {
-                    .statistic_fields_right_bottom_segment {
-                        h3 {
-                            font-size: 18px;
-                        }
-                        p {
-                            font-size: 30px;
-                        }
-                    }
-                }
+  .statistic {
+    .statistic_fields {
+      .statistic_fields_right {
+        width: 47%;
+        .statistic_fields_right_top {
+          .statistic_fields_right_top_segment {
+            h3 {
+              font-size: 18px;
             }
+            p {
+              font-size: 30px;
+            }
+          }
         }
+        .statistic_fields_right_bottom {
+          .statistic_fields_right_bottom_segment {
+            h3 {
+              font-size: 18px;
+            }
+            p {
+              font-size: 30px;
+            }
+          }
+        }
+      }
     }
+  }
 }
 
 @media only screen and (max-width: 1024px) {
-    .statistic {
-        .statistic_fields {
-            .statistic_fields_left {
-                width: 100%;
-                .statistic_fields_left_title {
-                    max-width: 224px;
-                    font-size: 26px;
-                }
-            }
-            .statistic_fields_right {
-                gap: 16px;
-                .statistic_fields_right_top {
-                    flex-direction: column;
-                    gap: 16px;
-                    .statistic_fields_right_top_segment {
-                        width: 100%;
-                        padding: 20px;
-                        h3 {
-                            margin-bottom: 21px;
-                        }
-                    }
-                }
-                .statistic_fields_right_bottom {
-                    flex-direction: column;
-                    gap: 16px;
-                    .statistic_fields_right_bottom_segment {
-                        width: 100%;
-                        padding: 20px;
-                        h3 {
-                            margin-bottom: 21px;
-                        }
-                    }
-                }
-            }
+  .statistic {
+    .statistic_fields {
+      .statistic_fields_left {
+        width: 100%;
+        .statistic_fields_left_title {
+          max-width: 224px;
+          font-size: 26px;
         }
+      }
+      .statistic_fields_right {
+        gap: 16px;
+        .statistic_fields_right_top {
+          flex-direction: column;
+          gap: 16px;
+          .statistic_fields_right_top_segment {
+            width: 100%;
+            padding: 20px;
+            h3 {
+              margin-bottom: 21px;
+            }
+          }
+        }
+        .statistic_fields_right_bottom {
+          flex-direction: column;
+          gap: 16px;
+          .statistic_fields_right_bottom_segment {
+            width: 100%;
+            padding: 20px;
+            h3 {
+              margin-bottom: 21px;
+            }
+          }
+        }
+      }
     }
+  }
 }
 @media only screen and (max-width: 768px) {
-    .statistic {
-        .statistic_fields {
-            flex-direction: column;
-            .statistic_fields_left {
-                .statistic_fields_left_title {
-                    margin-bottom: 96px;
-                }
-            }
-            .statistic_fields_right {
-                width: 100%;
-                .statistic_fields_right_top {
-                    .statistic_fields_right_top_segment {
-                        display: flex;
-                        align-items: center;
-                        justify-content: space-between;
-                        background: #D5D7C4;
-                        h3 {
-                            margin-bottom: 0;
-                        }
-                        p {
-                            padding-right: 0;
-                            &.statistic_fields_right_top_segment_first::before {
-                                left: -171px;
-                                width: 160px;
-                            }
-                            &.statistic_fields_right_top_segment_second::before {
-                               left: -70px;
-                               width: 60px;
-                            }
-                            &.statistic_fields_right_top_segment_first::after,
-                            &.statistic_fields_right_top_segment_second::after {
-                                display: none;
-                            }
-                        }
-                    }
-                }
-                .statistic_fields_right_bottom {
-                    .statistic_fields_right_bottom_segment {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        background: #D5D7C4;
-                        h3 {
-                            margin-bottom: 0;
-                        }
-                        p {
-                            padding-right: 0;
-                            &.statistic_fields_right_bottom_segment_third::before {
-                                left: -110px;
-                                width: 100px;
-                            }
-                            &.statistic_fields_right_bottom_segment_fourth::before {
-                               left: -50px;
-                               width: 40px;
-                            }
-                            &.statistic_fields_right_bottom_segment_third::after,
-                            &.statistic_fields_right_bottom_segment_fourth::after {
-                                display: none;
-                            }
-                        }
-                    }
-                }
-            }
+  .statistic {
+    .statistic_fields {
+      flex-direction: column;
+      .statistic_fields_left {
+        .statistic_fields_left_title {
+          margin-bottom: 96px;
         }
+      }
+      .statistic_fields_right {
+        width: 100%;
+        .statistic_fields_right_top {
+          .statistic_fields_right_top_segment {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #d5d7c4;
+            h3 {
+              margin-bottom: 0;
+            }
+            p {
+              padding-right: 0;
+              &.statistic_fields_right_top_segment_first::before {
+                left: -171px;
+                width: 160px;
+              }
+              &.statistic_fields_right_top_segment_second::before {
+                left: -70px;
+                width: 60px;
+              }
+              &.statistic_fields_right_top_segment_first::after,
+              &.statistic_fields_right_top_segment_second::after {
+                display: none;
+              }
+            }
+          }
+        }
+        .statistic_fields_right_bottom {
+          .statistic_fields_right_bottom_segment {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #d5d7c4;
+            h3 {
+              margin-bottom: 0;
+            }
+            p {
+              padding-right: 0;
+              &.statistic_fields_right_bottom_segment_third::before {
+                left: -110px;
+                width: 100px;
+              }
+              &.statistic_fields_right_bottom_segment_fourth::before {
+                left: -50px;
+                width: 40px;
+              }
+              &.statistic_fields_right_bottom_segment_third::after,
+              &.statistic_fields_right_bottom_segment_fourth::after {
+                display: none;
+              }
+            }
+          }
+        }
+      }
     }
+  }
 }
 
 @media only screen and (max-width: 410px) {
-    .statistic {
-        .statistic_fields {
-            .statistic_fields_right {
-                .statistic_fields_right_top {
-                    .statistic_fields_right_top_segment {
-                        
-                        p {
-                            &.statistic_fields_right_top_segment_first::before {
-                                display: none;
-                            }
-                            &.statistic_fields_right_top_segment_second::before {
-                                display: none;
-                            }
-                            &.statistic_fields_right_top_segment_first::after,
-                            &.statistic_fields_right_top_segment_second::after {
-                                display: none;
-                            }
-                        }
-                    }
-                }
-                .statistic_fields_right_bottom {
-                    .statistic_fields_right_bottom_segment {
-                        p {
-                            
-                            &.statistic_fields_right_bottom_segment_third::before {
-                                display: none;
-                            }
-                            &.statistic_fields_right_bottom_segment_fourth::before {
-                                display: none;
-                            }
-                            &.statistic_fields_right_bottom_segment_third::after,
-                            &.statistic_fields_right_bottom_segment_fourth::after {
-                                display: none;
-                            }
-                        }
-                    }
-                }
+  .statistic {
+    .statistic_fields {
+      .statistic_fields_right {
+        .statistic_fields_right_top {
+          .statistic_fields_right_top_segment {
+            p {
+              &.statistic_fields_right_top_segment_first::before {
+                display: none;
+              }
+              &.statistic_fields_right_top_segment_second::before {
+                display: none;
+              }
+              &.statistic_fields_right_top_segment_first::after,
+              &.statistic_fields_right_top_segment_second::after {
+                display: none;
+              }
             }
+          }
         }
+        .statistic_fields_right_bottom {
+          .statistic_fields_right_bottom_segment {
+            p {
+              &.statistic_fields_right_bottom_segment_third::before {
+                display: none;
+              }
+              &.statistic_fields_right_bottom_segment_fourth::before {
+                display: none;
+              }
+              &.statistic_fields_right_bottom_segment_third::after,
+              &.statistic_fields_right_bottom_segment_fourth::after {
+                display: none;
+              }
+            }
+          }
+        }
+      }
     }
+  }
 }

@@ -1,3 +1,5 @@
+@import '../../styles/variable';
+
 /* Создайте анимацию с именем "drawerFadeIn" */
 @keyframes drawerFadeIn {
   from {
@@ -31,11 +33,9 @@
   .nav_link {
     color: var(--color-black, #000);
     cursor: pointer;
-    font-family: Inter;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 160%; /* 22.407px */
+    @include sizer(15px);
+    font-weight: 500 !important;
+    line-height: 160% !important;
     display: flex;
     padding: 15px 213px 15px 10px;
     text-align: start;

@@ -27,7 +27,7 @@
 
       p {
         @include sizer(14px);
-        font-weight: 500;
+        font-weight: 500 !important;
         opacity: 0.5;
         max-width: 273px;
       }
@@ -51,7 +51,7 @@
 
       p {
         @include sizer(14px);
-        font-weight: 500;
+        font-weight: 500 !important;
         opacity: 0.5;
         max-width: 509px;
       }

@@ -15,7 +15,7 @@
 .ListingFormHero_consultation {
   p {
     @include sizer(14px);
-    line-height: 160%;
+    line-height: 160% !important;
     margin-bottom: 5px;
   }
   input {
