@@ -170,6 +170,9 @@ select {
 
 .build_swiper {
   width: 100%;
+  a {
+    text-decoration: none;
+  }
 }
 
 .swiper-scrollbar {

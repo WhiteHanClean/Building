@@ -3,6 +3,7 @@ import s from "./Slider.module.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Scrollbar } from "swiper/modules";
 import BuildCard from "../BuildCard/BuildCard";
+import Link from "next/link";
 import "swiper/css";
 import "swiper/css/pagination";
 import 'swiper/css/scrollbar';
@@ -74,31 +75,49 @@ const Slider: React.FC = () => {
       >
         {" "}
         <SwiperSlide>
-          <BuildCard />
+          <Link href={"/DetailProperty/DetailProperty"}>
+            <BuildCard />
+          </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <BuildCard />
+          <Link href={"/DetailProperty/DetailProperty"}>
+            <BuildCard />
+          </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <BuildCard />
+          <Link href={"/DetailProperty/DetailProperty"}>
+            <BuildCard />
+          </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <BuildCard />
+          <Link href={"/DetailProperty/DetailProperty"}>
+            <BuildCard />
+          </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <BuildCard />
+          <Link href={"/DetailProperty/DetailProperty"}>
+            <BuildCard />
+          </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <BuildCard />
+          <Link href={"/DetailProperty/DetailProperty"}>
+            <BuildCard />
+          </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <BuildCard />
+          <Link href={"/DetailProperty/DetailProperty"}>
+            <BuildCard />
+          </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <BuildCard />
+          <Link href={"/DetailProperty/DetailProperty"}>
+            <BuildCard />
+          </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <BuildCard />
+          <Link href={"/DetailProperty/DetailProperty"}>
+            <BuildCard />
+          </Link>
         </SwiperSlide>
       </Swiper>
     </>

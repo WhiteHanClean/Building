@@ -49,6 +49,9 @@
   align-items: center;
   list-style-type: none;
   gap: 20px;
+  a {
+    text-decoration: none;
+  }
 }
 
 .listOffer_item {

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import s from "./ListOffers.module.scss";
 import BuildCard from "../BuildCard/BuildCard";
+import Link from "next/link";
 // import Pagination from "../Pagination/Pagination";
 // import { useGetObjectsQuery } from "../../api/Api";
 
@@ -67,7 +68,9 @@ const ListOffers = () => {
       <ul className={s.listOffer_list}>
         {items.map((item, index) => (
           <li key={index} className={s.listOffer_item}>
-            <BuildCard />
+            <Link href={"/DetailProperty/DetailProperty"}>
+              <BuildCard />
+            </Link>
           </li>
         ))}
       </ul>
