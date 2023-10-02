@@ -3,9 +3,7 @@ import s from "./BuildCard.module.scss";
 import Image from "next/image";
 
 interface Props {
-  img: {
-    url: string;
-  };
+  img: any;
   alt: string;
   name: string;
   price: number;
@@ -17,7 +15,7 @@ interface Props {
 
 const BuildCard = ({
   img = {
-    url: "/413x270.png"
+    url: "/413x270.png",
   },
   alt = "foto",
   name = "Housing",
