@@ -10,7 +10,6 @@ export interface RealEstate {
     builtUpArea: number;
     kitchenArea: string;
     floor: string;
-    Location: string;
     bathroomAmount: string;
     balconyAmount: string;
     buildingType: string;
@@ -29,21 +28,21 @@ export interface RealEstate {
 }
 
 export interface FilterParams {
-    buildingType: string;
-    district: string;
-    roomsAmount: string;
-    price: {
-        min: number;
-        max: number;
-    };
+    buildingType?: string;
+    location?: string;
+    roomsAmount?: number;
+    //Дополнительные характеристики
+    builtUpArea?: number;
+    landArea?: number;
+    price?: number;
 }
 
 export const api = createApi({
     reducerPath: 'libraryPhuket',
-    baseQuery: fetchBaseQuery({ baseUrl: 'https://propertylibphuket-production.up.railway.app/realEstates/' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'https://propertylibphuket-production.up.railway.app/' }),
     endpoints: (builder) => ({
         getAllOffers: builder.query<RealEstate[], void>({
-            query: () => '',
+            query: () => 'realEstates/',
         }),
         getFilteredOffers: builder.query<RealEstate[], FilterParams>({
             query: (filterParams) => ({

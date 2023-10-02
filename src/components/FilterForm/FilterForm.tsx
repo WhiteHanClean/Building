@@ -4,7 +4,7 @@ import s from "./FilterForm.module.scss";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import dynamic from "next/dynamic";
-import { useDispatch } from "react-redux";
+import { useGetFilteredOffersQuery } from "@/redux/api";
 
 const validationSchema = Yup.object({
   RealEstate: Yup.string()
@@ -78,7 +78,6 @@ const FilterBurger = dynamic(() => import("./FilterBurger/FilterBurger"), {
 });
 
 const FilterForm = ({ titleSection }: Props) => {
-  const dispatch = useDispatch();
   const formik = useFormik({
     initialValues: {
       RealEstate: "",
