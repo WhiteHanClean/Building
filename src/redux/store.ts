@@ -1,12 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
-import libraryPhukeReducer from './libraryPhukeSlice';
+import { setupListeners } from '@reduxjs/toolkit/query'
+import { api } from './api'
 
-const store = configureStore({
+export const store = configureStore({
     reducer: {
-        libraryPhuket: libraryPhukeReducer,
+        [api.reducerPath]: api.reducer,
     },
-});
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware().concat(api.middleware),
+})
 
+setupListeners(store.dispatch)
 export type RootState = ReturnType<typeof store.getState>;
-
-export default store;

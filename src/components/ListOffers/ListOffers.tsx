@@ -1,37 +1,37 @@
 import React, { useEffect, useState } from "react";
 import s from "./ListOffers.module.scss";
 import BuildCard from "../BuildCard/BuildCard";
-import { useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
-import { RealEstate } from "../../redux/libraryPhukeSlice";
+import { RealEstate } from "../../redux/api";
+import { useGetAllOffersQuery } from "@/redux/api";
 
 const ListOffers = () => {
   const [selectedValue, setSelectedValue] = useState("");
   const [allOffers, setAllOffers] = useState<RealEstate[]>([]);
-  const sliceOffers = useSelector(
-    (state: RootState) => state.libraryPhuket.allOffers as RealEstate[]
-  );
 
-  console.log(sliceOffers);
+  const { data, error, isLoading } = useGetAllOffersQuery();
+  console.log(data);
 
   useEffect(() => {
-    setAllOffers(sliceOffers);
-  }, [sliceOffers]);
+    if (data) {
+      setAllOffers(data);
+    }
+  }, [data]);
 
-  //сортировка по убыванию
+  // сортировка по убыванию
   function sortByPriceAscending() {
-    const sortedOffers = sliceOffers.slice().sort((a, b) => a.price - b.price);
+    const sortedOffers = allOffers.slice().sort((a, b) => a.price - b.price);
     setAllOffers(sortedOffers);
   }
+
   //сортировка по возрастанию
   function sortByPriceDescending() {
-    const sortedOffers = sliceOffers.slice().sort((a, b) => b.price - a.price);
+    const sortedOffers = allOffers.slice().sort((a, b) => b.price - a.price);
     setAllOffers(sortedOffers);
   }
 
-  //сортировка в случайном порядке
+  // //сортировка в случайном порядке
   function sortByPriceRandom() {
-    const randomSortedOffers = sliceOffers
+    const randomSortedOffers = allOffers
       .slice()
       .sort(() => Math.random() - 0.5);
     setAllOffers(randomSortedOffers);

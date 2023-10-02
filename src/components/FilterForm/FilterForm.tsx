@@ -5,7 +5,6 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import dynamic from "next/dynamic";
 import { useDispatch } from "react-redux";
-import { fetchFilteredOffers } from "@/redux/libraryPhukeSlice";
 
 const validationSchema = Yup.object({
   RealEstate: Yup.string()
@@ -101,7 +100,6 @@ const FilterForm = ({ titleSection }: Props) => {
           max: Number(values.pricMax),
         },
       };
-      dispatch(fetchFilteredOffers(filterParams) as any);
       resetForm();
     },
   });
