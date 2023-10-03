@@ -3,6 +3,8 @@ import s from "./ListOffers.module.scss";
 import BuildCard from "../BuildCard/BuildCard";
 import { RealEstate } from "../../redux/api";
 import { useGetFilteredOffersQuery } from "@/redux/api";
+import { useSelector } from "react-redux";
+import { RootState } from "@reduxjs/toolkit/query";
 
 interface Props {
   isRent: boolean;
@@ -12,15 +14,22 @@ const ListOffers = ({ isRent }: Props) => {
   const [selectedValue, setSelectedValue] = useState("");
   const [allOffers, setAllOffers] = useState<RealEstate[]>([]);
 
-  const { data, error, isLoading } = useGetFilteredOffersQuery({ isRent });
+  // const { data, error, isLoading } = useGetFilteredOffersQuery({ isRent });
 
+  const allOffersData = useSelector((state) => {
+    console.log(state.libraryPhuket.queries.getAllOffers);
+    // setAllOffers(state);
+  });
+
+  const state = useSelector((state: RootState) => state);
+  console.log(state);
   console.log(allOffers);
 
-  useEffect(() => {
-    if (data) {
-      setAllOffers(data);
-    }
-  }, [data]);
+  // useEffect(() => {
+  //   if (data) {
+  //     setAllOffers(data);
+  //   }
+  // }, [data]);
 
   // сортировка по убыванию
   function sortByPriceAscending() {
