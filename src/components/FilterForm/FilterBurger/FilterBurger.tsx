@@ -9,11 +9,8 @@ import * as Yup from "yup";
 
 const validationSchema = Yup.object({
   RealEstate: Yup.string()
-    .oneOf(
-      ["Вилла", "Квартира", "AllOptions"],
-      "Выберите пожалуйста тип недвижимости"
-    )
-    .required("Выберите пожалуйста тип недвижимости"),
+    .oneOf(["Вилла", "Квартира", "AllOptions"], "Выберите тип недвижимости")
+    .required("Выберите тип недвижимости"),
   district: Yup.string()
     .oneOf(
       [
@@ -39,9 +36,9 @@ const validationSchema = Yup.object({
         "Чалонг",
         "AllOptions",
       ],
-      "Выберите пожалуйста район"
+      "Выберите район"
     )
-    .required("Выберите пожалуйста район"),
+    .required("Выберите район"),
   rooms: Yup.string()
     .oneOf(
       [
@@ -53,9 +50,21 @@ const validationSchema = Yup.object({
         "5 спальня",
         "AllOptions",
       ],
-      "Выберите пожалуйста кол-во комнат"
+      "Выберите комнаты"
     )
-    .required("Выберите пожалуйста кол-во комнат"),
+    .required("Выберите комнаты"),
+  characteristics: Yup.string()
+    .oneOf(
+      [
+        "Характеристики 1",
+        "Характеристики 2",
+        "Характеристики 3",
+        "Характеристики 4",
+        "Характеристики 5",
+      ],
+      "Выберите Характеристики"
+    )
+    .required("Выберите комнаты"),
   pricMin: Yup.string()
     .matches(/^[1-9][0-9]*$/, "Только цифры")
     .max(15, "Не более 15 символов"),
@@ -66,6 +75,12 @@ const validationSchema = Yup.object({
     .matches(/^[1-9][0-9]*$/, "Только цифры")
     .max(15, "Не более 15 символов"),
   areaMax: Yup.string()
+    .matches(/^[1-9][0-9]*$/, "Только цифры")
+    .max(15, "Не более 15 символов"),
+  areaHouseMin: Yup.string()
+    .matches(/^[1-9][0-9]*$/, "Только цифры")
+    .max(15, "Не более 15 символов"),
+  areaHouseMax: Yup.string()
     .matches(/^[1-9][0-9]*$/, "Только цифры")
     .max(15, "Не более 15 символов"),
 });
@@ -90,10 +105,13 @@ const FilterBurger = ({ titleSection }: Props) => {
       RealEstate: "",
       district: "",
       rooms: "",
+      characteristics: "",
       pricMin: "",
       pricMax: "",
       areaMin: "",
       areaMax: "",
+      areaHouseMin: "",
+      areaHouseMax: "",
     },
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
@@ -114,6 +132,10 @@ const FilterBurger = ({ titleSection }: Props) => {
     </div>
   );
 
+  const handleResetForm = () => {
+    formik.resetForm();
+  };
+
   return (
     <>
       <div className={s.burgerFilter}>
@@ -130,7 +152,7 @@ const FilterBurger = ({ titleSection }: Props) => {
       <Drawer
         height={550}
         headerStyle={{
-          padding: "20px 15px 0 15px",
+          padding: "20px 0px 20px 0px",
           borderBottom: "none",
         }}
         placement="top"
@@ -139,13 +161,13 @@ const FilterBurger = ({ titleSection }: Props) => {
         open={open}
         closeIcon={customCloseButton}
       >
-        <form onSubmit={formik.handleSubmit}>
+        <form onSubmit={formik.handleSubmit} className="">
           <div className={s.form_wrapper}>
             <div className={s.form_wrapper_item}>
               <label htmlFor="RealEstate" className={s.form_label}>
                 Недвижимость
               </label>
-              <div>
+              <div className="">
                 <select
                   id="RealEstate"
                   name="RealEstate"
@@ -154,7 +176,7 @@ const FilterBurger = ({ titleSection }: Props) => {
                   onBlur={formik.handleBlur}
                   value={formik.values.RealEstate}
                 >
-                  <option value="" disabled>
+                  <option value="" disabled className={s.form_option_start}>
                     Выбрать
                   </option>
                   <option value="Вилла">Вилла</option>
@@ -163,7 +185,7 @@ const FilterBurger = ({ titleSection }: Props) => {
                 </select>
               </div>
               {formik.touched.RealEstate && formik.errors.RealEstate ? (
-                <div>{formik.errors.RealEstate}</div>
+                <div className={s.form_error}>{formik.errors.RealEstate}</div>
               ) : null}
             </div>
 
@@ -171,7 +193,7 @@ const FilterBurger = ({ titleSection }: Props) => {
               <label htmlFor="district" className={s.form_label}>
                 Район
               </label>
-              <div>
+              <div className="">
                 <select
                   id="district"
                   name="district"
@@ -180,7 +202,7 @@ const FilterBurger = ({ titleSection }: Props) => {
                   onBlur={formik.handleBlur}
                   value={formik.values.district}
                 >
-                  <option value="" disabled>
+                  <option value="" disabled className="">
                     Выбрать
                   </option>
                   <option value="Ао По">Ао По</option>
@@ -209,15 +231,15 @@ const FilterBurger = ({ titleSection }: Props) => {
                 </select>
               </div>
               {formik.touched.district && formik.errors.district ? (
-                <div>{formik.errors.district}</div>
+                <div className={s.form_error}>{formik.errors.district}</div>
               ) : null}
             </div>
 
             <div className={s.form_wrapper_item}>
               <label htmlFor="rooms" className={s.form_label}>
-                Дополнительные характеристики
+                Количество комнат
               </label>
-              <div>
+              <div className="">
                 <select
                   id="rooms"
                   name="rooms"
@@ -226,7 +248,7 @@ const FilterBurger = ({ titleSection }: Props) => {
                   onBlur={formik.handleBlur}
                   value={formik.values.rooms}
                 >
-                  <option value="" disabled>
+                  <option value="" disabled className="">
                     Выбрать
                   </option>
                   <option value="Студия">Студия</option>
@@ -239,7 +261,35 @@ const FilterBurger = ({ titleSection }: Props) => {
                 </select>
               </div>
               {formik.touched.rooms && formik.errors.rooms ? (
-                <div>{formik.errors.rooms}</div>
+                <div className={s.form_error}>{formik.errors.rooms}</div>
+              ) : null}
+            </div>
+
+            <div className={s.form_wrapper_item}>
+              <label htmlFor="characteristics" className={s.form_label}>
+                Дополнительные характеристики
+              </label>
+              <div className="">
+                <select
+                  id="characteristics"
+                  name="characteristics"
+                  className={s.form_select}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.rooms}
+                >
+                  <option value="" disabled className="">
+                    Выбрать
+                  </option>
+                  <option value="Характеристики 1">Характеристики 1</option>
+                  <option value="Характеристики 2">Характеристики 2</option>
+                  <option value="Характеристики 3">Характеристики 3</option>
+                  <option value="Характеристики 4">Характеристики 4</option>
+                  <option value="Характеристики 5">Характеристики 5</option>
+                </select>
+              </div>
+              {formik.touched.rooms && formik.errors.rooms ? (
+                <div className={s.form_error}>{formik.errors.rooms}</div>
               ) : null}
             </div>
 
@@ -285,7 +335,7 @@ const FilterBurger = ({ titleSection }: Props) => {
               className={`${s.form_wrapper_item} ${s.form_wrapper_itemArea}`}
             >
               <label className={s.form_label} htmlFor="areaMin">
-                Общая площадь
+                Площадь участка
               </label>
               <div className={s.form_inputsWrapper}>
                 <div className={s.form_inputWrapper}>
@@ -322,6 +372,49 @@ const FilterBurger = ({ titleSection }: Props) => {
                 <div className={s.form_error}>{formik.errors.areaMin}</div>
               ) : null}
             </div>
+
+            <div
+              className={`${s.form_wrapper_item} ${s.form_wrapper_itemArea}`}
+            >
+              <label className={s.form_label} htmlFor="areaHouseMin">
+                Площадь застройки
+              </label>
+              <div className={s.form_inputsWrapper}>
+                <div className={s.form_inputWrapper}>
+                  <span className={s.form_prefix}>от</span>
+                  <input
+                    className={`${s.form_input} ${s.form_inputArea} `}
+                    type="text"
+                    id="areaHouseMin"
+                    name="areaHouseMin"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.areaHouseMin}
+                  />
+                  <span className={s.form_suffix}>m2</span>
+                </div>
+                <div className={`${s.form_inputWrapper} ${s.form_inputSecond}`}>
+                  <span className={s.form_prefix}>до</span>
+                  <input
+                    className={`${s.form_input} ${s.form_inputArea} `}
+                    type="text"
+                    id="areaHouseMax"
+                    name="areaHouseMax"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.areaHouseMax}
+                  />
+                  <span className={s.form_suffix}>m2</span>
+                </div>
+              </div>
+              {formik.touched.areaHouseMax && formik.errors.areaHouseMax ? (
+                <div className={s.form_error}>{formik.errors.areaHouseMax}</div>
+              ) : null}
+              {formik.touched.areaHouseMin && formik.errors.areaHouseMin ? (
+                <div className={s.form_error}>{formik.errors.areaHouseMin}</div>
+              ) : null}
+            </div>
+
             <div className={s.form_wrapper_button}>
               <button type="submit" className={s.form_button}>
                 Поиск
@@ -331,6 +424,16 @@ const FilterBurger = ({ titleSection }: Props) => {
                   height={16}
                   alt="arrow"
                 ></Image>
+              </button>
+            </div>
+
+            <div className={s.form_wrapper_button_reset}>
+              <button
+                type="button"
+                className={s.form_button_reset}
+                onClick={handleResetForm}
+              >
+                Сбросить поиск
               </button>
             </div>
           </div>

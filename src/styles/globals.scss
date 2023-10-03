@@ -82,6 +82,14 @@ select {
   isolation: isolate;
 }
 
+.ant-drawer-body {
+  padding: 0 0 20px 0 !important;
+}
+
+.filter_drawer.ant-drawer-wrapper-body {
+  width: 100%;
+}
+
 .ant-drawer-wrapper-body {
   animation: drawerFadeIn 0.3s ease-in-out !important; /* Имя анимации, длительность и эффект */
   transition: opacity 0.3s ease-in-out !important; /* Плавное изменение прозрачности */
@@ -103,7 +111,6 @@ select {
 
 .ant-checkbox-input:hover {
   border-color: black;
-
 }
 
 .header_slider.swiper-slide {
