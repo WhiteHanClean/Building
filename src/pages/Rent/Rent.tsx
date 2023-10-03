@@ -4,7 +4,7 @@ import React, { useState } from "react";
 import { FilterParams } from "@/redux/api";
 
 const Rent = () => {
-  const [filterParams, setFilterParams] = useState({});
+  const [filterParams, setFilterParams] = useState<FilterParams>({});
 
   const handleFilterParams = (filterParams: FilterParams) => {
     setFilterParams(filterParams);

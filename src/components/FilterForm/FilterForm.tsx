@@ -102,9 +102,9 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
       const filterParams = {
-        buildingType: values.RealEstate,
-        district: values.district,
-        roomsAmount: Number(values.rooms),
+        // buildingType: values.RealEstate,
+        // district: values.district,
+        // roomsAmount: Number(values.rooms),
         price: Number(values.pricMin),
       };
       setFilterParams(filterParams);
