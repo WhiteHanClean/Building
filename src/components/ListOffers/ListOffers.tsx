@@ -5,7 +5,7 @@ import Link from "next/link";
 // import Pagination from "../Pagination/Pagination";
 // import { useGetObjectsQuery } from "../../api/Api";
 
-const ListOffers = () => {
+const ListOffers: React.FC<{ id: number }> = ({id}) => {
   const [selectedValue, setSelectedValue] = useState("");
   //   const [currentPage, setCurrentPage] = useState(1);
   //   const { data, error, isLoading } = useGetObjectsQuery(currentPage);
@@ -68,7 +68,7 @@ const ListOffers = () => {
       <ul className={s.listOffer_list}>
         {items.map((item, index) => (
           <li key={index} className={s.listOffer_item}>
-            <Link href={"/DetailProperty/DetailProperty"}>
+            <Link href={`/DetailProperty/${id}`}>
               <BuildCard />
             </Link>
           </li>

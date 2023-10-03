@@ -10,7 +10,7 @@ import 'swiper/css/scrollbar';
 import "swiper/css/navigation";
 import Image from "next/image";
 
-const Slider: React.FC = () => {
+const Slider: React.FC<{ id: number }> = ({ id }) => {
   // Create a ref for the Swiper instance
   const swiperRef = useRef<any | null>(null);
 
@@ -75,47 +75,37 @@ const Slider: React.FC = () => {
       >
         {" "}
         <SwiperSlide>
-          <Link href={"/DetailProperty/DetailProperty"}>
+          <Link href={`/DetailProperty/${id}`}>
             <BuildCard />
           </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <Link href={"/DetailProperty/DetailProperty"}>
+          <Link href={`/DetailProperty/${id}`}>
             <BuildCard />
           </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <Link href={"/DetailProperty/DetailProperty"}>
+          <Link href={`/DetailProperty/${id}`}>
             <BuildCard />
           </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <Link href={"/DetailProperty/DetailProperty"}>
+          <Link href={`/DetailProperty/${id}`}>
             <BuildCard />
           </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <Link href={"/DetailProperty/DetailProperty"}>
+          <Link href={`/DetailProperty/${id}`}>
             <BuildCard />
           </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <Link href={"/DetailProperty/DetailProperty"}>
+          <Link href={`/DetailProperty/${id}`}>
             <BuildCard />
           </Link>
         </SwiperSlide>
         <SwiperSlide>
-          <Link href={"/DetailProperty/DetailProperty"}>
-            <BuildCard />
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link href={"/DetailProperty/DetailProperty"}>
-            <BuildCard />
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link href={"/DetailProperty/DetailProperty"}>
+          <Link href={`/DetailProperty/${id}`}>
             <BuildCard />
           </Link>
         </SwiperSlide>
