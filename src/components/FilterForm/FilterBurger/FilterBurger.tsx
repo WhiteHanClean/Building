@@ -103,12 +103,6 @@ const FilterBurger = ({ titleSection }: Props) => {
   });
 
   const customCloseButton = (
-    // <div className={m.burger_wrapperClose_block}>
-    //   <h3 className={s.burgerTitle}>Фильтры</h3>
-    //   <div className={m.filter_wrapperBurger} onClick={onClose}>
-    //     <CloseOutlined />
-    //   </div>
-    // </div>
     <div className={m.extra_wrapper}>
       <h2 className={s.filter_title}>{titleSection}</h2>
       <div className={m.burger_wrapperClose_block}>
@@ -139,23 +133,11 @@ const FilterBurger = ({ titleSection }: Props) => {
           padding: "20px 15px 0 15px",
           borderBottom: "none",
         }}
-        // title={<h2 className={s.filter_title}>{titleSection}</h2>}
         placement="top"
         onClose={onClose}
         className={m.filter_drawer}
         open={open}
         closeIcon={customCloseButton}
-        // extra={
-        //   <div className={m.extra_wrapper}>
-        //     <h2 className={s.filter_title}>{titleSection}</h2>
-        //     <div className={m.burger_wrapperClose_block}>
-        //       <h3 className={s.burgerTitle}>Фильтры</h3>
-        //       <div className={m.filter_wrapperBurger} onClick={onClose}>
-        //         <CloseOutlined />
-        //       </div>
-        //     </div>
-        //   </div>
-        // }
       >
         <form onSubmit={formik.handleSubmit}>
           <div className={s.form_wrapper}>

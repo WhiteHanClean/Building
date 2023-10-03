@@ -1,26 +1,72 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import s from "./ListOffers.module.scss";
 import BuildCard from "../BuildCard/BuildCard";
-// import Pagination from "../Pagination/Pagination";
-// import { useGetObjectsQuery } from "../../api/Api";
+import { RealEstate } from "../../redux/api";
+import { useGetFilteredOffersQuery } from "@/redux/api";
+import { useSelector } from "react-redux";
+import { RootState } from "@reduxjs/toolkit/query";
 
-const ListOffers = () => {
+interface Props {
+  isRent: boolean;
+}
+
+const ListOffers = ({ isRent }: Props) => {
   const [selectedValue, setSelectedValue] = useState("");
-  //   const [currentPage, setCurrentPage] = useState(1);
-  //   const { data, error, isLoading } = useGetObjectsQuery(currentPage);
+  const [allOffers, setAllOffers] = useState<RealEstate[]>([]);
 
-  //   const handlePageChange = (newPage: React.SetStateAction<number>) => {
-  //     setCurrentPage(newPage);
-  //   };
+  // const { data, error, isLoading } = useGetFilteredOffersQuery({ isRent });
 
-  const items = Array.from({ length: 99 }, (_, index) => index);
+  const allOffersData = useSelector((state) => {
+    console.log(state.libraryPhuket.queries.getAllOffers);
+    // setAllOffers(state);
+  });
+
+  const state = useSelector((state: RootState) => state);
+  console.log(state);
+  console.log(allOffers);
+
+  // useEffect(() => {
+  //   if (data) {
+  //     setAllOffers(data);
+  //   }
+  // }, [data]);
+
+  // сортировка по убыванию
+  function sortByPriceAscending() {
+    const sortedOffers = allOffers.slice().sort((a, b) => a.price - b.price);
+    setAllOffers(sortedOffers);
+  }
+
+  //сортировка по возрастанию
+  function sortByPriceDescending() {
+    const sortedOffers = allOffers.slice().sort((a, b) => b.price - a.price);
+    setAllOffers(sortedOffers);
+  }
+
+  // //сортировка в случайном порядке
+  function sortByPriceRandom() {
+    const randomSortedOffers = allOffers
+      .slice()
+      .sort(() => Math.random() - 0.5);
+    setAllOffers(randomSortedOffers);
+  }
 
   const handleSelectChange = (e: { target: { value: any } }) => {
     const newValue = e.target.value;
     setSelectedValue(newValue);
   };
 
-  console.log(selectedValue);
+  useEffect(() => {
+    if (selectedValue === "expensive") {
+      sortByPriceDescending();
+    }
+    if (selectedValue === "cheap") {
+      sortByPriceAscending();
+    }
+    if (selectedValue === "all") {
+      sortByPriceRandom();
+    }
+  }, [selectedValue]);
 
   return (
     <section className={s.listOffer_section}>
@@ -40,19 +86,13 @@ const ListOffers = () => {
               <option value="" disabled className={s.listOffer_option}>
                 Выбрать
               </option>
-              <option value="Все" className={s.listOffer_option}>
+              <option value="all" className={s.listOffer_option}>
                 Все
               </option>
-              <option
-                value="По цене: сначала дорогие"
-                className={s.listOffer_option}
-              >
+              <option value="expensive" className={s.listOffer_option}>
                 По цене: сначала дорогие
               </option>
-              <option
-                value="По цене: сначала дешевые"
-                className={s.listOffer_option}
-              >
+              <option value="cheap" className={s.listOffer_option}>
                 По цене: сначала дешевые
               </option>
             </select>
@@ -60,14 +100,23 @@ const ListOffers = () => {
         </div>
         <div className={s.listOffer_text_wrapper}>
           <p className={s.listOffer_text}>
-            Всего объектов: <span>5 760</span>
+            Всего объявлений: {allOffers.length}
           </p>
         </div>
       </div>
       <ul className={s.listOffer_list}>
-        {items.map((item, index) => (
-          <li key={index} className={s.listOffer_item}>
-            <BuildCard />
+        {allOffers.map((card: RealEstate, _id: number) => (
+          <li key={_id} className={s.listOffer_item}>
+            <BuildCard
+              img={card.mainImage}
+              alt={card.alt}
+              name={card.title}
+              price={card.price}
+              rooms={card.roomsAmount}
+              builtUpArea={card.builtUpArea}
+              landArea={card.landArea}
+              location={card.location}
+            />
           </li>
         ))}
       </ul>

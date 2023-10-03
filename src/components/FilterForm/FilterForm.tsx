@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import s from "./FilterForm.module.scss";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import dynamic from "next/dynamic";
+import { useGetAllOffersQuery, useGetFilteredOffersQuery } from "@/redux/api";
 
 const validationSchema = Yup.object({
   RealEstate: Yup.string()
@@ -42,15 +43,7 @@ const validationSchema = Yup.object({
     .required("Выберите пожалуйста район"),
   rooms: Yup.string()
     .oneOf(
-      [
-        "Студия",
-        "1 спальня",
-        "2 спальня",
-        "3 спальня",
-        "4 спальня",
-        "5 спальня",
-        "AllOptions",
-      ],
+      ["Студия", "1", "2", "3", "4", "5", "AllOptions"],
       "Выберите пожалуйста кол-во комнат"
     )
     .required("Выберите пожалуйста кол-во комнат"),
@@ -77,6 +70,17 @@ const FilterBurger = dynamic(() => import("./FilterBurger/FilterBurger"), {
 });
 
 const FilterForm = ({ titleSection }: Props) => {
+  const [filterParams, setfilterParams] = useState({});
+  const [filter, setfilter] = useState(false);
+
+  if (filter) {
+    const { data, error, isLoading } = useGetFilteredOffersQuery(filterParams);
+    console.log(data);
+  } else {
+    const { data, error, isLoading } = useGetAllOffersQuery();
+    console.log(data);
+  }
+
   const formik = useFormik({
     initialValues: {
       RealEstate: "",
@@ -89,11 +93,17 @@ const FilterForm = ({ titleSection }: Props) => {
     },
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
-      console.log(values);
+      const filterParams = {
+        buildingType: values.RealEstate,
+        district: values.district,
+        roomsAmount: Number(values.rooms),
+        price: Number(values.pricMin),
+      };
+      setfilter(true);
+      setfilterParams(filterParams);
       resetForm();
     },
   });
-
   return (
     <section className={s.filter_section}>
       <div className={s.filter_section_wrapper}>
@@ -192,11 +202,11 @@ const FilterForm = ({ titleSection }: Props) => {
                         Выбрать
                       </option>
                       <option value="Студия">Студия</option>
-                      <option value="1 спальня">1 спальня</option>
-                      <option value="2 спальня">2 спальня</option>
-                      <option value="3 спальня">3 спальня</option>
-                      <option value="4 спальня">4 спальня</option>
-                      <option value="5 спальня">5 спальня</option>
+                      <option value="1">1 спальня</option>
+                      <option value="2">2 спальня</option>
+                      <option value="3">3 спальня</option>
+                      <option value="4">4 спальня</option>
+                      <option value="5">5 спальня</option>
                       <option value="AllOptions">Показать все варианты</option>
                     </select>
                   </div>
