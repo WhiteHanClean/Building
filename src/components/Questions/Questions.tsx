@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import s from "./Questions.module.scss";
+import { useTranslation } from "react-i18next";
 
 import { Collapse } from "antd";
 const { Panel } = Collapse;
@@ -36,6 +37,7 @@ const customPanelStyle = {
 };
 
 const Questions: React.FC = () => {
+  const { t } = useTranslation();
   const [activePanels, setActivePanels] = useState<string[]>([]);
   const [nestedActivePanels, setNestedActivePanels] = useState<string[]>([]);
   const [nestedIcons, setNestedIcons] = useState<{ [key: string]: boolean }>(
@@ -79,11 +81,8 @@ const Questions: React.FC = () => {
   return (
     <div className={s.questions}>
       <div className={s.questions_description}>
-        <h3>Часто задаваемые вопросы</h3>
-        <p>
-          Быстрые ответы на вопросы, которые могут у вас возникнуть. Не нашли
-          то, что ищите? Закажите бесплатную консультацию.
-        </p>
+        <h3>{t("main.questions.title")}</h3>
+        <p>{t("main.questions.description")}</p>
       </div>
       <div className={s.questions_accordion}>
         <Collapse
@@ -103,7 +102,7 @@ const Questions: React.FC = () => {
                   }
                   alt="accordionBtn"
                 />
-                Вопросы аренды
+                <p>{t("main.questions.rentalIssues")} </p>
               </div>
             }
             key="1"
@@ -127,7 +126,7 @@ const Questions: React.FC = () => {
                       alt="accordionBtn"
                       onClick={() => togglePanel("nasted", true)}
                     />
-                    <p>От чего зависит цена аренды?</p>
+                    <p> {t("main.questions.costDependence")} </p>
                   </div>
                 }
                 key="nasted"
@@ -147,7 +146,7 @@ const Questions: React.FC = () => {
                       alt="accordionBtn"
                       onClick={() => togglePanel("nasted2", true)}
                     />
-                    <p>Когда бронирование считается подтвержденным?</p>
+                    <p> {t("main.questions.confirmedBooking")}</p>
                   </div>
                 }
                 key="nasted2"
@@ -168,7 +167,7 @@ const Questions: React.FC = () => {
                   }
                   alt="accordionBtn"
                 />
-                Вопросы покупки
+                {t("main.questions.purchasingIssues")}
               </div>
             }
             key="2"
@@ -187,7 +186,7 @@ const Questions: React.FC = () => {
                   }
                   alt="accordionBtn"
                 />
-                Вопросы сервиса
+                {t("main.questions.serviceIssues")}
               </div>
             }
             key="3"

@@ -2,9 +2,14 @@ import React, { useState } from "react";
 import { useFormik } from "formik";
 import s from "./SearchBar.module.scss";
 import CustomSelect from "@/shared/ui/Select/Select";
+import { i18n } from "i18next";
 
-const SearchBar = () => {
+interface SearchBarProps {
+  t: i18n["t"];
+  i18n: i18n;
+}
 
+const SearchBar: React.FC<SearchBarProps> = ({ t, i18n }) => {
   const formik = useFormik({
     initialValues: {
       RealEstate: "",
@@ -29,12 +34,16 @@ const SearchBar = () => {
           <div className={s.form_wrapper}>
             <div className={s.form_wrapper_item}>
               <label htmlFor="RealEstate" className={s.form_label}>
-                Недвижимость
+                {t("main.searchBar.realty")}
               </label>
               <div className="">
                 <CustomSelect
-                  options={["Вилла", "Квартира", "Показать все варианты"]}
-                  defaultValue="Выбрать"
+                  options={[
+                    t("main.searchBar.villa"),
+                    t("main.searchBar.apartment"),
+                    t("main.searchBar.showAllOptions"),
+                  ]}
+                  defaultValue={t("main.searchBar.select")}
                   onChange={(value) =>
                     formik.setFieldValue("RealEstate", value)
                   }
@@ -49,33 +58,33 @@ const SearchBar = () => {
 
             <div className={s.form_wrapper_item}>
               <label htmlFor="district" className={s.form_label}>
-                Район
+                {t("main.searchBar.district")}
               </label>
               <CustomSelect
                 options={[
-                  "Ао По",
-                  "Банг Тао",
-                  "Калим",
-                  "Камала",
-                  "Карон",
-                  "Ката",
-                  "Кату",
-                  "Лагуна Пхукет",
-                  "Лаян",
-                  "Май Кхао",
-                  "Най Тон",
-                  "Най Харн",
-                  "Най Янг",
-                  "Натай",
-                  "Патонг",
-                  "Раваи",
-                  "Сурин",
-                  "Таланг",
-                  "Центральный район Пхукета",
-                  "Чалонг",
-                  "AllOptions",
+                  t("main.searchBar.districtVariant.aoPo"),
+                  t("main.searchBar.districtVariant.bangTao"),
+                  t("main.searchBar.districtVariant.kalim"),
+                  t("main.searchBar.districtVariant.kamala"),
+                  t("main.searchBar.districtVariant.karon"),
+                  t("main.searchBar.districtVariant.kata"),
+                  t("main.searchBar.districtVariant.katu"),
+                  t("main.searchBar.districtVariant.lagunaPhuket"),
+                  t("main.searchBar.districtVariant.layan"),
+                  t("main.searchBar.districtVariant.maiKhao"),
+                  t("main.searchBar.districtVariant.naiThon"),
+                  t("main.searchBar.districtVariant.naiHarn"),
+                  t("main.searchBar.districtVariant.naiYang"),
+                  t("main.searchBar.districtVariant.natai"),
+                  t("main.searchBar.districtVariant.patong"),
+                  t("main.searchBar.districtVariant.rawai"),
+                  t("main.searchBar.districtVariant.surin"),
+                  t("main.searchBar.districtVariant.talang"),
+                  t("main.searchBar.districtVariant.centralPhuket"),
+                  t("main.searchBar.districtVariant.chalong"),
+                  t("main.searchBar.districtVariant.allOptions"),
                 ]}
-                defaultValue="Выбрать"
+                defaultValue={t("main.searchBar.select")}
                 onChange={(value) => formik.setFieldValue("district", value)}
                 onBlur={formik.handleBlur}
                 value={formik.values.district}
@@ -87,19 +96,19 @@ const SearchBar = () => {
 
             <div className={s.form_wrapper_item}>
               <label htmlFor="rooms" className={s.form_label}>
-                Количество комнат
+                {t("main.searchBar.rooms")}
               </label>
               <CustomSelect
                 options={[
-                  "Студия",
-                  "1 спальня",
-                  "2 спальни",
-                  "3 спальни",
-                  "4 спальни",
-                  "5 спален",
-                  "Показать все варианты",
+                  t("main.searchBar.roomVariant.studio"),
+                  t("main.searchBar.roomVariant.bedroom1"),
+                  t("main.searchBar.roomVariant.bedroom2"),
+                  t("main.searchBar.roomVariant.bedroom3"),
+                  t("main.searchBar.roomVariant.bedroom4"),
+                  t("main.searchBar.roomVariant.bedroom5"),
+                  t("main.searchBar.roomVariant.allOptions"),
                 ]}
-                defaultValue="Выбрать"
+                defaultValue={t("main.searchBar.select")}
                 onChange={(value) => formik.setFieldValue("rooms", value)}
                 onBlur={formik.handleBlur}
                 value={formik.values.rooms}
@@ -111,7 +120,7 @@ const SearchBar = () => {
 
             <div className={s.form_wrapper_item}>
               <label className={s.form_label} htmlFor="pricMin">
-                Цена
+                {t("main.searchBar.price")}
               </label>
               <div className={s.form_inputsWrapper}>
                 <div className={s.form_inputWrapper}>
@@ -148,7 +157,7 @@ const SearchBar = () => {
             </div>
             <div className={s.form_wrapper_button}>
               <button type="submit" className={s.form_button}>
-                Поиск
+                {t("main.searchBar.search")}
               </button>
             </div>
           </div>

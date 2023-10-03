@@ -11,10 +11,9 @@ import Statistics from "@/components/Statistics/Statistics";
 import Consultation from "@/components/Consultation/Consultation";
 import Benefits from "@/components/Benefits/Benefits";
 import SocialNetworkBlock from "@/components/SocialNetworkBlock/SocialNetworkBlock";
-
+import "../../i18n";
 
 const inter = Inter({ subsets: ["latin"] });
-
 
 export default function Home() {
   return (
@@ -28,15 +27,15 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-     
+
       <BuildBanner />
       <Statistics />
       <Slider />
       <TypesOfServices />
-      <Stages/>
+      <Stages />
       <Service />
-      <SocialNetworkBlock/>
-      <Questions/>
+      <SocialNetworkBlock />
+      <Questions />
       <Consultation />
     </>
   );

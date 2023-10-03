@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import s from "./ListOffers.module.scss";
 import BuildCard from "../BuildCard/BuildCard";
+import { useTranslation } from "react-i18next";
 // import Pagination from "../Pagination/Pagination";
 // import { useGetObjectsQuery } from "../../api/Api";
 
 const ListOffers = () => {
+  const { t } = useTranslation();
   const [selectedValue, setSelectedValue] = useState("");
   //   const [currentPage, setCurrentPage] = useState(1);
   //   const { data, error, isLoading } = useGetObjectsQuery(currentPage);
@@ -27,7 +29,7 @@ const ListOffers = () => {
       <div className={s.listOffer_wraper}>
         <div className="">
           <label htmlFor="price" className={s.listOffer_label}>
-            Сортировать
+            {t("listOffer.sort")}
           </label>
           <div className={s.listOffer_wrapper_select}>
             <select
@@ -38,29 +40,29 @@ const ListOffers = () => {
               value={selectedValue}
             >
               <option value="" disabled className={s.listOffer_option}>
-                Выбрать
+                {t("buyingRealEstate.select")}
               </option>
               <option value="Все" className={s.listOffer_option}>
-                Все
+                {t("listOffer.all")}
               </option>
               <option
                 value="По цене: сначала дорогие"
                 className={s.listOffer_option}
               >
-                По цене: сначала дорогие
+                {t("listOffer.byPriceExpensive")}
               </option>
               <option
                 value="По цене: сначала дешевые"
                 className={s.listOffer_option}
               >
-                По цене: сначала дешевые
+                {t("listOffer.byPriceCheap")}
               </option>
             </select>
           </div>
         </div>
         <div className={s.listOffer_text_wrapper}>
           <p className={s.listOffer_text}>
-            Всего объектов: <span>5 760</span>
+            {t("listOffer.totalObjects")} <span>5 760</span>
           </p>
         </div>
       </div>

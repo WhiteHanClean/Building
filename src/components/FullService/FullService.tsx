@@ -1,23 +1,22 @@
 import React from "react";
 import s from "./FullService.module.scss";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 const FullService = () => {
+  const { t } = useTranslation();
   return (
     <div className={s.full_service}>
       <div className={s.full_service_photo}>
-        <h4>Полный спектр услуг</h4>
+        <h4>{t("aboutUs.fullService.title")}</h4>
         <div className={s.full_text_paragrapf}></div>
-        <p>
-          Присоединяйтесь к нашему сообществууспешных инвесторов и довольных
-          владельцев жилья на Пхукете.
-        </p>
+        <p>{t("aboutUs.fullService.subtitle")}</p>
       </div>
 
       <div className={s.service}>
         <div className={s.service_content_blocks}>
           <div className={s.service_content_block}>
-            <h6>Профессионализм</h6>
+            <h6>{t("aboutUs.fullService.professionalism")}</h6>
 
             <div className={s.service_icon}>
               <Image
@@ -29,15 +28,12 @@ const FullService = () => {
             </div>
           </div>
 
-          <p>
-            Мы гордимся своим сервисом, который включает подбор самых ликвидных
-            объектов недвижимости.
-          </p>
+          <p>{t("aboutUs.fullService.professionalismSubtitle")}</p>
         </div>
 
         <div className={s.service_content_blocks}>
           <div className={s.service_content_block}>
-            <h6>Качество</h6>
+            <h6> {t("aboutUs.fullService.quality")} </h6>
 
             <div className={s.service_icon}>
               <Image
@@ -49,15 +45,12 @@ const FullService = () => {
             </div>
           </div>
 
-          <p>
-            Проводим детальное изучение репутации застройщика, проверяем наличие
-            всех документов и отсутствия обременений.
-          </p>
+          <p>{t("aboutUs.fullService.qualitySubtitle")}</p>
         </div>
 
         <div className={s.service_content_blocks}>
           <div className={s.service_content_block}>
-            <h6>Безопасность</h6>
+            <h6> {t("aboutUs.fullService.safety")}</h6>
 
             <div className={s.service_icon}>
               <Image
@@ -69,15 +62,12 @@ const FullService = () => {
             </div>
           </div>
 
-          <p>
-            Важность соблюдения норм качества и безопасности для нас в
-            приоритете, а наши юристы сопровождают вас на этапе всей сделки.
-          </p>
+          <p>{t("aboutUs.fullService.safetySubtitle")}</p>
         </div>
 
         <div className={s.service_content_blocks}>
           <div className={s.service_content_block}>
-            <h6>Строительство</h6>
+            <h6>{t("aboutUs.fullService.construction")}</h6>
 
             <div className={s.service_icon}>
               <Image
@@ -89,10 +79,7 @@ const FullService = () => {
             </div>
           </div>
 
-          <p>
-            Строительство с полным циклом услуг, а также эксклюзивные права на
-            сотрудничество: бонусы, выгодная цена, одни из лучших видовых лотов.
-          </p>
+          <p>{t("aboutUs.fullService.constructionSubtitle")}</p>
         </div>
       </div>
     </div>
