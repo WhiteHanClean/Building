@@ -2,14 +2,19 @@ import React, { useEffect, useState } from "react";
 import s from "./ListOffers.module.scss";
 import BuildCard from "../BuildCard/BuildCard";
 import { RealEstate } from "../../redux/api";
-import { useGetAllOffersQuery } from "@/redux/api";
+import { useGetFilteredOffersQuery } from "@/redux/api";
 
-const ListOffers = () => {
+interface Props {
+  isRent: boolean;
+}
+
+const ListOffers = ({ isRent }: Props) => {
   const [selectedValue, setSelectedValue] = useState("");
   const [allOffers, setAllOffers] = useState<RealEstate[]>([]);
 
-  const { data, error, isLoading } = useGetAllOffersQuery();
-  console.log(data);
+  const { data, error, isLoading } = useGetFilteredOffersQuery({ isRent });
+
+  console.log(allOffers);
 
   useEffect(() => {
     if (data) {

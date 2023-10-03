@@ -35,6 +35,7 @@ export interface FilterParams {
     builtUpArea?: number;
     landArea?: number;
     price?: number;
+    isRent?: boolean;
 }
 
 export const api = createApi({

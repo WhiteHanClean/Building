@@ -6,7 +6,7 @@ const Purchase = () => {
   return (
     <div>
       <FilterForm titleSection="Покупка недвижимости" />
-      <ListOffers />
+      <ListOffers isRent={false} />
     </div>
   );
 };
