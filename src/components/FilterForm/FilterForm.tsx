@@ -106,6 +106,7 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
         // district: values.district,
         // roomsAmount: Number(values.rooms),
         price: Number(values.pricMin),
+        isFilter: true,
       };
       setFilterParams(filterParams);
       resetForm();

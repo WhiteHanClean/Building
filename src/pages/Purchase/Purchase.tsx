@@ -1,20 +1,12 @@
 import FilterForm from "@/components/FilterForm/FilterForm";
 import ListOffers from "@/components/ListOffers/ListOffers";
 import React, { useState } from "react";
-
-export interface FilterParams {
-  buildingType?: string;
-  location?: string;
-  roomsAmount?: number;
-  //Дополнительные характеристики
-  builtUpArea?: number;
-  landArea?: number;
-  price?: number;
-  isRent?: boolean;
-}
+import { FilterParams } from "@/redux/api";
 
 const Purchase = () => {
-  const [filterParams, setFilterParams] = useState({});
+  const [filterParams, setFilterParams] = useState<FilterParams>({
+    isFilter: false,
+  });
 
   const handleFilterParams = (filterParams: FilterParams) => {
     setFilterParams(filterParams);
