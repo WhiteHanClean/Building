@@ -114,6 +114,7 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
   });
   const handleResetForm = () => {
     formik.resetForm();
+    setFilterParams({ isFilter: false });
   };
 
   return (

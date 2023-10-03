@@ -8,8 +8,6 @@ import {
   useGetUnFilteredOffersQuery,
 } from "../../redux/api";
 import { useGetFilteredOffersQuery } from "@/redux/api";
-import { useSelector } from "react-redux";
-import { RootState } from "@reduxjs/toolkit/query";
 import Pagination from "../Pagination/Pagination";
 import { useWindowSize } from "@/hook/useSize";
 interface Props {
@@ -23,11 +21,8 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
   const [selectedValue, setSelectedValue] = useState("");
   const [allOffers, setAllOffers] = useState<RealEstate[]>([]);
   const { width = 1 } = useWindowSize();
-  console.log(width, "width");
   const [currentPage, setCurrentPage] = useState(1);
   const { data: totalPages } = useGetAllOffersQuery();
-
-  console.log(totalPages, "totalPages");
 
   let offersQuery;
   if (filterParams.isFilter) {
@@ -53,7 +48,6 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
-    console.log(currentPage);
   };
 
   // сортировка по убыванию
