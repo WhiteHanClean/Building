@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import s from "./FilterForm.module.scss";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import dynamic from "next/dynamic";
-import { useGetAllOffersQuery, useGetFilteredOffersQuery } from "@/redux/api";
+import { FilterParams } from "@/redux/api";
 
 const validationSchema = Yup.object({
   RealEstate: Yup.string()
@@ -63,24 +62,14 @@ const validationSchema = Yup.object({
 
 interface Props {
   titleSection: string;
+  setFilterParams: (params: FilterParams) => void;
 }
 
 const FilterBurger = dynamic(() => import("./FilterBurger/FilterBurger"), {
   ssr: false,
 });
 
-const FilterForm = ({ titleSection }: Props) => {
-  const [filterParams, setfilterParams] = useState({});
-  const [filter, setfilter] = useState(false);
-
-  if (filter) {
-    const { data, error, isLoading } = useGetFilteredOffersQuery(filterParams);
-    console.log(data);
-  } else {
-    const { data, error, isLoading } = useGetAllOffersQuery();
-    console.log(data);
-  }
-
+const FilterForm = ({ titleSection, setFilterParams }: Props) => {
   const formik = useFormik({
     initialValues: {
       RealEstate: "",
@@ -91,6 +80,7 @@ const FilterForm = ({ titleSection }: Props) => {
       areaMin: "",
       areaMax: "",
     },
+
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
       const filterParams = {
@@ -99,8 +89,7 @@ const FilterForm = ({ titleSection }: Props) => {
         roomsAmount: Number(values.rooms),
         price: Number(values.pricMin),
       };
-      setfilter(true);
-      setfilterParams(filterParams);
+      setFilterParams(filterParams);
       resetForm();
     },
   });
