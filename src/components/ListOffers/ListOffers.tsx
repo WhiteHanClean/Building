@@ -19,38 +19,33 @@ interface Props {
 // !===========================================================main function====================================================
 
 const ListOffers = ({ isRent, filterParams }: Props) => {
-  const [isFilter, setIsFilter] = useState(
-    Object.keys(filterParams).length != 0
-  );
-
   const [selectedValue, setSelectedValue] = useState("");
   const [allOffers, setAllOffers] = useState<RealEstate[]>([]);
   const { width = 1 } = useWindowSize();
-  console.log(width, "width");
+
   const [currentPage, setCurrentPage] = useState(1);
   const { data: totalPages } = useGetAllOffersQuery();
 
-  console.log(totalPages, "totalPages");
-
-  if (isFilter) {
-    const { data, error, isLoading } = useGetFilteredOffersQuery({
+  let offersQuery;
+  if (filterParams.isFilter) {
+    offersQuery = useGetFilteredOffersQuery({
       isRent: isRent,
       currentPage: currentPage,
       filterParams: filterParams,
+      limit: width <= 769 ? 6 : 9,
     });
   } else {
-    const { data, error, isLoading } = useGetUnFilteredOffersQuery({
+    offersQuery = useGetUnFilteredOffersQuery({
       isRent: isRent,
       currentPage: currentPage,
+      limit: width <= 769 ? 6 : 9,
     });
   }
-  const { data, error, isLoading } = useGetFilteredOffersQuery({
-    isRent: isRent,
-    currentPage: currentPage,
-    // filterParams: filterParams,
-  });
 
-  console.log(data, "data");
+  const { data, error, isLoading } = offersQuery;
+
+  console.log("total", totalPages);
+  console.log("paginate", data);
 
   useEffect(() => {
     if (data) {
@@ -60,7 +55,6 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
-    console.log(currentPage);
   };
 
   // сортировка по убыванию
@@ -131,7 +125,7 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
           </div>
         </div>
         <div className={s.listOffer_text_wrapper}>
-          {totalPages && data ? (
+          {totalPages && allOffers ? (
             <p className={s.listOffer_text}>
               Всего объявлений: {totalPages.length}
             </p>
@@ -141,8 +135,8 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
         </div>
       </div>
       <ul className={s.listOffer_list}>
-        {data && totalPages
-          ? data.map((card: RealEstate) => (
+        {allOffers && totalPages
+          ? allOffers.map((card: RealEstate) => (
               <li key={card._id} className={s.listOffer_item}>
                 <BuildCard
                   id={card._id}
@@ -159,10 +153,10 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
             ))
           : "empty"}
       </ul>
-      {totalPages && data && (
+      {totalPages && allOffers && (
         <Pagination
           totalItems={totalPages.length}
-          limit={9}
+          limit={width <= 769 ? 6 : 9}
           onPageChange={handlePageChange}
         />
       )}

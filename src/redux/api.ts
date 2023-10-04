@@ -30,6 +30,7 @@ export interface RealEstate {
 
 export interface FilterParams {
   currentPage?: number;
+  limit?: number;
   buildingType?: string;
   location?: string;
   roomsAmount?: number;
@@ -37,12 +38,14 @@ export interface FilterParams {
   builtUpArea?: number;
   landArea?: number;
   price?: number;
+  isFilter: boolean;
 }
 
 interface IGet {
   filterParams?: FilterParams;
   currentPage: number;
   isRent?: boolean;
+  limit: number;
 }
 
 export const api = createApi({
@@ -58,12 +61,12 @@ export const api = createApi({
     }),
 
     getFilteredOffers: builder.query<RealEstate[], IGet>({
-      query: ({ currentPage, isRent, filterParams }) => ({
+      query: ({ currentPage, isRent, filterParams, limit }) => ({
         url: `realEstates/`,
         params: {
           ...filterParams,
           _page: currentPage,
-          _limit: 9,
+          _limit: limit,
           isRent: isRent ?? false, // Default to false if isRent is not provided
         },
         providesTags: ["Reals"],
@@ -71,19 +74,20 @@ export const api = createApi({
     }),
 
     getUnFilteredOffers: builder.query<RealEstate[], IGet>({
-      query: ({ currentPage, isRent }) => ({
+      query: ({ currentPage, isRent, limit }) => ({
         url: `realEstates/`,
         params: {
           _page: currentPage,
-          _limit: 9,
+          _limit: limit,
           isRent: isRent ?? false, // Default to false if isRent is not provided
         },
         providesTags: ["Reals"],
       }),
     }),
 
-    getOfferById: builder.query<RealEstate, string>({
-      query: (id) => `realEstates/${id}`,
+    getOneOffers: builder.query<RealEstate, { id: string }>({
+      query: ({ id }) => `realEstates/${id}`,
+      providesTags: ["Reals"],
     }),
   }),
 });
@@ -91,6 +95,6 @@ export const api = createApi({
 export const {
   useGetAllOffersQuery,
   useGetFilteredOffersQuery,
-  useGetOfferByIdQuery,
+  useGetOneOffersQuery,
   useGetUnFilteredOffersQuery,
 } = api;

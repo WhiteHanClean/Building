@@ -2,23 +2,15 @@ import Consultation from '@/components/Consultation/Consultation';
 import ProductSlider from '@/components/ProductSlider/ProductSlider';
 import PropertyDesc from '@/components/PropertyDesc/PropertyDesc';
 import Questions from '@/components/Questions/Questions';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
-import { RealEstate, useGetAllOffersQuery } from '@/redux/api';
+import { useGetOneOffersQuery } from '@/redux/api';
 
 const DetailProperty: React.FC = () => {
   const router = useRouter();
   const { id } = router.query;
 
-  const { data } = useGetAllOffersQuery();
-  const [selectedProperty, setSelectedProperty] = useState<RealEstate | null>(null);
-
-  useEffect(() => {
-    if (data && id) {
-      const property = data.find(item => item._id === id);
-      setSelectedProperty(property || null);
-    }
-  }, [data, id]);
+  const { data: selectedProperty } = useGetOneOffersQuery({ id: id as string });
 
   return (
     <div>

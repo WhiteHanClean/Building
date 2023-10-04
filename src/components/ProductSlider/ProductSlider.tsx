@@ -13,10 +13,10 @@ interface ProductSliderProps {
   selectedProperty: RealEstate | null;
 }
 
-const ProductSlider: React.FC<ProductSliderProps> = ({selectedProperty}) => {
+const ProductSlider: React.FC<ProductSliderProps> = ({ selectedProperty }) => {
   const [number, setNumber] = useState(1);
   const { width = 0 } = useWindowSize();
-  
+
   const isScreenTable = width <= 1300;
   const isScreenTablemMini = width <= 768;
   const isScreenMob = width <= 428;
@@ -24,13 +24,13 @@ const ProductSlider: React.FC<ProductSliderProps> = ({selectedProperty}) => {
   const heightImg = isScreenTable
     ? 520
     : isScreenTablemMini
-    ? 470
-    : isScreenMob
-    ? 270
-    : 460;
+      ? 470
+      : isScreenMob
+        ? 270
+        : 460;
 
   const items = Array.from({ length: 24 }, (_, index) => index);
-  const imagesCount = selectedProperty?.images.length || 0; // Добавляем проверку на наличие изображений
+  const imagesCount = selectedProperty?.images.length || 0;
 
   const swiperRef = useRef<any | null>(null);
 
@@ -51,7 +51,7 @@ const ProductSlider: React.FC<ProductSliderProps> = ({selectedProperty}) => {
       }
     }
   };
-  
+
   return (
     <div className={s.productSlider_wrapper_section}>
       <div className={s.productSlider_wrapper_btn}>
@@ -75,9 +75,11 @@ const ProductSlider: React.FC<ProductSliderProps> = ({selectedProperty}) => {
           </button>
         </div>
         <div className={s.productSlider_wrapper_btnText}>
-          <p className={s.productSlider_number}>
-            <span>{number}</span> из <span>{selectedProperty?.images.length}</span>
-          </p>
+          {imagesCount > 0 && (
+            <p className={s.productSlider_number}>
+              <span>{number}</span> из <span>{imagesCount}</span>
+            </p>
+          )}
         </div>
       </div>
       <div className={s.productSlider_wrapper}>
