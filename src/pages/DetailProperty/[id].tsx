@@ -4,7 +4,7 @@ import PropertyDesc from '@/components/PropertyDesc/PropertyDesc';
 import Questions from '@/components/Questions/Questions';
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import { RealEstate, useGetAllOffersQuery, useGetOfferByIdQuery } from '@/redux/api';
+import { RealEstate, useGetAllOffersQuery } from '@/redux/api';
 
 const DetailProperty: React.FC = () => {
   const router = useRouter();
@@ -19,14 +19,13 @@ const DetailProperty: React.FC = () => {
       setSelectedProperty(property || null);
     }
   }, [data, id]);
-  
 
   return (
     <div>
       {selectedProperty && (
         <>
           <ProductSlider selectedProperty={selectedProperty}/>
-          <PropertyDesc/>
+          <PropertyDesc selectedProperty={selectedProperty}/>
           <Questions />
           <Consultation />
         </>

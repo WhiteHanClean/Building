@@ -1,8 +1,12 @@
-import { facilitiesBottom, facilitiesTop, paramsFirst, paramsSecond, paramsThird } from '@/constans/PropertyDescData';
+import { RealEstate } from '@/redux/api';
 import React from 'react';
 import s from "./PropertyDesc.module.scss"
 
-const PropertyDesc: React.FC = () => {
+interface ProductSliderProps {
+    selectedProperty: RealEstate | null;
+}
+
+const PropertyDesc: React.FC<ProductSliderProps> = ({ selectedProperty }) => {
     return (
         <div className={s.property_desc}>
             <div className={s.property_desc_field}>
@@ -17,60 +21,133 @@ const PropertyDesc: React.FC = () => {
                         <span>Хаму же достался юг: Египет, Эфиопия, соседящая с Индией, и другая Эфиопия, из которойвытекает река эфиопская Красная, текущая на восток, Фивы, Ливия.</span>
                     </p>
                     <div className={s.property_desc_description_facilities} >
-                        {facilitiesTop.map((item, index) => (
-                            <div className={s.property_desc_description_facilitie} key={index}>
-                                <img src={item.img} alt="Restourant" />
-                                <p>{item.title}</p>
-                            </div>
-                        ))}
+                        {selectedProperty && (
+                            <>
+                                {selectedProperty.hasRestaurant && (
+                                    <div className={s.property_desc_description_facilitie}>
+                                        <img src="/Restourant.png" alt="Restourant" />
+                                        <p>Ресторан</p>
+                                    </div>
+                                )}
+                                {selectedProperty.hasSpa && (
+                                    <div className={s.property_desc_description_facilitie}>
+                                        <img src="/leaf.png" alt="leaf" />
+                                        <p>Спа на территории</p>
+                                    </div>
+                                )}
+                                {selectedProperty.hasGym && (
+                                    <div className={s.property_desc_description_facilitie}>
+                                        <img src="/Vessel.png" alt="Vessel" />
+                                        <p>Тренажерный зал</p>
+                                    </div>
+                                )}
+                            </>
+                        )}
                     </div>
                     <div className={s.property_desc_description_facilities}>
-                        {facilitiesBottom.map((item, index) => (
-                            <div className={s.property_desc_description_facilitie} key={index}>
-                                <img src={item.img} alt="Coin" />
-                                <p>{item.title}</p>
-                            </div>
-                        ))}
+                        {selectedProperty && (
+                            <>
+                                {selectedProperty.hasParking && (
+                                    <div className={s.property_desc_description_facilitie}>
+                                        <img src="/Coin.png" alt="Coin" />
+                                        <p>Парковка для авто</p>
+                                    </div>
+                                )}
+                                {selectedProperty.hasCommunalPool && (
+                                    <div className={s.property_desc_description_facilitie}>
+                                        <img src="/Pool.png" alt="Pool" />
+                                        <p>Общий бассейн</p>
+                                    </div>
+                                )}
+                                {selectedProperty.hasClub && (
+                                    <div className={s.property_desc_description_facilitie}>
+                                        <img src="/Glass.png" alt="Glass" />
+                                        <p>Клуб на территории</p>
+                                    </div>
+                                )}
+                            </>
+                        )}
                     </div>
                 </div>
                 <div className={s.property_desc_information}>
+
                     <div className={s.property_desc_information_column}>
-                        {paramsSecond.map((item, index) => (
-                            <div className={s.property_desc_information_column_card} key={index}>
-                                <h3>
-                                    {item.title}
-                                </h3>
-                                <p>
-                                    {item.desc}
-                                </p>
-                            </div>
-                        ))}
+                        <div className={s.property_desc_information_column_card}>
+                            <h3>
+                                Площадь квартиры
+                            </h3>
+                            <p>
+                                {selectedProperty?.builtUpArea} м²
+                            </p>
+                        </div>
+                        <div className={s.property_desc_information_column_card}>
+                            <h3>
+                                Комнаты
+                            </h3>
+                            <p>
+                                {selectedProperty?.roomsAmount}
+                            </p>
+                        </div>
+                        <div className={s.property_desc_information_column_card}>
+                            <h3>
+                                Ориентир
+                            </h3>
+                            <p>
+                                {selectedProperty?.location}
+                            </p>
+                        </div>
                     </div>
                     <div className={s.property_desc_information_column}>
-                        {paramsFirst.map((item, index) => (
-                            <div className={s.property_desc_information_column_card} key={index}>
-                                <h3>
-                                    {item.title}
-                                </h3>
-                                <p>
-                                    {item.desc}
-                                </p>
-                            </div>
-                        ))}
+                        <div className={s.property_desc_information_column_card}>
+                            <h3>
+                                Площадь участка
+                            </h3>
+                            <p>
+                                {selectedProperty?.landArea} м²
+                            </p>
+                        </div>
+                        <div className={s.property_desc_information_column_card}>
+                            <h3>
+                                Этаж
+                            </h3>
+                            <p>
+                                {selectedProperty?.floor}
+                            </p>
+                        </div>
+                        <div className={s.property_desc_information_column_card}>
+                            <h3>
+                                Балкон
+                            </h3>
+                            <p>
+                                {selectedProperty?.balconyAmount}
+                            </p>
+                        </div>
                     </div>
                     <div className={s.property_desc_information_column}>
-
-                        {paramsThird.map((item, index) => (
-
-                            <div className={s.property_desc_information_column_card} key={index}>
-                                <h3>
-                                    {item.title}
-                                </h3>
-                                <p>
-                                    {item.desc}
-                                </p>
-                            </div>
-                        ))}
+                        <div className={s.property_desc_information_column_card}>
+                            <h3>
+                                Площадь кухни
+                            </h3>
+                            <p>
+                                {selectedProperty?.kitchenArea} м²
+                            </p>
+                        </div>
+                        <div className={s.property_desc_information_column_card}>
+                            <h3>
+                                Санузел
+                            </h3>
+                            <p>
+                                {selectedProperty?.bathroomAmount}
+                            </p>
+                        </div>
+                        <div className={s.property_desc_information_column_card}>
+                            <h3>
+                                Тип дома
+                            </h3>
+                            <p>
+                                {selectedProperty?.buildingType}
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -80,20 +157,52 @@ const PropertyDesc: React.FC = () => {
                 </h3>
                 <div className={s.property_desc_adaptive_field}>
                     <div className={s.property_desc_adaptive_facilities} >
-                        {facilitiesTop.map((item, index) => (
-                            <div className={s.property_desc_adaptive_facilitie} key={index}>
-                                <img src={item.img} alt="Restourant" />
-                                <p>{item.title}</p>
-                            </div>
-                        ))}
+                        {selectedProperty && (
+                            <>
+                                {selectedProperty.hasRestaurant && (
+                                    <div className={s.property_desc_adaptive_facilitie}>
+                                        <img src="/Restourant.png" alt="Restourant" />
+                                        <p>Ресторан</p>
+                                    </div>
+                                )}
+                                {selectedProperty.hasSpa && (
+                                    <div className={s.property_desc_adaptive_facilitie}>
+                                        <img src="/leaf.png" alt="leaf" />
+                                        <p>Спа на территории</p>
+                                    </div>
+                                )}
+                                {selectedProperty.hasGym && (
+                                    <div className={s.property_desc_adaptive_facilitie}>
+                                        <img src="/Vessel.png" alt="Vessel" />
+                                        <p>Тренажерный зал</p>
+                                    </div>
+                                )}
+                            </>
+                        )}
                     </div>
                     <div className={s.property_desc_adaptive_facilities}>
-                        {facilitiesBottom.map((item, index) => (
-                            <div className={s.property_desc_adaptive_facilitie} key={index}>
-                                <img src={item.img} alt="Coin" />
-                                <p>{item.title}</p>
-                            </div>
-                        ))}
+                        {selectedProperty && (
+                            <>
+                                {selectedProperty.hasParking && (
+                                    <div className={s.property_desc_adaptive_facilitie}>
+                                        <img src="/Coin.png" alt="Coin" />
+                                        <p>Парковка для авто</p>
+                                    </div>
+                                )}
+                                {selectedProperty.hasCommunalPool && (
+                                    <div className={s.property_desc_adaptive_facilitie}>
+                                        <img src="/Pool.png" alt="Pool" />
+                                        <p>Общий бассейн</p>
+                                    </div>
+                                )}
+                                {selectedProperty.hasClub && (
+                                    <div className={s.property_desc_adaptive_facilitie}>
+                                        <img src="/Glass.png" alt="Glass" />
+                                        <p>Клуб на территории</p>
+                                    </div>
+                                )}
+                            </>
+                        )}
                     </div>
                 </div>
             </div>

@@ -9,6 +9,7 @@ export interface RealEstate {
   builtUpArea: number;
   kitchenArea: string;
   floor: string;
+  images: {url: string}[];
   pricePerSquareMeter: number;
   bathroomAmount: string;
   balconyAmount: string;

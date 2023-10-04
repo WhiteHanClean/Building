@@ -84,8 +84,8 @@ const Slider: React.FC<{ id: number }> = ({ id }) => {
         className="build_swiper"
       >
         {" "}
-        {allOffers.map((card: RealEstate) => (
-          <SwiperSlide>
+        {allOffers.map((card: RealEstate, index) => (
+          <SwiperSlide key={index}>
               <BuildCard
                 id= {card._id}
                 img={card.mainImage}

@@ -7,18 +7,15 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import Image from "next/image";
 import { useWindowSize } from "../../hook/useSize";
-import { Arapey } from "@next/font/google";
 import { RealEstate } from "@/redux/api";
 
 interface ProductSliderProps {
-  selectedProperty: RealEstate | null; // Проверьте, что тип соответствует ожидаемому типу в ProductSlider
-  
+  selectedProperty: RealEstate | null;
 }
 
 const ProductSlider: React.FC<ProductSliderProps> = ({selectedProperty}) => {
   const [number, setNumber] = useState(1);
   const { width = 0 } = useWindowSize();
-  console.log(selectedProperty);
   
   const isScreenTable = width <= 1300;
   const isScreenTablemMini = width <= 768;
@@ -33,12 +30,12 @@ const ProductSlider: React.FC<ProductSliderProps> = ({selectedProperty}) => {
     : 460;
 
   const items = Array.from({ length: 24 }, (_, index) => index);
-  // Create a ref for the Swiper instance
+  const imagesCount = selectedProperty?.images.length || 0; // Добавляем проверку на наличие изображений
+
   const swiperRef = useRef<any | null>(null);
 
-  // Function to go to the previous slide
   const goToPrevSlide = () => {
-    if (swiperRef.current) {
+    if (imagesCount > 1 && swiperRef.current) {
       swiperRef.current.slidePrev();
       if (number !== 1) {
         setNumber((prevNumber) => prevNumber - 1);
@@ -46,16 +43,15 @@ const ProductSlider: React.FC<ProductSliderProps> = ({selectedProperty}) => {
     }
   };
 
-  // Function to go to the next slide
   const goToNextSlide = () => {
-    if (swiperRef.current) {
+    if (imagesCount > 1 && swiperRef.current) {
       swiperRef.current.slideNext();
-      if (number < items.length) {
+      if (number < imagesCount) {
         setNumber((prevNumber) => prevNumber + 1);
       }
     }
   };
-
+  
   return (
     <div className={s.productSlider_wrapper_section}>
       <div className={s.productSlider_wrapper_btn}>
@@ -80,7 +76,7 @@ const ProductSlider: React.FC<ProductSliderProps> = ({selectedProperty}) => {
         </div>
         <div className={s.productSlider_wrapper_btnText}>
           <p className={s.productSlider_number}>
-            <span>{number}</span> из <span>{items.length}</span>
+            <span>{number}</span> из <span>{selectedProperty?.images.length}</span>
           </p>
         </div>
       </div>
@@ -91,15 +87,15 @@ const ProductSlider: React.FC<ProductSliderProps> = ({selectedProperty}) => {
             draggable: true,
           }}
           modules={[Scrollbar]}
-          onSwiper={(swiper) => {
+          onSwiper={(swiper: any) => {
             swiperRef.current = swiper;
           }}
         >
-          {items.map(() => (
-            <SwiperSlide>
+          {selectedProperty?.images.map((items, index) => (
+            <SwiperSlide key={index}>
               <div className={s.productSlider_wrapper_img}>
                 <Image
-                  src={"/FotoHouse.jpg"}
+                  src={items.url}
                   alt="Foto House"
                   width={847}
                   height={heightImg}
