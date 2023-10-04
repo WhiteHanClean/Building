@@ -1,5 +1,6 @@
 .filter_drawer {
   background-color: #dfdad8 !important;
+  padding: 0 15px;
 }
 
 .burger_wrapperClose_block {
@@ -24,4 +25,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+@media only screen and (max-width: 400px) {
+  .burger_wrapperClose_block {
+    margin-left: 20px;
+  }
 }

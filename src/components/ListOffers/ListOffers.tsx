@@ -1,27 +1,104 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import s from "./ListOffers.module.scss";
 import BuildCard from "../BuildCard/BuildCard";
-import Link from "next/link";
-// import Pagination from "../Pagination/Pagination";
-// import { useGetObjectsQuery } from "../../api/Api";
+import {
+  FilterParams,
+  RealEstate,
+  useGetAllOffersQuery,
+  useGetUnFilteredOffersQuery,
+} from "../../redux/api";
+import { useGetFilteredOffersQuery } from "@/redux/api";
+import { useSelector } from "react-redux";
+import Pagination from "../Pagination/Pagination";
+import { useWindowSize } from "@/hook/useSize";
+interface Props {
+  isRent: boolean;
+  filterParams: FilterParams;
+}
 
-const ListOffers: React.FC<{ id: number }> = ({id}) => {
+// !===========================================================main function====================================================
+
+const ListOffers = ({ isRent, filterParams }: Props) => {
+  const [isFilter, setIsFilter] = useState(
+    Object.keys(filterParams).length != 0
+  );
+
   const [selectedValue, setSelectedValue] = useState("");
-  //   const [currentPage, setCurrentPage] = useState(1);
-  //   const { data, error, isLoading } = useGetObjectsQuery(currentPage);
+  const [allOffers, setAllOffers] = useState<RealEstate[]>([]);
+  const { width = 1 } = useWindowSize();
+  console.log(width, "width");
+  const [currentPage, setCurrentPage] = useState(1);
+  const { data: totalPages } = useGetAllOffersQuery();
 
-  //   const handlePageChange = (newPage: React.SetStateAction<number>) => {
-  //     setCurrentPage(newPage);
-  //   };
+  console.log(totalPages, "totalPages");
 
-  const items = Array.from({ length: 99 }, (_, index) => index);
+  if (isFilter) {
+    const { data, error, isLoading } = useGetFilteredOffersQuery({
+      isRent: isRent,
+      currentPage: currentPage,
+      filterParams: filterParams,
+    });
+  } else {
+    const { data, error, isLoading } = useGetUnFilteredOffersQuery({
+      isRent: isRent,
+      currentPage: currentPage,
+    });
+  }
+  const { data, error, isLoading } = useGetFilteredOffersQuery({
+    isRent: isRent,
+    currentPage: currentPage,
+    // filterParams: filterParams,
+  });
+
+  console.log(data, "data");
+
+  useEffect(() => {
+    if (data) {
+      setAllOffers(data);
+    }
+  }, [data]);
+
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+    console.log(currentPage);
+  };
+
+  // сортировка по убыванию
+  function sortByPriceAscending() {
+    const sortedOffers = allOffers.slice().sort((a, b) => a.price - b.price);
+    setAllOffers(sortedOffers);
+  }
+
+  //сортировка по возрастанию
+  function sortByPriceDescending() {
+    const sortedOffers = allOffers.slice().sort((a, b) => b.price - a.price);
+    setAllOffers(sortedOffers);
+  }
+
+  // //сортировка в случайном порядке
+  function sortByPriceRandom() {
+    const randomSortedOffers = allOffers
+      .slice()
+      .sort(() => Math.random() - 0.5);
+    setAllOffers(randomSortedOffers);
+  }
 
   const handleSelectChange = (e: { target: { value: any } }) => {
     const newValue = e.target.value;
     setSelectedValue(newValue);
   };
 
-  console.log(selectedValue);
+  useEffect(() => {
+    if (selectedValue === "expensive") {
+      sortByPriceDescending();
+    }
+    if (selectedValue === "cheap") {
+      sortByPriceAscending();
+    }
+    if (selectedValue === "all") {
+      sortByPriceRandom();
+    }
+  }, [selectedValue]);
 
   return (
     <section className={s.listOffer_section}>
@@ -41,44 +118,54 @@ const ListOffers: React.FC<{ id: number }> = ({id}) => {
               <option value="" disabled className={s.listOffer_option}>
                 Выбрать
               </option>
-              <option value="Все" className={s.listOffer_option}>
+              <option value="all" className={s.listOffer_option}>
                 Все
               </option>
-              <option
-                value="По цене: сначала дорогие"
-                className={s.listOffer_option}
-              >
+              <option value="expensive" className={s.listOffer_option}>
                 По цене: сначала дорогие
               </option>
-              <option
-                value="По цене: сначала дешевые"
-                className={s.listOffer_option}
-              >
+              <option value="cheap" className={s.listOffer_option}>
                 По цене: сначала дешевые
               </option>
             </select>
           </div>
         </div>
         <div className={s.listOffer_text_wrapper}>
-          <p className={s.listOffer_text}>
-            Всего объектов: <span>5 760</span>
-          </p>
+          {totalPages && data ? (
+            <p className={s.listOffer_text}>
+              Всего объявлений: {totalPages.length}
+            </p>
+          ) : (
+            <p className={s.listOffer_text}>Всего объявлений: 0</p>
+          )}
         </div>
       </div>
       <ul className={s.listOffer_list}>
-        {items.map((item, index) => (
-          <li key={index} className={s.listOffer_item}>
-            <Link href={`/DetailProperty/${id}`}>
-              <BuildCard />
-            </Link>
-          </li>
-        ))}
+        {data && totalPages
+          ? data.map((card: RealEstate) => (
+              <li key={card._id} className={s.listOffer_item}>
+                <BuildCard
+                  id={card._id}
+                  img={card.mainImage}
+                  alt={card.alt}
+                  name={card.title}
+                  price={card.price}
+                  rooms={card.roomsAmount}
+                  builtUpArea={card.builtUpArea}
+                  landArea={card.landArea}
+                  location={card.location}
+                />
+              </li>
+            ))
+          : "empty"}
       </ul>
-      {/* <Pagination
-        currentPage={currentPage}
-        totalPages={общее число страниц}
-        onPageChange={handlePageChange}
-      /> */}
+      {totalPages && data && (
+        <Pagination
+          totalItems={totalPages.length}
+          limit={9}
+          onPageChange={handlePageChange}
+        />
+      )}
     </section>
   );
 };

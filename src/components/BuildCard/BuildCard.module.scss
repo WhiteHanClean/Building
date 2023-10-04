@@ -49,7 +49,15 @@
   }
 }
 
+.card_wrapper_img {
+  height: 270px;
+  object-fit: contain;
+}
+
 @media only screen and (max-width: 1024px) {
+  .card_wrapper_img {
+    height: 236px;
+  }
   .card_container {
     .card_name {
       margin-top: 12px;
@@ -70,3 +78,4 @@
     }
   }
 }
+

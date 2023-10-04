@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import s from "./Slider.module.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Scrollbar } from "swiper/modules";
@@ -9,11 +9,12 @@ import "swiper/css/pagination";
 import 'swiper/css/scrollbar';
 import "swiper/css/navigation";
 import Image from "next/image";
+import { RealEstate, useGetAllOffersQuery } from "@/redux/api";
+
 
 const Slider: React.FC<{ id: number }> = ({ id }) => {
   // Create a ref for the Swiper instance
   const swiperRef = useRef<any | null>(null);
-
   // Function to go to the previous slide
   const goToPrevSlide = () => {
     if (swiperRef.current) {
@@ -27,6 +28,15 @@ const Slider: React.FC<{ id: number }> = ({ id }) => {
       swiperRef.current.slideNext();
     }
   };
+
+  const { data } = useGetAllOffersQuery();
+  const [allOffers, setAllOffers] = useState<RealEstate[]>([]);
+
+  useEffect(() => {
+    if (data) {
+      setAllOffers(data);
+    }
+  }, [data]);
 
   return (
     <>
@@ -74,41 +84,21 @@ const Slider: React.FC<{ id: number }> = ({ id }) => {
         className="build_swiper"
       >
         {" "}
-        <SwiperSlide>
-          <Link href={`/DetailProperty/${id}`}>
-            <BuildCard />
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link href={`/DetailProperty/${id}`}>
-            <BuildCard />
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link href={`/DetailProperty/${id}`}>
-            <BuildCard />
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link href={`/DetailProperty/${id}`}>
-            <BuildCard />
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link href={`/DetailProperty/${id}`}>
-            <BuildCard />
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link href={`/DetailProperty/${id}`}>
-            <BuildCard />
-          </Link>
-        </SwiperSlide>
-        <SwiperSlide>
-          <Link href={`/DetailProperty/${id}`}>
-            <BuildCard />
-          </Link>
-        </SwiperSlide>
+        {allOffers.map((card: RealEstate) => (
+          <SwiperSlide>
+              <BuildCard
+                id= {card._id}
+                img={card.mainImage}
+                alt={card.alt}
+                name={card.title}
+                price={card.price}
+                rooms={card.roomsAmount}
+                builtUpArea={card.builtUpArea}
+                landArea={card.landArea}
+                location={card.location}
+              />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </>
   );

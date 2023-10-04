@@ -8,11 +8,18 @@ import "swiper/css/navigation";
 import Image from "next/image";
 import { useWindowSize } from "../../hook/useSize";
 import { Arapey } from "@next/font/google";
+import { RealEstate } from "@/redux/api";
 
-const ProductSlider: React.FC = () => {
+interface ProductSliderProps {
+  selectedProperty: RealEstate | null; // Проверьте, что тип соответствует ожидаемому типу в ProductSlider
+  
+}
+
+const ProductSlider: React.FC<ProductSliderProps> = ({selectedProperty}) => {
   const [number, setNumber] = useState(1);
   const { width = 0 } = useWindowSize();
-
+  console.log(selectedProperty);
+  
   const isScreenTable = width <= 1300;
   const isScreenTablemMini = width <= 768;
   const isScreenMob = width <= 428;
@@ -104,19 +111,19 @@ const ProductSlider: React.FC = () => {
         </Swiper>
         <div className={s.productSlider_wrapper_info}>
           <div className={s.productSlider_wrapper_title}>
-            <p>Icon Park</p>
-            <p>15 000 000 ₽</p>
+            <p>{selectedProperty?.title}</p>
+            <p>{selectedProperty?.price} ₽</p>
           </div>
           <div className={s.productSlider_wrapper_text}>
-            <p>Камала, Катху, Пхукет</p>
-            <p>310 000 ₽/м²</p>
+            <p>{selectedProperty?.location}</p>
+            <p>{selectedProperty?.pricePerSquareMeter} ₽/м²</p>
           </div>
           <ul className={s.productSlider_list}>
             <li className={s.productSlider_items}>
-              <p>3-комнатная квартира</p>
+              <p>{selectedProperty?.roomsAmount}-комнатная квартира</p>
             </li>
             <li className={s.productSlider_items}>
-              <p>Площадь квартиры: 234 м²</p>
+              <p>Площадь квартиры: {selectedProperty?.builtUpArea}</p>
             </li>
             <li className={s.productSlider_items}>
               <p>Год постройки: 2020</p>
