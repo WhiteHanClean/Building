@@ -21,6 +21,7 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
   const [selectedValue, setSelectedValue] = useState("");
   const [allOffers, setAllOffers] = useState<RealEstate[]>([]);
   const { width = 1 } = useWindowSize();
+
   const [currentPage, setCurrentPage] = useState(1);
   const { data: totalPages } = useGetAllOffersQuery();
 
@@ -30,15 +31,20 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
       isRent: isRent,
       currentPage: currentPage,
       filterParams: filterParams,
+      limit: width <= 769 ? 6 : 9,
     });
   } else {
     offersQuery = useGetUnFilteredOffersQuery({
       isRent: isRent,
       currentPage: currentPage,
+      limit: width <= 769 ? 6 : 9,
     });
   }
 
   const { data, error, isLoading } = offersQuery;
+
+  console.log("total", totalPages);
+  console.log("paginate", data);
 
   useEffect(() => {
     if (data) {
@@ -148,7 +154,7 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
       {totalPages && allOffers && (
         <Pagination
           totalItems={totalPages.length}
-          limit={9}
+          limit={width <= 769 ? 6 : 9}
           onPageChange={handlePageChange}
         />
       )}
