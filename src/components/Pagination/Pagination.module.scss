@@ -2,11 +2,11 @@
   max-width: 560px;
   width: 93vw;
   list-style: none;
-  margin: 0 auto;
-  margin-top: 60px; // 40 428
+  margin: 60px auto; // 40 auto 428
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 10px; // 6px 440
 }
 
 .pageNumber {
@@ -59,7 +59,7 @@
 
 @media only screen and (max-width: 651px) {
   .pagination {
-    margin-top: 40px !important;
+    margin: 40px auto !important; // 40 auto 428x
   }
 }
 
@@ -70,7 +70,15 @@
 }
 
 @media only screen and (max-width: 440px) {
+  .pagination {
+    gap: 6px;
+  }
   .button {
+    width: 26px !important;
+    height: 26px !important;
+    font-size: 10px !important;
+  }
+  .pageNumber {
     width: 26px !important;
     height: 26px !important;
     font-size: 10px !important;
