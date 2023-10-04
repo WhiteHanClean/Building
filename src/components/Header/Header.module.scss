@@ -1,3 +1,5 @@
+@import '../../styles/variable';
+
 .header {
   max-width: 100%;
   display: flex;
@@ -22,12 +24,10 @@
         margin-right: 55px;
         a {
           text-decoration: none;
-          color: var(--color-text, #6c6c6a);
-          font-family: "Inter", sans-serif;
-          font-size: 14.004px;
-          font-style: normal;
-          font-weight: 500;
-          line-height: 160%;
+          @include sizer(14.004px);
+          color: var(--color-text, #6c6c6a) !important;
+          font-weight: 500 !important;
+          line-height: 160% !important;
           transition: 0.1s ease;
         }
 
@@ -55,12 +55,10 @@
         justify-content: space-between;
         span {
           margin-left: 4px;
+          @include sizer(14px);
           color: var(--color-black, #000);
-          font-family: "Inter", sans-serif;
-          font-size: 14px;
-          font-style: normal;
-          font-weight: 500;
-          line-height: 160%;
+          font-weight: 500 !important;
+          line-height: 160% !important;
           cursor: pointer;
         }
       }
@@ -76,11 +74,9 @@
         display: flex;
         li {
           color: var(--color-black, #000);
-          font-family: "Inter", sans-serif;
-          font-size: 14px;
-          font-style: normal;
-          font-weight: 500;
-          line-height: 160%;
+          @include sizer(14px);
+          font-weight: 500 !important;
+          line-height: 160% !important;
           cursor: pointer;
         }
         li:first-child {

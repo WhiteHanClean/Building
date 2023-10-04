@@ -19,12 +19,8 @@
 }
 
 .ListingHero_content_title {
-  color: #fff;
-  font-family: Inter;
-  font-size: 35px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
+  @include sizer(35px);
+  color: #fff !important;
   letter-spacing: -1.05px;
 }
 
@@ -39,12 +35,10 @@
 }
 
 .ListingHero_description_title {
-  color: #fff;
-  font-family: Inter;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 150%;
+  @include sizer(14px);
+  color: #fff !important;
+  font-weight: 500 !important;
+  line-height: 150% !important;
 }
 
 @media only screen and (max-width: 1024px) {

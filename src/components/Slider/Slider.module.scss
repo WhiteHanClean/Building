@@ -1,15 +1,12 @@
+@import '../../styles/variable';
+
 .header_slider {
   display: flex;
   margin-top: 130px;
   margin-bottom: 40px;
   justify-content: space-between;
   p {
-    color: var(--color-black, #000);
-    font-family: 'Inter', sans-serif;
-    font-size: 35px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
+    @include sizer(35px);
     letter-spacing: -1.05px;
   }
   .btn_group {

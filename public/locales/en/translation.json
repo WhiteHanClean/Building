@@ -107,15 +107,15 @@
       "legalSupport": "Legal Support",
       "legalSupportDescription": " Detailed study of the reputation of the builder, checking the availability of all necessary documents, the absence of encumbrances, liens. Assistance in opening a bank account, opening a company, assistance in real estate registration, acceptance of the object.",
       "turnkeyConstruction": "Turnkey construction",
-      "turnkeyConstructionDescription": "Full cycle of services - selection of land, project approvals and construction on it with a wealth of experience in the market.",
+      "turnkeyConstructionDescription": "Full cycle of services - selection of land, \n project approvals   and construction on it with a wealth of \n  experience in the market.",
       "moneyTransfers": "Money Transfers",
-      "moneyTransfersDescription": "We help our clients to make safe and fast currency transfers at favorable rates.",
+      "moneyTransfersDescription": "We help our clients to make safe \n  and fast currency transfers at favorable rates.",
       "interiorDesign": "Interior Design",
-      "interiorDesignDescription": "The designers on our team can customize a high quality furniture package, prepare the property for letting or sale, increasing the value of the property by an average of 8%.",
+      "interiorDesignDescription": "The designers on our team can customize a high quality \n furniture package, prepare the property for letting or sale, \n  increasing the value of the property \n  by an average of 8%.",
       "visaProcessing": "Visa Processing",
       "ivisaProcessingDescription": "We help our clients with visa processing. The official partner of the program is Thai Elite.",
       "qualityControl": "Quality Control",
-      "qualityControlDescription": "We conduct a thorough analysis of the real estate market, study the developer's documents, check the quality of construction and materials."
+      "qualityControlDescription": "We conduct a thorough analysis of the real estate market, \n study the developer's documents, check the quality \n of construction and materials."
     },
     "socialNetworkBlock": {
       "title": "Our Instagram blog",
@@ -174,21 +174,21 @@
     },
     "company": {
       "title": "About the company",
-      "descriptionPart1": "Property Library Phuket is a team of professionals with extensive experience in real estate. I am Elnur Khankishiev, the founder of the agency. Our story began in 2011, when I moved from Russia and started a career in a travel company on the beautiful island of Phuket, the pearl of Southeast Asia.",
-      "descriptionPart2": "Since then, we have been successfully helping our clients find ideal objects for living and investing. Entrust your investments to us and we will help you realize your dreams in Phuket."
+      "descriptionPart1": "Property Library Phuket is a team of professionals with extensive experience in real estate. I am Elnur Khankishiev, the founder of the agency.\n \n  Our story began in 2011, when I moved from Russia and started a career in a travel company on the beautiful island of Phuket, the pearl of Southeast Asia.",
+      "descriptionPart2": "Since then, we have been successfully helping our clients find ideal objects for living and investing.\n \n  Entrust your investments to us and we will help you realize your dreams in Phuket."
     },
     "founderQuote": "\"Make the right choice with Property Library Phuket — your reliable partner in the real estate world.\"",
     "fullService": {
       "title": "Full range of services",
       "subtitle": "Join our community of successful investors and satisfied homeowners in Phuket.",
       "professionalism": "Professionalism",
-      "professionalismSubtitle": "We are proud of our service, which includes the selection of the most liquid real estate objects.",
+      "professionalismSubtitle": "We are proud of our service,\n  which includes the selection \n of the most liquid real estate objects.",
       "quality": "Quality",
-      "qualitySubtitle": "We conduct a detailed study of the reputation of the developer, check the availability all documents and no encumbrances.",
+      "qualitySubtitle": "We conduct a detailed study of the reputation \n of the developer, check  the availability \n  all documents and no encumbrances.",
       "safety": "Safety",
-      "safetySubtitle": "The importance of compliance with quality and safety standards is a priority for us, and our lawyers accompany you at the stage of the entire transaction.",
+      "safetySubtitle": "The importance of compliance with quality\n  and safety standards is a priority for us, and our \n lawyers accompany you at the stage of the entire transaction.",
       "construction": "Construction",
-      "constructionSubtitle": "Construction with a full cycle of services, as well as exclusive rights to cooperation: bonuses, favorable price, some of the best view lots."
+      "constructionSubtitle": "Construction with a full cycle of services,\n  as well as exclusive rights to cooperation:\n  bonuses, favorable price, some of the best \n  view lots."
     }
   },
   "accommodation": {
@@ -198,13 +198,13 @@
     },
     "conditions": {
       "apartmentEvaluation": "Apartment evaluation",
-      "apartmentEvaluationDescription": "Our experts will help you evaluate the apartment and give practical recommendations for the most profitable rental",
+      "apartmentEvaluationDescription": "Our experts will help you evaluate \n the apartment and give practical recommendations \n  for the most profitable rental",
       "searchForTenants": "Search for tenants",
-      "searchForTenantsDescription": "We will inform our private and corporate clients about renting an apartment and select a reliable tenant",
+      "searchForTenantsDescription": "We will inform our private and corporate \n clients about renting an apartment\n  and select a reliable tenant",
       "apartmentDisplay": "Apartment display",
-      "apartmentDisplayDescription": "Entrust the display of the apartment to our specialists and it will save you time and allow you to choose the most favorable offer",
+      "apartmentDisplayDescription": "Entrust the display of the apartment to our \n  specialists and it will save you time \n and allow you to choose the most favorable offer",
       "contract": "Contract",
-      "contractDescription": "Approval and signing of a lease agreement protecting your interests and its support during the entire lease term"
+      "contractDescription": "Approval and signing of a lease \n  agreement protecting your interests and its support \n  during the entire lease term"
     },
     "benefits": {
       "title": "Profitable cooperation",

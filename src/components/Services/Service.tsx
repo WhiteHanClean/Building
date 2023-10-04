@@ -2,16 +2,15 @@ import React from "react";
 import s from "./Service.module.scss";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
-
 const Service = () => {
   const { t } = useTranslation();
+
   return (
     <div className={s.service}>
       <h2>{t("main.services.title")}</h2>
       <div className={s.service_content}>
         <div className={s.sevice_content_block}>
           <h6>{t("main.services.legalSupport")}</h6>
-
           <p>{t("main.services.legalSupportDescription")}</p>
 
           <div className={s.service_icon_block}>

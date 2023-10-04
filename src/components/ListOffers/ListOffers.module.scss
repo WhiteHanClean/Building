@@ -1,10 +1,10 @@
+@import '../../styles/variable';
+
 .listOffer_label {
-  color: #6c6c6a;
-  font-family: Inter;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 160%;
+  @include sizer(14px);
+  color: #6c6c6a !important;
+  font-weight: 500 !important;
+  line-height: 160% !important;
 }
 
 .listOffer_select {
@@ -15,21 +15,15 @@
 }
 
 .listOffer_option {
-  color: #000;
-  font-family: Inter;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 160%;
+  @include sizer(14px);
+  font-weight: 500 !important;
+  line-height: 160% !important;
 }
 
 .listOffer_text {
-  color: #000;
-  font-family: Inter;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 160%;
+  @include sizer(14px);
+  font-weight: 500 !important;
+  line-height: 160% !important;
 }
 
 .listOffer_text_wrapper {
@@ -84,11 +78,8 @@
 
 @media only screen and (max-width: 428px) {
   .listOffer_text {
-    color: #000;
-    font-family: Inter;
-    font-size: 12px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 160%;
+    @include sizer(12px);
+    font-weight: 500 !important;
+    line-height: 160% !important;
   }
 }

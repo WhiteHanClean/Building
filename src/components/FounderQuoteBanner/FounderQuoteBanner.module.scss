@@ -24,11 +24,9 @@
     margin: 30px;
 
     h4 {
-      font-family: Inter;
-      font-size: 18px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 150%;
+      @include sizer(18px);
+      font-weight: 500 !important;
+      line-height: 150% !important;
       opacity: 0.5;
       padding: 30px;
     }
@@ -43,21 +41,14 @@
     border-radius: 10px;
     background: var(--color-background, #f1efec);
     h2 {
-      color: var(--color-black, #000);
-      font-family: Inter;
-      font-size: 22px;
-      font-style: normal;
-      font-weight: 600;
-      line-height: normal;
+      @include sizer(22px);
       margin-bottom: 20px;
     }
     h5 {
-      color: var(--color-text, #6c6c6a);
-      font-family: Inter;
-      font-size: 14px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 150%;
+      @include sizer(14px);
+      color: var(--color-text, #6c6c6a) !important;
+      font-weight: 500 !important;
+      line-height: 150% !important;
     }
   }
 }

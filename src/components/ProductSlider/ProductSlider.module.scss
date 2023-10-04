@@ -1,4 +1,4 @@
-@import "../../styles/variable";
+@import '../../styles/variable';
 
 .productSlider_wrapper_section {
   position: relative;
@@ -59,12 +59,8 @@
 }
 
 .productSlider_number {
-  color: #000;
-  font-family: Inter;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+  @include sizer(12px);
+  font-weight: 500 !important;
 }
 
 .productSlider_wrapper {
@@ -89,13 +85,7 @@
 .productSlider_wrapper_title {
   display: flex;
   justify-content: space-between;
-
-  color: #000;
-  font-family: Inter;
-  font-size: 22px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
+  @include sizer(22px);
   text-transform: capitalize;
 }
 
@@ -104,12 +94,9 @@
   justify-content: space-between;
   margin-top: 5px;
 
-  color: #6c6c6a;
-  font-family: Inter;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+  @include sizer(15px);
+  color: #6c6c6a !important;
+  font-weight: 500 !important;
   text-transform: capitalize;
 }
 
@@ -125,12 +112,8 @@
   border-radius: 8px;
   background-color: #f1efec;
 
-  color: #000;
-  font-family: Inter;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+  @include sizer(14px);
+  font-weight: 500 !important;
   width: 100%;
 }
 
