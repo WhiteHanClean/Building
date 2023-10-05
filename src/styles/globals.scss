@@ -80,11 +80,24 @@ select {
 #root,
 #__next {
   isolation: isolate;
+  white-space: pre-line;
+}
+
+.ant-drawer-body {
+  padding: 0 0 20px 0 !important;
+}
+
+.filter_drawer.ant-drawer-wrapper-body {
+  width: 100%;
 }
 
 .ant-drawer-wrapper-body {
+  padding: 0 10px !important;
   animation: drawerFadeIn 0.3s ease-in-out !important; /* Имя анимации, длительность и эффект */
   transition: opacity 0.3s ease-in-out !important; /* Плавное изменение прозрачности */
+}
+.ant-drawer-header {
+  padding: 16px 14px !important;
 }
 .ant-drawer-header-title {
   display: flex !important;
@@ -103,7 +116,6 @@ select {
 
 .ant-checkbox-input:hover {
   border-color: black;
-
 }
 
 .header_slider.swiper-slide {

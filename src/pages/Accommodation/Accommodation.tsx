@@ -9,10 +9,10 @@ const Accommodation = () => {
   return (
     <div>
       <ListingHero />
-      <Conditions/>
+      <Conditions />
       <Benefits />
-      <Questions/>
-      <Consultation/>
+      <Questions />
+      <Consultation />
     </div>
   );
 };

@@ -19,6 +19,12 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/PaginationProgressBar"],
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/components/PaginationProgressBar",
+    "src/redux/store.ts"
+  ],
   "exclude": ["node_modules"]
 }

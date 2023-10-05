@@ -1,29 +1,22 @@
 import React from "react";
 import s from "./TypesOfServices.module.scss";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 const TypesOfServices = () => {
+  const { t } = useTranslation();
   return (
     <div className={s.typesOfServices}>
       <div className={s.typesOfServices_content}>
         <div className={s.typesOfServices_content_block_common}>
-          <h4>Услуги</h4>
+          <h4>{t("main.typesOfServices.services")}</h4>
 
-          <p>
-            Мы предлагаем широкий спектр услуг,
-            <br /> соблюдая высокое качество сервиса
-            <br />
-            для наших клиентов.
-          </p>
+          <p>{t("main.typesOfServices.proposal")}</p>
         </div>
         <div className={s.typesOfServices_content_block}>
-          <h6>Покупка</h6>
+          <h6> {t("main.typesOfServices.purchase")}</h6>
 
-          <p>
-            Подберем для вас самые ликвиднее объекты <br />
-            недвижимости для жизни и инвестирования
-            <br /> на острове Пхукет.
-          </p>
+          <p>{t("main.typesOfServices.purchaseProposal")} </p>
 
           <div className={s.service_icon_block}>
             <Image
@@ -36,13 +29,9 @@ const TypesOfServices = () => {
         </div>
 
         <div className={s.typesOfServices_content_block}>
-          <h6>Разместить свою недвижимость</h6>
+          <h6>{t("main.typesOfServices.postRealEstate")} </h6>
 
-          <p>
-            Наши специалисты помогут с продажей, а также <br />
-            предоставят возможность вам сдавать в аренду
-            <br /> свою недвижимость с доходностью 6-10% годовых.
-          </p>
+          <p>{t("main.typesOfServices.postRealEstateProposal")}</p>
 
           <div className={s.service_icon_block}>
             <Image
@@ -55,13 +44,9 @@ const TypesOfServices = () => {
         </div>
 
         <div className={s.typesOfServices_content_block}>
-          <h6>Аренда</h6>
+          <h6>{t("main.typesOfServices.rent")}</h6>
 
-          <p>
-            Персональная подготовка к заселению, <br />
-            встреча в аэропорту, надежное обслуживание <br />и постоянная
-            поддержка.
-          </p>
+          <p>{t("main.typesOfServices.rentProposal")}</p>
 
           <div className={s.service_icon_block}>
             <Image
