@@ -1,74 +1,57 @@
-import React from 'react';
-import s from './Stages.module.scss';
-import Image from 'next/image';
-import StageCard from './StageCard/StageCard';
+import React from "react";
+import s from "./Stages.module.scss";
+import Image from "next/image";
+import StageCard from "./StageCard/StageCard";
+import { useTranslation } from "react-i18next";
 
 const Stages = () => {
+  const { t } = useTranslation();
   return (
     <>
       <div className={s.stages_header_content}>
         <div className={s.stages_header}>
-          <h1>Мы заботимся о вашем комфорте</h1>
-          <p>
-            Мы регулярно обновления и анализируем рынок, предоставляя клиентам
-            актуальные данные для принятия обоснованных решений, а наши
-            специалисты обеспечат вам комфорт и надежность на каждом этапе
-            сделки.
-          </p>
+          <h1>{t("main.stages.title")}</h1>
+          <p>{t("main.stages.descriptionOfTheStages")}</p>
         </div>
       </div>
       <div className={s.stages_content}>
         <div className={s.stages_picture}>
-          <Image
-            src={'/bgWorkOfStages.png'}
-            width={522}
-            height={589}
-            alt="work of stages bg"
-          />
+          <div className={s.stage_picture_text}>
+          <h1>{t("main.stages.title")}</h1>
+          <p>{t("main.stages.descriptionOfTheStages")}</p>
+          </div>
         </div>
         <div className={s.stages_cards}>
           <StageCard
-            number={'1'}
-            headerText={'Первый шаг'}
-            description={
-              'Подберём подходящие объекты, составим индивидуальную программу просмотров, учитывая ваши пожелания.'
-            }
+            number={"1"}
+            headerText={t("main.stages.step1")}
+            description={t("main.stages.step1Description")}
           />
 
           <StageCard
-            number={'2'}
-            headerText={'Второй шаг'}
-            description={
-              'Встретим вас в удобной локации на комфортабельном автомобиле и покажем объекты из нашего списка.'
-            }
+            number={"2"}
+            headerText={t("main.stages.step2")}
+            description={t("main.stages.step2Description")}
           />
           <StageCard
-            number={'3'}
-            headerText={'Третий шаг'}
-            description={
-              'Выбираем проект, получаем самые выгодные условия от нашей компании.'
-            }
+            number={"3"}
+            headerText={t("main.stages.step3")}
+            description={t("main.stages.step3Description")}
           />
           <StageCard
-            number={'4'}
-            headerText={'Четвертый шаг'}
-            description={
-              'Предоставим уставные документы, договор купли-продажи и расскажем о формах собственности на недвижимость.'
-            }
+            number={"4"}
+            headerText={t("main.stages.step4")}
+            description={t("main.stages.step4Description")}
           />
           <StageCard
-            number={'5'}
-            headerText={'Пятый шаг'}
-            description={
-              'Бронируем объект, получаем договор резервации и оплачиваем депозит.'
-            }
+            number={"5"}
+            headerText={t("main.stages.step5")}
+            description={t("main.stages.step5Description")}
           />
           <StageCard
-            number={'6'}
-            headerText={'Шестой шаг'}
-            description={
-              'Составляем контракт, заключаем сделку и оплачиваем квартиру.'
-            }
+            number={"6"}
+            headerText={t("main.stages.step6")}
+            description={t("main.stages.step6Description")}
           />
         </div>
       </div>

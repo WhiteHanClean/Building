@@ -1,0 +1,220 @@
+{
+  "main": {
+    "header": {
+      "mainPage": "Main",
+      "purchase": "Purchase",
+      "rent": "Rent",
+      "accommodation": "Accommodation",
+      "aboutUs": "About us",
+      "phuket": "Phuket",
+      "orderACall": "Order a call"
+    },
+    "buildBanner": {
+      "title": "Open the door to the world of paradise real estate with us!",
+      "quote": "Property Library Phuket — your key to successful investments and a comfortable life on the island of Phuket.",
+      "buildApplication": "Filter to find your ideal home",
+      "tabDataPurchase": "Purchase",
+      "tabDataRent": "Rent"
+    },
+    "searchBar": {
+      "realty": "Realty",
+      "district": "District",
+      "rooms": "Number of rooms",
+      "price": "Price",
+      "search": "Search",
+      "villa": "Villa",
+      "apartment": "Apartment",
+      "showAllOptions": "Show all options",
+      "select": "Select",
+      "districtVariant": {
+        "aoPo": "Ao Po",
+        "bangTao": "Bang Tao",
+        "kalim": "Kalim",
+        "kamala": "Kamala",
+        "karon": "Karon",
+        "kata": "Kata",
+        "katu": "Katu",
+        "lagunaPhuket": "Laguna Phuket",
+        "layan": "Layan",
+        "maiKhao": "Mai Khao",
+        "naiThon": "Nai Thon",
+        "naiHarn": "Nai Harn",
+        "naiYang": "Nai Yang",
+        "natai": "Natai",
+        "patong": "Patong",
+        "rawai": "Rawai",
+        "surin": "Surin",
+        "talang": "Talang",
+        "centralPhuket": "Central Phuket",
+        "chalong": "Chalong",
+        "allOptions": "Show all options"
+      },
+      "roomVariant": {
+        "studio": "Studio",
+        "bedroom1": "1 bedroom",
+        "bedroom2": "2 bedrooms",
+        "bedroom3": "3 bedrooms",
+        "bedroom4": "4 bedrooms",
+        "bedroom5": "5 bedrooms",
+        "allOptions": "Show all options"
+      }
+    },
+    "statistic": {
+      "title": "The perfect accommodation for your life",
+      "years": "Years on the market",
+      "satisfiedClients": "Satisfied clients",
+      "readyMadeProjects": "Ready-made projects",
+      "investments": "Investments per year",
+
+      "fieldsLeftDesc": {
+        "field1": "High service and individual approach to each client",
+        "field2": "Exclusive offers from the developer",
+        "field3": "Full support at all stages of the transaction",
+        "field4": "Careful selection of objects, verification of all documents"
+      }
+    },
+    "slider": {
+      "title": "Top-10 projects"
+    },
+    "typesOfServices": {
+      "services": "Services",
+      "proposal": "We offer a wide range of services, respecting the high quality of service for our customers.",
+      "purchase": "Purchase",
+      "purchaseProposal": "We will find you the most liquid properties for living and investing in Phuket Island.",
+      "postRealEstate": "Post your real estate",
+      "postRealEstateProposal": "Our specialists will help with the sale, as well as give you the opportunity to rent out your property with a 6-10% annual return.",
+      "rent": "Rent",
+      "rentProposal": "Personalized check-in preparation, airport pick-up, reliable service and ongoing support."
+    },
+    "stages": {
+      "title": "We care about your comfort",
+      "descriptionOfTheStages": "We regularly update and analyze the market, providing our clients with up-to-date data to make informed decisions, and our specialists will provide you with comfort and reliability at every stage of the of the transaction.",
+      "step1": "First step",
+      "step1Description": "We will select suitable objects, make an individual program of viewings, taking into account your wishes.",
+      "step2": "Second step",
+      "step2Description": "We will meet you at a convenient location in a comfortable car and show you the objects from our list.",
+      "step3": "Third step",
+      "step3Description": "We choose the project, get the most favorable terms from our company.",
+      "step4": "Fourth step",
+      "step4Description": "We will provide statutory documents, purchase agreement and tell you about the forms of real estate ownership.",
+      "step5": "Fifth step",
+      "step5Description": "We book the property, get a reservation agreement and pay the deposit.",
+      "step6": "Sixth step",
+      "step6Description": "We draw up the contract, make the deal and pay for the apartment."
+    },
+    "services": {
+      "title": "Services",
+      "legalSupport": "Legal Support",
+      "legalSupportDescription": " Detailed study of the reputation of the builder, checking the availability of all necessary documents, the absence of encumbrances, liens. Assistance in opening a bank account, opening a company, assistance in real estate registration, acceptance of the object.",
+      "turnkeyConstruction": "Turnkey construction",
+      "turnkeyConstructionDescription": "Full cycle of services - selection of land, \n project approvals   and construction on it with a wealth of \n  experience in the market.",
+      "moneyTransfers": "Money Transfers",
+      "moneyTransfersDescription": "We help our clients to make safe \n  and fast currency transfers at favorable rates.",
+      "interiorDesign": "Interior Design",
+      "interiorDesignDescription": "The designers on our team can customize a high quality \n furniture package, prepare the property for letting or sale, \n  increasing the value of the property \n  by an average of 8%.",
+      "visaProcessing": "Visa Processing",
+      "ivisaProcessingDescription": "We help our clients with visa processing. The official partner of the program is Thai Elite.",
+      "qualityControl": "Quality Control",
+      "qualityControlDescription": "We conduct a thorough analysis of the real estate market, \n study the developer's documents, check the quality \n of construction and materials."
+    },
+    "socialNetworkBlock": {
+      "title": "Our Instagram blog",
+      "description": "Subscribe to us on Instagram to be the first to hear about all the news, new properties and great deals.",
+      "goTo": "Go to"
+    },
+    "questions": {
+      "title": "Frequently Asked Questions",
+      "description": "Quick answers to questions you may have. Don't find what you're looking for? Request a free consultation.",
+      "rentalIssues": "Rental issues",
+      "costDependence": "What does the rental price depend on?",
+      "confirmedBooking": "When is a reservation considered confirmed?",
+      "purchasingIssues": "Purchasing issues",
+      "serviceIssues": "Service issues"
+    },
+    "consultation": {
+      "title": "Free consultation",
+      "description": "If you have any questions, leave a request and we'll get back to you within 15 minutes.",
+      "agreement": "By clicking on the \"Submit Application\" button, you agree to the",
+      "pdp": "Personal Data Policy",
+      "name": "Name",
+      "namePlaceholder": "Petr Ivanov",
+      "phoneNumber": "Phone number",
+      "comment": "Comment (optional).",
+      "commentPlaceholder": "Write the question you are interested in",
+      "sendRequest": "Send request",
+      "applicationSent": "Application sent",
+      "message": "Our manager will contact you within 15 minutes",
+      "buy": "Buy",
+      "post": "Post",
+      "rent": "Rent",
+      "other": "Other"
+    }
+  },
+  "buyingRealEstate": {
+    "title": "Buying real estate",
+    "titleForm": "Filtering",
+    "realEstate": "Real estate",
+    "select": "Select",
+    "additionalFeatures": "Additional features",
+    "totalArea": "Total area"
+  },
+  "listOffer": {
+    "sort": "Sort",
+    "all": "All",
+    "byPriceExpensive": "By price: expensive at first",
+    "byPriceCheap": "By price: cheap first",
+    "totalObjects": "Total objects:"
+  },
+  "aboutUs": {
+    "welcomeBanner": {
+      "title": "Welcome to Property Library Phuket",
+      "subtitle": "Your key to successful investments and a comfortable life on Phuket Island.",
+      "founder": "Elnur Khankishiev",
+      "founderSubtitle": "Founder of Property Library Phuket"
+    },
+    "company": {
+      "title": "About the company",
+      "descriptionPart1": "Property Library Phuket is a team of professionals with extensive experience in real estate. I am Elnur Khankishiev, the founder of the agency.\n \n  Our story began in 2011, when I moved from Russia and started a career in a travel company on the beautiful island of Phuket, the pearl of Southeast Asia.",
+      "descriptionPart2": "Since then, we have been successfully helping our clients find ideal objects for living and investing.\n \n  Entrust your investments to us and we will help you realize your dreams in Phuket."
+    },
+    "founderQuote": "\"Make the right choice with Property Library Phuket — your reliable partner in the real estate world.\"",
+    "fullService": {
+      "title": "Full range of services",
+      "subtitle": "Join our community of successful investors and satisfied homeowners in Phuket.",
+      "professionalism": "Professionalism",
+      "professionalismSubtitle": "We are proud of our service,\n  which includes the selection \n of the most liquid real estate objects.",
+      "quality": "Quality",
+      "qualitySubtitle": "We conduct a detailed study of the reputation \n of the developer, check  the availability \n  all documents and no encumbrances.",
+      "safety": "Safety",
+      "safetySubtitle": "The importance of compliance with quality\n  and safety standards is a priority for us, and our \n lawyers accompany you at the stage of the entire transaction.",
+      "construction": "Construction",
+      "constructionSubtitle": "Construction with a full cycle of services,\n  as well as exclusive rights to cooperation:\n  bonuses, favorable price, some of the best \n  view lots."
+    }
+  },
+  "accommodation": {
+    "listingHero": {
+      "title": "Place your property on Property Library Phuket",
+      "description": "Place your object with us and open the doors to a quick and profitable sale. Our experience and wide customer base guarantee success. Make the right decision with Property Library Phuket."
+    },
+    "conditions": {
+      "apartmentEvaluation": "Apartment evaluation",
+      "apartmentEvaluationDescription": "Our experts will help you evaluate \n the apartment and give practical recommendations \n  for the most profitable rental",
+      "searchForTenants": "Search for tenants",
+      "searchForTenantsDescription": "We will inform our private and corporate \n clients about renting an apartment\n  and select a reliable tenant",
+      "apartmentDisplay": "Apartment display",
+      "apartmentDisplayDescription": "Entrust the display of the apartment to our \n  specialists and it will save you time \n and allow you to choose the most favorable offer",
+      "contract": "Contract",
+      "contractDescription": "Approval and signing of a lease \n  agreement protecting your interests and its support \n  during the entire lease term"
+    },
+    "benefits": {
+      "title": "Profitable cooperation",
+      "description": "Our experts will help with the sale of your real estate or land, and will also provide you with the opportunity to rent out your real estate with a yield of 6-10% per annum.",
+      "effectively": "Effectively",
+      "efficielyDescription": "We provide a stable income of 6-10% per annum, professionally and responsibly manage your real estate.",
+      "profitably": "Profitably",
+      "profitablyDescription": "Our exclusive offers allow you to maximize your investments and provide high returns.",
+      "carefree": "Carefree",
+      "carefreeDescription": "Entrust us with all aspects of management and leasing, allowing yourself to enjoy the benefits of investment without hassle."
+    }
+  }
+}

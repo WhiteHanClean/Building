@@ -1,19 +1,18 @@
 import React from "react";
 import style from "./FounderQuoteBanner.module.scss";
+import { useTranslation } from "react-i18next";
 
 const FounderQuoteBanner = () => {
+  const { t } = useTranslation();
   return (
     <div className={style.founderQuoteBanner}>
       <div className={style.founderQuoteBanner_text_content}>
-        <h4>
-          “Сделайте правильный выбор с Property Library Phuket — вашим надежным
-          партнером в мире недвижимости.”
-        </h4>{" "}
+        <h4>{t("aboutUs.founderQuote")}</h4>{" "}
       </div>
 
       <div className={style.founderQuote_founder}>
-        <h2>Эльнур Ханкишиев</h2>
-        <h5>Основатель компании Property Library Phuket</h5>
+        <h2>{t("aboutUs.welcomeBanner.founder")}</h2>
+        <h5>{t("aboutUs.welcomeBanner.founderSubtitle")}</h5>
       </div>
     </div>
   );

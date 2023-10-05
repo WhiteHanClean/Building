@@ -80,6 +80,7 @@ select {
 #root,
 #__next {
   isolation: isolate;
+  white-space: pre-line;
 }
 
 .ant-drawer-body {

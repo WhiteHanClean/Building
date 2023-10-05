@@ -4,13 +4,19 @@ import BuildCard from "../BuildCard/BuildCard";
 import { RealEstate } from "../../redux/api";
 import { useGetFilteredOffersQuery } from "@/redux/api";
 import { useSelector } from "react-redux";
-import { RootState } from "@reduxjs/toolkit/query";
+import { useTranslation } from "react-i18next";
+import { RootState } from "@/redux/store";
+
 
 interface Props {
   isRent: boolean;
 }
 
 const ListOffers = ({ isRent }: Props) => {
+// import Pagination from "../Pagination/Pagination";
+// import { useGetObjectsQuery } from "../../api/Api";
+
+  const { t } = useTranslation();
   const [selectedValue, setSelectedValue] = useState("");
   const [allOffers, setAllOffers] = useState<RealEstate[]>([]);
 
@@ -73,7 +79,7 @@ const ListOffers = ({ isRent }: Props) => {
       <div className={s.listOffer_wraper}>
         <div className="">
           <label htmlFor="price" className={s.listOffer_label}>
-            Сортировать
+            {t("listOffer.sort")}
           </label>
           <div className={s.listOffer_wrapper_select}>
             <select
@@ -84,23 +90,29 @@ const ListOffers = ({ isRent }: Props) => {
               value={selectedValue}
             >
               <option value="" disabled className={s.listOffer_option}>
-                Выбрать
+                {t("buyingRealEstate.select")}
               </option>
-              <option value="all" className={s.listOffer_option}>
-                Все
+              <option value="Все" className={s.listOffer_option}>
+                {t("listOffer.all")}
               </option>
-              <option value="expensive" className={s.listOffer_option}>
-                По цене: сначала дорогие
+              <option
+                value="По цене: сначала дорогие"
+                className={s.listOffer_option}
+              >
+                {t("listOffer.byPriceExpensive")}
               </option>
-              <option value="cheap" className={s.listOffer_option}>
-                По цене: сначала дешевые
+              <option
+                value="По цене: сначала дешевые"
+                className={s.listOffer_option}
+              >
+                {t("listOffer.byPriceCheap")}
               </option>
             </select>
           </div>
         </div>
         <div className={s.listOffer_text_wrapper}>
           <p className={s.listOffer_text}>
-            Всего объявлений: {allOffers.length}
+            {t("listOffer.totalObjects")} <span>5 760</span>
           </p>
         </div>
       </div>

@@ -1,21 +1,17 @@
 import React from "react";
 import s from "./Service.module.scss";
 import Image from "next/image";
-
+import { useTranslation } from "react-i18next";
 const Service = () => {
+  const { t } = useTranslation();
+
   return (
     <div className={s.service}>
-      <h2>Сервисы</h2>
+      <h2>{t("main.services.title")}</h2>
       <div className={s.service_content}>
         <div className={s.sevice_content_block}>
-          <h6>Юридическое сопровождение</h6>
-
-          <p>
-            Детальное изучение репутации застройщика, проверка наличия всех
-            необходимых документов, отсутствия обременений, залогов. Помощь в
-            открытие счета в банке, открытие компании, помощь в оформлении
-            недвижимости, приемка объекта.
-          </p>
+          <h6>{t("main.services.legalSupport")}</h6>
+          <p>{t("main.services.legalSupportDescription")}</p>
 
           <div className={s.service_icon_block}>
             <Image
@@ -27,12 +23,9 @@ const Service = () => {
           </div>
         </div>
         <div className={s.sevice_content_block}>
-          <h6>Строительство под ключ</h6>
+          <h6>{t("main.services.turnkeyConstruction")}</h6>
 
-          <p>
-            Полный цикл услуг — подбор земли, <br /> согласования проекта и
-            строительства на ней <br />с учетом богатого опыта на рынке.
-          </p>
+          <p>{t("main.services.turnkeyConstructionDescription")}</p>
 
           <div className={s.service_icon_block}>
             <Image
@@ -45,12 +38,9 @@ const Service = () => {
         </div>
 
         <div className={s.sevice_content_block}>
-          <h6>Денежные переводы</h6>
+          <h6>{t("main.services.moneyTransfers")}</h6>
 
-          <p>
-            Помогаем нашим клиентам осуществить безопасный и быстрый перевод
-            валюты по выгодным тарифам.
-          </p>
+          <p>{t("main.services.moneyTransfersDescription")}</p>
 
           <div className={s.service_icon_block}>
             <Image
@@ -63,13 +53,9 @@ const Service = () => {
         </div>
 
         <div className={s.sevice_content_block}>
-          <h6>Дизайн интерьера</h6>
+          <h6>{t("main.services.interiorDesign")}</h6>
 
-          <p>
-            Дизайнеры нашей команды могут выполнить на заказ индивидуальный
-            пакет мебели высокого качества, подготовить объекта недвижимости к
-            сдаче или продаже, повышая стоимость объекта в среднем на 8%.
-          </p>
+          <p>{t("main.services.interiorDesignDescription")}</p>
 
           <div className={s.service_icon_block}>
             <Image
@@ -82,12 +68,9 @@ const Service = () => {
         </div>
 
         <div className={s.sevice_content_block}>
-          <h6>Оформление визы</h6>
+          <h6>{t("main.services.visaProcessing")}</h6>
 
-          <p>
-            Помогаем нашим клиентам с оформлением визы. Официальный партнер
-            программы — Thai Elite.
-          </p>
+          <p>{t("main.services.ivisaProcessingDescription")}</p>
 
           <div className={s.service_icon_block}>
             <Image
@@ -100,12 +83,9 @@ const Service = () => {
         </div>
 
         <div className={s.sevice_content_block}>
-          <h6>Контроль качества</h6>
+          <h6>{t("main.services.qualityControl")}</h6>
 
-          <p>
-            Мы проводим тщательный анализ рынка недвижимости, изучаем документы
-            застройщика, проверяем качество строительства и материалов.
-          </p>
+          <p>{t("main.services.qualityControlDescription")}</p>
 
           <div className={s.service_icon_block}>
             <Image

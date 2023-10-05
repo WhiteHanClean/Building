@@ -5,14 +5,15 @@ import { Scrollbar } from "swiper/modules";
 import BuildCard from "../BuildCard/BuildCard";
 import "swiper/css";
 import "swiper/css/pagination";
-import 'swiper/css/scrollbar';
+import "swiper/css/scrollbar";
 import "swiper/css/navigation";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 const Slider: React.FC = () => {
   // Create a ref for the Swiper instance
   const swiperRef = useRef<any | null>(null);
-
+  const { t } = useTranslation();
   // Function to go to the previous slide
   const goToPrevSlide = () => {
     if (swiperRef.current) {
@@ -30,7 +31,7 @@ const Slider: React.FC = () => {
   return (
     <>
       <div className={s.header_slider}>
-        <p>Топ-10 проектов</p>
+        <p>{t("main.slider.title")}</p>
         <div className={s.btn_group}>
           <button className={s.left_btn} onClick={goToPrevSlide}>
             <Image
