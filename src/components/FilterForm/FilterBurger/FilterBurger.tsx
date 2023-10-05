@@ -6,56 +6,53 @@ import Image from "next/image";
 import { CloseOutlined } from "@ant-design/icons";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { FilterParams } from "@/redux/api";
 
 const validationSchema = Yup.object({
-  RealEstate: Yup.string()
-    .oneOf(
-      ["Вилла", "Квартира", "AllOptions"],
-      "Выберите пожалуйста тип недвижимости"
-    )
-    .required("Выберите пожалуйста тип недвижимости"),
-  district: Yup.string()
-    .oneOf(
-      [
-        "Ао По",
-        "Банг Тао",
-        "Калим",
-        "Камала",
-        "Карон",
-        "Ката",
-        "Кату",
-        "Лагуна Пхукет",
-        "Лаян",
-        "Май Кхао",
-        "Най Тон",
-        "Най Харн",
-        "Най Янг",
-        "Натай",
-        "Патонг",
-        "Раваи",
-        "Сурин",
-        "Таланг",
-        "Центральный район Пхукета",
-        "Чалонг",
-        "AllOptions",
-      ],
-      "Выберите пожалуйста район"
-    )
-    .required("Выберите пожалуйста район"),
-  rooms: Yup.string()
-    .oneOf(
-      [
-        "Студия",
-        "1 спальня",
-        "2 спальня",
-        "3 спальня",
-        "4 спальня",
-        "5 спальня",
-        "AllOptions",
-      ],
-      "Выберите пожалуйста кол-во комнат"
-    )
-    .required("Выберите пожалуйста кол-во комнат"),
+  RealEstate: Yup.string().oneOf(
+    ["Villa", "Apartment", "AllOptions"],
+    "Выберите тип недвижимости"
+  ),
+  location: Yup.string().oneOf(
+    [
+      "Ao Po",
+      "Bang Tao",
+      "Kalim",
+      "Kamala",
+      "Karon",
+      "Kata",
+      "Katy",
+      "Lagyna Phyket",
+      "Layan",
+      "May Khao",
+      "Nay Ton",
+      "Nay Hurn",
+      "Nay Yang",
+      "Natay",
+      "Patong",
+      "Ravai",
+      "Surin",
+      "Talang",
+      "Centre Phyket",
+      "Chalong",
+      "AllOptions",
+    ],
+    "Выберите район"
+  ),
+  rooms: Yup.string().oneOf(
+    ["Студия", "1", "2", "3", "4", "5", "AllOptions"],
+    "Выберите пожалуйста кол-во комнат"
+  ),
+  characteristics: Yup.string().oneOf(
+    [
+      "Характеристики 1",
+      "Характеристики 2",
+      "Характеристики 3",
+      "Характеристики 4",
+      "Характеристики 5",
+    ],
+    "Выберите Характеристики"
+  ),
   pricMin: Yup.string()
     .matches(/^[1-9][0-9]*$/, "Только цифры")
     .max(15, "Не более 15 символов"),
@@ -68,13 +65,20 @@ const validationSchema = Yup.object({
   areaMax: Yup.string()
     .matches(/^[1-9][0-9]*$/, "Только цифры")
     .max(15, "Не более 15 символов"),
+  areaHouseMin: Yup.string()
+    .matches(/^[1-9][0-9]*$/, "Только цифры")
+    .max(15, "Не более 15 символов"),
+  areaHouseMax: Yup.string()
+    .matches(/^[1-9][0-9]*$/, "Только цифры")
+    .max(15, "Не более 15 символов"),
 });
 
 interface Props {
   titleSection: string;
+  setFilterParams: (params: FilterParams) => void;
 }
 
-const FilterBurger = ({ titleSection }: Props) => {
+const FilterBurger = ({ titleSection, setFilterParams }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
 
   const showDrawer = () => {
@@ -88,27 +92,52 @@ const FilterBurger = ({ titleSection }: Props) => {
   const formik = useFormik({
     initialValues: {
       RealEstate: "",
-      district: "",
+      location: "",
       rooms: "",
+      characteristics: "",
       pricMin: "",
       pricMax: "",
       areaMin: "",
       areaMax: "",
+      areaHouseMin: "",
+      areaHouseMax: "",
     },
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
-      console.log(values);
+      const filterParams = {
+        ...(values.RealEstate !== "" &&
+          values.RealEstate !== "AllOptions" && {
+            buildingType: values.RealEstate,
+          }),
+        ...(values.rooms !== "" &&
+          values.rooms !== "AllOptions" && {
+            roomsAmount: Number(values.rooms),
+          }),
+        ...(values.areaHouseMin !== "" && {
+          builtUpArea_gte: Number(values.areaHouseMin),
+        }),
+        ...(values.areaHouseMax !== "" && {
+          builtUpArea_lte: Number(values.areaHouseMax),
+        }),
+        ...(values.pricMin !== "" && { price_gte: Number(values.pricMin) }),
+        ...(values.pricMax !== "" && { price_lte: Number(values.pricMax) }),
+        ...(values.location !== "" &&
+          values.location !== "AllOptions" && { location: values.location }),
+        ...(values.areaMin !== "" && { landArea_gte: Number(values.areaMin) }),
+        ...(values.areaMax !== "" && { landArea_lte: Number(values.areaMax) }),
+        isFilter: true,
+      };
+
+      setFilterParams(filterParams);
       resetForm();
     },
   });
+  const handleResetForm = () => {
+    formik.resetForm();
+    setFilterParams({ isFilter: false });
+  };
 
   const customCloseButton = (
-    // <div className={m.burger_wrapperClose_block}>
-    //   <h3 className={s.burgerTitle}>Фильтры</h3>
-    //   <div className={m.filter_wrapperBurger} onClick={onClose}>
-    //     <CloseOutlined />
-    //   </div>
-    // </div>
     <div className={m.extra_wrapper}>
       <h2 className={s.filter_title}>{titleSection}</h2>
       <div className={m.burger_wrapperClose_block}>
@@ -136,34 +165,22 @@ const FilterBurger = ({ titleSection }: Props) => {
       <Drawer
         height={550}
         headerStyle={{
-          padding: "20px 15px 0 15px",
+          padding: "20px 0px 20px 0px",
           borderBottom: "none",
         }}
-        // title={<h2 className={s.filter_title}>{titleSection}</h2>}
         placement="top"
         onClose={onClose}
         className={m.filter_drawer}
         open={open}
         closeIcon={customCloseButton}
-        // extra={
-        //   <div className={m.extra_wrapper}>
-        //     <h2 className={s.filter_title}>{titleSection}</h2>
-        //     <div className={m.burger_wrapperClose_block}>
-        //       <h3 className={s.burgerTitle}>Фильтры</h3>
-        //       <div className={m.filter_wrapperBurger} onClick={onClose}>
-        //         <CloseOutlined />
-        //       </div>
-        //     </div>
-        //   </div>
-        // }
       >
-        <form onSubmit={formik.handleSubmit}>
+        <form onSubmit={formik.handleSubmit} className="">
           <div className={s.form_wrapper}>
             <div className={s.form_wrapper_item}>
               <label htmlFor="RealEstate" className={s.form_label}>
                 Недвижимость
               </label>
-              <div>
+              <div className="">
                 <select
                   id="RealEstate"
                   name="RealEstate"
@@ -172,7 +189,7 @@ const FilterBurger = ({ titleSection }: Props) => {
                   onBlur={formik.handleBlur}
                   value={formik.values.RealEstate}
                 >
-                  <option value="" disabled>
+                  <option value="" disabled className={s.form_option_start}>
                     Выбрать
                   </option>
                   <option value="Вилла">Вилла</option>
@@ -181,24 +198,24 @@ const FilterBurger = ({ titleSection }: Props) => {
                 </select>
               </div>
               {formik.touched.RealEstate && formik.errors.RealEstate ? (
-                <div>{formik.errors.RealEstate}</div>
+                <div className={s.form_error}>{formik.errors.RealEstate}</div>
               ) : null}
             </div>
 
             <div className={s.form_wrapper_item}>
-              <label htmlFor="district" className={s.form_label}>
+              <label htmlFor="location" className={s.form_label}>
                 Район
               </label>
-              <div>
+              <div className="">
                 <select
-                  id="district"
-                  name="district"
+                  id="location"
+                  name="location"
                   className={s.form_select}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  value={formik.values.district}
+                  value={formik.values.location}
                 >
-                  <option value="" disabled>
+                  <option value="" disabled className="">
                     Выбрать
                   </option>
                   <option value="Ао По">Ао По</option>
@@ -226,16 +243,16 @@ const FilterBurger = ({ titleSection }: Props) => {
                   <option value="AllOptions">Показать все варианты</option>
                 </select>
               </div>
-              {formik.touched.district && formik.errors.district ? (
-                <div>{formik.errors.district}</div>
+              {formik.touched.location && formik.errors.location ? (
+                <div className={s.form_error}>{formik.errors.location}</div>
               ) : null}
             </div>
 
             <div className={s.form_wrapper_item}>
               <label htmlFor="rooms" className={s.form_label}>
-                Дополнительные характеристики
+                Количество комнат
               </label>
-              <div>
+              <div className="">
                 <select
                   id="rooms"
                   name="rooms"
@@ -244,7 +261,7 @@ const FilterBurger = ({ titleSection }: Props) => {
                   onBlur={formik.handleBlur}
                   value={formik.values.rooms}
                 >
-                  <option value="" disabled>
+                  <option value="" disabled className="">
                     Выбрать
                   </option>
                   <option value="Студия">Студия</option>
@@ -257,7 +274,35 @@ const FilterBurger = ({ titleSection }: Props) => {
                 </select>
               </div>
               {formik.touched.rooms && formik.errors.rooms ? (
-                <div>{formik.errors.rooms}</div>
+                <div className={s.form_error}>{formik.errors.rooms}</div>
+              ) : null}
+            </div>
+
+            <div className={s.form_wrapper_item}>
+              <label htmlFor="characteristics" className={s.form_label}>
+                Дополнительные характеристики
+              </label>
+              <div className="">
+                <select
+                  id="characteristics"
+                  name="characteristics"
+                  className={s.form_select}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.rooms}
+                >
+                  <option value="" disabled className="">
+                    Выбрать
+                  </option>
+                  <option value="Характеристики 1">Характеристики 1</option>
+                  <option value="Характеристики 2">Характеристики 2</option>
+                  <option value="Характеристики 3">Характеристики 3</option>
+                  <option value="Характеристики 4">Характеристики 4</option>
+                  <option value="Характеристики 5">Характеристики 5</option>
+                </select>
+              </div>
+              {formik.touched.rooms && formik.errors.rooms ? (
+                <div className={s.form_error}>{formik.errors.rooms}</div>
               ) : null}
             </div>
 
@@ -303,7 +348,7 @@ const FilterBurger = ({ titleSection }: Props) => {
               className={`${s.form_wrapper_item} ${s.form_wrapper_itemArea}`}
             >
               <label className={s.form_label} htmlFor="areaMin">
-                Общая площадь
+                Площадь участка
               </label>
               <div className={s.form_inputsWrapper}>
                 <div className={s.form_inputWrapper}>
@@ -340,6 +385,49 @@ const FilterBurger = ({ titleSection }: Props) => {
                 <div className={s.form_error}>{formik.errors.areaMin}</div>
               ) : null}
             </div>
+
+            <div
+              className={`${s.form_wrapper_item} ${s.form_wrapper_itemArea}`}
+            >
+              <label className={s.form_label} htmlFor="areaHouseMin">
+                Площадь застройки
+              </label>
+              <div className={s.form_inputsWrapper}>
+                <div className={s.form_inputWrapper}>
+                  <span className={s.form_prefix}>от</span>
+                  <input
+                    className={`${s.form_input} ${s.form_inputArea} `}
+                    type="text"
+                    id="areaHouseMin"
+                    name="areaHouseMin"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.areaHouseMin}
+                  />
+                  <span className={s.form_suffix}>m2</span>
+                </div>
+                <div className={`${s.form_inputWrapper} ${s.form_inputSecond}`}>
+                  <span className={s.form_prefix}>до</span>
+                  <input
+                    className={`${s.form_input} ${s.form_inputArea} `}
+                    type="text"
+                    id="areaHouseMax"
+                    name="areaHouseMax"
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.areaHouseMax}
+                  />
+                  <span className={s.form_suffix}>m2</span>
+                </div>
+              </div>
+              {formik.touched.areaHouseMax && formik.errors.areaHouseMax ? (
+                <div className={s.form_error}>{formik.errors.areaHouseMax}</div>
+              ) : null}
+              {formik.touched.areaHouseMin && formik.errors.areaHouseMin ? (
+                <div className={s.form_error}>{formik.errors.areaHouseMin}</div>
+              ) : null}
+            </div>
+
             <div className={s.form_wrapper_button}>
               <button type="submit" className={s.form_button}>
                 Поиск
@@ -349,6 +437,16 @@ const FilterBurger = ({ titleSection }: Props) => {
                   height={16}
                   alt="arrow"
                 ></Image>
+              </button>
+            </div>
+
+            <div className={s.form_wrapper_button_reset}>
+              <button
+                type="button"
+                className={s.form_button_reset}
+                onClick={handleResetForm}
+              >
+                Сбросить поиск
               </button>
             </div>
           </div>

@@ -15,7 +15,7 @@
 }
 
 .filter_wrapper {
-  padding: 20px 30px;
+  padding: 20px 20px;
   background-color: #dfdad8;
   border-radius: 10px;
 }
@@ -38,6 +38,16 @@
   flex-direction: column;
 }
 
+.form_option_start {
+  color: #6c6c6a;
+
+  font-family: Inter;
+  font-size: 14.004px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 160%;
+}
+
 .form_label {
   margin-bottom: 5px;
 
@@ -51,7 +61,7 @@
 
 .form_input {
   padding: 10px 10px 10px 40px;
-  max-width: 191px;
+  max-width: 144px;
   width: 100%;
   height: 42px;
   border-radius: 6px;
@@ -63,14 +73,14 @@
 }
 
 .form_inputSecond {
-  margin-left: 10px;
+  margin-left: 7px;
 }
 
 .form_button {
   @include button;
   align-items: center;
   border-radius: 100px;
-  padding: 11px 150px;
+  padding: 11px 38px;
   gap: 10px;
 }
 
@@ -111,8 +121,10 @@
 
 .form_error {
   position: absolute;
-  top: 0;
+  bottom: -5px;
   right: 0;
+  color: red;
+  z-index: 1;
 }
 
 .form_wrapper {
@@ -123,7 +135,21 @@
 }
 
 .form_select {
-  width: 392px;
+  position: relative;
+  width: 295px;
+  height: 42px;
+  border-radius: 6px;
+  border: 1px solid #a3a3a3;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+
+  color: #6c6c6a;
+  font-family: Inter;
+  font-size: 14.004px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 160%;
 }
 
 .form_wrapper_button {
@@ -133,22 +159,42 @@
   justify-content: center;
 }
 
+.form_wrapper_button_reset {
+  margin-top: 30px;
+  border-bottom: 1px solid #6c6c6a;
+}
+
+.form_button_reset {
+  color: #6c6c6a;
+  text-align: center;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
 @media only screen and (max-width: 1300px) {
   .form_wrapper {
     justify-content: space-between;
     gap: 9px;
   }
   .form_select {
-    width: 308px;
+    width: 462px;
     margin-bottom: 5px;
   }
 
   .form_input {
-    width: 152px;
+    max-width: 229px;
   }
 
   .form_button {
-    padding: 11px 117px;
+    padding: 11px 122px;
   }
 
   .form_inputSecond {
@@ -165,7 +211,7 @@
     font-size: 24px;
   }
   .form_button {
-    padding: 11px 134px;
+    padding: 11px 68px;
   }
 
   .form_input {
@@ -180,27 +226,28 @@
 @media only screen and (max-width: 786px) {
   .form_wrapper {
     justify-content: center;
+    flex-direction: column;
+  }
+  .form_button {
+    padding: 11px 140px;
   }
 }
 
 @media only screen and (max-width: 428px) {
-  .form_button {
-    padding: 11px 161px;
-  }
-
   .form_inputSecond {
     margin-left: 15px;
   }
 
   .form_select {
-    width: 398px;
+    width: 368px;
   }
   .form_input {
-    width: 195px;
+    width: 175px;
   }
   .filter_title {
+    text-align: start;
     margin-bottom: 0;
-    width: 212px;
+    width: 185px;
   }
 
   .filter_wrapper {
@@ -215,6 +262,10 @@
     display: flex;
     justify-content: space-between;
     align-items: end;
+  }
+
+  .form_error {
+    bottom: -15px;
   }
 }
 
@@ -246,5 +297,17 @@
 @media only screen and (min-width: 429px) {
   .burgerFilter {
     display: none;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .form_select {
+    width: 328px;
+  }
+  .form_input {
+    width: 155px;
+  }
+  .form_button {
+    padding: 11px 120px;
   }
 }
