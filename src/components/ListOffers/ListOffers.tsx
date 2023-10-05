@@ -1,41 +1,82 @@
 import React, { useEffect, useState } from "react";
 import s from "./ListOffers.module.scss";
 import BuildCard from "../BuildCard/BuildCard";
-import { RealEstate } from "../../redux/api";
+import {
+  FilterParams,
+  RealEstate,
+  useGetAllOffersQuery,
+  useGetPaginateOffersQuery,
+  useGetPaginateOffersWithFilterQuery,
+  useGetUnFilteredOffersQuery,
+} from "../../redux/api";
 import { useGetFilteredOffersQuery } from "@/redux/api";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { RootState } from "@/redux/store";
 
-
+import Pagination from "../Pagination/Pagination";
+import { useWindowSize } from "@/hook/useSize";
 interface Props {
   isRent: boolean;
+  filterParams: FilterParams;
 }
 
-const ListOffers = ({ isRent }: Props) => {
-// import Pagination from "../Pagination/Pagination";
-// import { useGetObjectsQuery } from "../../api/Api";
-
+const ListOffers = ({ isRent, filterParams }: Props) => {
   const { t } = useTranslation();
   const [selectedValue, setSelectedValue] = useState("");
   const [allOffers, setAllOffers] = useState<RealEstate[]>([]);
+  const { width = 1 } = useWindowSize();
 
-  // const { data, error, isLoading } = useGetFilteredOffersQuery({ isRent });
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const allOffersData = useSelector((state) => {
-    console.log(state.libraryPhuket.queries.getAllOffers);
-    // setAllOffers(state);
-  });
+  console.log(isRent, "is rent");
 
-  const state = useSelector((state: RootState) => state);
-  console.log(state);
-  console.log(allOffers);
+  let offersQuery;
+  let paginatesQuery;
+  if (filterParams.isFilter) {
+    offersQuery = useGetFilteredOffersQuery({
+      isRent: isRent,
+      currentPage: currentPage,
+      filterParams: filterParams,
+      limit: width <= 769 ? 6 : 9,
+    });
 
-  // useEffect(() => {
-  //   if (data) {
-  //     setAllOffers(data);
-  //   }
-  // }, [data]);
+    paginatesQuery = useGetPaginateOffersQuery({
+      isRent: isRent,
+      currentPage: currentPage,
+      filterParams: filterParams,
+      limit: 10000000000,
+    });
+  } else {
+    offersQuery = useGetUnFilteredOffersQuery({
+      isRent: isRent,
+      currentPage: currentPage,
+      limit: width <= 769 ? 6 : 9,
+    });
+
+    paginatesQuery = useGetPaginateOffersWithFilterQuery({
+      isRent: isRent,
+      currentPage: currentPage,
+      filterParams: filterParams,
+      limit: 10000000000,
+    });
+  }
+
+  const { data, error, isLoading } = offersQuery;
+  const { data: totalPages } = paginatesQuery;
+
+  console.log("total", totalPages);
+  console.log("paginate", data);
+
+  useEffect(() => {
+    if (data) {
+      setAllOffers(data);
+    }
+  }, [data]);
+
+  const handlePageChange = (pageNumber: number) => {
+    setCurrentPage(pageNumber);
+  };
 
   // сортировка по убыванию
   function sortByPriceAscending() {
@@ -111,32 +152,42 @@ const ListOffers = ({ isRent }: Props) => {
           </div>
         </div>
         <div className={s.listOffer_text_wrapper}>
-          <p className={s.listOffer_text}>
-            {t("listOffer.totalObjects")} <span>5 760</span>
-          </p>
+          {totalPages && allOffers ? (
+            <p className={s.listOffer_text}>
+              {t("listOffer.totalObjects")} : {totalPages.length}
+            </p>
+          ) : (
+            <p className={s.listOffer_text}>Всего объявлений: 0</p>
+          )}
         </div>
       </div>
       <ul className={s.listOffer_list}>
-        {allOffers.map((card: RealEstate, _id: number) => (
-          <li key={_id} className={s.listOffer_item}>
-            <BuildCard
-              img={card.mainImage}
-              alt={card.alt}
-              name={card.title}
-              price={card.price}
-              rooms={card.roomsAmount}
-              builtUpArea={card.builtUpArea}
-              landArea={card.landArea}
-              location={card.location}
-            />
-          </li>
-        ))}
+        {allOffers && totalPages
+          ? allOffers.map((card: RealEstate) => {
+              return (
+                <li key={card._id} className={s.listOffer_item}>
+                  <BuildCard
+                    img={card.mainImage}
+                    alt={card.alt}
+                    name={card.title}
+                    price={card.price}
+                    rooms={card.roomsAmount}
+                    builtUpArea={card.builtUpArea}
+                    landArea={card.landArea}
+                    location={card.location}
+                  />
+                </li>
+              );
+            })
+          : "empty"}
       </ul>
-      {/* <Pagination
-        currentPage={currentPage}
-        totalPages={общее число страниц}
-        onPageChange={handlePageChange}
-      /> */}
+      {totalPages && allOffers && (
+        <Pagination
+          totalItems={totalPages.length}
+          limit={width <= 769 ? 6 : 9}
+          onPageChange={handlePageChange}
+        />
+      )}
     </section>
   );
 };

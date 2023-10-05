@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import s from "./FilterForm.module.scss";
 import { useFormik } from "formik";
@@ -6,57 +5,53 @@ import * as Yup from "yup";
 import dynamic from "next/dynamic";
 import { useGetAllOffersQuery, useGetFilteredOffersQuery } from "@/redux/api";
 import { useTranslation } from "react-i18next";
+import { FilterParams, useGetOneOffersQuery } from "@/redux/api";
 
 const validationSchema = Yup.object({
-  RealEstate: Yup.string()
-    .oneOf(["Вилла", "Квартира", "AllOptions"], "Выберите тип недвижимости")
-    .required("Выберите тип недвижимости"),
-  district: Yup.string()
-    .oneOf(
-      [
-        "Ао По",
-        "Банг Тао",
-        "Калим",
-        "Камала",
-        "Карон",
-        "Ката",
-        "Кату",
-        "Лагуна Пхукет",
-        "Лаян",
-        "Май Кхао",
-        "Най Тон",
-        "Най Харн",
-        "Най Янг",
-        "Натай",
-        "Патонг",
-        "Раваи",
-        "Сурин",
-        "Таланг",
-        "Центральный район Пхукета",
-        "Чалонг",
-        "AllOptions",
-      ],
-      "Выберите район"
-    )
-    .required("Выберите район"),
-  rooms: Yup.string()
-    .oneOf(
-      ["Студия", "1", "2", "3", "4", "5", "AllOptions"],
-      "Выберите пожалуйста кол-во комнат"
-    )
-    .required("Выберите комнаты"),
-  characteristics: Yup.string()
-    .oneOf(
-      [
-        "Характеристики 1",
-        "Характеристики 2",
-        "Характеристики 3",
-        "Характеристики 4",
-        "Характеристики 5",
-      ],
-      "Выберите Характеристики"
-    )
-    .required("Выберите комнаты"),
+  RealEstate: Yup.string().oneOf(
+    ["Villa", "Apartment", "AllOptions"],
+    "Выберите тип недвижимости"
+  ),
+  location: Yup.string().oneOf(
+    [
+      "Ao Po",
+      "Bang Tao",
+      "Kalim",
+      "Kamala",
+      "Karon",
+      "Kata",
+      "Katy",
+      "Lagyna Phyket",
+      "Layan",
+      "May Khao",
+      "Nay Ton",
+      "Nay Hurn",
+      "Nay Yang",
+      "Natay",
+      "Patong",
+      "Ravai",
+      "Surin",
+      "Talang",
+      "Centre Phyket",
+      "Chalong",
+      "AllOptions",
+    ],
+    "Выберите район"
+  ),
+  rooms: Yup.string().oneOf(
+    ["Студия", "1", "2", "3", "4", "5", "AllOptions"],
+    "Выберите пожалуйста кол-во комнат"
+  ),
+  characteristics: Yup.string().oneOf(
+    [
+      "Характеристики 1",
+      "Характеристики 2",
+      "Характеристики 3",
+      "Характеристики 4",
+      "Характеристики 5",
+    ],
+    "Выберите Характеристики"
+  ),
   pricMin: Yup.string()
     .matches(/^[1-9][0-9]*$/, "Только цифры")
     .max(15, "Не более 15 символов"),
@@ -79,29 +74,21 @@ const validationSchema = Yup.object({
 
 interface Props {
   titleSection: string;
+  setFilterParams: (params: FilterParams) => void;
 }
 
 const FilterBurger = dynamic(() => import("./FilterBurger/FilterBurger"), {
   ssr: false,
 });
 
-const FilterForm = ({ titleSection }: Props) => {
-  const [filterParams, setfilterParams] = useState({});
-  const [filter, setfilter] = useState(false);
 
-  if (filter) {
-    const { data, error, isLoading } = useGetFilteredOffersQuery(filterParams);
-    console.log(data);
-  } else {
-    const { data, error, isLoading } = useGetAllOffersQuery();
-    console.log(data);
-  }
-
+const FilterForm = ({ titleSection, setFilterParams }: Props) => {
   const { t } = useTranslation();
+
   const formik = useFormik({
     initialValues: {
       RealEstate: "",
-      district: "",
+      location: "",
       rooms: "",
       characteristics: "",
       pricMin: "",
@@ -111,21 +98,40 @@ const FilterForm = ({ titleSection }: Props) => {
       areaHouseMin: "",
       areaHouseMax: "",
     },
+
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
       const filterParams = {
-        buildingType: values.RealEstate,
-        district: values.district,
-        roomsAmount: Number(values.rooms),
-        price: Number(values.pricMin),
+        ...(values.RealEstate !== "" &&
+          values.RealEstate !== "AllOptions" && {
+            buildingType: values.RealEstate,
+          }),
+        ...(values.rooms !== "" &&
+          values.rooms !== "AllOptions" && {
+            roomsAmount: Number(values.rooms),
+          }),
+        ...(values.areaHouseMin !== "" && {
+          builtUpArea_gte: Number(values.areaHouseMin),
+        }),
+        ...(values.areaHouseMax !== "" && {
+          builtUpArea_lte: Number(values.areaHouseMax),
+        }),
+        ...(values.pricMin !== "" && { price_gte: Number(values.pricMin) }),
+        ...(values.pricMax !== "" && { price_lte: Number(values.pricMax) }),
+        ...(values.location !== "" &&
+          values.location !== "AllOptions" && { location: values.location }),
+        ...(values.areaMin !== "" && { landArea_gte: Number(values.areaMin) }),
+        ...(values.areaMax !== "" && { landArea_lte: Number(values.areaMax) }),
+        isFilter: true,
       };
-      setfilter(true);
-      setfilterParams(filterParams);
+
+      setFilterParams(filterParams);
       resetForm();
     },
   });
   const handleResetForm = () => {
     formik.resetForm();
+    setFilterParams({ isFilter: false });
   };
 
   return (
@@ -160,6 +166,9 @@ const FilterForm = ({ titleSection }: Props) => {
                       <option value="AllOptions">
                         {t("main.searchBar.showAllOptions")}
                       </option>
+                      <option value="Villa">Вилла</option>
+                      <option value="Apartment">Квартира</option>
+                      <option value="AllOptions">Показать все варианты</option>
                     </select>
                   </div>
                   {formik.touched.RealEstate && formik.errors.RealEstate ? (
@@ -170,17 +179,17 @@ const FilterForm = ({ titleSection }: Props) => {
                 </div>
 
                 <div className={s.form_wrapper_item}>
-                  <label htmlFor="district" className={s.form_label}>
-                    {t("main.searchBar.district")}
+                  <label htmlFor="location" className={s.form_label}>
+                  {t("main.searchBar.district")}
                   </label>
                   <div className="">
                     <select
-                      id="district"
-                      name="district"
+                      id="location"
+                      name="location"
                       className={s.form_select}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
-                      value={formik.values.district}
+                      value={formik.values.location}
                     >
                       <option value="" disabled className="">
                         {t("buyingRealEstate.select")}
@@ -251,8 +260,8 @@ const FilterForm = ({ titleSection }: Props) => {
                       </option>
                     </select>
                   </div>
-                  {formik.touched.district && formik.errors.district ? (
-                    <div className={s.form_error}>{formik.errors.district}</div>
+                  {formik.touched.location && formik.errors.location ? (
+                    <div className={s.form_error}>{formik.errors.location}</div>
                   ) : null}
                 </div>
 
@@ -311,7 +320,7 @@ const FilterForm = ({ titleSection }: Props) => {
                       className={s.form_select}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
-                      value={formik.values.rooms}
+                      value={formik.values.characteristics}
                     >
                       <option value="" disabled className="">
                         Выбрать
@@ -485,7 +494,10 @@ const FilterForm = ({ titleSection }: Props) => {
             </form>
           </div>
           <div>
-            <FilterBurger titleSection={titleSection} />
+            <FilterBurger
+              titleSection={titleSection}
+              setFilterParams={setFilterParams}
+            />
           </div>
         </div>
       </div>
