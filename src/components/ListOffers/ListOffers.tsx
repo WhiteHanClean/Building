@@ -5,6 +5,8 @@ import {
   FilterParams,
   RealEstate,
   useGetAllOffersQuery,
+  useGetPaginateOffersQuery,
+  useGetPaginateOffersWithFilterQuery,
   useGetUnFilteredOffersQuery,
 } from "../../redux/api";
 import { useGetFilteredOffersQuery } from "@/redux/api";
@@ -23,9 +25,11 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
   const { width = 1 } = useWindowSize();
 
   const [currentPage, setCurrentPage] = useState(1);
-  const { data: totalPages } = useGetAllOffersQuery();
+
+  console.log(isRent, "is rent");
 
   let offersQuery;
+  let paginatesQuery;
   if (filterParams.isFilter) {
     offersQuery = useGetFilteredOffersQuery({
       isRent: isRent,
@@ -33,15 +37,30 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
       filterParams: filterParams,
       limit: width <= 769 ? 6 : 9,
     });
+
+    paginatesQuery = useGetPaginateOffersQuery({
+      isRent: isRent,
+      currentPage: currentPage,
+      filterParams: filterParams,
+      limit: 10000000000,
+    });
   } else {
     offersQuery = useGetUnFilteredOffersQuery({
       isRent: isRent,
       currentPage: currentPage,
       limit: width <= 769 ? 6 : 9,
     });
+
+    paginatesQuery = useGetPaginateOffersWithFilterQuery({
+      isRent: isRent,
+      currentPage: currentPage,
+      filterParams: filterParams,
+      limit: 10000000000,
+    });
   }
 
   const { data, error, isLoading } = offersQuery;
+  const { data: totalPages } = paginatesQuery;
 
   console.log("total", totalPages);
   console.log("paginate", data);
@@ -135,20 +154,22 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
       </div>
       <ul className={s.listOffer_list}>
         {allOffers && totalPages
-          ? allOffers.map((card: RealEstate) => (
-              <li key={card._id} className={s.listOffer_item}>
-                <BuildCard
-                  img={card.mainImage}
-                  alt={card.alt}
-                  name={card.title}
-                  price={card.price}
-                  rooms={card.roomsAmount}
-                  builtUpArea={card.builtUpArea}
-                  landArea={card.landArea}
-                  location={card.location}
-                />
-              </li>
-            ))
+          ? allOffers.map((card: RealEstate) => {
+              return (
+                <li key={card._id} className={s.listOffer_item}>
+                  <BuildCard
+                    img={card.mainImage}
+                    alt={card.alt}
+                    name={card.title}
+                    price={card.price}
+                    rooms={card.roomsAmount}
+                    builtUpArea={card.builtUpArea}
+                    landArea={card.landArea}
+                    location={card.location}
+                  />
+                </li>
+              );
+            })
           : "empty"}
       </ul>
       {totalPages && allOffers && (

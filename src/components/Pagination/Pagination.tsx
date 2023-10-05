@@ -42,7 +42,7 @@ const Pagination: React.FC<PaginationProps> = ({
   const renderPageNumbers = () => {
     const pages = [];
     const pageRange = 2; // Number of pages to show before and after the current page
-
+    console.log(totalPages, "total count");
     for (let i = 1; i <= totalPages; i++) {
       if (
         i === 1 ||

@@ -26,6 +26,10 @@ export interface RealEstate {
   alt: string;
 }
 
+export interface IPaginate {
+  isRent?: boolean;
+}
+
 export interface FilterParams {
   currentPage?: number;
   limit?: number;
@@ -83,6 +87,29 @@ export const api = createApi({
       }),
     }),
 
+    getPaginateOffers: builder.query<RealEstate[], IGet>({
+      query: ({ isRent, filterParams, limit }) => ({
+        url: `realEstates/`,
+        params: {
+          ...filterParams,
+          _limit: limit,
+          isRent: isRent ?? false, // Default to false if isRent is not provided
+        },
+        providesTags: ["Reals"],
+      }),
+    }),
+
+    getPaginateOffersWithFilter: builder.query<RealEstate[], IGet>({
+      query: ({ isRent, limit }) => ({
+        url: `realEstates/`,
+        params: {
+          _limit: limit,
+          isRent: isRent ?? false, // Default to false if isRent is not provided
+        },
+        providesTags: ["Reals"],
+      }),
+    }),
+
     // getOneOffers: builder.query<RealEstate[], { id: string }>({
     //   query: ({ id }) => `realEstates/_id=${id}`,
     //   providesTags: ["Reals"],
@@ -93,6 +120,7 @@ export const api = createApi({
 export const {
   useGetAllOffersQuery,
   useGetFilteredOffersQuery,
-  // useGetOneOffersQuery,
   useGetUnFilteredOffersQuery,
+  useGetPaginateOffersQuery,
+  useGetPaginateOffersWithFilterQuery,
 } = api;
