@@ -6,65 +6,53 @@ import Image from "next/image";
 import { CloseOutlined } from "@ant-design/icons";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { FilterParams } from "@/redux/api";
 
 const validationSchema = Yup.object({
-  RealEstate: Yup.string()
-    .oneOf(["Вилла", "Квартира", "AllOptions"], "Выберите тип недвижимости")
-    .required("Выберите тип недвижимости"),
-  district: Yup.string()
-    .oneOf(
-      [
-        "Ао По",
-        "Банг Тао",
-        "Калим",
-        "Камала",
-        "Карон",
-        "Ката",
-        "Кату",
-        "Лагуна Пхукет",
-        "Лаян",
-        "Май Кхао",
-        "Най Тон",
-        "Най Харн",
-        "Най Янг",
-        "Натай",
-        "Патонг",
-        "Раваи",
-        "Сурин",
-        "Таланг",
-        "Центральный район Пхукета",
-        "Чалонг",
-        "AllOptions",
-      ],
-      "Выберите район"
-    )
-    .required("Выберите район"),
-  rooms: Yup.string()
-    .oneOf(
-      [
-        "Студия",
-        "1 спальня",
-        "2 спальня",
-        "3 спальня",
-        "4 спальня",
-        "5 спальня",
-        "AllOptions",
-      ],
-      "Выберите комнаты"
-    )
-    .required("Выберите комнаты"),
-  characteristics: Yup.string()
-    .oneOf(
-      [
-        "Характеристики 1",
-        "Характеристики 2",
-        "Характеристики 3",
-        "Характеристики 4",
-        "Характеристики 5",
-      ],
-      "Выберите Характеристики"
-    )
-    .required("Выберите комнаты"),
+  RealEstate: Yup.string().oneOf(
+    ["Villa", "Apartment", "AllOptions"],
+    "Выберите тип недвижимости"
+  ),
+  location: Yup.string().oneOf(
+    [
+      "Ao Po",
+      "Bang Tao",
+      "Kalim",
+      "Kamala",
+      "Karon",
+      "Kata",
+      "Katy",
+      "Lagyna Phyket",
+      "Layan",
+      "May Khao",
+      "Nay Ton",
+      "Nay Hurn",
+      "Nay Yang",
+      "Natay",
+      "Patong",
+      "Ravai",
+      "Surin",
+      "Talang",
+      "Centre Phyket",
+      "Chalong",
+      "AllOptions",
+    ],
+    "Выберите район"
+  ),
+  rooms: Yup.string().oneOf(
+    ["Студия", "1", "2", "3", "4", "5", "AllOptions"],
+    "Выберите пожалуйста кол-во комнат"
+  ),
+  characteristics: Yup.string().oneOf(
+    [
+      "Характеристики 1",
+      "Характеристики 2",
+      "Характеристики 3",
+      "Характеристики 4",
+      "Характеристики 5",
+    ],
+    "Выберите Характеристики"
+  ),
   pricMin: Yup.string()
     .matches(/^[1-9][0-9]*$/, "Только цифры")
     .max(15, "Не более 15 символов"),
@@ -87,9 +75,10 @@ const validationSchema = Yup.object({
 
 interface Props {
   titleSection: string;
+  setFilterParams: (params: FilterParams) => void;
 }
 
-const FilterBurger = ({ titleSection }: Props) => {
+const FilterBurger = ({ titleSection, setFilterParams }: Props) => {
   const [open, setOpen] = useState<boolean>(false);
 
   const showDrawer = () => {
@@ -103,7 +92,7 @@ const FilterBurger = ({ titleSection }: Props) => {
   const formik = useFormik({
     initialValues: {
       RealEstate: "",
-      district: "",
+      location: "",
       rooms: "",
       characteristics: "",
       pricMin: "",
@@ -115,10 +104,38 @@ const FilterBurger = ({ titleSection }: Props) => {
     },
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
-      console.log(values);
+      const filterParams = {
+        ...(values.RealEstate !== "" &&
+          values.RealEstate !== "AllOptions" && {
+            buildingType: values.RealEstate,
+          }),
+        ...(values.rooms !== "" &&
+          values.rooms !== "AllOptions" && {
+            roomsAmount: Number(values.rooms),
+          }),
+        ...(values.areaHouseMin !== "" && {
+          builtUpArea_gte: Number(values.areaHouseMin),
+        }),
+        ...(values.areaHouseMax !== "" && {
+          builtUpArea_lte: Number(values.areaHouseMax),
+        }),
+        ...(values.pricMin !== "" && { price_gte: Number(values.pricMin) }),
+        ...(values.pricMax !== "" && { price_lte: Number(values.pricMax) }),
+        ...(values.location !== "" &&
+          values.location !== "AllOptions" && { location: values.location }),
+        ...(values.areaMin !== "" && { landArea_gte: Number(values.areaMin) }),
+        ...(values.areaMax !== "" && { landArea_lte: Number(values.areaMax) }),
+        isFilter: true,
+      };
+
+      setFilterParams(filterParams);
       resetForm();
     },
   });
+  const handleResetForm = () => {
+    formik.resetForm();
+    setFilterParams({ isFilter: false });
+  };
 
   const customCloseButton = (
     <div className={m.extra_wrapper}>
@@ -131,10 +148,6 @@ const FilterBurger = ({ titleSection }: Props) => {
       </div>
     </div>
   );
-
-  const handleResetForm = () => {
-    formik.resetForm();
-  };
 
   return (
     <>
@@ -190,17 +203,17 @@ const FilterBurger = ({ titleSection }: Props) => {
             </div>
 
             <div className={s.form_wrapper_item}>
-              <label htmlFor="district" className={s.form_label}>
+              <label htmlFor="location" className={s.form_label}>
                 Район
               </label>
               <div className="">
                 <select
-                  id="district"
-                  name="district"
+                  id="location"
+                  name="location"
                   className={s.form_select}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
-                  value={formik.values.district}
+                  value={formik.values.location}
                 >
                   <option value="" disabled className="">
                     Выбрать
@@ -230,8 +243,8 @@ const FilterBurger = ({ titleSection }: Props) => {
                   <option value="AllOptions">Показать все варианты</option>
                 </select>
               </div>
-              {formik.touched.district && formik.errors.district ? (
-                <div className={s.form_error}>{formik.errors.district}</div>
+              {formik.touched.location && formik.errors.location ? (
+                <div className={s.form_error}>{formik.errors.location}</div>
               ) : null}
             </div>
 

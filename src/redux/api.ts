@@ -110,15 +110,16 @@ export const api = createApi({
       }),
     }),
 
-    // getOneOffers: builder.query<RealEstate[], { id: string }>({
-    //   query: ({ id }) => `realEstates/_id=${id}`,
-    //   providesTags: ["Reals"],
-    // }),
+    getOneOffers: builder.query<RealEstate[], { id: string }>({
+      query: ({ id }) => `realEstates/${id}`,
+      providesTags: ["Reals"],
+    }),
   }),
 });
 
 export const {
   useGetAllOffersQuery,
+  useGetOneOffersQuery,
   useGetFilteredOffersQuery,
   useGetUnFilteredOffersQuery,
   useGetPaginateOffersQuery,

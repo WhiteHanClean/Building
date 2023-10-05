@@ -3,58 +3,53 @@ import s from "./FilterForm.module.scss";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import dynamic from "next/dynamic";
-import { FilterParams } from "@/redux/api";
+import { FilterParams, useGetOneOffersQuery } from "@/redux/api";
 
 const validationSchema = Yup.object({
-  RealEstate: Yup.string()
-    .oneOf(["Вилла", "Квартира", "AllOptions"], "Выберите тип недвижимости")
-    .required("Выберите тип недвижимости"),
-  district: Yup.string()
-    .oneOf(
-      [
-        "Ао По",
-        "Банг Тао",
-        "Калим",
-        "Камала",
-        "Карон",
-        "Ката",
-        "Кату",
-        "Лагуна Пхукет",
-        "Лаян",
-        "Май Кхао",
-        "Най Тон",
-        "Най Харн",
-        "Най Янг",
-        "Натай",
-        "Патонг",
-        "Раваи",
-        "Сурин",
-        "Таланг",
-        "Центральный район Пхукета",
-        "Чалонг",
-        "AllOptions",
-      ],
-      "Выберите район"
-    )
-    .required("Выберите район"),
-  rooms: Yup.string()
-    .oneOf(
-      ["Студия", "1", "2", "3", "4", "5", "AllOptions"],
-      "Выберите пожалуйста кол-во комнат"
-    )
-    .required("Выберите комнаты"),
-  characteristics: Yup.string()
-    .oneOf(
-      [
-        "Характеристики 1",
-        "Характеристики 2",
-        "Характеристики 3",
-        "Характеристики 4",
-        "Характеристики 5",
-      ],
-      "Выберите Характеристики"
-    )
-    .required("Выберите комнаты"),
+  RealEstate: Yup.string().oneOf(
+    ["Villa", "Apartment", "AllOptions"],
+    "Выберите тип недвижимости"
+  ),
+  location: Yup.string().oneOf(
+    [
+      "Ao Po",
+      "Bang Tao",
+      "Kalim",
+      "Kamala",
+      "Karon",
+      "Kata",
+      "Katy",
+      "Lagyna Phyket",
+      "Layan",
+      "May Khao",
+      "Nay Ton",
+      "Nay Hurn",
+      "Nay Yang",
+      "Natay",
+      "Patong",
+      "Ravai",
+      "Surin",
+      "Talang",
+      "Centre Phyket",
+      "Chalong",
+      "AllOptions",
+    ],
+    "Выберите район"
+  ),
+  rooms: Yup.string().oneOf(
+    ["Студия", "1", "2", "3", "4", "5", "AllOptions"],
+    "Выберите пожалуйста кол-во комнат"
+  ),
+  characteristics: Yup.string().oneOf(
+    [
+      "Характеристики 1",
+      "Характеристики 2",
+      "Характеристики 3",
+      "Характеристики 4",
+      "Характеристики 5",
+    ],
+    "Выберите Характеристики"
+  ),
   pricMin: Yup.string()
     .matches(/^[1-9][0-9]*$/, "Только цифры")
     .max(15, "Не более 15 символов"),
@@ -88,7 +83,7 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
   const formik = useFormik({
     initialValues: {
       RealEstate: "",
-      district: "",
+      location: "",
       rooms: "",
       characteristics: "",
       pricMin: "",
@@ -102,12 +97,29 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
     validationSchema: validationSchema,
     onSubmit: (values, { resetForm }) => {
       const filterParams = {
-        // buildingType: values.RealEstate,
-        // district: values.district,
-        // roomsAmount: Number(values.rooms),
-        price: Number(values.pricMin),
+        ...(values.RealEstate !== "" &&
+          values.RealEstate !== "AllOptions" && {
+            buildingType: values.RealEstate,
+          }),
+        ...(values.rooms !== "" &&
+          values.rooms !== "AllOptions" && {
+            roomsAmount: Number(values.rooms),
+          }),
+        ...(values.areaHouseMin !== "" && {
+          builtUpArea_gte: Number(values.areaHouseMin),
+        }),
+        ...(values.areaHouseMax !== "" && {
+          builtUpArea_lte: Number(values.areaHouseMax),
+        }),
+        ...(values.pricMin !== "" && { price_gte: Number(values.pricMin) }),
+        ...(values.pricMax !== "" && { price_lte: Number(values.pricMax) }),
+        ...(values.location !== "" &&
+          values.location !== "AllOptions" && { location: values.location }),
+        ...(values.areaMin !== "" && { landArea_gte: Number(values.areaMin) }),
+        ...(values.areaMax !== "" && { landArea_lte: Number(values.areaMax) }),
         isFilter: true,
       };
+
       setFilterParams(filterParams);
       resetForm();
     },
@@ -142,8 +154,8 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                       <option value="" disabled className={s.form_option_start}>
                         Выбрать
                       </option>
-                      <option value="Вилла">Вилла</option>
-                      <option value="Квартира">Квартира</option>
+                      <option value="Villa">Вилла</option>
+                      <option value="Apartment">Квартира</option>
                       <option value="AllOptions">Показать все варианты</option>
                     </select>
                   </div>
@@ -155,48 +167,48 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                 </div>
 
                 <div className={s.form_wrapper_item}>
-                  <label htmlFor="district" className={s.form_label}>
+                  <label htmlFor="location" className={s.form_label}>
                     Район
                   </label>
                   <div className="">
                     <select
-                      id="district"
-                      name="district"
+                      id="location"
+                      name="location"
                       className={s.form_select}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
-                      value={formik.values.district}
+                      value={formik.values.location}
                     >
                       <option value="" disabled className="">
                         Выбрать
                       </option>
-                      <option value="Ао По">Ао По</option>
-                      <option value="Банг Тао">Банг Тао</option>
-                      <option value="Калим">Калим</option>
-                      <option value="Камала">Камала</option>
-                      <option value="Карон">Карон</option>
-                      <option value="Ката">Ката</option>
-                      <option value="Кату">Кату</option>
-                      <option value="Лагуна Пхукет">Лагуна Пхукет</option>
-                      <option value="Лаян">Лаян</option>
-                      <option value="Май Кхао">Май Кхао</option>
-                      <option value="Най Тон">Най Тон</option>
-                      <option value="Най Харн">Най Харн</option>
-                      <option value="Най Янг">Най Янг</option>
-                      <option value="Натай">Натай</option>
-                      <option value="Патонг">Патонг</option>
-                      <option value="Раваи">Раваи</option>
-                      <option value="Сурин">Сурин</option>
-                      <option value="Таланг">Таланг</option>
-                      <option value="Центральный район Пхукета">
+                      <option value="Ao Po">Ао По</option>
+                      <option value="Bang Tao">Банг Тао</option>
+                      <option value="Kalim">Калим</option>
+                      <option value="Kamala">Камала</option>
+                      <option value="Karon">Карон</option>
+                      <option value="Kata">Ката</option>
+                      <option value="Katy">Кату</option>
+                      <option value="Lagyna Phyket">Лагуна Пхукет</option>
+                      <option value="Layan">Лаян</option>
+                      <option value="May Khao">Май Кхао</option>
+                      <option value="Nay Ton">Най Тон</option>
+                      <option value="Nay Hurn">Най Харн</option>
+                      <option value="Nay Yang">Най Янг</option>
+                      <option value="Natay">Натай</option>
+                      <option value="Patong">Патонг</option>
+                      <option value="Ravai">Раваи</option>
+                      <option value="Surin">Сурин</option>
+                      <option value="Talang">Таланг</option>
+                      <option value="Centre Phyket">
                         Центральный район Пхукета
                       </option>
-                      <option value="Чалонг">Чалонг</option>
+                      <option value="Чалонг">Chalong</option>
                       <option value="AllOptions">Показать все варианты</option>
                     </select>
                   </div>
-                  {formik.touched.district && formik.errors.district ? (
-                    <div className={s.form_error}>{formik.errors.district}</div>
+                  {formik.touched.location && formik.errors.location ? (
+                    <div className={s.form_error}>{formik.errors.location}</div>
                   ) : null}
                 </div>
 
@@ -241,7 +253,7 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                       className={s.form_select}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
-                      value={formik.values.rooms}
+                      value={formik.values.characteristics}
                     >
                       <option value="" disabled className="">
                         Выбрать
@@ -415,7 +427,10 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
             </form>
           </div>
           <div>
-            <FilterBurger titleSection={titleSection} />
+            <FilterBurger
+              titleSection={titleSection}
+              setFilterParams={setFilterParams}
+            />
           </div>
         </div>
       </div>
