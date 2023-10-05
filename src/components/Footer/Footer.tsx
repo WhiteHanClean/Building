@@ -2,8 +2,10 @@ import React from "react";
 import s from "./Footer.module.scss";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation();
   return (
     <footer className={s.footer}>
       <div className={s.footer_content}>
@@ -19,17 +21,22 @@ const Footer = () => {
           <nav className={s.nav}>
             <ul className={s.navigation_links}>
               <li className={`${s.nav_link}`}>
-                <Link href={"/"}>Главная</Link>
+                <Link href={"/"}> {t("main.header.mainPage")}</Link>
               </li>
               <li className={s.nav_link}>
-                <Link href={"/Purchase/Purchase"}>Покупка</Link>
+                <Link href={"/Purchase/Purchase"}>
+                  {t("main.header.purchase")}
+                </Link>
               </li>
 
               <li className={s.nav_link}>
-                <Link href={"/Rent/Rent"}>Аренда</Link>
+                <Link href={"/Rent/Rent"}> {t("main.header.rent")}</Link>
               </li>
               <li className={s.nav_link}>
-                <Link href={"/Accommodation/Accommodation"}>Размещение</Link>
+                <Link href={"/Accommodation/Accommodation"}>
+                  {" "}
+                  {t("main.header.accommodation")}
+                </Link>
               </li>
 
               <li className={s.nav_link}>

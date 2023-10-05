@@ -1,7 +1,9 @@
 import React from "react";
 import s from "./WelcomeBanner.module.scss";
+import { useTranslation } from "react-i18next";
 
 const WelcomeBanner = () => {
+  const { t } = useTranslation();
   const tabData = [
     { key: "tab1", title: "Таб 1" },
     { key: "tab2", title: "Таб 2" },
@@ -16,16 +18,13 @@ const WelcomeBanner = () => {
   return (
     <div className={s.welcome_banner}>
       <div className={s.welcome_text_content}>
-        <h1>Добро пожаловать в Property Library Phuket</h1>
-        <h4>
-          Ваш ключ к успешным инвестициям <br /> и комфортной жизни на острове
-          Пхукет.
-        </h4>
+        <h1>{t("aboutUs.welcomeBanner.title")}</h1>
+        <h4>{t("aboutUs.welcomeBanner.subtitle")}</h4>
       </div>
 
       <div className={s.founder}>
-        <h2>Эльнур Ханкишиев</h2>
-        <h5>Основатель компании Property Library Phuket</h5>
+        <h2>{t("aboutUs.welcomeBanner.founder")}</h2>
+        <h5>{t("aboutUs.welcomeBanner.founderSubtitle")}</h5>
       </div>
     </div>
   );

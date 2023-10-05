@@ -43,19 +43,29 @@ const BurgerDrawer: React.FC = () => {
         <div className={s.drawer_content}>
           <div>
             <p className={s.nav_link}>
-              <Link href={"/"} onClick={onClose}>Главная</Link>
+              <Link href={"/"} onClick={onClose}>
+                Главная
+              </Link>
             </p>
             <p className={s.nav_link}>
-              <Link href={"/Purchase/Purchase"} onClick={onClose}>Покупка</Link>
+              <Link href={"/Purchase/Purchase"} onClick={onClose}>
+                Покупка
+              </Link>
             </p>
             <p className={s.nav_link}>
-              <Link href={"/Rent/Rent"} onClick={onClose}>Аренда</Link>
+              <Link href={"/Rent/Rent"} onClick={onClose}>
+                Аренда
+              </Link>
             </p>
             <p className={s.nav_link}>
-              <Link href={"/Accommodation/Accommodation"} onClick={onClose} >Размещение</Link>
+              <Link href={"/Accommodation/Accommodation"} onClick={onClose}>
+                Размещение
+              </Link>
             </p>
             <p className={s.nav_link}>
-              <Link href={"/AboutUs/AboutUs"} onClick={onClose}>О нас</Link>
+              <Link href={"/AboutUs/AboutUs"} onClick={onClose}>
+                О нас
+              </Link>
             </p>
           </div>
 

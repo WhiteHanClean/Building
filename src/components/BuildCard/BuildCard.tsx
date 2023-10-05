@@ -64,4 +64,3 @@ const BuildCard = () => {
 };
 
 export default BuildCard;
-
