@@ -1,9 +1,9 @@
 .aside_button {
-    z-index: 10000;
+    z-index: 999;
     max-width: 100%;
     width: 100%;
     position: fixed;
-    top: 60%;
+    top: 45%;
     .aside_button_items {
         position: relative;
         max-width: 1280px;
@@ -87,7 +87,6 @@
     }
 }
 
-
 @media only screen and (max-width: 1430px) {
     .aside_button {
         .aside_button_items {
@@ -116,7 +115,6 @@
         .aside_button_items {
             .aside_button_items_btn {
                 right: -45px;
-                
             }
         }
     }
@@ -124,6 +122,46 @@
 
 @media only screen and (max-width: 1375px) {
     .aside_button {
-       display: none;
+        top: 92%;
+        .aside_button_items {
+            .aside_button_items_btn {
+                right: 0;
+                border: solid 1px #000;
+            }
+            .aside_button_window {
+                right: 60px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    .aside_button {
+        .aside_button_items {
+            .aside_button_items_btn {
+                right: 20px;
+                
+            }
+            .aside_button_window {
+                right: 80px;
+                width: 340px;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width:  440px) {
+    .aside_button {
+        .aside_button_items {
+            .aside_button_items_btn {
+                right: 20px;
+                
+            }
+            .aside_button_window {
+                right: 20px;
+                width: 320px;
+                top: -333px;
+            }
+        }
     }
 }
