@@ -2,7 +2,6 @@ import React from "react";
 import s from "./BuildBanner.module.scss";
 import Image from "next/image";
 import CustomTabs from "@/shared/ui/Tabs/Tabs";
-import CustomSelect from "@/shared/ui/Select/Select";
 import SearchBar from "../SearchBar/SearchBar";
 import { useTranslation } from "react-i18next";
 

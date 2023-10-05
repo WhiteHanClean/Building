@@ -32,21 +32,21 @@ const SocialNetworkBlock = () => {
       <div className={style.photoBlock}>
         <Image
           className={style.photo1}
-          src="/Image.png"
+          src="/SocialNetworkBlock2.jpg"
           width={190}
           height={190}
           alt="/Image"
         />
         <Image
           className={style.photo2}
-          src="/SocialNetworkBlock2.png"
+          src="/SocialNetworkBlock3.jpg"
           width={190}
           height={190}
           alt="SocialNetworkBlock2"
         />
         <Image
           className={style.photo3}
-          src="/SocialNetworkBlock3.png"
+          src="/SocialNetworkBlock1.jpg"
           width={400}
           height={400}
           alt="SocialNetworkBlock3"
