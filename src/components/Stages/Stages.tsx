@@ -16,12 +16,10 @@ const Stages = () => {
       </div>
       <div className={s.stages_content}>
         <div className={s.stages_picture}>
-          <Image
-            src={"/bgWorkOfStages.png"}
-            width={522}
-            height={589}
-            alt="work of stages bg"
-          />
+          <div className={s.stage_picture_text}>
+          <h1>{t("main.stages.title")}</h1>
+          <p>{t("main.stages.descriptionOfTheStages")}</p>
+          </div>
         </div>
         <div className={s.stages_cards}>
           <StageCard
