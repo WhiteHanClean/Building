@@ -19,12 +19,15 @@ const Stages = () => {
       </div>
       <div className={s.stages_content}>
         <div className={s.stages_picture}>
-          <Image
-            src={'/bgWorkOfStages.png'}
-            width={522}
-            height={589}
-            alt="work of stages bg"
-          />
+          <div className={s.stage_picture_text}>
+            <h1>Мы заботимся о вашем комфорте</h1>
+            <p>
+              Мы регулярно обновления и анализируем рынок, предоставляя клиентам
+              актуальные данные для принятия обоснованных решений, а наши
+              специалисты обеспечат вам комфорт и надежность на каждом этапе
+              сделки.
+            </p>
+          </div>
         </div>
         <div className={s.stages_cards}>
           <StageCard
