@@ -4,8 +4,10 @@ import s from "./BurgeMenu.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { CloseOutlined } from "@ant-design/icons";
+import { useTranslation } from "react-i18next";
 
 const BurgerDrawer: React.FC = () => {
+  const { t } = useTranslation();
   const [open, setOpen] = useState<boolean>(false);
 
   const showDrawer = () => {
@@ -44,27 +46,27 @@ const BurgerDrawer: React.FC = () => {
           <div>
             <p className={s.nav_link}>
               <Link href={"/"} onClick={onClose}>
-                Главная
+              {t("main.header.mainPage")}
               </Link>
             </p>
             <p className={s.nav_link}>
               <Link href={"/Purchase/Purchase"} onClick={onClose}>
-                Покупка
+              {t("main.header.purchase")}
               </Link>
             </p>
             <p className={s.nav_link}>
               <Link href={"/Rent/Rent"} onClick={onClose}>
-                Аренда
+              {t("main.header.rent")}
               </Link>
             </p>
             <p className={s.nav_link}>
               <Link href={"/Accommodation/Accommodation"} onClick={onClose}>
-                Размещение
+              {t("main.header.accommodation")}
               </Link>
             </p>
             <p className={s.nav_link}>
               <Link href={"/AboutUs/AboutUs"} onClick={onClose}>
-                О нас
+              {t("main.header.aboutUs")}
               </Link>
             </p>
           </div>
