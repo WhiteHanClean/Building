@@ -5,6 +5,8 @@ import Statistics from "@/components/Statistics/Statistics";
 import WelcomeBanner from "@/components/WelcomeBanner/WelcomeBanner";
 import React, { useEffect, useState } from "react";
 import SocialNetworkBlock from "../../components/SocialNetworkBlock/SocialNetworkBlock";
+import Questions from "@/components/Questions/Questions";
+import Consultation from "@/components/Consultation/Consultation";
 
 const AboutUs = () => {
   const [width, setWidth] = useState(0); // Initialize with an initial width value
@@ -34,6 +36,8 @@ const AboutUs = () => {
       <FounderQuoteBanner />
       <FullService />
       {width <= 768 ? "" : <SocialNetworkBlock />}
+      <Questions />
+      <Consultation />
     </div>
   );
 };
