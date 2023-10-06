@@ -15,7 +15,7 @@ export interface RealEstate {
   yearBuilt: string;
   description: string;
   location: string;
-  hasRestaurant: boolean; // Fixed typo
+  hasRestaurant: boolean;
   hasParking: boolean;
   hasSpa: boolean;
   hasCommunalPool: boolean;
