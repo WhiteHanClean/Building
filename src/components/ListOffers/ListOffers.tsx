@@ -167,6 +167,7 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
               return (
                 <li key={card._id} className={s.listOffer_item}>
                   <BuildCard
+                    id={card._id}
                     img={card.mainImage}
                     alt={card.alt}
                     name={card.title}

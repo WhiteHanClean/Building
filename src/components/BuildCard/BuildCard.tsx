@@ -1,8 +1,10 @@
-import React from "react";
-import s from "./BuildCard.module.scss";
-import Image from "next/image";
+import React from 'react';
+import s from './BuildCard.module.scss';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
 
 interface Props {
+  id: string;
   img: any;
   alt: string;
   name: string;
@@ -14,68 +16,70 @@ interface Props {
 }
 
 const BuildCard = ({
+  id,
   img = {
-    url: "/413x270.png",
+    url: '/413x270.png',
   },
-  alt = "foto",
-  name = "Housing",
+  alt = 'foto',
+  name = 'Housing',
   price = 0,
   rooms = 0,
   landArea = 0,
   builtUpArea = 0,
-  location = "Необходимо уточнить",
+  location = 'Необходимо уточнить',
 }: Props) => {
-  const imageWidth = 413;
-  const imageHeight = 270;
+  const handleClick = () => {};
+
   return (
-    <div className={s.card_container}>
-      <div className={s.card_wrapper_img}>
-        <Image
-          src={img.url}
-          width={imageWidth}
-          height={imageHeight}
-          alt={alt}
-        />
-      </div>
-      <div className={s.card_name}>
-        <p>{name}</p>
-        <p>{price} ₽</p>
-      </div>
-      <div className={s.card_details}>
-        <div className={s.card_detail_wrapper}>
-          <span>
-            <Image
-              className={s.card_icons}
-              src={"/IconBed.png"}
-              width={17}
-              height={12}
-              alt="Icon bet"
-            />
-            {rooms} комнаты
-          </span>
-          <span>
-            <Image
-              className={s.card_icons}
-              src={"/SquareIcon.png"}
-              width={15}
-              height={15}
-              alt="Square icon"
-            />
-            {builtUpArea} м²
-          </span>
-          <span>
-            <Image
-              className={s.card_icons}
-              src={"/Big Icon.png"}
-              width={15}
-              height={15}
-              alt="square common icon"
-            />
-            {landArea} м²
-          </span>
+    <div className={s.card}>
+      {/* image */}
+
+      <div
+        className={s.card_img}
+        style={{
+          backgroundImage: `url(${img.url})`,
+          backgroundSize: 'cover',
+        }}
+      ></div>
+
+      {/* card main data */}
+
+      <div className={s.card_mainData}>
+        {/* card title */}
+
+        <div className={s.card_title}>
+          <h3>{name}</h3>
+          <p>{price}</p>
         </div>
-        <div>
-          <span>{location}</span>
+
+        {/* card house numbers */}
+
+        <div className={s.card_houseData}>
+          <div>
+            <Image src={'BedIcon'} alt="Bed icon" width={16} height={16} />
+            <p>{rooms} спальни</p>
+          </div>
+
+          <div>
+            <Image src={'SquareIcon'} width={16} height={16} alt="Square icon" />
+            <p>{product.houseArea} м²</p>
+          </div>
+
+          <div>
+            <Image
+              src={'SquareDiagonaleIcon'}
+              width={16}
+              height={16}
+              alt="Square diagonal icon"
+            />
+            <p>{product.mainAria} м²</p>
+          </div>
+        </div>
+
+        {/* card house location */}
+
+        <div className={s.card_houselocation}>
+          <p>{product.place}</p>
         </div>
       </div>
     </div>
