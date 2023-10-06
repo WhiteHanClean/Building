@@ -1,4 +1,4 @@
-@import '../../styles/variable';
+@import "../../styles/variable";
 
 .listOffer_label {
   @include sizer(14px);
@@ -53,6 +53,7 @@
 
 .listOffer_item {
   margin-bottom: 40px;
+  width: 413px;
 }
 
 @media only screen and (max-width: 1024px) {
@@ -63,11 +64,18 @@
   .listOffer_select {
     width: 300px;
   }
+
+  .listOffer_item {
+    width: 315px;
+  }
 }
 
 @media only screen and (max-width: 768px) {
   .listOffer_list {
     gap: 12px;
+  }
+  .listOffer_item {
+    width: 362px;
   }
 
   .listOffer_select {
