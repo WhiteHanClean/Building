@@ -23,7 +23,6 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   // Обработчик изменения значения в Select
   const handleChange = (value: string) => {
-    console.log(`Selected: ${value}`);
     if (onChange) {
       onChange(value);
     }

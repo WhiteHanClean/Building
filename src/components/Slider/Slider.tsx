@@ -15,16 +15,17 @@ import { idText } from "typescript";
 const Slider: React.FC<{
   allOffers: RealEstate[];
 }> = ({ allOffers }) => {
-  // Create a ref for the Swiper instance
   const swiperRef = useRef<any | null>(null);
+
   const { t } = useTranslation();
+
   const goToPrevSlide = () => {
     if (swiperRef.current) {
       swiperRef.current.slidePrev();
     }
   };
 
-  console.log(allOffers)
+  console.log(allOffers);
 
   const goToNextSlide = () => {
     if (swiperRef.current) {
@@ -77,8 +78,8 @@ const Slider: React.FC<{
         }}
         className="build_swiper"
       >
-        {allOffers ? (
-          allOffers.map((card: RealEstate) => (
+        {allOffers? (
+          allOffers?.map((card: RealEstate) => (
             <SwiperSlide key={card._id}>
               <BuildCard
                 id={card._id}

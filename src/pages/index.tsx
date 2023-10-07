@@ -19,6 +19,8 @@ const Home: React.FC<{
   allOffers: RealEstate[];
   error?: any;
 }> = ({ allOffers, error }) => {
+
+  console.log(allOffers)
   return (
     <>
       <Head>
@@ -34,11 +36,12 @@ const Home: React.FC<{
       <BuildBanner />
       <Statistics />
 
-      {!error ? (
-        <Slider allOffers={allOffers} />
-      ) : (
-        <p>Error: {error.message}</p>
-      )}
+      {/* {!error ? ( */}
+      {allOffers && <Slider allOffers={allOffers} />}
+
+      {/* ) : ( */}
+      {/* <p>Error: {error.message}</p>
+      )} */}
 
       <TypesOfServices />
       <Stages />

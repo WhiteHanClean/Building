@@ -79,6 +79,8 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
     }
   }, [data]);
 
+  console.log(allOffers);
+
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
@@ -174,7 +176,13 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
                   rooms={card.roomsAmount}
                   builtUpArea={card.builtUpArea}
                   landArea={card.landArea}
-                  location={card.location}
+                  location={
+                    card.location?.title
+                      ? card.location.title
+                      : "Необходимо уточнить"
+                  }
+
+
                 />
               </li>
             );

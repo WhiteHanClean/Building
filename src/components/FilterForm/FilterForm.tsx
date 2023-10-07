@@ -4,39 +4,22 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import dynamic from "next/dynamic";
 import { useTranslation } from "react-i18next";
-import { FilterParams } from "@/redux/api";
+import {
+  FilterParams,
+  LocationResponse,
+  setFormMain,
+  useGetLocationQuery,
+} from "@/redux/api";
+import { useSelector, useDispatch } from "react-redux";
+import { MainFormParams } from "@/redux/store";
+import { useEffect, useState } from "react";
 
 const validationSchema = Yup.object({
   RealEstate: Yup.string().oneOf(
     ["Villa", "Apartment", "AllOptions"],
     "Выберите тип недвижимости"
   ),
-  location: Yup.string().oneOf(
-    [
-      "Ao Po",
-      "Bang Tao",
-      "Kalim",
-      "Kamala",
-      "Karon",
-      "Kata",
-      "Katy",
-      "Lagyna Phyket",
-      "Layan",
-      "May Khao",
-      "Nay Ton",
-      "Nay Hurn",
-      "Nay Yang",
-      "Natay",
-      "Patong",
-      "Ravai",
-      "Surin",
-      "Talang",
-      "Centre Phyket",
-      "Chalong",
-      "AllOptions",
-    ],
-    "Выберите район"
-  ),
+  location: Yup.string(),
   rooms: Yup.string().oneOf(
     ["Studio", "1", "2", "3", "4", "5", "AllOptions"],
     "Выберите пожалуйста кол-во комнат"
@@ -87,16 +70,66 @@ const FilterBurger = dynamic(() => import("./FilterBurger/FilterBurger"), {
 });
 
 const FilterForm = ({ titleSection, setFilterParams }: Props) => {
+  const [locationsData, setLocationsData] = useState<LocationResponse>([]);
+  const { data, error, isLoading } = useGetLocationQuery();
+  const dispatch = useDispatch();
   const { t } = useTranslation();
+  const infoFormMain = useSelector(
+    (state: { mainForm: { mainForm: MainFormParams } }) =>
+      state.mainForm.mainForm
+  ) as MainFormParams;
+
+  console.log(infoFormMain);
+
+  useEffect(() => {
+    if (data) {
+      setLocationsData(data);
+    }
+  }, [data]);
+
+  //// Запрос при не пустом infoFormMain
+  useEffect(() => {
+    const shouldSubmitAutomatically = Object.values(infoFormMain).some(
+      (value) => value !== ""
+    );
+
+    if (shouldSubmitAutomatically) {
+      formik.handleSubmit();
+    }
+  }, []);
+
+  ////сброс по кнопки "Сбросить поиск"
+  useEffect(() => {
+    const shouldSubmitAutomatically = Object.values(infoFormMain).some(
+      (value) => value !== ""
+    );
+
+    if (shouldSubmitAutomatically) {
+      formik.handleSubmit();
+    }
+
+    formik.setValues({
+      RealEstate: infoFormMain.RealEstate,
+      location: infoFormMain.location,
+      rooms: infoFormMain.rooms,
+      characteristics: "",
+      pricMin: infoFormMain.pricMin,
+      pricMax: infoFormMain.pricMax,
+      areaMin: "",
+      areaMax: "",
+      areaHouseMin: "",
+      areaHouseMax: "",
+    });
+  }, [infoFormMain]);
 
   const formik = useFormik({
     initialValues: {
-      RealEstate: "",
-      location: "",
-      rooms: "",
+      RealEstate: infoFormMain.RealEstate,
+      location: infoFormMain.location,
+      rooms: infoFormMain.rooms,
       characteristics: "",
-      pricMin: "",
-      pricMax: "",
+      pricMin: infoFormMain.pricMin,
+      pricMax: infoFormMain.pricMax,
       areaMin: "",
       areaMax: "",
       areaHouseMin: "",
@@ -132,8 +165,17 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
       setFilterParams(filterParams);
     },
   });
+
   const handleResetForm = () => {
     formik.resetForm();
+    const mainForm = {
+      RealEstate: "",
+      location: "",
+      rooms: "",
+      pricMin: "",
+      pricMax: "",
+    };
+    dispatch(setFormMain(mainForm));
     setFilterParams({ isFilter: false });
   };
 
@@ -194,69 +236,11 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                       <option value="" disabled className="">
                         {t("buyingRealEstate.select")}
                       </option>
-                      <option value="Ao Po">
-                        {t("main.searchBar.districtVariant.aoPo")}
-                      </option>
-                      <option value="Bang Tao">
-                        {t("main.searchBar.districtVariant.bangTao")}
-                      </option>
-                      <option value="Kalim">
-                        {t("main.searchBar.districtVariant.kalim")}
-                      </option>
-                      <option value="Kamala">
-                        {t("main.searchBar.districtVariant.kamala")}
-                      </option>
-                      <option value="Karon">
-                        {t("main.searchBar.districtVariant.karon")}
-                      </option>
-                      <option value="Kata">
-                        {t("main.searchBar.districtVariant.kata")}
-                      </option>
-                      <option value="Katy">
-                        {t("main.searchBar.districtVariant.katu")}
-                      </option>
-                      <option value="Lagyna Phyket">
-                        {t("main.searchBar.districtVariant.lagunaPhuket")}
-                      </option>
-                      <option value="Layan">
-                        {t("main.searchBar.districtVariant.layan")}
-                      </option>
-                      <option value="May Khao">
-                        {t("main.searchBar.districtVariant.maiKhao")}
-                      </option>
-                      <option value="Nay Ton">
-                        {t("main.searchBar.districtVariant.naiThon")}
-                      </option>
-                      <option value="Nay Hurn">
-                        {t("main.searchBar.districtVariant.naiHarn")}
-                      </option>
-                      <option value="Nay Yang">
-                        {t("main.searchBar.districtVariant.naiYang")}
-                      </option>
-                      <option value="Natay">
-                        {t("main.searchBar.districtVariant.natai")}
-                      </option>
-                      <option value="Patong">
-                        {t("main.searchBar.districtVariant.patong")}
-                      </option>
-                      <option value="Ravai">
-                        {t("main.searchBar.districtVariant.rawai")}
-                      </option>
-                      <option value="Surin">
-                        {t("main.searchBar.districtVariant.surin")}
-                      </option>
-                      <option value="Talang">
-                        {t("main.searchBar.districtVariant.talang")}
-                      </option>
-                      <option value="Centre Phyket">
-                        {t("main.searchBar.districtVariant.centralPhuket")}
-                      </option>
-                      <option value="Chalong">
-                        {t("main.searchBar.districtVariant.chalong")}
-                      </option>
-                      <option value="AllOptions">
-                        {t("main.searchBar.districtVariant.allOptions")}
-                      </option>
+                      {locationsData.map((location) => (
+                        <option key={location._id} value={location._id}>
+                          {location.title}
+                        </option>
+                      ))}
                     </select>
                   </div>
                   {formik.touched.location && formik.errors.location ? (
@@ -331,8 +315,11 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                       <option value="Характеристики 5">Характеристики 5</option>
                     </select>
                   </div>
-                  {formik.touched.rooms && formik.errors.rooms ? (
-                    <div className={s.form_error}>{formik.errors.rooms}</div>
+                  {formik.touched.characteristics &&
+                  formik.errors.characteristics ? (
+                    <div className={s.form_error}>
+                      {formik.errors.characteristics}
+                    </div>
                   ) : null}
                 </div>
 

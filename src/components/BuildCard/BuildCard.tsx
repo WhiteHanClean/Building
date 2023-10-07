@@ -12,7 +12,7 @@ interface Props {
   rooms?: number;
   landArea?: number;
   builtUpArea?: number;
-  location?: string;
+  location?: any;
 }
 
 const BuildCard = ({
@@ -85,7 +85,7 @@ const BuildCard = ({
           </span>
         </div>
         <div>
-          <span>{location}</span>
+          <span>{location.title}</span>
         </div>
       </div>
     </div>

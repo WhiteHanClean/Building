@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import m from "./FilterBurger.module.scss";
 import s from "../FilterForm.module.scss";
 import { Drawer } from "antd";
@@ -6,41 +6,23 @@ import Image from "next/image";
 import { CloseOutlined } from "@ant-design/icons";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import { FilterParams } from "@/redux/api";
+import {
+  FilterParams,
+  LocationResponse,
+  setFormMain,
+  useGetLocationQuery,
+} from "@/redux/api";
+import { useDispatch, useSelector } from "react-redux";
+import { MainFormParams } from "@/redux/store";
 
 const validationSchema = Yup.object({
   RealEstate: Yup.string().oneOf(
     ["Villa", "Apartment", "AllOptions"],
     "Выберите тип недвижимости"
   ),
-  location: Yup.string().oneOf(
-    [
-      "Ao Po",
-      "Bang Tao",
-      "Kalim",
-      "Kamala",
-      "Karon",
-      "Kata",
-      "Katy",
-      "Lagyna Phyket",
-      "Layan",
-      "May Khao",
-      "Nay Ton",
-      "Nay Hurn",
-      "Nay Yang",
-      "Natay",
-      "Patong",
-      "Ravai",
-      "Surin",
-      "Talang",
-      "Centre Phyket",
-      "Chalong",
-      "AllOptions",
-    ],
-    "Выберите район"
-  ),
+  location: Yup.string(),
   rooms: Yup.string().oneOf(
-    ["Студия", "1", "2", "3", "4", "5", "AllOptions"],
+    ["Studio", "1", "2", "3", "4", "5", "AllOptions"],
     "Выберите пожалуйста кол-во комнат"
   ),
   characteristics: Yup.string().oneOf(
@@ -79,7 +61,56 @@ interface Props {
 }
 
 const FilterBurger = ({ titleSection, setFilterParams }: Props) => {
+  const [locationsData, setLocationsData] = useState<LocationResponse>([]);
+  const { data, error, isLoading } = useGetLocationQuery();
   const [open, setOpen] = useState<boolean>(false);
+
+  const dispatch = useDispatch();
+  const infoFormMain = useSelector(
+    (state: { mainForm: { mainForm: MainFormParams } }) =>
+      state.mainForm.mainForm
+  ) as MainFormParams;
+
+  useEffect(() => {
+    if (data) {
+      setLocationsData(data);
+    }
+  }, [data]);
+
+  //// Запрос при не пустом infoFormMain
+  useEffect(() => {
+    const shouldSubmitAutomatically = Object.values(infoFormMain).some(
+      (value) => value !== ""
+    );
+
+    if (shouldSubmitAutomatically) {
+      formik.handleSubmit();
+    }
+  }, []);
+
+  ////сброс по кнопки "Сбросить поиск"
+  useEffect(() => {
+    const shouldSubmitAutomatically = Object.values(infoFormMain).some(
+      (value) => value !== ""
+    );
+
+    if (shouldSubmitAutomatically) {
+      formik.handleSubmit();
+    }
+
+    formik.setValues({
+      RealEstate: infoFormMain.RealEstate,
+      location: infoFormMain.location,
+      rooms: infoFormMain.rooms,
+      characteristics: "",
+      pricMin: infoFormMain.pricMin,
+      pricMax: infoFormMain.pricMax,
+      areaMin: "",
+      areaMax: "",
+      areaHouseMin: "",
+      areaHouseMax: "",
+    });
+  }, [infoFormMain]);
 
   const showDrawer = () => {
     setOpen(true);
@@ -91,12 +122,12 @@ const FilterBurger = ({ titleSection, setFilterParams }: Props) => {
 
   const formik = useFormik({
     initialValues: {
-      RealEstate: "",
-      location: "",
-      rooms: "",
+      RealEstate: infoFormMain.RealEstate,
+      location: infoFormMain.location,
+      rooms: infoFormMain.rooms,
       characteristics: "",
-      pricMin: "",
-      pricMax: "",
+      pricMin: infoFormMain.pricMin,
+      pricMax: infoFormMain.pricMax,
       areaMin: "",
       areaMax: "",
       areaHouseMin: "",
@@ -133,6 +164,14 @@ const FilterBurger = ({ titleSection, setFilterParams }: Props) => {
   });
   const handleResetForm = () => {
     formik.resetForm();
+    const mainForm = {
+      RealEstate: "",
+      location: "",
+      rooms: "",
+      pricMin: "",
+      pricMax: "",
+    };
+    dispatch(setFormMain(mainForm));
     setFilterParams({ isFilter: false });
   };
 
@@ -217,29 +256,11 @@ const FilterBurger = ({ titleSection, setFilterParams }: Props) => {
                   <option value="" disabled className="">
                     Выбрать
                   </option>
-                  <option value="Ао По">Ао По</option>
-                  <option value="Банг Тао">Банг Тао</option>
-                  <option value="Калим">Калим</option>
-                  <option value="Камала">Камала</option>
-                  <option value="Карон">Карон</option>
-                  <option value="Ката">Ката</option>
-                  <option value="Кату">Кату</option>
-                  <option value="Лагуна Пхукет">Лагуна Пхукет</option>
-                  <option value="Лаян">Лаян</option>
-                  <option value="Май Кхао">Май Кхао</option>
-                  <option value="Най Тон">Най Тон</option>
-                  <option value="Най Харн">Най Харн</option>
-                  <option value="Най Янг">Най Янг</option>
-                  <option value="Натай">Натай</option>
-                  <option value="Патонг">Патонг</option>
-                  <option value="Раваи">Раваи</option>
-                  <option value="Сурин">Сурин</option>
-                  <option value="Таланг">Таланг</option>
-                  <option value="Центральный район Пхукета">
-                    Центральный район Пхукета
-                  </option>
-                  <option value="Чалонг">Чалонг</option>
-                  <option value="AllOptions">Показать все варианты</option>
+                  {locationsData.map((location) => (
+                    <option key={location._id} value={location._id}>
+                      {location.title}
+                    </option>
+                  ))}
                 </select>
               </div>
               {formik.touched.location && formik.errors.location ? (

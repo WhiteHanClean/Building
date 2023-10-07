@@ -1,4 +1,15 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { MainFormParams } from "./store";
+
+
+export type Location = {
+  _id: string;
+  title: string;
+  __v: number;
+};
+
+export type LocationResponse = Location[];
+
 interface IImages {
   url: string;
 }
@@ -16,8 +27,10 @@ export interface RealEstate {
   buildingType: string;
   yearBuilt: string;
   description: string;
-  location: string;
-  hasRestaurant: boolean;
+  location: Location;
+  hasRestaurant: boolean; // Fixed typo
+
+
   hasParking: boolean;
   hasSpa: boolean;
   hasCommunalPool: boolean;
@@ -119,10 +132,21 @@ export const api = createApi({
       query: ({ id }) => `realEstates/${id}`,
       providesTags: ["Reals"],
     }),
+
+    getLocation: builder.query<LocationResponse, void>({
+      query: () => `locations`,
+      providesTags: ["Reals"],
+    }),
   }),
 });
 
+export const setFormMain = (mainForm: MainFormParams) => ({
+  type: 'mainFormSearch',
+  payload: mainForm,
+});
+
 export const {
+  useGetLocationQuery,
   useGetAllOffersQuery,
   useGetOneOffersQuery,
   useGetFilteredOffersQuery,
