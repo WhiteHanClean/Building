@@ -51,11 +51,17 @@ const validationSchema = Yup.object({
     ],
     "Выберите Характеристики"
   ),
+  // pricMin: Yup.string()
+  //   .matches(/^[1-9][0-9]*$/, "Только цифры")
+  //   .max(15, "Не более 15 символов"),
+  // pricMax: Yup.string()
+  //   .matches(/^[1-9][0-9]*$/, "Только цифры")
+  //   .max(15, "Не более 15 символов"),
   pricMin: Yup.string()
-    .matches(/^[1-9][0-9]*$/, "Только цифры")
+    .matches(/^\s*(\d+(\s+\d+)*)?\s*$/, "Только цифры")
     .max(15, "Не более 15 символов"),
   pricMax: Yup.string()
-    .matches(/^[1-9][0-9]*$/, "Только цифры")
+    .matches(/^\s*(\d+(\s+\d+)*)?\s*$/, "Только цифры")
     .max(15, "Не более 15 символов"),
   areaMin: Yup.string()
     .matches(/^[1-9][0-9]*$/, "Только цифры")
@@ -343,9 +349,21 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                         type="text"
                         id="pricMin"
                         name="pricMin"
-                        onChange={formik.handleChange}
+                        onChange={(e) => {
+                          formik.handleChange(e);
+                          const inputValue = e.target.value;
+                          if (inputValue.trim() !== "") {
+                            const numericValue = parseInt(
+                              inputValue.replace(/\s+/g, ""),
+                              10
+                            );
+                            if (!isNaN(numericValue)) {
+                              formik.setFieldValue("pricMin", numericValue);
+                            }
+                          }
+                        }}
                         onBlur={formik.handleBlur}
-                        value={formik.values.pricMin}
+                        value={formik.values.pricMin.toLocaleString()}
                       />
                     </div>
                     <div
@@ -357,9 +375,21 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                         type="text"
                         id="pricMax"
                         name="pricMax"
-                        onChange={formik.handleChange}
+                        onChange={(e) => {
+                          formik.handleChange(e);
+                          const inputValue = e.target.value;
+                          if (inputValue.trim() !== "") {
+                            const numericValue = parseInt(
+                              inputValue.replace(/\s+/g, ""),
+                              10
+                            );
+                            if (!isNaN(numericValue)) {
+                              formik.setFieldValue("pricMax", numericValue);
+                            }
+                          }
+                        }}
                         onBlur={formik.handleBlur}
-                        value={formik.values.pricMax}
+                        value={formik.values.pricMax.toLocaleString()}
                       />
                     </div>
                   </div>
