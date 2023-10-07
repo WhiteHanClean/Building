@@ -13,13 +13,26 @@ import { useGetFilteredOffersQuery } from "@/redux/api";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { RootState } from "@/redux/store";
-
+import { LoadingOutlined } from "@ant-design/icons";
+import { Spin } from "antd";
 import Pagination from "../Pagination/Pagination";
 import { useWindowSize } from "@/hook/useSize";
 interface Props {
   isRent: boolean;
   filterParams: FilterParams;
 }
+
+const antIcon = (
+  <LoadingOutlined
+    style={{
+      fontSize: 80,
+      marginTop: "100px",
+      marginBottom: "400px",
+      color: "gray"
+    }}
+    spin
+  />
+);
 
 const ListOffers = ({ isRent, filterParams }: Props) => {
   const { t } = useTranslation();
@@ -154,24 +167,26 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
         </div>
       </div>
       <ul className={s.listOffer_list}>
-        {allOffers && totalPages
-          ? allOffers.map((card: RealEstate) => {
-              return (
-                <li key={card._id} className={s.listOffer_item}>
-                  <BuildCard
-                    img={card.mainImage}
-                    alt={card.alt}
-                    name={card.title}
-                    price={card.price}
-                    rooms={card.roomsAmount}
-                    builtUpArea={card.builtUpArea}
-                    landArea={card.landArea}
-                    location={card.location}
-                  />
-                </li>
-              );
-            })
-          : "empty"}
+        {allOffers && totalPages ? (
+          allOffers.map((card: RealEstate) => {
+            return (
+              <li key={card._id} className={s.listOffer_item}>
+                <BuildCard
+                  img={card.mainImage}
+                  alt={card.alt}
+                  name={card.title}
+                  price={card.price}
+                  rooms={card.roomsAmount}
+                  builtUpArea={card.builtUpArea}
+                  landArea={card.landArea}
+                  location={card.location}
+                />
+              </li>
+            );
+          })
+        ) : (
+          <Spin indicator={antIcon} />
+        )}
       </ul>
       {totalPages && allOffers && (
         <Pagination
