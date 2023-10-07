@@ -167,11 +167,13 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
         </div>
       </div>
       <ul className={s.listOffer_list}>
+
         {allOffers && totalPages ? (
           allOffers.map((card: RealEstate) => {
             return (
               <li key={card._id} className={s.listOffer_item}>
                 <BuildCard
+                  id={card._id}
                   img={card.mainImage}
                   alt={card.alt}
                   name={card.title}

@@ -7,31 +7,22 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import Image from "next/image";
 import { useWindowSize } from "../../hook/useSize";
-import { Arapey } from "@next/font/google";
+import { RealEstate } from "@/redux/api";
 
-const ProductSlider: React.FC = () => {
+interface ProductSliderProps {
+  selectedProperty: RealEstate | null;
+}
+
+const ProductSlider: React.FC<ProductSliderProps> = ({ selectedProperty }) => {
   const [number, setNumber] = useState(1);
   const { width = 0 } = useWindowSize();
 
-  const isScreenTable = width <= 1300;
-  const isScreenTablemMini = width <= 768;
-  const isScreenMob = width <= 428;
+  const imagesCount = selectedProperty?.images.length || 0;
 
-  const heightImg = isScreenTable
-    ? 520
-    : isScreenTablemMini
-    ? 470
-    : isScreenMob
-    ? 270
-    : 460;
-
-  const items = Array.from({ length: 24 }, (_, index) => index);
-  // Create a ref for the Swiper instance
   const swiperRef = useRef<any | null>(null);
 
-  // Function to go to the previous slide
   const goToPrevSlide = () => {
-    if (swiperRef.current) {
+    if (imagesCount > 1 && swiperRef.current) {
       swiperRef.current.slidePrev();
       if (number !== 1) {
         setNumber((prevNumber) => prevNumber - 1);
@@ -39,96 +30,146 @@ const ProductSlider: React.FC = () => {
     }
   };
 
-  // Function to go to the next slide
   const goToNextSlide = () => {
-    if (swiperRef.current) {
+    if (imagesCount > 1 && swiperRef.current) {
       swiperRef.current.slideNext();
-      if (number < items.length) {
+      if (number < imagesCount) {
         setNumber((prevNumber) => prevNumber + 1);
       }
     }
   };
 
   return (
-    <div className={s.productSlider_wrapper_section}>
-      <div className={s.productSlider_wrapper_btn}>
-        <div className={s.productSlider_btn_group}>
-          <button className={s.productSlider_left_btn} onClick={goToPrevSlide}>
-            <Image
-              src={"/BtnSliderIcon.png"}
-              width={16}
-              height={16}
-              alt="slider icon"
-            />
-          </button>
-          <button className={s.productSlider_right_btn} onClick={goToNextSlide}>
-            <Image
-              src={"/BtnSliderIcon.png"}
-              width={16}
-              height={16}
-              alt="slider icon"
-              className={s.productSlider_right_icon_img}
-            />
-          </button>
+    <section className={s.slider_section}>
+      {/* image starts*/}
+      <div className={s.slider_section_image}>
+        <div className={s.slider_section_image_swipper}>
+          {/* swipper buttons starts*/}
+
+          <div className={s.slider_section_image_swipper_buttonHolder}>
+            <button
+              className={
+                s.slider_section_image_swipper_buttonHolder_left_button
+              }
+              onClick={goToPrevSlide}
+            >
+              <Image
+                src={"/BtnSliderIcon.png"}
+                width={16}
+                height={16}
+                alt="slider icon"
+              />
+            </button>
+
+            <button
+              className={
+                s.slider_section_image_swipper_buttonHolder_right_button
+              }
+              onClick={goToNextSlide}
+            >
+              <Image
+                src={"/BtnSliderIcon.png"}
+                width={16}
+                height={16}
+                alt="slider icon"
+                className={
+                  s.slider_section_image_swipper_buttonHolder_right_button_icon
+                }
+              />
+            </button>
+          </div>
+          {/* swipper buttons ends*/}
+
+          {/* swipper text starts */}
+
+          <div className={s.slider_section_image_swipper_text}>
+            {imagesCount > 0 && (
+              <p>
+                <span>{number}</span> из <span>{imagesCount}</span>
+              </p>
+            )}
+          </div>
+
+          {/* swipper text ends */}
         </div>
-        <div className={s.productSlider_wrapper_btnText}>
-          <p className={s.productSlider_number}>
-            <span>{number}</span> из <span>{items.length}</span>
-          </p>
-        </div>
-      </div>
-      <div className={s.productSlider_wrapper}>
+
+        {/* swipper starts*/}
+
         <Swiper
           slidesPerView={1}
           scrollbar={{
             draggable: true,
           }}
           modules={[Scrollbar]}
-          onSwiper={(swiper) => {
+          onSwiper={(swiper: any) => {
             swiperRef.current = swiper;
           }}
+          className={s.slider_section_image_slide}
         >
-          {items.map(() => (
-            <SwiperSlide>
-              <div className={s.productSlider_wrapper_img}>
-                <Image
-                  src={"/FotoHouse.jpg"}
-                  alt="Foto House"
-                  width={847}
-                  height={heightImg}
-                  style={{ width: "100%" }}
-                />
-              </div>
+          {selectedProperty?.images.map((items, index) => (
+            <SwiperSlide key={index}>
+              <div
+                style={{
+                  backgroundImage: `url(${items.url})`,
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                  width: "100%",
+                  height: "100%",
+                }}
+              ></div>
             </SwiperSlide>
           ))}
         </Swiper>
-        <div className={s.productSlider_wrapper_info}>
-          <div className={s.productSlider_wrapper_title}>
-            <p>Icon Park</p>
-            <p>15 000 000 ₽</p>
-          </div>
-          <div className={s.productSlider_wrapper_text}>
-            <p>Камала, Катху, Пхукет</p>
-            <p>310 000 ₽/м²</p>
-          </div>
-          <ul className={s.productSlider_list}>
-            <li className={s.productSlider_items}>
-              <p>3-комнатная квартира</p>
-            </li>
-            <li className={s.productSlider_items}>
-              <p>Площадь квартиры: 234 м²</p>
-            </li>
-            <li className={s.productSlider_items}>
-              <p>Год постройки: 2020</p>
-            </li>
-            <li className={s.productSlider_items}>
-              <p>Пляж Камала: 0.5 км</p>
-            </li>
-          </ul>
-          <button className={s.productSlider_btn}>Заказать звонок</button>
-        </div>
+
+        {/* swipper ends*/}
       </div>
-    </div>
+
+      {/* image ends*/}
+      {/* ================================================================================================= */}
+      {/* table starts */}
+
+      <div className={s.slider_section_table}>
+        {/* table title starts*/}
+        <div className={s.slider_section_table_title}>
+          <div className={s.slider_section_table_title_price}>
+            <h3>{selectedProperty?.title}</h3>
+            <h3>{selectedProperty?.price} ₽</h3>
+          </div>
+
+          <div className={s.slider_section_table_title_location}>
+            <p>{selectedProperty?.location}</p>
+            <p>{selectedProperty?.pricePerSquareMeter} ₽/м²</p>
+          </div>
+        </div>
+        {/* table title ends*/}
+        {/* table list starts*/}
+        <ul className={s.slider_section_table_list}>
+          <li className={s.slider_section_table_list_item}>
+            <p>{selectedProperty?.roomsAmount}-комнатная квартира</p>
+          </li>
+          <li className={s.slider_section_table_list_item}>
+            <p>Площадь квартиры: {selectedProperty?.builtUpArea} м²</p>
+          </li>
+          <li className={s.slider_section_table_list_item}>
+            <p>Площадь участка: {selectedProperty?.landArea} м²</p>
+          </li>
+          <li className={s.slider_section_table_list_item}>
+            <p>Год постройки: {selectedProperty?.yearBuilt}</p>
+          </li>
+          <li className={s.slider_section_table_list_item}>
+            <p>Пляж Камала: 0.5 км</p>
+          </li>
+          <li
+            className={`${s.slider_section_table_list_item} ${s.slider_section_table_list_button}`}
+          >
+            <p>Заказать звонок</p>
+          </li>
+        </ul>
+        {/* table list ends*/}
+      </div>
+      {/* table ends */}
+    </section>
   );
 };
 

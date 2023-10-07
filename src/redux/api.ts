@@ -15,7 +15,7 @@ export interface RealEstate {
   yearBuilt: string;
   description: string;
   location: string;
-  hasRestaurant: boolean; // Fixed typo
+  hasRestaurant: boolean;
   hasParking: boolean;
   hasSpa: boolean;
   hasCommunalPool: boolean;
@@ -55,6 +55,7 @@ export const api = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "https://propertylibphuket-production.up.railway.app/",
   }),
+  // reactHooksModule({ unstable__sideEffectsInRender: true })
   tagTypes: ["Reals"],
   endpoints: (builder) => ({
     getAllOffers: builder.query<RealEstate[], void>({
