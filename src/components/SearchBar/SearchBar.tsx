@@ -1,29 +1,102 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
 import s from "./SearchBar.module.scss";
 import CustomSelect from "@/shared/ui/Select/Select";
 import { i18n } from "i18next";
+import {
+  Location,
+  LocationResponse,
+  setFormMain,
+  useGetLocationQuery,
+} from "@/redux/api";
+import { useRouter } from "next/router";
 
 interface SearchBarProps {
   t: i18n["t"];
   i18n: i18n;
+  id: Number;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ t, i18n }) => {
+const SearchBar: React.FC<SearchBarProps> = ({ t, i18n, id }) => {
+  const [locationsData, setLocationsData] = useState<LocationResponse>([]);
+  const { data, error, isLoading } = useGetLocationQuery();
+  console.log(locationsData);
+
+  useEffect(() => {
+    if (data) {
+      setLocationsData(data);
+    }
+  }, [data]);
+
+  const dispatch = useDispatch();
+  const router = useRouter();
   const formik = useFormik({
     initialValues: {
       RealEstate: "",
-      district: "",
+      location: "",
       rooms: "",
       pricMin: "",
       pricMax: "",
-      areaMin: "",
-      areaMax: "",
+      id: id,
     },
     onSubmit: (values, { resetForm }) => {
-      console.log(values);
+      //////Если ты читаешь код ниже!!! знай меня заставили!!!
+      const roomFix = () => {
+        if (values.rooms === "Студия" || values.rooms === "Studio") {
+          return "Studio";
+        }
+        if (
+          values.rooms === "Показать все варианты" ||
+          values.rooms === "Show all options"
+        ) {
+          return "AllOptions";
+        }
+        return values.rooms.charAt(0);
+      };
+      const roomsFixHardCor = roomFix();
+
+      const fixRealty = () => {
+        if (values.RealEstate === "Вилла" || values.RealEstate === "Villa") {
+          return "Villa";
+        }
+        if (
+          values.RealEstate === "Квартира" ||
+          values.RealEstate === "Apartment"
+        ) {
+          return "Apartment";
+        }
+        return "AllOptions";
+      };
+
+      const realtyFixHardCor = fixRealty();
+
+      const FixLocation = () => {
+        const location = locationsData.find(
+          (location: Location) => location.title === values.location
+        );
+        if (location) {
+          return location._id;
+        }
+        return "";
+      };
+
+      const locationFixHard = FixLocation();
+      ///// Надеюсь твои глаза не кроваточат, после увидинного
+
+      const mainForm = {
+        RealEstate: realtyFixHardCor,
+        location: locationFixHard,
+        rooms: roomsFixHardCor,
+        pricMin: values.pricMin,
+        pricMax: values.pricMax,
+      };
       resetForm();
+      dispatch(setFormMain(mainForm));
       formik.values.RealEstate = "";
+
+      const nextPage = id === 1 ? "/Purchase/Purchase" : "/Rent/Rent";
+      router.push(nextPage);
     },
   });
 
@@ -57,40 +130,18 @@ const SearchBar: React.FC<SearchBarProps> = ({ t, i18n }) => {
             </div>
 
             <div className={s.form_wrapper_item}>
-              <label htmlFor="district" className={s.form_label}>
+              <label htmlFor="location" className={s.form_label}>
                 {t("main.searchBar.district")}
               </label>
               <CustomSelect
-                options={[
-                  t("main.searchBar.districtVariant.aoPo"),
-                  t("main.searchBar.districtVariant.bangTao"),
-                  t("main.searchBar.districtVariant.kalim"),
-                  t("main.searchBar.districtVariant.kamala"),
-                  t("main.searchBar.districtVariant.karon"),
-                  t("main.searchBar.districtVariant.kata"),
-                  t("main.searchBar.districtVariant.katu"),
-                  t("main.searchBar.districtVariant.lagunaPhuket"),
-                  t("main.searchBar.districtVariant.layan"),
-                  t("main.searchBar.districtVariant.maiKhao"),
-                  t("main.searchBar.districtVariant.naiThon"),
-                  t("main.searchBar.districtVariant.naiHarn"),
-                  t("main.searchBar.districtVariant.naiYang"),
-                  t("main.searchBar.districtVariant.natai"),
-                  t("main.searchBar.districtVariant.patong"),
-                  t("main.searchBar.districtVariant.rawai"),
-                  t("main.searchBar.districtVariant.surin"),
-                  t("main.searchBar.districtVariant.talang"),
-                  t("main.searchBar.districtVariant.centralPhuket"),
-                  t("main.searchBar.districtVariant.chalong"),
-                  t("main.searchBar.districtVariant.allOptions"),
-                ]}
+                options={locationsData.map((location) => location.title)}
                 defaultValue={t("main.searchBar.select")}
-                onChange={(value) => formik.setFieldValue("district", value)}
+                onChange={(value) => formik.setFieldValue("location", value)}
                 onBlur={formik.handleBlur}
-                value={formik.values.district}
+                value={formik.values.location}
               />
-              {formik.touched.district && formik.errors.district ? (
-                <div className="">{formik.errors.district}</div>
+              {formik.touched.location && formik.errors.location ? (
+                <div className="">{formik.errors.location}</div>
               ) : null}
             </div>
 
