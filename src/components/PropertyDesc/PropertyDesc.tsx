@@ -8,7 +8,7 @@ import {
 import React from "react";
 import s from "./PropertyDesc.module.scss";
 
-const PropertyDesc: React.FC = () => {
+const PropertyDesc: React.FC<any> = ({selectedProperty}) => {
   return (
     <div className={s.property_desc}>
       <div className={s.property_desc_field}>

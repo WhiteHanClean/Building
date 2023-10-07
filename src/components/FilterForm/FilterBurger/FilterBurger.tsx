@@ -160,7 +160,6 @@ const FilterBurger = ({ titleSection, setFilterParams }: Props) => {
       };
 
       setFilterParams(filterParams);
-      resetForm();
     },
   });
   const handleResetForm = () => {
@@ -339,9 +338,21 @@ const FilterBurger = ({ titleSection, setFilterParams }: Props) => {
                     type="text"
                     id="pricMin"
                     name="pricMin"
-                    onChange={formik.handleChange}
+                    onChange={(e) => {
+                      formik.handleChange(e);
+                      const inputValue = e.target.value;
+                      if (inputValue.trim() !== "") {
+                        const numericValue = parseInt(
+                          inputValue.replace(/\s+/g, ""),
+                          10
+                        );
+                        if (!isNaN(numericValue)) {
+                          formik.setFieldValue("pricMin", numericValue);
+                        }
+                      }
+                    }}
                     onBlur={formik.handleBlur}
-                    value={formik.values.pricMin}
+                    value={formik.values.pricMin.toLocaleString()}
                   />
                 </div>
                 <div className={`${s.form_inputWrapper} ${s.form_inputSecond}`}>
@@ -351,9 +362,21 @@ const FilterBurger = ({ titleSection, setFilterParams }: Props) => {
                     type="text"
                     id="pricMax"
                     name="pricMax"
-                    onChange={formik.handleChange}
+                    onChange={(e) => {
+                      formik.handleChange(e);
+                      const inputValue = e.target.value;
+                      if (inputValue.trim() !== "") {
+                        const numericValue = parseInt(
+                          inputValue.replace(/\s+/g, ""),
+                          10
+                        );
+                        if (!isNaN(numericValue)) {
+                          formik.setFieldValue("pricMax", numericValue);
+                        }
+                      }
+                    }}
                     onBlur={formik.handleBlur}
-                    value={formik.values.pricMax}
+                    value={formik.values.pricMax.toLocaleString()}
                   />
                 </div>
               </div>
@@ -388,7 +411,7 @@ const FilterBurger = ({ titleSection, setFilterParams }: Props) => {
                 <div className={`${s.form_inputWrapper} ${s.form_inputSecond}`}>
                   <span className={s.form_prefix}>до</span>
                   <input
-                    className={`${s.form_input} ${s.form_inputArea} `}
+                    className={`${s.form_input} ${s.form_inputAreaDO} `}
                     type="text"
                     id="areaMax"
                     name="areaMax"
@@ -430,7 +453,7 @@ const FilterBurger = ({ titleSection, setFilterParams }: Props) => {
                 <div className={`${s.form_inputWrapper} ${s.form_inputSecond}`}>
                   <span className={s.form_prefix}>до</span>
                   <input
-                    className={`${s.form_input} ${s.form_inputArea} `}
+                    className={`${s.form_input} ${s.form_inputAreaDO} `}
                     type="text"
                     id="areaHouseMax"
                     name="areaHouseMax"

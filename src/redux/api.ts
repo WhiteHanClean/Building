@@ -7,8 +7,12 @@ export type Location = {
   title: string;
   __v: number;
 };
+
 export type LocationResponse = Location[];
 
+interface IImages {
+  url: string;
+}
 export interface RealEstate {
   _id: string;
   title: string;
@@ -25,6 +29,8 @@ export interface RealEstate {
   description: string;
   location: Location;
   hasRestaurant: boolean; // Fixed typo
+
+
   hasParking: boolean;
   hasSpa: boolean;
   hasCommunalPool: boolean;
@@ -33,6 +39,8 @@ export interface RealEstate {
   __v: number;
   mainImage: string;
   alt: string;
+  images: IImages[];
+  pricePerSquareMeter: string;
 }
 
 export interface IPaginate {
@@ -64,6 +72,7 @@ export const api = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: "https://propertylibphuket-production.up.railway.app/",
   }),
+  // reactHooksModule({ unstable__sideEffectsInRender: true })
   tagTypes: ["Reals"],
   endpoints: (builder) => ({
     getAllOffers: builder.query<RealEstate[], void>({

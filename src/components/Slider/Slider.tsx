@@ -9,19 +9,21 @@ import "swiper/css/scrollbar";
 import "swiper/css/navigation";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
+import { RealEstate } from "@/redux/api";
+import { idText } from "typescript";
 
-const Slider: React.FC = () => {
+const Slider: React.FC<{
+  allOffers: RealEstate[];
+}> = ({ allOffers }) => {
   // Create a ref for the Swiper instance
   const swiperRef = useRef<any | null>(null);
   const { t } = useTranslation();
-  // Function to go to the previous slide
   const goToPrevSlide = () => {
     if (swiperRef.current) {
       swiperRef.current.slidePrev();
     }
   };
 
-  // Function to go to the next slide
   const goToNextSlide = () => {
     if (swiperRef.current) {
       swiperRef.current.slideNext();
@@ -73,34 +75,25 @@ const Slider: React.FC = () => {
         }}
         className="build_swiper"
       >
-        {" "}
-        <SwiperSlide>
-          <BuildCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <BuildCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <BuildCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <BuildCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <BuildCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <BuildCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <BuildCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <BuildCard />
-        </SwiperSlide>
-        <SwiperSlide>
-          <BuildCard />
-        </SwiperSlide>
+        {allOffers ? (
+          allOffers.map((card: RealEstate) => (
+            <SwiperSlide key={card._id}>
+              <BuildCard
+                id={card._id}
+                img={card.mainImage}
+                alt={card.alt}
+                name={card.title}
+                price={card.price}
+                rooms={card.roomsAmount}
+                builtUpArea={card.builtUpArea}
+                landArea={card.landArea}
+                location={card.location}
+              />
+            </SwiperSlide>
+          ))
+        ) : (
+          <p>Oops, there is an error in fetching data (slider component)</p>
+        )}
       </Swiper>
     </>
   );

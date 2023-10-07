@@ -1,22 +1,25 @@
 import React from "react";
 import s from "./BuildCard.module.scss";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 interface Props {
-  img: any;
-  alt: string;
-  name: string;
-  price: number;
-  rooms: number;
-  landArea: number;
-  builtUpArea: number;
-  location: string;
+  id?: string;
+  img?: any;
+  alt?: string;
+  name?: string;
+  price?: number;
+  rooms?: number;
+  landArea?: number;
+  builtUpArea?: number;
+  location?: string;
 }
 
 const BuildCard = ({
   img = {
     url: "/413x270.png",
   },
+  id,
   alt = "foto",
   name = "Housing",
   price = 0,
@@ -27,8 +30,15 @@ const BuildCard = ({
 }: Props) => {
   const imageWidth = 413;
   const imageHeight = 270;
+
+  const router = useRouter();
+
+  function handleClick() {
+    router.push(`/DetailProperty/${id}`);
+  }
+
   return (
-    <div className={s.card_container}>
+    <div onClick={handleClick} className={s.card_container}>
       <div className={s.card_wrapper_img}>
         <Image
           src={img.url}

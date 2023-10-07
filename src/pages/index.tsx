@@ -9,14 +9,16 @@ import Stages from "@/components/Stages/Stages";
 import BuildBanner from "@/components/BuildBanner/BuildBanner";
 import Statistics from "@/components/Statistics/Statistics";
 import Consultation from "@/components/Consultation/Consultation";
-import Benefits from "@/components/Benefits/Benefits";
 import SocialNetworkBlock from "@/components/SocialNetworkBlock/SocialNetworkBlock";
-  
+import axios from "axios";
+import { RealEstate } from "@/redux/api";
 
 const inter = Inter({ subsets: ["latin"] });
 
-
-export default function Home() {
+const Home: React.FC<{
+  allOffers: RealEstate[];
+  error?: any;
+}> = ({ allOffers, error }) => {
   return (
     <>
       <Head>
@@ -28,16 +30,45 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-     
+
       <BuildBanner />
       <Statistics />
-      <Slider />
+
+      {!error ? (
+        <Slider allOffers={allOffers} />
+      ) : (
+        <p>Error: {error.message}</p>
+      )}
+
       <TypesOfServices />
-      <Stages/>
+      <Stages />
       <Service />
-      <SocialNetworkBlock/>
-      <Questions/>
+      <SocialNetworkBlock />
+      <Questions />
       <Consultation />
     </>
   );
+};
+
+export async function getServerSideProps() {
+  try {
+    const { data: allOffers } = await axios.get(
+      "https://propertylibphuket-production.up.railway.app/realEstates/"
+    );
+
+    return {
+      props: {
+        allOffers,
+      },
+    };
+  } catch (error: any) {
+    return {
+      props: {
+        allOffers: null,
+        error: error.message as string,
+      },
+    };
+  }
 }
+
+export default Home;

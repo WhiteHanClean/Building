@@ -10,13 +10,26 @@ import {
 } from "../../redux/api";
 import { useGetFilteredOffersQuery } from "@/redux/api";
 import { useTranslation } from "react-i18next";
-
+import { LoadingOutlined } from "@ant-design/icons";
+import { Spin } from "antd";
 import Pagination from "../Pagination/Pagination";
 import { useWindowSize } from "@/hook/useSize";
 interface Props {
   isRent: boolean;
   filterParams: FilterParams;
 }
+
+const antIcon = (
+  <LoadingOutlined
+    style={{
+      fontSize: 80,
+      marginTop: "100px",
+      marginBottom: "400px",
+      color: "gray",
+    }}
+    spin
+  />
+);
 
 const ListOffers = ({ isRent, filterParams }: Props) => {
   const { t } = useTranslation();
@@ -155,6 +168,7 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
             return (
               <li key={card._id} className={s.listOffer_item}>
                 <BuildCard
+                  id={card._id}
                   img={card.mainImage}
                   alt={card.alt}
                   name={card.title}
@@ -167,12 +181,14 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
                       ? card.location.title
                       : "Необходимо уточнить"
                   }
+
+
                 />
               </li>
             );
           })
         ) : (
-          <p>No offers available</p>
+          <Spin indicator={antIcon} />
         )}
       </ul>
       {totalPages && allOffers && (
