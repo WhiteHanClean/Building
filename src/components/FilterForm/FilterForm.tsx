@@ -130,7 +130,6 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
       };
 
       setFilterParams(filterParams);
-      resetForm();
     },
   });
   const handleResetForm = () => {
@@ -426,7 +425,7 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                     >
                       <span className={s.form_prefix}>до</span>
                       <input
-                        className={`${s.form_input} ${s.form_inputArea} `}
+                        className={`${s.form_input} ${s.form_inputAreaDO} `}
                         type="text"
                         id="areaMax"
                         name="areaMax"
@@ -470,7 +469,7 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                     >
                       <span className={s.form_prefix}>до</span>
                       <input
-                        className={`${s.form_input} ${s.form_inputArea} `}
+                        className={`${s.form_input} ${s.form_inputAreaDO} `}
                         type="text"
                         id="areaHouseMax"
                         name="areaHouseMax"

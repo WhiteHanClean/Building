@@ -129,7 +129,6 @@ const FilterBurger = ({ titleSection, setFilterParams }: Props) => {
       };
 
       setFilterParams(filterParams);
-      resetForm();
     },
   });
   const handleResetForm = () => {
@@ -391,7 +390,7 @@ const FilterBurger = ({ titleSection, setFilterParams }: Props) => {
                 <div className={`${s.form_inputWrapper} ${s.form_inputSecond}`}>
                   <span className={s.form_prefix}>до</span>
                   <input
-                    className={`${s.form_input} ${s.form_inputArea} `}
+                    className={`${s.form_input} ${s.form_inputAreaDO} `}
                     type="text"
                     id="areaMax"
                     name="areaMax"
@@ -433,7 +432,7 @@ const FilterBurger = ({ titleSection, setFilterParams }: Props) => {
                 <div className={`${s.form_inputWrapper} ${s.form_inputSecond}`}>
                   <span className={s.form_prefix}>до</span>
                   <input
-                    className={`${s.form_input} ${s.form_inputArea} `}
+                    className={`${s.form_input} ${s.form_inputAreaDO} `}
                     type="text"
                     id="areaHouseMax"
                     name="areaHouseMax"
