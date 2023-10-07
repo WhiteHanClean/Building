@@ -30,15 +30,19 @@
       position: relative;
       flex-direction: row-reverse;
       justify-content: space-between;
-      @include sizer(22px);
+
+      .header_text {
+        @include sizer(22px);
+      }
+
+      .post_header_text {
+        @include sizer(18px);
+      }
+      
       p {
         display: flex;
         flex-direction: row-reverse;
         justify-content: space-between;
-        @include sizer(18px);
-      }
-      h3 {
-        @include sizer(18px);
       }
     }
   }

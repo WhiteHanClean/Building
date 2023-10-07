@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import s from "./Questions.module.scss";
-import { useTranslation } from "react-i18next";
+import React, { useState } from 'react';
+import s from './Questions.module.scss';
+import { useTranslation } from 'react-i18next';
 
-import { Collapse } from "antd";
+import { Collapse } from 'antd';
 const { Panel } = Collapse;
 
 const text = (
   <div>
     <p>На стоимость аренды влияют следующие факторы:</p>
-    <ul style={{ listStyleType: "circle", paddingLeft: "20px" }}>
+    <ul style={{ listStyleType: 'circle', paddingLeft: '20px' }}>
       <li>
         сезонность: в высокий и летний сезон цена может отличаться более чем в 3
         раза. Периодичность изменения цен устанавливают собственники
@@ -32,8 +32,8 @@ const text = (
 );
 
 const customPanelStyle = {
-  borderBottom: "1px solid #A3A3A3",
-  background: "#D5D7C4",
+  borderBottom: '1px solid #A3A3A3',
+  background: '#D5D7C4',
 };
 
 const Questions: React.FC = () => {
@@ -46,7 +46,7 @@ const Questions: React.FC = () => {
 
   const togglePanel = (key: string | string[], nested?: boolean) => {
     if (!nested) {
-      if (typeof key === "string") {
+      if (typeof key === 'string') {
         if (activePanels.includes(key)) {
           setActivePanels(activePanels.filter((item) => item !== key));
         } else {
@@ -54,7 +54,7 @@ const Questions: React.FC = () => {
         }
       }
     } else {
-      if (typeof key === "string") {
+      if (typeof key === 'string') {
         const newIcons = { ...nestedIcons };
         newIcons[key] = !nestedIcons[key];
         setNestedIcons(newIcons);
@@ -72,7 +72,7 @@ const Questions: React.FC = () => {
 
   const isPanelActive = (key: string, nested?: boolean) => {
     const activeState = nested ? nestedActivePanels : activePanels;
-    if (typeof key === "string") {
+    if (typeof key === 'string') {
       return activeState.includes(key);
     }
     return false;
@@ -81,8 +81,8 @@ const Questions: React.FC = () => {
   return (
     <div className={s.questions}>
       <div className={s.questions_description}>
-        <h3>{t("main.questions.title")}</h3>
-        <p>{t("main.questions.description")}</p>
+        <h3>{t('main.questions.title')}</h3>
+        <p>{t('main.questions.description')}</p>
       </div>
       <div className={s.questions_accordion}>
         <Collapse
@@ -96,13 +96,13 @@ const Questions: React.FC = () => {
               <div className={s.questions_accordion_button}>
                 <img
                   src={
-                    isPanelActive("1")
-                      ? "/accordionMinusBtn.svg"
-                      : "/accordionBtn.svg"
+                    isPanelActive('1')
+                      ? '/accordionMinusBtn.svg'
+                      : '/accordionBtn.svg'
                   }
                   alt="accordionBtn"
                 />
-                <p>{t("main.questions.rentalIssues")} </p>
+                <p className={s.header_text}>{t('main.questions.rentalIssues')}</p>
               </div>
             }
             key="1"
@@ -119,14 +119,14 @@ const Questions: React.FC = () => {
                   <div className={s.questions_accordion_button}>
                     <img
                       src={
-                        nestedIcons["nasted"]
-                          ? "/accordionMinusBtn.svg"
-                          : "/accordionBtn.svg"
+                        nestedIcons['nasted']
+                          ? '/accordionMinusBtn.svg'
+                          : '/accordionBtn.svg'
                       }
                       alt="accordionBtn"
-                      onClick={() => togglePanel("nasted", true)}
+                      onClick={() => togglePanel('nasted', true)}
                     />
-                    <p> {t("main.questions.costDependence")} </p>
+                    <p className={s.post_header_text}> {t('main.questions.costDependence')} </p>
                   </div>
                 }
                 key="nasted"
@@ -139,18 +139,18 @@ const Questions: React.FC = () => {
                   <div className={s.questions_accordion_button}>
                     <img
                       src={
-                        nestedIcons["nasted2"]
-                          ? "/accordionMinusBtn.svg"
-                          : "/accordionBtn.svg"
+                        nestedIcons['nasted2']
+                          ? '/accordionMinusBtn.svg'
+                          : '/accordionBtn.svg'
                       }
                       alt="accordionBtn"
-                      onClick={() => togglePanel("nasted2", true)}
+                      onClick={() => togglePanel('nasted2', true)}
                     />
-                    <p> {t("main.questions.confirmedBooking")}</p>
+                    <p className={s.post_header_text}> {t('main.questions.confirmedBooking')}</p>
                   </div>
                 }
                 key="nasted2"
-                style={{ ...customPanelStyle, borderBottom: "0" }}
+                style={{ ...customPanelStyle, borderBottom: '0' }}
               >
                 <p>{text}</p>
               </Panel>
@@ -161,13 +161,13 @@ const Questions: React.FC = () => {
               <div className={s.questions_accordion_button}>
                 <img
                   src={
-                    isPanelActive("2")
-                      ? "/accordionMinusBtn.svg"
-                      : "/accordionBtn.svg"
+                    isPanelActive('2')
+                      ? '/accordionMinusBtn.svg'
+                      : '/accordionBtn.svg'
                   }
                   alt="accordionBtn"
                 />
-                {t("main.questions.purchasingIssues")}
+                <p className={s.header_text}>{t('main.questions.purchasingIssues')}</p>
               </div>
             }
             key="2"
@@ -180,13 +180,13 @@ const Questions: React.FC = () => {
               <div className={s.questions_accordion_button}>
                 <img
                   src={
-                    isPanelActive("3")
-                      ? "/accordionMinusBtn.svg"
-                      : "/accordionBtn.svg"
+                    isPanelActive('3')
+                      ? '/accordionMinusBtn.svg'
+                      : '/accordionBtn.svg'
                   }
                   alt="accordionBtn"
                 />
-                {t("main.questions.serviceIssues")}
+                <p className={s.header_text}>{t('main.questions.serviceIssues')}</p>
               </div>
             }
             key="3"
