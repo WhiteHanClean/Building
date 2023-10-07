@@ -10,7 +10,7 @@ import { useWindowSize } from "../../hook/useSize";
 import { RealEstate } from "@/redux/api";
 
 interface ProductSliderProps {
-  sliderProperty: RealEstate;
+  sliderProperty: RealEstate | null;
 }
 
 const ProductSlider: React.FC<ProductSliderProps> = ({ sliderProperty }) => {

@@ -17,12 +17,8 @@ const inter = Inter({ subsets: ["latin"] });
 
 const Home: React.FC<{
   allOffers: RealEstate[];
-  error: any;
+  error?: any;
 }> = ({ allOffers, error }) => {
-  if (error) {
-    return <p>Error: {error.message}</p>;
-  }
-
   return (
     <>
       <Head>
@@ -37,7 +33,13 @@ const Home: React.FC<{
 
       <BuildBanner />
       <Statistics />
-      <Slider allOffers={allOffers} />
+
+      {!error ? (
+        <Slider allOffers={allOffers} />
+      ) : (
+        <p>Error: {error.message}</p>
+      )}
+
       <TypesOfServices />
       <Stages />
       <Service />
@@ -53,16 +55,16 @@ export async function getServerSideProps() {
     const { data: allOffers } = await axios.get(
       "https://propertylibphuket-production.up.railway.app/realEstates/"
     );
-    console.log(allOffers);
+
     return {
       props: {
-        allOffers, // Use the correct prop name here
+        allOffers,
       },
     };
   } catch (error: any) {
     return {
       props: {
-        allOffers: null, // Use the correct prop name here
+        allOffers: null,
         error: error.message as string,
       },
     };
