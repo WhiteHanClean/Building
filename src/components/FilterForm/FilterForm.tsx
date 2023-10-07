@@ -196,7 +196,7 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                     <select
                       id="RealEstate"
                       name="RealEstate"
-                      className={s.form_select}
+                      className={`${s.form_select} ${s.custom_select}`}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       value={formik.values.RealEstate}
@@ -228,7 +228,7 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                     <select
                       id="location"
                       name="location"
-                      className={s.form_select}
+                      className={`${s.form_select} ${s.custom_select}`}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       value={formik.values.location}
@@ -256,7 +256,7 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                     <select
                       id="rooms"
                       name="rooms"
-                      className={s.form_select}
+                      className={`${s.form_select} ${s.custom_select}`}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       value={formik.values.rooms}
@@ -300,7 +300,7 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                     <select
                       id="characteristics"
                       name="characteristics"
-                      className={s.form_select}
+                      className={`${s.form_select} ${s.custom_select}`}
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       value={formik.values.characteristics}
