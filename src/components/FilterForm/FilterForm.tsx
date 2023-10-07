@@ -3,9 +3,8 @@ import s from "./FilterForm.module.scss";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import dynamic from "next/dynamic";
-import { useGetAllOffersQuery, useGetFilteredOffersQuery } from "@/redux/api";
 import { useTranslation } from "react-i18next";
-import { FilterParams, useGetOneOffersQuery } from "@/redux/api";
+import { FilterParams } from "@/redux/api";
 
 const validationSchema = Yup.object({
   RealEstate: Yup.string().oneOf(
@@ -39,7 +38,7 @@ const validationSchema = Yup.object({
     "Выберите район"
   ),
   rooms: Yup.string().oneOf(
-    ["Студия", "1", "2", "3", "4", "5", "AllOptions"],
+    ["Studio", "1", "2", "3", "4", "5", "AllOptions"],
     "Выберите пожалуйста кол-во комнат"
   ),
   characteristics: Yup.string().oneOf(
@@ -52,11 +51,17 @@ const validationSchema = Yup.object({
     ],
     "Выберите Характеристики"
   ),
+  // pricMin: Yup.string()
+  //   .matches(/^[1-9][0-9]*$/, "Только цифры")
+  //   .max(15, "Не более 15 символов"),
+  // pricMax: Yup.string()
+  //   .matches(/^[1-9][0-9]*$/, "Только цифры")
+  //   .max(15, "Не более 15 символов"),
   pricMin: Yup.string()
-    .matches(/^[1-9][0-9]*$/, "Только цифры")
+    .matches(/^\s*(\d+(\s+\d+)*)?\s*$/, "Только цифры")
     .max(15, "Не более 15 символов"),
   pricMax: Yup.string()
-    .matches(/^[1-9][0-9]*$/, "Только цифры")
+    .matches(/^\s*(\d+(\s+\d+)*)?\s*$/, "Только цифры")
     .max(15, "Не более 15 символов"),
   areaMin: Yup.string()
     .matches(/^[1-9][0-9]*$/, "Только цифры")
@@ -80,7 +85,6 @@ interface Props {
 const FilterBurger = dynamic(() => import("./FilterBurger/FilterBurger"), {
   ssr: false,
 });
-
 
 const FilterForm = ({ titleSection, setFilterParams }: Props) => {
   const { t } = useTranslation();
@@ -126,7 +130,6 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
       };
 
       setFilterParams(filterParams);
-      resetForm();
     },
   });
   const handleResetForm = () => {
@@ -159,16 +162,13 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                       <option value="" disabled className="">
                         {t("buyingRealEstate.select")}
                       </option>
-                      <option value="Вилла">{t("main.searchBar.villa")}</option>
-                      <option value="Квартира">
+                      <option value="Villa">{t("main.searchBar.villa")}</option>
+                      <option value="Apartment">
                         {t("main.searchBar.apartment")}
                       </option>
                       <option value="AllOptions">
                         {t("main.searchBar.showAllOptions")}
                       </option>
-                      <option value="Villa">Вилла</option>
-                      <option value="Apartment">Квартира</option>
-                      <option value="AllOptions">Показать все варианты</option>
                     </select>
                   </div>
                   {formik.touched.RealEstate && formik.errors.RealEstate ? (
@@ -180,7 +180,7 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
 
                 <div className={s.form_wrapper_item}>
                   <label htmlFor="location" className={s.form_label}>
-                  {t("main.searchBar.district")}
+                    {t("main.searchBar.district")}
                   </label>
                   <div className="">
                     <select
@@ -194,65 +194,64 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                       <option value="" disabled className="">
                         {t("buyingRealEstate.select")}
                       </option>
-                      <option value="Ао По">
+                      <option value="Ao Po">
                         {t("main.searchBar.districtVariant.aoPo")}
                       </option>
-                      <option value="Банг Тао">
+                      <option value="Bang Tao">
                         {t("main.searchBar.districtVariant.bangTao")}
                       </option>
-                      <option value="Калим">
+                      <option value="Kalim">
                         {t("main.searchBar.districtVariant.kalim")}
                       </option>
-                      <option value="Камала">
+                      <option value="Kamala">
                         {t("main.searchBar.districtVariant.kamala")}
                       </option>
-                      <option value="Карон">
+                      <option value="Karon">
                         {t("main.searchBar.districtVariant.karon")}
                       </option>
-                      <option value="Ката">
+                      <option value="Kata">
                         {t("main.searchBar.districtVariant.kata")}
                       </option>
-                      <option value="Кату">
-                        {" "}
+                      <option value="Katy">
                         {t("main.searchBar.districtVariant.katu")}
                       </option>
-                      <option value="Лагуна Пхукет">
+                      <option value="Lagyna Phyket">
                         {t("main.searchBar.districtVariant.lagunaPhuket")}
                       </option>
-                      <option value="Лаян">
+                      <option value="Layan">
                         {t("main.searchBar.districtVariant.layan")}
                       </option>
-                      <option value="Май Кхао">
+                      <option value="May Khao">
                         {t("main.searchBar.districtVariant.maiKhao")}
                       </option>
-                      <option value="Най Тон">
+                      <option value="Nay Ton">
                         {t("main.searchBar.districtVariant.naiThon")}
                       </option>
-                      <option value="Най Харн">
+                      <option value="Nay Hurn">
                         {t("main.searchBar.districtVariant.naiHarn")}
                       </option>
-                      <option value="Най Янг">
+                      <option value="Nay Yang">
                         {t("main.searchBar.districtVariant.naiYang")}
                       </option>
-                      <option value="Натай">
+                      <option value="Natay">
                         {t("main.searchBar.districtVariant.natai")}
                       </option>
-                      <option value="Патонг">
+                      <option value="Patong">
                         {t("main.searchBar.districtVariant.patong")}
                       </option>
-                      <option value="Раваи">
+                      <option value="Ravai">
                         {t("main.searchBar.districtVariant.rawai")}
                       </option>
-                      <option value="Сурин">
+                      <option value="Surin">
                         {t("main.searchBar.districtVariant.surin")}
                       </option>
-                      <option value="Таланг">
+                      <option value="Talang">
                         {t("main.searchBar.districtVariant.talang")}
                       </option>
-                      <option value="Центральный район Пхукета">
+                      <option value="Centre Phyket">
                         {t("main.searchBar.districtVariant.centralPhuket")}
                       </option>
-                      <option value="Чалонг">
+                      <option value="Chalong">
                         {t("main.searchBar.districtVariant.chalong")}
                       </option>
                       <option value="AllOptions">
@@ -281,22 +280,22 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                       <option value="" disabled className="">
                         {t("buyingRealEstate.select")}
                       </option>
-                      <option value="Студия">
+                      <option value="Studio">
                         {t("main.searchBar.roomVariant.studio")}
                       </option>
-                      <option value="1 спальня">
+                      <option value="1">
                         {t("main.searchBar.roomVariant.bedroom1")}
                       </option>
-                      <option value="2 спальня">
+                      <option value="2">
                         {t("main.searchBar.roomVariant.bedroom2")}
                       </option>
-                      <option value="3 спальня">
+                      <option value="3">
                         {t("main.searchBar.roomVariant.bedroom3")}
                       </option>
-                      <option value="4 спальня">
+                      <option value="4">
                         {t("main.searchBar.roomVariant.bedroom4")}
                       </option>
-                      <option value="5 спальня">
+                      <option value="5">
                         {t("main.searchBar.roomVariant.bedroom5")}
                       </option>
                       <option value="AllOptions">
@@ -349,9 +348,21 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                         type="text"
                         id="pricMin"
                         name="pricMin"
-                        onChange={formik.handleChange}
+                        onChange={(e) => {
+                          formik.handleChange(e);
+                          const inputValue = e.target.value;
+                          if (inputValue.trim() !== "") {
+                            const numericValue = parseInt(
+                              inputValue.replace(/\s+/g, ""),
+                              10
+                            );
+                            if (!isNaN(numericValue)) {
+                              formik.setFieldValue("pricMin", numericValue);
+                            }
+                          }
+                        }}
                         onBlur={formik.handleBlur}
-                        value={formik.values.pricMin}
+                        value={formik.values.pricMin.toLocaleString()}
                       />
                     </div>
                     <div
@@ -363,9 +374,21 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                         type="text"
                         id="pricMax"
                         name="pricMax"
-                        onChange={formik.handleChange}
+                        onChange={(e) => {
+                          formik.handleChange(e);
+                          const inputValue = e.target.value;
+                          if (inputValue.trim() !== "") {
+                            const numericValue = parseInt(
+                              inputValue.replace(/\s+/g, ""),
+                              10
+                            );
+                            if (!isNaN(numericValue)) {
+                              formik.setFieldValue("pricMax", numericValue);
+                            }
+                          }
+                        }}
                         onBlur={formik.handleBlur}
-                        value={formik.values.pricMax}
+                        value={formik.values.pricMax.toLocaleString()}
                       />
                     </div>
                   </div>
@@ -402,7 +425,7 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                     >
                       <span className={s.form_prefix}>до</span>
                       <input
-                        className={`${s.form_input} ${s.form_inputArea} `}
+                        className={`${s.form_input} ${s.form_inputAreaDO} `}
                         type="text"
                         id="areaMax"
                         name="areaMax"
@@ -446,7 +469,7 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                     >
                       <span className={s.form_prefix}>до</span>
                       <input
-                        className={`${s.form_input} ${s.form_inputArea} `}
+                        className={`${s.form_input} ${s.form_inputAreaDO} `}
                         type="text"
                         id="areaHouseMax"
                         name="areaHouseMax"

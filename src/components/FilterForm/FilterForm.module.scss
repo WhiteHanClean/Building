@@ -72,6 +72,10 @@
   padding-left: 27px;
 }
 
+.form_inputAreaDO {
+  padding-left: 30px;
+}
+
 .form_inputSecond {
   margin-left: 7px;
 }
@@ -301,11 +305,14 @@
 }
 
 @media only screen and (max-width: 400px) {
+  .form_wrapper_item {
+    width: 100%;
+  }
   .form_select {
-    width: 328px;
+    width: 100%;
   }
   .form_input {
-    width: 155px;
+    width: 100%;
   }
   .form_button {
     padding: 11px 120px;

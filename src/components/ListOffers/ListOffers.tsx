@@ -13,13 +13,26 @@ import { useGetFilteredOffersQuery } from "@/redux/api";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { RootState } from "@/redux/store";
-
+import { LoadingOutlined } from "@ant-design/icons";
+import { Spin } from "antd";
 import Pagination from "../Pagination/Pagination";
 import { useWindowSize } from "@/hook/useSize";
 interface Props {
   isRent: boolean;
   filterParams: FilterParams;
 }
+
+const antIcon = (
+  <LoadingOutlined
+    style={{
+      fontSize: 80,
+      marginTop: "100px",
+      marginBottom: "400px",
+      color: "gray"
+    }}
+    spin
+  />
+);
 
 const ListOffers = ({ isRent, filterParams }: Props) => {
   const { t } = useTranslation();
@@ -28,8 +41,6 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
   const { width = 1 } = useWindowSize();
 
   const [currentPage, setCurrentPage] = useState(1);
-
-  console.log(isRent, "is rent");
 
   let offersQuery;
   let paginatesQuery;
@@ -65,8 +76,8 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
   const { data, error, isLoading } = offersQuery;
   const { data: totalPages } = paginatesQuery;
 
-  console.log("total", totalPages);
-  console.log("paginate", data);
+  console.log(totalPages);
+  console.log(data);
 
   useEffect(() => {
     if (data) {
@@ -133,19 +144,13 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
               <option value="" disabled className={s.listOffer_option}>
                 {t("buyingRealEstate.select")}
               </option>
-              <option value="Все" className={s.listOffer_option}>
+              <option value="all" className={s.listOffer_option}>
                 {t("listOffer.all")}
               </option>
-              <option
-                value="По цене: сначала дорогие"
-                className={s.listOffer_option}
-              >
+              <option value="expensive" className={s.listOffer_option}>
                 {t("listOffer.byPriceExpensive")}
               </option>
-              <option
-                value="По цене: сначала дешевые"
-                className={s.listOffer_option}
-              >
+              <option value="cheap" className={s.listOffer_option}>
                 {t("listOffer.byPriceCheap")}
               </option>
             </select>
@@ -162,25 +167,28 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
         </div>
       </div>
       <ul className={s.listOffer_list}>
-        {allOffers && totalPages
-          ? allOffers.map((card: RealEstate) => {
-              return (
-                <li key={card._id} className={s.listOffer_item}>
-                  <BuildCard
-                    id={card._id}
-                    img={card.mainImage}
-                    alt={card.alt}
-                    name={card.title}
-                    price={card.price}
-                    rooms={card.roomsAmount}
-                    builtUpArea={card.builtUpArea}
-                    landArea={card.landArea}
-                    location={card.location}
-                  />
-                </li>
-              );
-            })
-          : "empty"}
+
+        {allOffers && totalPages ? (
+          allOffers.map((card: RealEstate) => {
+            return (
+              <li key={card._id} className={s.listOffer_item}>
+                <BuildCard
+                  id={card._id}
+                  img={card.mainImage}
+                  alt={card.alt}
+                  name={card.title}
+                  price={card.price}
+                  rooms={card.roomsAmount}
+                  builtUpArea={card.builtUpArea}
+                  landArea={card.landArea}
+                  location={card.location}
+                />
+              </li>
+            );
+          })
+        ) : (
+          <Spin indicator={antIcon} />
+        )}
       </ul>
       {totalPages && allOffers && (
         <Pagination
