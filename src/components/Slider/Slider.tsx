@@ -12,26 +12,19 @@ import { useTranslation } from "react-i18next";
 import { useGetAllOffersQuery } from "@/redux/api";
 
 const Slider: React.FC = () => {
-  // Create a ref for the Swiper instance
   const swiperRef = useRef<any | null>(null);
   const { t } = useTranslation();
-  // Function to go to the previous slide
   const goToPrevSlide = () => {
     if (swiperRef.current) {
       swiperRef.current.slidePrev();
     }
   };
 
-  // Function to go to the next slide
   const goToNextSlide = () => {
     if (swiperRef.current) {
       swiperRef.current.slideNext();
     }
   };
-
-  React.useEffect(() => {
-    console.log(todos, "todos");
-  }, []);
 
   return (
     <>

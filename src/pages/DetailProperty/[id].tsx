@@ -8,7 +8,7 @@ import { useGetOneOffersQuery } from "@/redux/api";
 import BackButton from "@/components/BackButton/BackButton";
 import axios from "axios";
 
-const DetailProperty: React.FC = ({ selectedProperty }) => {
+const DetailProperty: React.FC<any> = ({ selectedProperty }) => {
   const router = useRouter();
 
   console.log(selectedProperty);
@@ -35,7 +35,7 @@ export async function getServerSideProps({ query }: any) {
     const { data: selectedProperty } = await axios.get(
       `https://propertylibphuket-production.up.railway.app/realEstates/${id}`
     );
-
+    
     return {
       props: {
         selectedProperty,

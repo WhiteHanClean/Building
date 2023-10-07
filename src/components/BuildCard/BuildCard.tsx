@@ -4,15 +4,15 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 
 interface Props {
-  id: string;
-  img: any;
-  alt: string;
-  name: string;
-  price: number;
-  rooms: number;
-  landArea: number;
-  builtUpArea: number;
-  location: string;
+  id?: string;
+  img?: any;
+  alt?: string;
+  name?: string;
+  price?: number;
+  rooms?: number;
+  landArea?: number;
+  builtUpArea?: number;
+  location?: string;
 }
 
 const BuildCard = ({
@@ -34,7 +34,7 @@ const BuildCard = ({
   const route = useRouter();
 
   function handleClick() {
-    route.push(`DetailProperty/${id}`);
+    route.push(`/DetailProperty/${id}`);
   }
 
   return (
