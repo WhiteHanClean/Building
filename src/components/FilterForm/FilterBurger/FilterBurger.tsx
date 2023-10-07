@@ -230,8 +230,8 @@ const FilterBurger = ({ titleSection, setFilterParams }: Props) => {
                   <option value="" disabled className={s.form_option_start}>
                     Выбрать
                   </option>
-                  <option value="Вилла">Вилла</option>
-                  <option value="Квартира">Квартира</option>
+                  <option value="Villa">Вилла</option>
+                  <option value="Apartment">Квартира</option>
                   <option value="AllOptions">Показать все варианты</option>
                 </select>
               </div>
@@ -284,12 +284,12 @@ const FilterBurger = ({ titleSection, setFilterParams }: Props) => {
                   <option value="" disabled className="">
                     Выбрать
                   </option>
-                  <option value="Студия">Студия</option>
-                  <option value="1 спальня">1 спальня</option>
-                  <option value="2 спальня">2 спальня</option>
-                  <option value="3 спальня">3 спальня</option>
-                  <option value="4 спальня">4 спальня</option>
-                  <option value="5 спальня">5 спальня</option>
+                  <option value="Studio">Студия</option>
+                  <option value="1">1 спальня</option>
+                  <option value="2">2 спальня</option>
+                  <option value="3">3 спальня</option>
+                  <option value="4">4 спальня</option>
+                  <option value="5">5 спальня</option>
                   <option value="AllOptions">Показать все варианты</option>
                 </select>
               </div>
