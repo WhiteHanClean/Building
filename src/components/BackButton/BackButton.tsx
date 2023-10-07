@@ -11,8 +11,8 @@ const BackButton = () => {
   }
 
   return (
-    <div className={s.backButton}>
-      <button onClick={handleClick}>
+    <div className={s.backButton} onClick={handleClick}>
+      <button>
         <Image
           src={"/BackButton.svg"}
           width={16}
