@@ -21,7 +21,7 @@
     .section_item_1_title {
       h3 {
         color: var(--color-black, #000);
-        font-family: Inter;
+        font-family: "Inter", sans-serif;
         font-size: 35px; //26 1024px
         font-style: normal;
         font-weight: 600;
@@ -33,7 +33,7 @@
     .section_item_1_description {
       p {
         color: var(--color-text, #6c6c6a);
-        font-family: Inter;
+        font-family: "Inter", sans-serif;
         font-size: 14px;
         font-style: normal;
         font-weight: 500;
@@ -78,7 +78,7 @@
         p {
           color: var(--color-black, #000);
           text-align: center;
-          font-family: Inter;
+          font-family: "Inter", sans-serif;
           font-size: 14px;
           font-style: normal;
           font-weight: 500;
@@ -89,7 +89,7 @@
       .section_item_2_benefits_text {
         p {
           color: var(--color-text, #6c6c6a);
-          font-family: Inter;
+          font-family: "Inter", sans-serif;
           font-size: 14px;
           font-style: normal;
           font-weight: 500;
