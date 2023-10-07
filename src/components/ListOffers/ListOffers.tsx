@@ -4,15 +4,12 @@ import BuildCard from "../BuildCard/BuildCard";
 import {
   FilterParams,
   RealEstate,
-  useGetAllOffersQuery,
   useGetPaginateOffersQuery,
   useGetPaginateOffersWithFilterQuery,
   useGetUnFilteredOffersQuery,
 } from "../../redux/api";
 import { useGetFilteredOffersQuery } from "@/redux/api";
-import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
-import { RootState } from "@/redux/store";
 
 import Pagination from "../Pagination/Pagination";
 import { useWindowSize } from "@/hook/useSize";
@@ -63,14 +60,13 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
   const { data, error, isLoading } = offersQuery;
   const { data: totalPages } = paginatesQuery;
 
-  console.log(totalPages);
-  console.log(data);
-
   useEffect(() => {
     if (data) {
       setAllOffers(data);
     }
   }, [data]);
+
+  console.log(allOffers);
 
   const handlePageChange = (pageNumber: number) => {
     setCurrentPage(pageNumber);
@@ -154,24 +150,30 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
         </div>
       </div>
       <ul className={s.listOffer_list}>
-        {allOffers && totalPages
-          ? allOffers.map((card: RealEstate) => {
-              return (
-                <li key={card._id} className={s.listOffer_item}>
-                  <BuildCard
-                    img={card.mainImage}
-                    alt={card.alt}
-                    name={card.title}
-                    price={card.price}
-                    rooms={card.roomsAmount}
-                    builtUpArea={card.builtUpArea}
-                    landArea={card.landArea}
-                    location={card.location}
-                  />
-                </li>
-              );
-            })
-          : "empty"}
+        {allOffers && totalPages ? (
+          allOffers.map((card: RealEstate) => {
+            return (
+              <li key={card._id} className={s.listOffer_item}>
+                <BuildCard
+                  img={card.mainImage}
+                  alt={card.alt}
+                  name={card.title}
+                  price={card.price}
+                  rooms={card.roomsAmount}
+                  builtUpArea={card.builtUpArea}
+                  landArea={card.landArea}
+                  location={
+                    card.location?.title
+                      ? card.location.title
+                      : "Необходимо уточнить"
+                  }
+                />
+              </li>
+            );
+          })
+        ) : (
+          <p>No offers available</p>
+        )}
       </ul>
       {totalPages && allOffers && (
         <Pagination

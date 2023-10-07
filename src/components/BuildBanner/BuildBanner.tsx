@@ -13,8 +13,8 @@ const BuildBanner = () => {
   ];
 
   const contentData = {
-    "1": [<SearchBar key="1-SearchBar" t={t} i18n={i18n} />],
-    "2": [<SearchBar key="2-SearchBar" t={t} i18n={i18n} />],
+    "1": [<SearchBar key="1-SearchBar" t={t} i18n={i18n} id={1} />],
+    "2": [<SearchBar key="2-SearchBar" t={t} i18n={i18n} id={2} />],
   };
 
   return (
