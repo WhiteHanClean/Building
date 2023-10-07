@@ -318,3 +318,16 @@
     padding: 11px 120px;
   }
 }
+
+.custom_select {
+  appearance: none;
+  background-image: url("/evaArrowUpFill1.png");
+  background-size: 8px 6px;
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 25px;
+}
+
+.custom_select:focus .custom_select:hover {
+  outline: none;
+}

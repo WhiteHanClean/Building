@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useFormik } from "formik";
 import s from "./SearchBar.module.scss";
 import CustomSelect from "@/shared/ui/Select/Select";
