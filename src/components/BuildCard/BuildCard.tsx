@@ -38,7 +38,7 @@ const BuildCard = ({
         />
       </div>
       <div className={s.card_name}>
-        <p>{name}</p>
+        <p>{name.length > 20 ? `${name.slice(0, 16)}...` : name}</p>
         <p>{price} ₽</p>
       </div>
       <div className={s.card_details}>

@@ -29,8 +29,6 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
 
   const [currentPage, setCurrentPage] = useState(1);
 
-  console.log(isRent, "is rent");
-
   let offersQuery;
   let paginatesQuery;
   if (filterParams.isFilter) {
@@ -65,8 +63,8 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
   const { data, error, isLoading } = offersQuery;
   const { data: totalPages } = paginatesQuery;
 
-  console.log("total", totalPages);
-  console.log("paginate", data);
+  console.log(totalPages);
+  console.log(data);
 
   useEffect(() => {
     if (data) {
@@ -133,19 +131,13 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
               <option value="" disabled className={s.listOffer_option}>
                 {t("buyingRealEstate.select")}
               </option>
-              <option value="Все" className={s.listOffer_option}>
+              <option value="all" className={s.listOffer_option}>
                 {t("listOffer.all")}
               </option>
-              <option
-                value="По цене: сначала дорогие"
-                className={s.listOffer_option}
-              >
+              <option value="expensive" className={s.listOffer_option}>
                 {t("listOffer.byPriceExpensive")}
               </option>
-              <option
-                value="По цене: сначала дешевые"
-                className={s.listOffer_option}
-              >
+              <option value="cheap" className={s.listOffer_option}>
                 {t("listOffer.byPriceCheap")}
               </option>
             </select>
