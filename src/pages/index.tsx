@@ -10,11 +10,19 @@ import BuildBanner from "@/components/BuildBanner/BuildBanner";
 import Statistics from "@/components/Statistics/Statistics";
 import Consultation from "@/components/Consultation/Consultation";
 import SocialNetworkBlock from "@/components/SocialNetworkBlock/SocialNetworkBlock";
+import axios from "axios";
+import { RealEstate } from "@/redux/api";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
-  // console.log(todos);
+const Home: React.FC<{
+  allOffers: RealEstate[];
+  error: any;
+}> = ({ allOffers, error }) => {
+  if (error) {
+    return <p>Error: {error.message}</p>;
+  }
+
   return (
     <>
       <Head>
@@ -29,7 +37,7 @@ export default function Home() {
 
       <BuildBanner />
       <Statistics />
-      <Slider />
+      <Slider allOffers={allOffers} />
       <TypesOfServices />
       <Stages />
       <Service />
@@ -38,4 +46,27 @@ export default function Home() {
       <Consultation />
     </>
   );
+};
+
+export async function getServerSideProps() {
+  try {
+    const { data: allOffers } = await axios.get(
+      "https://propertylibphuket-production.up.railway.app/realEstates/"
+    );
+    console.log(allOffers);
+    return {
+      props: {
+        allOffers, // Use the correct prop name here
+      },
+    };
+  } catch (error: any) {
+    return {
+      props: {
+        allOffers: null, // Use the correct prop name here
+        error: error.message as string,
+      },
+    };
+  }
 }
+
+export default Home;
