@@ -162,7 +162,7 @@ const FilterBurger = ({ titleSection, setFilterParams }: Props) => {
         </div>
       </div>
       <Drawer
-        height={550}
+        style={{ height: "100vh", padding: "0" }}
         headerStyle={{
           padding: "20px 0px 20px 0px",
           borderBottom: "none",
@@ -183,7 +183,7 @@ const FilterBurger = ({ titleSection, setFilterParams }: Props) => {
                 <select
                   id="RealEstate"
                   name="RealEstate"
-                  className={s.form_select}
+                  className={`${s.form_select} ${s.custom_select}`}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.RealEstate}
@@ -209,7 +209,7 @@ const FilterBurger = ({ titleSection, setFilterParams }: Props) => {
                 <select
                   id="location"
                   name="location"
-                  className={s.form_select}
+                  className={`${s.form_select} ${s.custom_select}`}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.location}
@@ -255,7 +255,7 @@ const FilterBurger = ({ titleSection, setFilterParams }: Props) => {
                 <select
                   id="rooms"
                   name="rooms"
-                  className={s.form_select}
+                  className={`${s.form_select} ${s.custom_select}`}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.rooms}
@@ -285,7 +285,7 @@ const FilterBurger = ({ titleSection, setFilterParams }: Props) => {
                 <select
                   id="characteristics"
                   name="characteristics"
-                  className={s.form_select}
+                  className={`${s.form_select} ${s.custom_select}`}
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.rooms}
