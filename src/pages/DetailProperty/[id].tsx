@@ -1,35 +1,42 @@
+// Import necessary modules and components
 import Consultation from "@/components/Consultation/Consultation";
 import ProductSlider from "@/components/ProductSlider/ProductSlider";
 import PropertyDesc from "@/components/PropertyDesc/PropertyDesc";
 import Questions from "@/components/Questions/Questions";
-import React from "react";
-import { useRouter } from "next/router";
-import { useGetOneOffersQuery } from "@/redux/api";
 import BackButton from "@/components/BackButton/BackButton";
+import React from "react";
 import axios from "axios";
+import { RealEstate } from "@/redux/api";
+import { GetServerSideProps } from "next";
 
-const DetailProperty: React.FC<any> = ({ selectedProperty }) => {
-  const router = useRouter();
+interface IProps {
+  selectedProperty: null | RealEstate;
+}
 
-  console.log(selectedProperty);
-
+// Define the DetailProperty component
+const DetailProperty: React.FC<IProps> = ({ selectedProperty }) => {
   return (
     <div>
-      {selectedProperty && (
+      {selectedProperty ? (
         <>
           <BackButton />
-          <ProductSlider selectedProperty={selectedProperty} />
-          <PropertyDesc selectedProperty={selectedProperty} />
+          <ProductSlider sliderProperty={selectedProperty} />
+          <PropertyDesc />
           <Questions />
           <Consultation />
         </>
+      ) : (
+        "ooops , smth went wrong"
       )}
     </div>
   );
 };
 
-export async function getServerSideProps({ query }: any) {
-  const { id } = query;
+export const getServerSideProps: GetServerSideProps<IProps> = async ({
+  query,
+}) => {
+  
+  const { id } = query as { id: string };
 
   try {
     const { data: selectedProperty } = await axios.get(
@@ -50,6 +57,5 @@ export async function getServerSideProps({ query }: any) {
       },
     };
   }
-}
-
+};
 export default DetailProperty;

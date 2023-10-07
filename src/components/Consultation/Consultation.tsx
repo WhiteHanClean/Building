@@ -81,7 +81,6 @@ const Consultation = () => {
     event.preventDefault();
 
     try {
-      // Создаем объект данных для отправки
       const data = {
         name: formData.name,
         phone_number: formData.phone_number,
@@ -89,7 +88,6 @@ const Consultation = () => {
         check: [...formData.checkGroup1, ...formData.checkGroup2],
       };
 
-      // Отправляем POST-запрос
       const response = await axios.post(
         "https://www.amocrm.ru/developers/content/crm_platform/leads-api/api/v4/leads",
         data
@@ -100,7 +98,6 @@ const Consultation = () => {
         setIsSubmitted(true);
       }
     } catch (error) {
-      // Обработка ошибки запроса
       console.error("Ошибка при отправке запроса:", error);
     }
   };

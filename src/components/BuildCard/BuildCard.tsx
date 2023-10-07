@@ -31,10 +31,10 @@ const BuildCard = ({
   const imageWidth = 413;
   const imageHeight = 270;
 
-  const route = useRouter();
+  const router = useRouter();
 
   function handleClick() {
-    route.push(`/DetailProperty/${id}`);
+    router.push(`/DetailProperty/${id}`);
   }
 
   return (

@@ -1,5 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
+interface IImages {
+  url: string;
+}
 export interface RealEstate {
   _id: string;
   title: string;
@@ -24,6 +26,8 @@ export interface RealEstate {
   __v: number;
   mainImage: string;
   alt: string;
+  images: IImages[];
+  pricePerSquareMeter: string;
 }
 
 export interface IPaginate {

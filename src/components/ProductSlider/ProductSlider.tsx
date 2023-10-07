@@ -10,14 +10,14 @@ import { useWindowSize } from "../../hook/useSize";
 import { RealEstate } from "@/redux/api";
 
 interface ProductSliderProps {
-  selectedProperty: RealEstate | null;
+  sliderProperty: RealEstate;
 }
 
-const ProductSlider: React.FC<ProductSliderProps> = ({ selectedProperty }) => {
+const ProductSlider: React.FC<ProductSliderProps> = ({ sliderProperty }) => {
   const [number, setNumber] = useState(1);
   const { width = 0 } = useWindowSize();
 
-  const imagesCount = selectedProperty?.images.length || 0;
+  const imagesCount = sliderProperty?.images.length || 0;
 
   const swiperRef = useRef<any | null>(null);
 
@@ -106,7 +106,7 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ selectedProperty }) => {
           }}
           className={s.slider_section_image_slide}
         >
-          {selectedProperty?.images.map((items, index) => (
+          {sliderProperty?.images.map((items, index): any => (
             <SwiperSlide key={index}>
               <div
                 style={{
@@ -133,29 +133,29 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ selectedProperty }) => {
         {/* table title starts*/}
         <div className={s.slider_section_table_title}>
           <div className={s.slider_section_table_title_price}>
-            <h3>{selectedProperty?.title}</h3>
-            <h3>{selectedProperty?.price} ₽</h3>
+            <h3>{sliderProperty?.title}</h3>
+            <h3>{sliderProperty?.price} ₽</h3>
           </div>
 
           <div className={s.slider_section_table_title_location}>
-            <p>{selectedProperty?.location}</p>
-            <p>{selectedProperty?.pricePerSquareMeter} ₽/м²</p>
+            <p>{sliderProperty?.location}</p>
+            <p>{sliderProperty?.pricePerSquareMeter} ₽/м²</p>
           </div>
         </div>
         {/* table title ends*/}
         {/* table list starts*/}
         <ul className={s.slider_section_table_list}>
           <li className={s.slider_section_table_list_item}>
-            <p>{selectedProperty?.roomsAmount}-комнатная квартира</p>
+            <p>{sliderProperty?.roomsAmount}-комнатная квартира</p>
           </li>
           <li className={s.slider_section_table_list_item}>
-            <p>Площадь квартиры: {selectedProperty?.builtUpArea} м²</p>
+            <p>Площадь квартиры: {sliderProperty?.builtUpArea} м²</p>
           </li>
           <li className={s.slider_section_table_list_item}>
-            <p>Площадь участка: {selectedProperty?.landArea} м²</p>
+            <p>Площадь участка: {sliderProperty?.landArea} м²</p>
           </li>
           <li className={s.slider_section_table_list_item}>
-            <p>Год постройки: {selectedProperty?.yearBuilt}</p>
+            <p>Год постройки: {sliderProperty?.yearBuilt}</p>
           </li>
           <li className={s.slider_section_table_list_item}>
             <p>Пляж Камала: 0.5 км</p>

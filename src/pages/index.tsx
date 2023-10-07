@@ -9,9 +9,7 @@ import Stages from "@/components/Stages/Stages";
 import BuildBanner from "@/components/BuildBanner/BuildBanner";
 import Statistics from "@/components/Statistics/Statistics";
 import Consultation from "@/components/Consultation/Consultation";
-import Benefits from "@/components/Benefits/Benefits";
 import SocialNetworkBlock from "@/components/SocialNetworkBlock/SocialNetworkBlock";
-import axios from "axios";
 
 const inter = Inter({ subsets: ["latin"] });
 
