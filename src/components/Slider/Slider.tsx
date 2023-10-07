@@ -9,6 +9,7 @@ import "swiper/css/scrollbar";
 import "swiper/css/navigation";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
+import { useGetAllOffersQuery } from "@/redux/api";
 
 const Slider: React.FC = () => {
   // Create a ref for the Swiper instance
@@ -27,6 +28,10 @@ const Slider: React.FC = () => {
       swiperRef.current.slideNext();
     }
   };
+
+  React.useEffect(() => {
+    console.log(todos, "todos");
+  }, []);
 
   return (
     <>

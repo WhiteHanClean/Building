@@ -1,13 +1,13 @@
-import React, { useRef, useState } from 'react';
-import s from './ProductSlider.module.scss';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Scrollbar } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
-import Image from 'next/image';
-import { useWindowSize } from '../../hook/useSize';
-import { RealEstate } from '@/redux/api';
+import React, { useRef, useState } from "react";
+import s from "./ProductSlider.module.scss";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Scrollbar } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+import Image from "next/image";
+import { useWindowSize } from "../../hook/useSize";
+import { RealEstate } from "@/redux/api";
 
 interface ProductSliderProps {
   selectedProperty: RealEstate | null;
@@ -54,7 +54,7 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ selectedProperty }) => {
               onClick={goToPrevSlide}
             >
               <Image
-                src={'/BtnSliderIcon.png'}
+                src={"/BtnSliderIcon.png"}
                 width={16}
                 height={16}
                 alt="slider icon"
@@ -68,7 +68,7 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ selectedProperty }) => {
               onClick={goToNextSlide}
             >
               <Image
-                src={'/BtnSliderIcon.png'}
+                src={"/BtnSliderIcon.png"}
                 width={16}
                 height={16}
                 alt="slider icon"
@@ -111,11 +111,11 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ selectedProperty }) => {
               <div
                 style={{
                   backgroundImage: `url(${items.url})`,
-                  backgroundSize: 'contain',
-                  backgroundPosition: 'center',
-                  backgroundRepeat: 'no-repeat',
-                  width: '100%',
-                  height: '100%',
+                  backgroundSize: "cover",
+                  backgroundPosition: "center",
+                  backgroundRepeat: "no-repeat",
+                  width: "100%",
+                  height: "100%",
                 }}
               ></div>
             </SwiperSlide>
