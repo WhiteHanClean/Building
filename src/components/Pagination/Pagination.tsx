@@ -41,8 +41,7 @@ const Pagination: React.FC<PaginationProps> = ({
 
   const renderPageNumbers = () => {
     const pages = [];
-    const pageRange = 2; // Number of pages to show before and after the current page
-    console.log(totalPages, "total count");
+    const pageRange = 2;
     for (let i = 1; i <= totalPages; i++) {
       if (
         i === 1 ||
@@ -66,7 +65,6 @@ const Pagination: React.FC<PaginationProps> = ({
         i === currentPage - pageRange - 1 ||
         i === currentPage + pageRange + 1
       ) {
-        // Show ellipses (...) before and after the skipped pages
         pages.push(
           <span
             key={i}

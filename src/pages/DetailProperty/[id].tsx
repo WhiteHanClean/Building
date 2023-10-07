@@ -11,23 +11,23 @@ import { GetServerSideProps } from "next";
 
 interface IProps {
   selectedProperty: null | RealEstate;
+  error?: any;
 }
 
-// Define the DetailProperty component
-const DetailProperty: React.FC<IProps> = ({ selectedProperty }) => {
+const DetailProperty: React.FC<IProps> = ({ selectedProperty, error }) => {
   return (
     <div>
-      {selectedProperty ? (
-        <>
-          <BackButton />
+      <>
+        <BackButton />
+        {!error ? (
           <ProductSlider sliderProperty={selectedProperty} />
-          <PropertyDesc />
-          <Questions />
-          <Consultation />
-        </>
-      ) : (
-        "ooops , smth went wrong"
-      )}
+        ) : (
+          <p>Error: {error.message}</p>
+        )}
+        <PropertyDesc />
+        <Questions />
+        <Consultation />
+      </>
     </div>
   );
 };
@@ -48,11 +48,10 @@ export const getServerSideProps: GetServerSideProps<IProps> = async ({
       },
     };
   } catch (error: any) {
-    console.error("Error fetching real estate data:", error.message as string);
-
     return {
       props: {
         selectedProperty: null,
+        error: error.message as string,
       },
     };
   }

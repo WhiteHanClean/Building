@@ -4,15 +4,12 @@ import BuildCard from "../BuildCard/BuildCard";
 import {
   FilterParams,
   RealEstate,
-  useGetAllOffersQuery,
   useGetPaginateOffersQuery,
   useGetPaginateOffersWithFilterQuery,
   useGetUnFilteredOffersQuery,
 } from "../../redux/api";
 import { useGetFilteredOffersQuery } from "@/redux/api";
-import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
-import { RootState } from "@/redux/store";
 import { LoadingOutlined } from "@ant-design/icons";
 import { Spin } from "antd";
 import Pagination from "../Pagination/Pagination";
@@ -28,7 +25,7 @@ const antIcon = (
       fontSize: 80,
       marginTop: "100px",
       marginBottom: "400px",
-      color: "gray"
+      color: "gray",
     }}
     spin
   />
@@ -75,9 +72,6 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
 
   const { data, error, isLoading } = offersQuery;
   const { data: totalPages } = paginatesQuery;
-
-  console.log(totalPages);
-  console.log(data);
 
   useEffect(() => {
     if (data) {
@@ -167,7 +161,6 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
         </div>
       </div>
       <ul className={s.listOffer_list}>
-
         {allOffers && totalPages ? (
           allOffers.map((card: RealEstate) => {
             return (
