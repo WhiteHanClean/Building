@@ -12,14 +12,11 @@ import { useTranslation } from "react-i18next";
 import { RealEstate } from "@/redux/api";
 import { idText } from "typescript";
 
-<<<<<<< HEAD
-const Slider: React.FC = () => {
-=======
 const Slider: React.FC<{
   allOffers: RealEstate[];
 }> = ({ allOffers }) => {
   // Create a ref for the Swiper instance
->>>>>>> 115d18aed51773fe8214f0b5783a3f3e5a26f358
+
   const swiperRef = useRef<any | null>(null);
   const { t } = useTranslation();
   const goToPrevSlide = () => {
