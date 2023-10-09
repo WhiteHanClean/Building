@@ -164,9 +164,16 @@
 }
 
 .form_wrapper_button_reset {
-  margin-left: 21px;
   margin-top: 30px;
   border-bottom: 1px solid #6c6c6a;
+}
+
+.marginLeftEn {
+  margin-left: 40px;
+}
+
+.marginLeftRu {
+  margin-left: 21px;
 }
 
 .form_button_reset {
@@ -244,8 +251,12 @@
   .form_wrapper_twoButton {
     flex-direction: column;
   }
-  .form_wrapper_button_reset {
-    margin-left: 0;
+  .marginLeftEn {
+    margin-left: 0px;
+  }
+
+  .marginLeftRu {
+    margin-left: 0px;
   }
 }
 

@@ -34,12 +34,6 @@ const validationSchema = Yup.object({
     ],
     "Выберите Характеристики"
   ),
-  // pricMin: Yup.string()
-  //   .matches(/^[1-9][0-9]*$/, "Только цифры")
-  //   .max(15, "Не более 15 символов"),
-  // pricMax: Yup.string()
-  //   .matches(/^[1-9][0-9]*$/, "Только цифры")
-  //   .max(15, "Не более 15 символов"),
   pricMin: Yup.string()
     .matches(/^\s*(\d+(\s+\d+)*)?\s*$/, "Только цифры")
     .max(15, "Не более 15 символов"),
@@ -73,13 +67,15 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
   const [locationsData, setLocationsData] = useState<LocationResponse>([]);
   const { data, error, isLoading } = useGetLocationQuery();
   const dispatch = useDispatch();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const currentLanguage = i18n.language;
+
+  console.log(currentLanguage);
+
   const infoFormMain = useSelector(
     (state: { mainForm: { mainForm: MainFormParams } }) =>
       state.mainForm.mainForm
   ) as MainFormParams;
-
-  console.log(infoFormMain);
 
   useEffect(() => {
     if (data) {
@@ -510,7 +506,11 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                     </button>
                   </div>
 
-                  <div className={s.form_wrapper_button_reset}>
+                  <div
+                    className={`${s.form_wrapper_button_reset} ${
+                      currentLanguage === "en" ? s.marginLeftEn : s.marginLeftRu
+                    }`}
+                  >
                     <button
                       type="button"
                       className={s.form_button_reset}
