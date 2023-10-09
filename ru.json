@@ -3,6 +3,9 @@
     "backButton": {
       "back" : "назад"
     },
+    "asideButton": {
+      "convenience" : "Как вам удобнее с нами связаться?"
+    },
     "header": {
       "mainPage": "Главная",
       "purchase": "Покупка",

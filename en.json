@@ -3,6 +3,9 @@
       "backButton": {
         "back" : "back"
       },
+      "asideButton": {
+        "convenience" : "How is it more convenient for you to contact us?"
+      },
       "header": {
         "mainPage": "Main",
         "purchase": "Purchase",
