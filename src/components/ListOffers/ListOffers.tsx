@@ -176,13 +176,7 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
                   rooms={card.roomsAmount}
                   builtUpArea={card.builtUpArea}
                   landArea={card.landArea}
-                  location={
-                    card.location?.title
-                      ? card.location.title
-                      : "Необходимо уточнить"
-                  }
-
-
+                  location={card.location}
                 />
               </li>
             );
