@@ -70,8 +70,6 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
   const { t, i18n } = useTranslation();
   const currentLanguage = i18n.language;
 
-  console.log(currentLanguage);
-
   const infoFormMain = useSelector(
     (state: { mainForm: { mainForm: MainFormParams } }) =>
       state.mainForm.mainForm
@@ -137,12 +135,12 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
       const filterParams = {
         ...(values.RealEstate !== "" &&
           values.RealEstate !== "AllOptions" && {
-          buildingType: values.RealEstate,
-        }),
+            buildingType: values.RealEstate,
+          }),
         ...(values.rooms !== "" &&
           values.rooms !== "AllOptions" && {
-          roomsAmount: Number(values.rooms),
-        }),
+            roomsAmount: Number(values.rooms),
+          }),
         ...(values.areaHouseMin !== "" && {
           builtUpArea_gte: Number(values.areaHouseMin),
         }),
@@ -328,7 +326,7 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                     </select>
                   </div>
                   {formik.touched.characteristics &&
-                    formik.errors.characteristics ? (
+                  formik.errors.characteristics ? (
                     <div className={s.form_error}>
                       {formik.errors.characteristics}
                     </div>
@@ -406,9 +404,8 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                     {selectedRealEstate === "Villa"
                       ? t("buyingRealEstate.landArea")
                       : selectedRealEstate === "Apartment"
-                        ? t("buyingRealEstate.livingArea")
-                        : t("buyingRealEstate.landArea")
-                    }
+                      ? t("buyingRealEstate.livingArea")
+                      : t("buyingRealEstate.landArea")}
                   </label>
                   <div className={s.form_inputsWrapper}>
                     <div className={s.form_inputWrapper}>
@@ -456,12 +453,11 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                   className={`${s.form_wrapper_item} ${s.form_wrapper_itemArea}`}
                 >
                   <label className={s.form_label} htmlFor="areaHouseMin">
-                  {selectedRealEstate === "Villa"
+                    {selectedRealEstate === "Villa"
                       ? t("main.searchBar.squere")
                       : selectedRealEstate === "Apartment"
-                        ? t("buyingRealEstate.totalArea")
-                        : t("buyingRealEstate.totalArea")
-                    }
+                      ? t("buyingRealEstate.totalArea")
+                      : t("buyingRealEstate.totalArea")}
                   </label>
                   <div className={s.form_inputsWrapper}>
                     <div className={s.form_inputWrapper}>
@@ -523,8 +519,9 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                   </div>
 
                   <div
-                    className={`${s.form_wrapper_button_reset} ${currentLanguage === "en" ? s.marginLeftEn : s.marginLeftRu
-                      }`}
+                    className={`${s.form_wrapper_button_reset} ${
+                      currentLanguage === "en" ? s.marginLeftEn : s.marginLeftRu
+                    }`}
                   >
                     <button
                       type="button"
