@@ -164,6 +164,7 @@
 }
 
 .form_wrapper_button_reset {
+  margin-left: 21px;
   margin-top: 30px;
   border-bottom: 1px solid #6c6c6a;
 }
@@ -181,6 +182,11 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+}
+
+.form_wrapper_twoButton {
+  display: flex;
+  justify-content: space-between;
 }
 
 @media only screen and (max-width: 1300px) {
@@ -234,6 +240,12 @@
   }
   .form_button {
     padding: 11px 140px;
+  }
+  .form_wrapper_twoButton {
+    flex-direction: column;
+  }
+  .form_wrapper_button_reset {
+    margin-left: 0;
   }
 }
 

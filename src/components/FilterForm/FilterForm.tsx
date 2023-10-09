@@ -141,12 +141,12 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
       const filterParams = {
         ...(values.RealEstate !== "" &&
           values.RealEstate !== "AllOptions" && {
-          buildingType: values.RealEstate,
-        }),
+            buildingType: values.RealEstate,
+          }),
         ...(values.rooms !== "" &&
           values.rooms !== "AllOptions" && {
-          roomsAmount: Number(values.rooms),
-        }),
+            roomsAmount: Number(values.rooms),
+          }),
         ...(values.areaHouseMin !== "" && {
           builtUpArea_gte: Number(values.areaHouseMin),
         }),
@@ -306,17 +306,27 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                       value={formik.values.characteristics}
                     >
                       <option value="" disabled className="">
-                      {t("buyingRealEstate.select")}
+                        {t("buyingRealEstate.select")}
                       </option>
-                      <option value="Характеристики 1">{t("main.searchBar.charVariants.char1")}</option>
-                      <option value="Характеристики 2">{t("main.searchBar.charVariants.char2")}</option>
-                      <option value="Характеристики 3">{t("main.searchBar.charVariants.char3")}</option>
-                      <option value="Характеристики 4">{t("main.searchBar.charVariants.char4")}</option>
-                      <option value="Характеристики 5">{t("main.searchBar.charVariants.char5")}</option>
+                      <option value="Характеристики 1">
+                        {t("main.searchBar.charVariants.char1")}
+                      </option>
+                      <option value="Характеристики 2">
+                        {t("main.searchBar.charVariants.char2")}
+                      </option>
+                      <option value="Характеристики 3">
+                        {t("main.searchBar.charVariants.char3")}
+                      </option>
+                      <option value="Характеристики 4">
+                        {t("main.searchBar.charVariants.char4")}
+                      </option>
+                      <option value="Характеристики 5">
+                        {t("main.searchBar.charVariants.char5")}
+                      </option>
                     </select>
                   </div>
                   {formik.touched.characteristics &&
-                    formik.errors.characteristics ? (
+                  formik.errors.characteristics ? (
                     <div className={s.form_error}>
                       {formik.errors.characteristics}
                     </div>
@@ -395,7 +405,9 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                   </label>
                   <div className={s.form_inputsWrapper}>
                     <div className={s.form_inputWrapper}>
-                      <span className={s.form_prefix}>{t("main.searchBar.from")}</span>
+                      <span className={s.form_prefix}>
+                        {t("main.searchBar.from")}
+                      </span>
                       <input
                         className={`${s.form_input} ${s.form_inputArea} `}
                         type="text"
@@ -410,7 +422,9 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                     <div
                       className={`${s.form_inputWrapper} ${s.form_inputSecond}`}
                     >
-                      <span className={s.form_prefix}>{t("main.searchBar.to")}</span>
+                      <span className={s.form_prefix}>
+                        {t("main.searchBar.to")}
+                      </span>
                       <input
                         className={`${s.form_input} ${s.form_inputAreaDO} `}
                         type="text"
@@ -435,11 +449,13 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                   className={`${s.form_wrapper_item} ${s.form_wrapper_itemArea}`}
                 >
                   <label className={s.form_label} htmlFor="areaHouseMin">
-                  {t("main.searchBar.squere")}
+                    {t("main.searchBar.squere")}
                   </label>
                   <div className={s.form_inputsWrapper}>
                     <div className={s.form_inputWrapper}>
-                      <span className={s.form_prefix}>{t("main.searchBar.from")}</span>
+                      <span className={s.form_prefix}>
+                        {t("main.searchBar.from")}
+                      </span>
                       <input
                         className={`${s.form_input} ${s.form_inputArea} `}
                         type="text"
@@ -454,7 +470,9 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                     <div
                       className={`${s.form_inputWrapper} ${s.form_inputSecond}`}
                     >
-                      <span className={s.form_prefix}>{t("main.searchBar.to")}</span>
+                      <span className={s.form_prefix}>
+                        {t("main.searchBar.to")}
+                      </span>
                       <input
                         className={`${s.form_input} ${s.form_inputAreaDO} `}
                         type="text"
@@ -479,26 +497,28 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                   ) : null}
                 </div>
 
-                <div className={s.form_wrapper_button}>
-                  <button type="submit" className={s.form_button}>
-                    {t("main.searchBar.search")}
-                    <Image
-                      src={"/Arrow-upFilter.svg"}
-                      width={17}
-                      height={16}
-                      alt="arrow"
-                    ></Image>
-                  </button>
-                </div>
+                <div className={s.form_wrapper_twoButton}>
+                  <div className={s.form_wrapper_button}>
+                    <button type="submit" className={s.form_button}>
+                      {t("main.searchBar.search")}
+                      <Image
+                        src={"/Arrow-upFilter.svg"}
+                        width={17}
+                        height={16}
+                        alt="arrow"
+                      ></Image>
+                    </button>
+                  </div>
 
-                <div className={s.form_wrapper_button_reset}>
-                  <button
-                    type="button"
-                    className={s.form_button_reset}
-                    onClick={handleResetForm}
-                  >
-                    {t("main.searchBar.reset")}
-                  </button>
+                  <div className={s.form_wrapper_button_reset}>
+                    <button
+                      type="button"
+                      className={s.form_button_reset}
+                      onClick={handleResetForm}
+                    >
+                      {t("main.searchBar.reset")}
+                    </button>
+                  </div>
                 </div>
               </div>
             </form>
