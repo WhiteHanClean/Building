@@ -88,7 +88,7 @@ const BuildCard = ({
           </span>
         </div>
         <div>
-          <span>{location && location.title}</span>
+          <span>{location}</span>
         </div>
       </div>
     </div>
