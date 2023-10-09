@@ -17,7 +17,6 @@ interface Props {
 }
 
 const BuildCard = ({
-  
   img = {
     url: "/413x270.png",
   },
@@ -53,7 +52,7 @@ const BuildCard = ({
       </div>
       <div className={s.card_name}>
         <p>{name.length > 20 ? `${name.slice(0, 16)}...` : name}</p>
-        <p>{price} ₽</p>
+        <p>{price} ฿</p>
       </div>
       <div className={s.card_details}>
         <div className={s.card_detail_wrapper}>
@@ -75,7 +74,7 @@ const BuildCard = ({
               height={15}
               alt="Square icon"
             />
-            {builtUpArea} м²
+            {builtUpArea} м² - {builtUpArea} м²
           </span>
           <span>
             <Image
@@ -85,7 +84,7 @@ const BuildCard = ({
               height={15}
               alt="square common icon"
             />
-            {landArea} м²
+            {landArea} м² - {landArea} м²
           </span>
         </div>
         <div>

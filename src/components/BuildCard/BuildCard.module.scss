@@ -36,7 +36,7 @@
     span {
       display: flex;
       align-items: center;
-      margin-right: 20px;
+      margin-right: 10px;
       @include sizer(14px);
       color: var(--color-text, #6c6c6a) !important;
       font-weight: 500 !important;
