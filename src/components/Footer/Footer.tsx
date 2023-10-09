@@ -113,7 +113,7 @@ const Footer = () => {
             </div>
             <div className={s.footer_icons_modile}>
               <Image
-                src={"/watsapp.svg"}
+                src={"/WhatsApp.svg"}
                 width={20}
                 height={20}
                 alt="watsapp"
