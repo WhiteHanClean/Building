@@ -1,22 +1,23 @@
 import React from "react";
 import s from "./Benefits.module.scss";
 import Image from "next/image";
+import { useTranslation } from 'react-i18next';
 // import { motion } from "framer-motion";
 
 const Benefits = () => {
+  const { t } = useTranslation();
+
   return (
     <section className={s.section}>
       {/* first section */}
 
       <div className={s.section_item_1}>
         <div className={s.section_item_1_title}>
-          <h3>Выгодное сотрудничество</h3>
+          <h3>{t('accommodation.benefits.title')}</h3>
         </div>
         <div className={s.section_item_1_description}>
           <p>
-            Наши специалисты помогут с продажей вашей недвижимости или
-            земельного участка, а также предоставят возможность вам сдавать в
-            аренду свою недвижимость с доходностью 6-10% годовых.
+          {t('accommodation.benefits.description')}
           </p>
         </div>
       </div>
@@ -36,12 +37,11 @@ const Benefits = () => {
                 alt="logo"
               ></Image>
             </div>
-            <p>Эффективно</p>
+            <p>{t('accommodation.benefits.effectively')}</p>
           </div>
           <div className={s.section_item_2_benefits_text}>
             <p>
-              Мы обеспечиваем стабильный доход 6-10% годовых, профессионально
-              и ответственно управляя вашей недвижимостью.
+            {t('accommodation.benefits.efficielyDescription')}
             </p>
           </div>
         </div>
@@ -58,12 +58,11 @@ const Benefits = () => {
                 alt="logo"
               ></Image>
             </div>
-            <p>Выгодно</p>
+            <p>{t('accommodation.benefits.profitably')}</p>
           </div>
           <div className={s.section_item_2_benefits_text}>
             <p>
-              Наши эксклюзивные предложения позволяют максимизировать ваши
-              инвестиции и обеспечивают высокую доходность.
+            {t('accommodation.benefits.profitablyDescription')}
             </p>
           </div>
         </div>
@@ -80,12 +79,11 @@ const Benefits = () => {
                 alt="logo"
               ></Image>
             </div>
-            <p>Беззаботно</p>
+            <p> {t('accommodation.benefits.carefree')}</p>
           </div>
           <div className={s.section_item_2_benefits_text}>
             <p>
-              Доверьте нам все аспекты управления и сдачи в аренду, позволив
-              себе наслаждаться выгодами инвестиций без хлопот.
+            {t('accommodation.benefits.carefreeDescription')}
             </p>
           </div>
         </div>
@@ -102,12 +100,11 @@ const Benefits = () => {
                 alt="logo"
               ></Image>
             </div>
-            <p>Легко и надежно</p>
+            <p>{t('accommodation.benefits.easy')}</p>
           </div>
           <div className={s.section_item_2_benefits_text}>
             <p>
-              Зарабатывайте на своей недвижимости с минимальными усилиями
-              и максимальной уверенностью в успехе.
+            {t('accommodation.benefits.easyDescription')}
             </p>
           </div>
         </div>

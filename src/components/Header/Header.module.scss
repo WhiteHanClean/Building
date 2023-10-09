@@ -1,4 +1,4 @@
-@import '../../styles/variable';
+@import "../../styles/variable";
 
 .header {
   max-width: 100%;
@@ -129,6 +129,10 @@
 @media only screen and (max-width: 570px) {
   .header {
     .header_content {
+      .logo {
+        width: 120px !important;
+        object-fit: contain;
+      }
       .header_item {
         display: flex !important;
         justify-content: end !important;
@@ -136,7 +140,7 @@
           display: none !important;
         }
         .language {
-          display: none !important;
+          margin-right: 20px;
         }
       }
     }

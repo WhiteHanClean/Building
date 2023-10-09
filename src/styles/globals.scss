@@ -22,6 +22,11 @@ body {
   background: var(--color-background, #f1efec);
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
 picture,
 video,
 canvas,

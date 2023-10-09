@@ -42,24 +42,36 @@
           justify-content: center;
           align-items: center;
           border-radius: 50%;
-          background: var(--color-beige, #f1efec);
+          background: var(--color-beige, #F1EFEC);
+          cursor: pointer;
+
+          &_disabled {
+            background-color: #000;
+            cursor: default;
+          }
         }
 
         .slider_section_image_swipper_buttonHolder_right_button {
           width: 40px;
           height: 40px;
           border-radius: 100%;
-          background-color: #9d8e88;
+          background-color: #F1EFEC;
           opacity: 0.9;
           transform: rotate(180deg);
           transition: background-color 0.3s ease;
           display: flex;
           justify-content: center;
           align-items: center;
+          cursor: pointer;
+
+          &_disabled {
+            background-color: #000;
+            cursor: default;
+          }
         }
 
         .slider_section_image_swipper_buttonHolder_right_button_icon {
-          filter: invert(100%) hue-rotate(180deg);
+          filter: invert(60%) hue-rotate(180deg);
         }
 
         .slider_section_image_swipper_buttonHolder_right_button:hover {
@@ -160,6 +172,10 @@
       }
     }
   }
+}
+
+.disabled {
+  background: red;
 }
 
 @media only screen and (max-width: 1025px) {

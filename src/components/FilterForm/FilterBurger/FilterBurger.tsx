@@ -201,10 +201,14 @@ const FilterBurger = ({ titleSection, setFilterParams }: Props) => {
         </div>
       </div>
       <Drawer
-        style={{ height: "100vh", padding: "0" }}
+        style={{
+          minHeight: "100vh",
+          padding: "0",
+        }}
         headerStyle={{
-          padding: "20px 0px 20px 0px",
+          padding: "20px 0px 20px 0px !important",
           borderBottom: "none",
+          marginLeft: "4% !imporant",
         }}
         placement="top"
         onClose={onClose}
@@ -230,8 +234,8 @@ const FilterBurger = ({ titleSection, setFilterParams }: Props) => {
                   <option value="" disabled className={s.form_option_start}>
                     Выбрать
                   </option>
-                  <option value="Вилла">Вилла</option>
-                  <option value="Квартира">Квартира</option>
+                  <option value="Villa">Вилла</option>
+                  <option value="Apartment">Квартира</option>
                   <option value="AllOptions">Показать все варианты</option>
                 </select>
               </div>
@@ -284,12 +288,12 @@ const FilterBurger = ({ titleSection, setFilterParams }: Props) => {
                   <option value="" disabled className="">
                     Выбрать
                   </option>
-                  <option value="Студия">Студия</option>
-                  <option value="1 спальня">1 спальня</option>
-                  <option value="2 спальня">2 спальня</option>
-                  <option value="3 спальня">3 спальня</option>
-                  <option value="4 спальня">4 спальня</option>
-                  <option value="5 спальня">5 спальня</option>
+                  <option value="Studio">Студия</option>
+                  <option value="1">1 спальня</option>
+                  <option value="2">2 спальня</option>
+                  <option value="3">3 спальня</option>
+                  <option value="4">4 спальня</option>
+                  <option value="5">5 спальня</option>
                   <option value="AllOptions">Показать все варианты</option>
                 </select>
               </div>
@@ -406,7 +410,7 @@ const FilterBurger = ({ titleSection, setFilterParams }: Props) => {
                     onBlur={formik.handleBlur}
                     value={formik.values.areaMin}
                   />
-                  <span className={s.form_suffix}>m2</span>
+                  <span className={s.form_suffix}>m²</span>
                 </div>
                 <div className={`${s.form_inputWrapper} ${s.form_inputSecond}`}>
                   <span className={s.form_prefix}>до</span>
@@ -419,7 +423,7 @@ const FilterBurger = ({ titleSection, setFilterParams }: Props) => {
                     onBlur={formik.handleBlur}
                     value={formik.values.areaMax}
                   />
-                  <span className={s.form_suffix}>m2</span>
+                  <span className={s.form_suffix}>m²</span>
                 </div>
               </div>
               {formik.touched.areaMax && formik.errors.areaMax ? (
@@ -448,7 +452,7 @@ const FilterBurger = ({ titleSection, setFilterParams }: Props) => {
                     onBlur={formik.handleBlur}
                     value={formik.values.areaHouseMin}
                   />
-                  <span className={s.form_suffix}>m2</span>
+                  <span className={s.form_suffix}>m²</span>
                 </div>
                 <div className={`${s.form_inputWrapper} ${s.form_inputSecond}`}>
                   <span className={s.form_prefix}>до</span>
@@ -461,7 +465,7 @@ const FilterBurger = ({ titleSection, setFilterParams }: Props) => {
                     onBlur={formik.handleBlur}
                     value={formik.values.areaHouseMax}
                   />
-                  <span className={s.form_suffix}>m2</span>
+                  <span className={s.form_suffix}>m²</span>
                 </div>
               </div>
               {formik.touched.areaHouseMax && formik.errors.areaHouseMax ? (

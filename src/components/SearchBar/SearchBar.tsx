@@ -178,7 +178,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ t, i18n, id }) => {
                   <span className={s.form_prefix}>min</span>
                   <input
                     className={s.form_input}
-                    type="text"
+                    type="number"
                     id="pricMin"
                     name="pricMin"
                     onChange={formik.handleChange}
@@ -190,7 +190,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ t, i18n, id }) => {
                   <span className={s.form_prefix}>max</span>
                   <input
                     className={s.form_input}
-                    type="text"
+                    type="number"
                     id="pricMax"
                     name="pricMax"
                     onChange={formik.handleChange}

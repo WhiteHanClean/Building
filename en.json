@@ -1,5 +1,8 @@
 {
     "main": {
+      "backButton": {
+        "back" : "back"
+      },
       "header": {
         "mainPage": "Main",
         "purchase": "Purchase",
@@ -20,12 +23,39 @@
         "realty": "Realty",
         "district": "District",
         "rooms": "Number of rooms",
+        "manyRooms": "-room apartment",
         "price": "Price",
         "search": "Search",
         "villa": "Villa",
+        "room": "rooms",
         "apartment": "Apartment",
         "showAllOptions": "Show all options",
         "select": "Select",
+        "squere" : "Built-up Area",
+        "apartmentArea" : "Apartment area:",
+        "landArea" : "Land area:",
+        "yearOfConstruction" : "Year of construction:",
+        "beach" : "Kamala Beach:",
+        "dops" : "Additional Features", 
+        "reset" : "Reset Search",
+        "from" : "from",
+        "to" : "to",
+        "Landmark" : "Landmark",
+        "floor" : "Floor",
+        "Balcony" : "Balcony",
+        "kitchenArea" : "Kitchen Area",
+        "bathroom" : "Bathroom",
+        "houseType" : "House type",
+        "restourant" : "Restourant",
+        "leaf" : "Spa on site",
+        "Gym" : "Gym",
+        "Parking" : "Car parking",
+        "communalPool" : "Communal pool",
+        "club" : "Club on site",
+        "DescOfProperty" : "Description of the property",
+        "Desc" : "After the flood, the three sons of Noah divided the land – Shem, Ham, and Japheth. The eastern part fell to Shem: Persia, Bactria, even as far as India in longitude, and in width from Rynochorura to the south. It encompassed Syria, Media up to the Euphrates River, Babylon, Corduene, Assyrians, Mesopotamia, Ancient Arabia, Elam, India, Strong Arabia, Colchis, Commagene, and all of Phoenicia.",
+        "DescData" : "year of construction 2020",
+        "DescMith" : "Ham, however, received the south: Egypt, Ethiopia bordering India, and another Ethiopia from which the Ethiopian Red River flows, running to the east, along with Thebes and Libya.",
         "districtVariant": {
           "aoPo": "Ao Po",
           "bangTao": "Bang Tao",
@@ -57,6 +87,13 @@
           "bedroom4": "4 bedrooms",
           "bedroom5": "5 bedrooms",
           "allOptions": "Show all options"
+        },
+        "charVariants": {
+          "char1" : "Characteristics 1",
+          "char2" : "Characteristics 2",
+          "char3" : "Characteristics 3",
+          "char4" : "Characteristics 4",
+          "char5" : "Characteristics 5"
         }
       },
       "statistic": {
@@ -129,7 +166,12 @@
         "costDependence": "What does the rental price depend on?",
         "confirmedBooking": "When is a reservation considered confirmed?",
         "purchasingIssues": "Purchasing issues",
-        "serviceIssues": "Service issues"
+        "serviceIssues": "Service issues",
+        "rentPrice" : "The rental price is influenced by the following factors:",
+        "seasonality" : "Seasonality: in the high and summer seasons, the price can differ by more than 3 times. Property owners determine the frequency of price changes based on demand and tourist flow.",
+        "leasePeriod" : "Rental period: the longer the stay, the lower the cost per day. This rule does not apply to properties located on hotel premises.",
+        "datesOfArrival" : "Check-in dates: the likelihood of additional discounts for dates convenient for the property owner is very high.",
+        "stocks" : "Promotions: the maximum number of advantageous offers falls on the summer and mid-seasons."
       },
       "consultation": {
         "title": "Free consultation",
@@ -215,7 +257,9 @@
         "profitably": "Profitably",
         "profitablyDescription": "Our exclusive offers allow you to maximize your investments and provide high returns.",
         "carefree": "Carefree",
-        "carefreeDescription": "Entrust us with all aspects of management and leasing, allowing yourself to enjoy the benefits of investment without hassle."
+        "carefreeDescription": "Entrust us with all aspects of management and leasing, allowing yourself to enjoy the benefits of investment without hassle.",
+        "easy" : "Easy and Reliable",
+      "easyDescription" : "Earn from your real estate with minimal effort and maximum confidence in success."
       }
     }
   }

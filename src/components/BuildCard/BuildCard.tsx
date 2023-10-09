@@ -2,6 +2,7 @@ import React from "react";
 import s from "./BuildCard.module.scss";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   id?: string;
@@ -16,6 +17,7 @@ interface Props {
 }
 
 const BuildCard = ({
+  
   img = {
     url: "/413x270.png",
   },
@@ -36,6 +38,8 @@ const BuildCard = ({
   function handleClick() {
     router.push(`/DetailProperty/${id}`);
   }
+
+  const { t } = useTranslation();
 
   return (
     <div onClick={handleClick} className={s.card_container}>
@@ -61,7 +65,7 @@ const BuildCard = ({
               height={12}
               alt="Icon bet"
             />
-            {rooms} комнаты
+            {rooms} {t("main.searchBar.room")}
           </span>
           <span>
             <Image
@@ -85,7 +89,7 @@ const BuildCard = ({
           </span>
         </div>
         <div>
-          <span>{location.title}</span>
+          <span>{location && location.title}</span>
         </div>
       </div>
     </div>

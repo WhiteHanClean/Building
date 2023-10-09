@@ -11,7 +11,7 @@ const Footer = () => {
       <div className={s.footer_content}>
         <div className={s.footer_content_logo}>
           <Image
-            src={"/footerLogo.png"}
+            src={"/footerLogo.svg"}
             width={160}
             height={38}
             alt="footerLogo"
@@ -49,28 +49,36 @@ const Footer = () => {
           </nav>
           <div className={s.footer_item}>
             <div className={s.footer_icons}>
-              <Image
-                src={"/instagram.png"}
-                width={20}
-                height={20}
-                alt="instagram"
-              ></Image>
+              <a href="https://instagram.com/property.library.phuket">
+                <Image
+                  src={"/Instagram.svg"}
+                  width={20}
+                  height={20}
+                  alt="instagram"
+                ></Image>
+              </a>
             </div>
             <div className={s.footer_icons}>
-              <Image
-                src={"/telegram.png"}
-                width={20}
-                height={20}
-                alt="telegram"
-              ></Image>
+              {/* https://t.me/Tadamoto */}
+
+              <a href="https://t.me/Tadamoto">
+                <Image
+                  src={"/Telegram.svg"}
+                  width={20}
+                  height={20}
+                  alt="telegram"
+                ></Image>
+              </a>
             </div>
             <div className={s.footer_icons}>
-              <Image
-                src={"/watsapp.png"}
-                width={20}
-                height={20}
-                alt="watsapp"
-              ></Image>
+              <a href="https://wa.me/message/ERHNUPGUWEWCK1">
+                <Image
+                  src={"/WhatsApp.svg"}
+                  width={20}
+                  height={20}
+                  alt="watsapp"
+                ></Image>
+              </a>
             </div>
           </div>
         </div>
@@ -80,7 +88,7 @@ const Footer = () => {
         <div className={s.footer_intro_modile}>
           <div className={s.footer_content_logo_modile}>
             <Image
-              src={"/footerLogo.png"}
+              src={"/footerLogo.svg"}
               width={160}
               height={38}
               alt="footerLogo"
@@ -89,7 +97,7 @@ const Footer = () => {
           <div className={s.footer_item_modile}>
             <div className={s.footer_icons_modile}>
               <Image
-                src={"/instagram.png"}
+                src={"/instagram.svg"}
                 width={20}
                 height={20}
                 alt="instagram"
@@ -97,7 +105,7 @@ const Footer = () => {
             </div>
             <div className={s.footer_icons_modile}>
               <Image
-                src={"/telegram.png"}
+                src={"/telegram.svg"}
                 width={20}
                 height={20}
                 alt="telegram"
@@ -105,7 +113,7 @@ const Footer = () => {
             </div>
             <div className={s.footer_icons_modile}>
               <Image
-                src={"/watsapp.png"}
+                src={"/watsapp.svg"}
                 width={20}
                 height={20}
                 alt="watsapp"

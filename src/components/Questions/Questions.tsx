@@ -5,31 +5,6 @@ import { useTranslation } from 'react-i18next';
 import { Collapse } from 'antd';
 const { Panel } = Collapse;
 
-const text = (
-  <div>
-    <p>На стоимость аренды влияют следующие факторы:</p>
-    <ul style={{ listStyleType: 'circle', paddingLeft: '20px' }}>
-      <li>
-        сезонность: в высокий и летний сезон цена может отличаться более чем в 3
-        раза. Периодичность изменения цен устанавливают собственники
-        недвижимости, ориентируясь на спрос и туристический поток;
-      </li>
-      <li>
-        срок аренды: чем продолжительнее отдых, тем ниже стоимость аренды за
-        сутки. На недвижимость, расположенную на территориях отелей, это правило
-        не распространяется;
-      </li>
-      <li>
-        даты заезда: вероятность дополнительных скидок на даты, удобные для
-        владельца объекта, очень высока;
-      </li>
-      <li>
-        акции: максимальное количество выгодных предложений приходится на летний
-        и средний сезоны.
-      </li>
-    </ul>
-  </div>
-);
 
 const customPanelStyle = {
   borderBottom: '1px solid #A3A3A3',
@@ -43,6 +18,26 @@ const Questions: React.FC = () => {
   const [nestedIcons, setNestedIcons] = useState<{ [key: string]: boolean }>(
     {}
   );
+
+const text = (
+  <div>
+    <p>{t('main.questions.rentPrice')}</p>
+    <ul style={{ listStyleType: 'circle', paddingLeft: '20px', margin: "0 20px" }}>
+      <li>
+      {t('main.questions.seasonality')}
+      </li>
+      <li>
+      {t('main.questions.leasePeriod')}
+      </li>
+      <li>
+      {t('main.questions.datesOfArrival')}
+      </li>
+      <li>
+      {t('main.questions.stocks')}
+      </li>
+    </ul>
+  </div>
+);
 
   const togglePanel = (key: string | string[], nested?: boolean) => {
     if (!nested) {
@@ -116,7 +111,9 @@ const Questions: React.FC = () => {
             >
               <Panel
                 header={
-                  <div className={s.questions_accordion_button}>
+                  <div className={s.questions_accordion_button}
+                  onClick={() => togglePanel('nasted', true)}
+                  >
                     <img
                       src={
                         nestedIcons['nasted']
@@ -136,7 +133,9 @@ const Questions: React.FC = () => {
               </Panel>
               <Panel
                 header={
-                  <div className={s.questions_accordion_button}>
+                  <div className={s.questions_accordion_button}
+                  onClick={() => togglePanel('nasted2', true)}
+                  >
                     <img
                       src={
                         nestedIcons['nasted2']
@@ -173,7 +172,7 @@ const Questions: React.FC = () => {
             key="2"
             style={customPanelStyle}
           >
-            <p>{text}</p>
+            <p style={{ margin: "0 20px" }}>{text}</p>
           </Panel>
           <Panel
             header={
@@ -192,7 +191,7 @@ const Questions: React.FC = () => {
             key="3"
             style={customPanelStyle}
           >
-            <p>{text}</p>
+            <p style={{ margin: "0 20px" }}>{text}</p>
           </Panel>
         </Collapse>
       </div>

@@ -79,7 +79,7 @@ export const api = createApi({
       query: () => "realEstates/",
       providesTags: ["Reals"],
     }),
-
+   
     getFilteredOffers: builder.query<RealEstate[], IGet>({
       query: ({ currentPage, isRent, filterParams, limit }) => ({
         url: `realEstates/`,

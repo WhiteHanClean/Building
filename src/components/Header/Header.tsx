@@ -14,13 +14,19 @@ const Header = () => {
   const router = useRouter();
   const { t, i18n } = useTranslation();
   const orderACall = () => {
-    router.push("/Accommodation/Accommodation")
-  }
+    router.push("/Accommodation/Accommodation");
+  };
   return (
     <header className={s.header}>
       <div className={s.header_content}>
-        <div>
-          <Image src={"/Logo.png"} width={168} height={38} alt="logo"></Image>
+        <div
+          style={{
+            cursor: "pointer",
+          }}
+        >
+          <Link href={"/"}>
+            <Image className={s.logo} src={"/Logo.png"} width={168} height={38} alt="logo"></Image>
+          </Link>
         </div>
 
         <nav className={s.nav}>
@@ -102,7 +108,10 @@ const Header = () => {
             </li>
           </ul>
 
-          <button className={s.aprove} onClick={orderACall}> {t("main.header.orderACall")}</button>
+          <button className={s.aprove} onClick={orderACall}>
+            {" "}
+            {t("main.header.orderACall")}
+          </button>
 
           <div className={s.burger}>
             <BurgerDrawer />

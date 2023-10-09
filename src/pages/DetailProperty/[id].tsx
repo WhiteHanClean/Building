@@ -15,6 +15,10 @@ interface IProps {
 }
 
 const DetailProperty: React.FC<IProps> = ({ selectedProperty, error }) => {
+
+
+  
+
   return (
     <div>
       <>
@@ -24,7 +28,7 @@ const DetailProperty: React.FC<IProps> = ({ selectedProperty, error }) => {
         ) : (
           <p>Error: {error.message}</p>
         )}
-        <PropertyDesc />
+        <PropertyDesc/>
         <Questions />
         <Consultation />
       </>
@@ -35,14 +39,13 @@ const DetailProperty: React.FC<IProps> = ({ selectedProperty, error }) => {
 export const getServerSideProps: GetServerSideProps<IProps> = async ({
   query,
 }) => {
-  
   const { id } = query as { id: string };
 
   try {
     const { data: selectedProperty } = await axios.get(
       `https://propertylibphuket-production.up.railway.app/realEstates/${id}`
     );
-    
+
     return {
       props: {
         selectedProperty,

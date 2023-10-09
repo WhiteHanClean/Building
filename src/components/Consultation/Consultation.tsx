@@ -184,9 +184,9 @@ const Consultation = () => {
 
       <div className={s.security2}>
         <p>
-          Нажимая на кнопку «Отправить заявку», вы соглашаетесь с{" "}
+        {t("main.consultation.agreement")}{" "}
           <a href="#">
-            <b>Политикой персональных данных</b>
+            <b>{t("main.consultation.pdp")}</b>
           </a>
         </p>
       </div>

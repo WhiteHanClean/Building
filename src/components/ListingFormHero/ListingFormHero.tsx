@@ -58,7 +58,7 @@ const ListingFormHero = () => {
           className={s.consultation_btn}
           onClick={(event) => handleClickConsultation(event)}
         >
-          Отправить заявку
+          {t("main.consultation.sendRequest")}
         </button>
       </form>
     </div>

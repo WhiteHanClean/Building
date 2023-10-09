@@ -141,12 +141,12 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
       const filterParams = {
         ...(values.RealEstate !== "" &&
           values.RealEstate !== "AllOptions" && {
-            buildingType: values.RealEstate,
-          }),
+          buildingType: values.RealEstate,
+        }),
         ...(values.rooms !== "" &&
           values.rooms !== "AllOptions" && {
-            roomsAmount: Number(values.rooms),
-          }),
+          roomsAmount: Number(values.rooms),
+        }),
         ...(values.areaHouseMin !== "" && {
           builtUpArea_gte: Number(values.areaHouseMin),
         }),
@@ -294,7 +294,7 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
 
                 <div className={s.form_wrapper_item}>
                   <label htmlFor="characteristics" className={s.form_label}>
-                    Дополнительные характеристики
+                    {t("main.searchBar.dops")}
                   </label>
                   <div className="">
                     <select
@@ -306,17 +306,17 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                       value={formik.values.characteristics}
                     >
                       <option value="" disabled className="">
-                        Выбрать
+                      {t("buyingRealEstate.select")}
                       </option>
-                      <option value="Характеристики 1">Характеристики 1</option>
-                      <option value="Характеристики 2">Характеристики 2</option>
-                      <option value="Характеристики 3">Характеристики 3</option>
-                      <option value="Характеристики 4">Характеристики 4</option>
-                      <option value="Характеристики 5">Характеристики 5</option>
+                      <option value="Характеристики 1">{t("main.searchBar.charVariants.char1")}</option>
+                      <option value="Характеристики 2">{t("main.searchBar.charVariants.char2")}</option>
+                      <option value="Характеристики 3">{t("main.searchBar.charVariants.char3")}</option>
+                      <option value="Характеристики 4">{t("main.searchBar.charVariants.char4")}</option>
+                      <option value="Характеристики 5">{t("main.searchBar.charVariants.char5")}</option>
                     </select>
                   </div>
                   {formik.touched.characteristics &&
-                  formik.errors.characteristics ? (
+                    formik.errors.characteristics ? (
                     <div className={s.form_error}>
                       {formik.errors.characteristics}
                     </div>
@@ -395,7 +395,7 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                   </label>
                   <div className={s.form_inputsWrapper}>
                     <div className={s.form_inputWrapper}>
-                      <span className={s.form_prefix}>от</span>
+                      <span className={s.form_prefix}>{t("main.searchBar.from")}</span>
                       <input
                         className={`${s.form_input} ${s.form_inputArea} `}
                         type="text"
@@ -405,12 +405,12 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                         onBlur={formik.handleBlur}
                         value={formik.values.areaMin}
                       />
-                      <span className={s.form_suffix}>m2</span>
+                      <span className={s.form_suffix}>m²</span>
                     </div>
                     <div
                       className={`${s.form_inputWrapper} ${s.form_inputSecond}`}
                     >
-                      <span className={s.form_prefix}>до</span>
+                      <span className={s.form_prefix}>{t("main.searchBar.to")}</span>
                       <input
                         className={`${s.form_input} ${s.form_inputAreaDO} `}
                         type="text"
@@ -420,7 +420,7 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                         onBlur={formik.handleBlur}
                         value={formik.values.areaMax}
                       />
-                      <span className={s.form_suffix}>m2</span>
+                      <span className={s.form_suffix}>m²</span>
                     </div>
                   </div>
                   {formik.touched.areaMax && formik.errors.areaMax ? (
@@ -435,11 +435,11 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                   className={`${s.form_wrapper_item} ${s.form_wrapper_itemArea}`}
                 >
                   <label className={s.form_label} htmlFor="areaHouseMin">
-                    Площадь застройки
+                  {t("main.searchBar.squere")}
                   </label>
                   <div className={s.form_inputsWrapper}>
                     <div className={s.form_inputWrapper}>
-                      <span className={s.form_prefix}>от</span>
+                      <span className={s.form_prefix}>{t("main.searchBar.from")}</span>
                       <input
                         className={`${s.form_input} ${s.form_inputArea} `}
                         type="text"
@@ -449,12 +449,12 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                         onBlur={formik.handleBlur}
                         value={formik.values.areaHouseMin}
                       />
-                      <span className={s.form_suffix}>m2</span>
+                      <span className={s.form_suffix}>m²</span>
                     </div>
                     <div
                       className={`${s.form_inputWrapper} ${s.form_inputSecond}`}
                     >
-                      <span className={s.form_prefix}>до</span>
+                      <span className={s.form_prefix}>{t("main.searchBar.to")}</span>
                       <input
                         className={`${s.form_input} ${s.form_inputAreaDO} `}
                         type="text"
@@ -464,7 +464,7 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                         onBlur={formik.handleBlur}
                         value={formik.values.areaHouseMax}
                       />
-                      <span className={s.form_suffix}>m2</span>
+                      <span className={s.form_suffix}>m²</span>
                     </div>
                   </div>
                   {formik.touched.areaHouseMax && formik.errors.areaHouseMax ? (
@@ -497,7 +497,7 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                     className={s.form_button_reset}
                     onClick={handleResetForm}
                   >
-                    Сбросить поиск
+                    {t("main.searchBar.reset")}
                   </button>
                 </div>
               </div>

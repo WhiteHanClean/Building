@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import s from "./ProductSlider.module.scss";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Scrollbar } from "swiper/modules";
@@ -8,14 +8,16 @@ import "swiper/css/navigation";
 import Image from "next/image";
 import { useWindowSize } from "../../hook/useSize";
 import { RealEstate } from "@/redux/api";
+import { useTranslation } from "react-i18next";
 
 interface ProductSliderProps {
-  sliderProperty: RealEstate | null;
+  sliderProperty: any;
 }
 
 const ProductSlider: React.FC<ProductSliderProps> = ({ sliderProperty }) => {
+  const { t } = useTranslation();
   const [number, setNumber] = useState(1);
-  const { width = 0 } = useWindowSize();
+  // const { width = 0 } = useWindowSize();
 
   const imagesCount = sliderProperty?.images.length || 0;
 
@@ -24,20 +26,36 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ sliderProperty }) => {
   const goToPrevSlide = () => {
     if (imagesCount > 1 && swiperRef.current) {
       swiperRef.current.slidePrev();
-      if (number !== 1) {
-        setNumber((prevNumber) => prevNumber - 1);
-      }
     }
   };
 
   const goToNextSlide = () => {
     if (imagesCount > 1 && swiperRef.current) {
       swiperRef.current.slideNext();
-      if (number < imagesCount) {
-        setNumber((prevNumber) => prevNumber + 1);
-      }
     }
   };
+
+
+  useEffect(() => {
+    const swiper = swiperRef.current;
+    let prevActiveIndex = 0; 
+  
+    if (swiper) {
+      swiper.off('slideChangeTransitionEnd'); 
+      swiper.on('slideChangeTransitionEnd', () => {
+        const { activeIndex } = swiper;
+        if (activeIndex !== prevActiveIndex) {
+          if (activeIndex > prevActiveIndex) {
+            setNumber((prevNumber) => prevNumber + 1);
+          } else if (activeIndex < prevActiveIndex) {
+            setNumber((prevNumber) => prevNumber - 1);
+          }
+          prevActiveIndex = activeIndex;
+        }
+      });
+    }
+  }, [swiperRef]);
+  
 
   return (
     <section className={s.slider_section}>
@@ -49,7 +67,10 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ sliderProperty }) => {
           <div className={s.slider_section_image_swipper_buttonHolder}>
             <button
               className={
-                s.slider_section_image_swipper_buttonHolder_left_button
+                `
+                ${s.slider_section_image_swipper_buttonHolder_left_button}
+                ${number === 1 && s.slider_section_image_swipper_buttonHolder_left_button_disabled}
+                `
               }
               onClick={goToPrevSlide}
             >
@@ -58,12 +79,18 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ sliderProperty }) => {
                 width={16}
                 height={16}
                 alt="slider icon"
+                className={
+                  s.slider_section_image_swipper_buttonHolder_right_button_icon
+                }
               />
             </button>
 
             <button
               className={
-                s.slider_section_image_swipper_buttonHolder_right_button
+                `
+                  ${s.slider_section_image_swipper_buttonHolder_right_button}
+                  ${number === imagesCount && s.slider_section_image_swipper_buttonHolder_right_button_disabled}
+                `
               }
               onClick={goToNextSlide}
             >
@@ -101,12 +128,12 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ sliderProperty }) => {
             draggable: true,
           }}
           modules={[Scrollbar]}
-          onSwiper={(swiper: any) => {
+          onSwiper={(swiper) => {
             swiperRef.current = swiper;
           }}
           className={s.slider_section_image_slide}
         >
-          {sliderProperty?.images.map((items, index): any => (
+          {sliderProperty?.images.map((items: any, index: number) => (
             <SwiperSlide key={index}>
               <div
                 style={{
@@ -138,7 +165,7 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ sliderProperty }) => {
           </div>
 
           <div className={s.slider_section_table_title_location}>
-            <p>{sliderProperty?.location}</p>
+            <p>{sliderProperty?.location?.title}</p>
             <p>{sliderProperty?.pricePerSquareMeter} ₽/м²</p>
           </div>
         </div>
@@ -146,24 +173,24 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ sliderProperty }) => {
         {/* table list starts*/}
         <ul className={s.slider_section_table_list}>
           <li className={s.slider_section_table_list_item}>
-            <p>{sliderProperty?.roomsAmount}-комнатная квартира</p>
+            <p>{sliderProperty?.roomsAmount}{t("main.searchBar.manyRooms")}</p>
           </li>
           <li className={s.slider_section_table_list_item}>
-            <p>Площадь квартиры: {sliderProperty?.builtUpArea} м²</p>
+            <p>{t("main.searchBar.apartmentArea")} {sliderProperty?.builtUpArea} м²</p>
           </li>
           <li className={s.slider_section_table_list_item}>
-            <p>Площадь участка: {sliderProperty?.landArea} м²</p>
+            <p>{t("main.searchBar.landArea")} {sliderProperty?.landArea} м²</p>
           </li>
           <li className={s.slider_section_table_list_item}>
-            <p>Год постройки: {sliderProperty?.yearBuilt}</p>
+            <p>{t("main.searchBar.yearOfConstruction")} {sliderProperty?.yearBuilt}</p>
           </li>
           <li className={s.slider_section_table_list_item}>
-            <p>Пляж Камала: 0.5 км</p>
+            <p>{t("main.searchBar.beach")} 0.5 км</p>
           </li>
           <li
             className={`${s.slider_section_table_list_item} ${s.slider_section_table_list_button}`}
           >
-            <p>Заказать звонок</p>
+            <p> {t("main.header.orderACall")}</p>
           </li>
         </ul>
         {/* table list ends*/}
