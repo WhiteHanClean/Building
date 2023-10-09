@@ -168,6 +168,14 @@
   border-bottom: 1px solid #6c6c6a;
 }
 
+.marginLeftEn {
+  margin-left: 40px;
+}
+
+.marginLeftRu {
+  margin-left: 21px;
+}
+
 .form_button_reset {
   color: #6c6c6a;
   text-align: center;
@@ -181,6 +189,11 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+}
+
+.form_wrapper_twoButton {
+  display: flex;
+  justify-content: space-between;
 }
 
 @media only screen and (max-width: 1300px) {
@@ -234,6 +247,16 @@
   }
   .form_button {
     padding: 11px 140px;
+  }
+  .form_wrapper_twoButton {
+    flex-direction: column;
+  }
+  .marginLeftEn {
+    margin-left: 0px;
+  }
+
+  .marginLeftRu {
+    margin-left: 0px;
   }
 }
 
