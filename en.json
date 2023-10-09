@@ -199,7 +199,9 @@
       "realEstate": "Real estate",
       "select": "Select",
       "additionalFeatures": "Additional features",
-      "totalArea": "Total area"
+      "totalArea": "Total area",
+      "landArea" : "Land area",
+      "livingArea" : "Living area"
     },
     "rentRealEstate":"Real estate rental",
     "listOffer": {
