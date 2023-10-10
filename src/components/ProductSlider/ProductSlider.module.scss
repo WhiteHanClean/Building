@@ -43,12 +43,16 @@
           align-items: center;
           border-radius: 50%;
           background: var(--color-beige, #f1efec);
+          transition: background-color 0.3s ease;
           cursor: pointer;
 
           &_disabled {
             background-color: #000;
             cursor: default;
           }
+        }
+        .slider_section_image_swipper_buttonHolder_left_button:hover {
+          background-color: #000;
         }
 
         .slider_section_image_swipper_buttonHolder_right_button {
