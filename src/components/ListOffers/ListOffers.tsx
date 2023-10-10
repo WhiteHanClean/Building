@@ -155,7 +155,7 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
         <div className={s.listOffer_text_wrapper}>
           {totalPages && allOffers ? (
             <p className={s.listOffer_text}>
-              {t("listOffer.totalObjects")} : {totalPages.length}
+              {t("listOffer.totalObjects")} {totalPages.length}
             </p>
           ) : (
             <p className={s.listOffer_text}>Всего объявлений: 0</p>
@@ -176,13 +176,7 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
                   rooms={card.roomsAmount}
                   builtUpArea={card.builtUpArea}
                   landArea={card.landArea}
-                  location={
-                    card.location?.title
-                      ? card.location.title
-                      : "Необходимо уточнить"
-                  }
-
-
+                  location={card.location}
                 />
               </li>
             );

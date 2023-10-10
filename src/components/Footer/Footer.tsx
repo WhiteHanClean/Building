@@ -125,17 +125,17 @@ const Footer = () => {
           <nav className={s.nav_modile}>
             <ul className={s.navigation_links_modile}>
               <li className={`${s.nav_link_modile}`}>
-                <Link href={"/"}>Главная</Link>
+                <Link href={"/"}>{t("main.header.mainPage")}</Link>
               </li>
               <li className={s.nav_link_modile}>
-                <Link href={"/Purchase/Purchase"}>Покупка</Link>
+                <Link href={"/Purchase/Purchase"}>{t("main.header.purchase")}</Link>
               </li>
 
               <li className={s.nav_link_modile}>
-                <Link href={"/Rent/Rent"}>Аренда</Link>
+                <Link href={"/Rent/Rent"}>{t("main.header.rent")}</Link>
               </li>
               <li className={s.nav_link_modile}>
-                <Link href={"/Accommodation/Accommodation"}>Размещение</Link>
+                <Link href={"/Accommodation/Accommodation"}>{t("main.header.accommodation")}</Link>
               </li>
 
               <li className={s.nav_link_modile}>
@@ -153,19 +153,19 @@ const Footer = () => {
             <ul className={s.navigation_links_modile}>
               <div>
                 <li className={`${s.nav_link_modile}`}>
-                  <Link href={"/"}>Главная</Link>
+                  <Link href={"/"}>{t("main.header.mainPage")}</Link>
                 </li>
                 <li className={s.nav_link_modile}>
-                  <Link href={"/Purchase/Purchase"}>Покупка</Link>
+                  <Link href={"/Purchase/Purchase"}>{t("main.header.purchase")}</Link>
                 </li>
               </div>
 
               <div>
                 <li className={s.nav_link_modile}>
-                  <Link href={"/Rent/Rent"}>Аренда</Link>
+                  <Link href={"/Rent/Rent"}>{t("main.header.rent")}</Link>
                 </li>
                 <li className={s.nav_link_modile}>
-                  <Link href={"/Accommodation/Accommodation"}>Размещение</Link>
+                  <Link href={"/Accommodation/Accommodation"}>{t("main.header.accommodation")}</Link>
                 </li>
               </div>
 

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import s from "./AsideButton.module.scss";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 const AsideButton: React.FC = () => {
   const [isWindowVisible, setIsWindowVisible] = useState(false);
@@ -8,6 +9,8 @@ const AsideButton: React.FC = () => {
   const togglePopover = () => {
     setIsWindowVisible((prevState) => !prevState);
   };
+
+  const { t } = useTranslation();
 
   return (
     <div className={s.aside_button}>
@@ -18,7 +21,7 @@ const AsideButton: React.FC = () => {
         {isWindowVisible && (
           <div className={s.aside_button_window}>
             <div className={s.aside_button_window_desc}>
-              <p>Как вам удобнее с нами связаться?</p>
+              <p>{t("main.asideButton.convenience")}</p>
               <button onClick={togglePopover}>
                 <img src="/Cross.svg" alt="Cross" />
               </button>

@@ -124,10 +124,6 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ sliderProperty }) => {
 
         <Swiper
           slidesPerView={1}
-          scrollbar={{
-            draggable: true,
-          }}
-          modules={[Scrollbar]}
           onSwiper={(swiper) => {
             swiperRef.current = swiper;
           }}

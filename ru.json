@@ -3,6 +3,9 @@
     "backButton": {
       "back" : "назад"
     },
+    "asideButton": {
+      "convenience" : "Как вам удобнее с нами связаться?"
+    },
     "header": {
       "mainPage": "Главная",
       "purchase": "Покупка",
@@ -198,7 +201,9 @@
     "realEstate": "Недвижимость",
     "select": "Выбрать",
     "additionalFeatures": "Количество комнат",
-    "totalArea": "Общая площадь"
+    "totalArea": "Общая площадь",
+    "landArea" : "Площадь участка",
+    "livingArea" : "Жилая площадь"
   },
   "rentRealEstate": "Аренда недвижимости",
   "listOffer": {
