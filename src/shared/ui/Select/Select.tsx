@@ -37,6 +37,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
     <div className={s.custom_select_container}>
       <Select
         className={s.customSelect}
+        dropdownAlign={{ offset:[0,-6] }}
         value={value || defaultValue}
         onChange={handleChange}
         onBlur={onBlur}

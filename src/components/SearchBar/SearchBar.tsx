@@ -109,7 +109,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ t, i18n, id }) => {
               <label htmlFor="RealEstate" className={s.form_label}>
                 {t("main.searchBar.realty")}
               </label>
-              <div className="">
+              <div className={s.customSelectContainer}>
                 <CustomSelect
                   options={[
                     t("main.searchBar.villa"),

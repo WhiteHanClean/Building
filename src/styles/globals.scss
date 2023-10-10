@@ -126,18 +126,24 @@ select {
 .header_slider.swiper-slide {
   width: 433px !important;
 }
-
+.ant-select{
+  padding: 0 !important;
+}
 .ant-select-selector {
   border: none !important;
   background-color: transparent !important;
   box-shadow: none !important;
+  color: #6c6c6a !important;
 }
 .ant-select-dropdown {
   background-color: #f1efec !important;
   border-radius: 0 !important;
   border-bottom-left-radius: 8px !important;
   border-bottom-right-radius: 8px !important;
-  width: 100%;
+  border: 1px solid #a3a3a3;
+}
+.ant-select-selection-item{
+  width: 100% !important;
 }
 .ant-select-item-option-active {
   background-color: #dfdad8 !important;
