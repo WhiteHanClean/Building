@@ -42,7 +42,7 @@
           justify-content: center;
           align-items: center;
           border-radius: 50%;
-          background: var(--color-beige, #F1EFEC);
+          background: var(--color-beige, #f1efec);
           cursor: pointer;
 
           &_disabled {
@@ -55,7 +55,7 @@
           width: 40px;
           height: 40px;
           border-radius: 100%;
-          background-color: #F1EFEC;
+          background-color: #f1efec;
           opacity: 0.9;
           transform: rotate(180deg);
           transition: background-color 0.3s ease;
@@ -164,6 +164,7 @@
         border-radius: 30px;
         background: var(--color-black, #000);
         margin-top: 6px; // 0 1024
+        cursor: pointer;
 
         p {
           font-size: 16px;

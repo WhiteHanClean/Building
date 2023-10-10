@@ -1,13 +1,13 @@
 // Import necessary modules and components
-import Consultation from '@/components/Consultation/Consultation';
-import ProductSlider from '@/components/ProductSlider/ProductSlider';
-import PropertyDesc from '@/components/PropertyDesc/PropertyDesc';
-import Questions from '@/components/Questions/Questions';
-import BackButton from '@/components/BackButton/BackButton';
-import React from 'react';
-import axios from 'axios';
-import { RealEstate } from '@/redux/api';
-import { GetServerSideProps } from 'next';
+import Consultation from "@/components/Consultation/Consultation";
+import ProductSlider from "@/components/ProductSlider/ProductSlider";
+import PropertyDesc from "@/components/PropertyDesc/PropertyDesc";
+import Questions from "@/components/Questions/Questions";
+import BackButton from "@/components/BackButton/BackButton";
+import React from "react";
+import axios from "axios";
+import { RealEstate } from "@/redux/api";
+import { GetServerSideProps } from "next";
 
 interface IProps {
   selectedProperty: null | RealEstate;

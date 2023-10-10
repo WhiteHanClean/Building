@@ -102,7 +102,7 @@
   }
 }
 
-@media only screen and (max-width: 1141px) {
+@media only screen and (max-width: 1260px) {
   .section {
     grid-template-columns: 2fr 1fr; // 3.2fr 1fr 1024 // 2fr 1fr 768 // 1fr 428
     gap: 20px; //15px 768 // 12 428
@@ -180,7 +180,7 @@
   }
 }
 
-@media only screen and (max-width: 665px) {
+@media only screen and (max-width: 740px) {
   .section {
     grid-template-columns: 1fr; // 3.2fr 1fr 1024 // 2fr 1fr 768 // 1fr 428
     gap: 12px; //15px 768 // 12 428
