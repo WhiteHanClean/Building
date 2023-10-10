@@ -37,7 +37,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
     <div className={s.custom_select_container}>
       <Select
         className={s.customSelect}
-        dropdownAlign={{ offset:[0,-6] }}
+        dropdownAlign={{ offset: [0, -6] }}
         value={value || defaultValue}
         onChange={handleChange}
         onBlur={onBlur}
@@ -53,7 +53,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
         }
       >
         {options.map((option, index) => (
-          <Option key={index} value={option}>
+          <Option className={s.option} key={index} value={option}>
             {option}
           </Option>
         ))}
