@@ -11,12 +11,13 @@ import Image from "next/image";
 import { useTranslation } from "react-i18next";
 import { RealEstate } from "@/redux/api";
 import { idText } from "typescript";
+import { useWindowSize } from "@/hook/useSize";
 
 const Slider: React.FC<{
   allOffers: RealEstate[];
 }> = ({ allOffers }) => {
   const swiperRef = useRef<any | null>(null);
-
+  const { width } = useWindowSize();
   const { t } = useTranslation();
 
   const goToPrevSlide = () => {
@@ -59,7 +60,7 @@ const Slider: React.FC<{
       </div>
       <Swiper
         slidesPerView={3}
-        // scrollbar={true}
+        scrollbar={width && width <= 1024 ? true : false}
         spaceBetween={20}
         breakpoints={{
           968: {
@@ -77,6 +78,9 @@ const Slider: React.FC<{
           swiperRef.current = swiper;
         }}
         className="build_swiper"
+        style={{
+          paddingTop: `${width && width <= 1024 ? "30px" : "0"}`,
+        }}
       >
         {allOffers ? (
           allOffers?.map((card: RealEstate) => (
