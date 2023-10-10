@@ -146,7 +146,13 @@ select {
   width: 100% !important;
 }
 .ant-select-item-option-active {
+  background-color: #f1efec !important;
+
+ }
+.ant-select-item-option:hover {
   background-color: #dfdad8 !important;
+  border-radius: 0 !important;
+  width: 100% !important;
 }
 .ant-tabs-nav {
   overflow: hidden;
