@@ -59,7 +59,7 @@ const Slider: React.FC<{
       </div>
       <Swiper
         slidesPerView={3}
-        scrollbar={true}
+        // scrollbar={true}
         spaceBetween={20}
         breakpoints={{
           968: {
@@ -78,7 +78,7 @@ const Slider: React.FC<{
         }}
         className="build_swiper"
       >
-        {allOffers? (
+        {allOffers ? (
           allOffers?.map((card: RealEstate) => (
             <SwiperSlide key={card._id}>
               <BuildCard

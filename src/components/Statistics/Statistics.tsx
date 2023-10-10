@@ -1,26 +1,28 @@
 import React from "react";
 import s from "./Statistics.module.scss";
+import { useTranslation } from "react-i18next";
 
 const Statistics = () => {
+  const { t } = useTranslation();
   return (
     <section className={s.section}>
       <div className={s.section_firstSection}>
         <div className={s.section_firstSection_title}>
-          <p>Идеальное жилье для вашей жизни</p>
+          <p>{t("main.statistic.title")}</p>
         </div>
 
         <div className={s.section_firstSection_topicsWrapper}>
           <div className={s.section_firstSection_topics}>
-            <p>Высокий сервис и индивидуальный подход к каждому клиенту</p>
+            <p>{t("main.statistic.fieldsLeftDesc.field1")}</p>
           </div>
           <div className={s.section_firstSection_topics}>
-            <p>Эксклюзивные предложения от застройщика</p>
+            <p>{t("main.statistic.fieldsLeftDesc.field2")}</p>
           </div>
           <div className={s.section_firstSection_topics}>
-            <p>Полное сопровождение на всех этапах сделки</p>
+            <p>{t("main.statistic.fieldsLeftDesc.field3")}</p>
           </div>
           <div className={s.section_firstSection_topics}>
-            <p>Тщательный отбор объектов, проверка всех документов</p>
+            <p>{t("main.statistic.fieldsLeftDesc.field4")}</p>
           </div>
         </div>
       </div>
@@ -31,7 +33,7 @@ const Statistics = () => {
         <div className={s.box}>
           <div className={s.box_firstSection}>
             <div className={s.box_firstSection_text}>
-              <p>Лет на рынке</p>
+              <p>{t("main.statistic.years")}</p>
             </div>
           </div>
           <div className={s.box_secondSection}>
@@ -45,7 +47,7 @@ const Statistics = () => {
         <div className={s.box}>
           <div className={s.box_firstSection}>
             <div className={s.box_firstSection_text}>
-              <p>Довольных клиентов</p>
+              <p>{t("main.statistic.satisfiedClients")}</p>
             </div>
           </div>
           <div className={s.box_secondSection}>
@@ -59,7 +61,7 @@ const Statistics = () => {
         <div className={s.box}>
           <div className={s.box_firstSection}>
             <div className={s.box_firstSection_text}>
-              <p>Готовых проектов</p>
+              <p>{t("main.statistic.readyMadeProjects")}</p>
             </div>
           </div>
           <div className={s.box_secondSection}>
@@ -73,7 +75,7 @@ const Statistics = () => {
         <div className={s.box}>
           <div className={s.box_firstSection}>
             <div className={s.box_firstSection_text}>
-              <p>Инвестиций в год</p>
+              <p>{t("main.statistic.investments")}</p>
             </div>
           </div>
           <div className={s.box_secondSection}>
@@ -87,25 +89,27 @@ const Statistics = () => {
         {/* =============== */}
 
         <div className={s.test}>
-          <p className={s.test_title}>Лет на рынке</p>
+          <p className={s.test_title}>{t("main.statistic.years")}</p>
           <div></div>
           <p className={s.test_desk}>5+</p>
         </div>
 
         <div className={s.test}>
-          <p className={s.test_title}>Довольных клиентов</p>
+          <p className={s.test_title}>{t("main.statistic.satisfiedClients")}</p>
           <div></div>
           <p className={s.test_desk}>99%</p>
         </div>
 
         <div className={s.test}>
-          <p className={s.test_title}>Готовых проектов</p>
+          <p className={s.test_title}>
+            {t("main.statistic.readyMadeProjects")}
+          </p>
           <div></div>
           <p className={s.test_desk}>237</p>
         </div>
 
         <div className={s.test}>
-          <p className={s.test_title}>Инвестиций в год</p>
+          <p className={s.test_title}>{t("main.statistic.investments")}</p>
           <div></div>
           <p className={s.test_desk}>237</p>
         </div>

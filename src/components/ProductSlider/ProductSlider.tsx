@@ -35,14 +35,13 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ sliderProperty }) => {
     }
   };
 
-
   useEffect(() => {
     const swiper = swiperRef.current;
-    let prevActiveIndex = 0; 
-  
+    let prevActiveIndex = 0;
+
     if (swiper) {
-      swiper.off('slideChangeTransitionEnd'); 
-      swiper.on('slideChangeTransitionEnd', () => {
+      swiper.off("slideChangeTransitionEnd");
+      swiper.on("slideChangeTransitionEnd", () => {
         const { activeIndex } = swiper;
         if (activeIndex !== prevActiveIndex) {
           if (activeIndex > prevActiveIndex) {
@@ -55,7 +54,6 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ sliderProperty }) => {
       });
     }
   }, [swiperRef]);
-  
 
   return (
     <section className={s.slider_section}>
@@ -66,12 +64,13 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ sliderProperty }) => {
 
           <div className={s.slider_section_image_swipper_buttonHolder}>
             <button
-              className={
-                `
+              className={`
                 ${s.slider_section_image_swipper_buttonHolder_left_button}
-                ${number === 1 && s.slider_section_image_swipper_buttonHolder_left_button_disabled}
-                `
-              }
+                ${
+                  number === 1 &&
+                  s.slider_section_image_swipper_buttonHolder_left_button_disabled
+                }
+                `}
               onClick={goToPrevSlide}
             >
               <Image
@@ -86,12 +85,13 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ sliderProperty }) => {
             </button>
 
             <button
-              className={
-                `
+              className={`
                   ${s.slider_section_image_swipper_buttonHolder_right_button}
-                  ${number === imagesCount && s.slider_section_image_swipper_buttonHolder_right_button_disabled}
-                `
-              }
+                  ${
+                    number === imagesCount &&
+                    s.slider_section_image_swipper_buttonHolder_right_button_disabled
+                  }
+                `}
               onClick={goToNextSlide}
             >
               <Image
@@ -169,16 +169,27 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ sliderProperty }) => {
         {/* table list starts*/}
         <ul className={s.slider_section_table_list}>
           <li className={s.slider_section_table_list_item}>
-            <p>{sliderProperty?.roomsAmount}{t("main.searchBar.manyRooms")}</p>
+            <p>
+              {sliderProperty?.roomsAmount}
+              {t("main.searchBar.manyRooms")}
+            </p>
           </li>
           <li className={s.slider_section_table_list_item}>
-            <p>{t("main.searchBar.apartmentArea")} {sliderProperty?.builtUpArea} м²</p>
+            <p>
+              {t("main.searchBar.apartmentArea")} {sliderProperty?.builtUpArea}{" "}
+              м²
+            </p>
           </li>
           <li className={s.slider_section_table_list_item}>
-            <p>{t("main.searchBar.landArea")} {sliderProperty?.landArea} м²</p>
+            <p>
+              {t("main.searchBar.landArea")} {sliderProperty?.landArea} м²
+            </p>
           </li>
           <li className={s.slider_section_table_list_item}>
-            <p>{t("main.searchBar.yearOfConstruction")} {sliderProperty?.yearBuilt}</p>
+            <p>
+              {t("main.searchBar.yearOfConstruction")}{" "}
+              {sliderProperty?.yearBuilt}
+            </p>
           </li>
           <li className={s.slider_section_table_list_item}>
             <p>{t("main.searchBar.beach")} 0.5 км</p>
@@ -186,7 +197,7 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ sliderProperty }) => {
           <li
             className={`${s.slider_section_table_list_item} ${s.slider_section_table_list_button}`}
           >
-            <p> {t("main.header.orderACall")}</p>
+            <p>{t("main.header.orderACall")}</p>
           </li>
         </ul>
         {/* table list ends*/}
