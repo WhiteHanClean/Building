@@ -125,6 +125,7 @@
     .aside_button_items {
       .aside_button_items_btn {
         right: 15px;
+        bottom: 15px;
       }
       .aside_button_window {
         right: 15px;
@@ -137,7 +138,9 @@
   .aside_button {
     .aside_button_items {
       .aside_button_window {
+        top: -425px;
         width: 330px;
+        height: 345px;
       }
     }
   }

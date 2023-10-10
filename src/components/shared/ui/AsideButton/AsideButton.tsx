@@ -54,7 +54,7 @@ const AsideButton: React.FC = () => {
             </div>
             <div className={s.aside_button_window_order}>
               <Link href="/Accommodation/Accommodation">
-                <button>Заказать звонок</button>
+                <button>{t("main.header.orderACall")}</button>
               </Link>
             </div>
           </div>
