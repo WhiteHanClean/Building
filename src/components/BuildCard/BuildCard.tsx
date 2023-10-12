@@ -106,11 +106,11 @@ const BuildCard = ({
         <div>
           
             <span>
-              {location?.title1 || "Отсутствует"},&nbsp;
-              {location?.title2 || "Отсутствует"},&nbsp;
-              {location?.title3 || "Отсутствует"}
+              {location?.title1 || t("main.searchBar.titleNone")},&nbsp;
+              {location?.title2 || t("main.searchBar.titleNone")},&nbsp;
+              {location?.title3 || t("main.searchBar.titleNone")}
             </span>
-         
+    
         </div>
       </div>
     </div>

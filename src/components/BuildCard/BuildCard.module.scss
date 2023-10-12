@@ -37,12 +37,12 @@
     span {
       display: flex;
       align-items: center;
-      margin-right: 10px;
+      margin-right: 7px;
       @include sizer(14px);
       color: var(--color-text, #6c6c6a) !important;
       font-weight: 500 !important;
       .card_icons {
-        margin-right: 10px;
+        margin-right: 6px;
       }
     }
     span:last-child {
