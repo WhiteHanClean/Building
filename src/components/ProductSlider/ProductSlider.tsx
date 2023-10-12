@@ -154,19 +154,22 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ sliderProperty }) => {
         {/* table title starts*/}
         <div className={s.slider_section_table_title}>
           <div className={s.slider_section_table_title_price}>
-            <h3>{sliderProperty?.titleCard}</h3>
-            <h3>{sliderProperty?.priceMillionBahtFrom} - {sliderProperty?.priceMillionBahtTo} MB</h3>
+            {sliderProperty?.titleCard && <h3>{sliderProperty.titleCard}</h3>}
+            {!sliderProperty?.titleCard && <h3>Без названия</h3>}
+            <h3>
+              {sliderProperty?.priceMillionBahtFrom || 0} - {sliderProperty?.priceMillionBahtTo || 0} MB
+            </h3>
           </div>
 
           <div className={s.slider_section_table_title_location}>
             <div className={s.slider_section_table_title_location_title}>
-              <p>{sliderProperty?.location?.title1 || "Отсутствует"},&nbsp;</p>
-              <p>{sliderProperty?.location?.title2 || "Отсутствует"},&nbsp;</p>
-              <p>{sliderProperty?.location?.title3 || "Отсутствует"}</p>
+              <p>{sliderProperty?.location?.title1 || t("main.searchBar.titleNone")},&nbsp;</p>
+              <p>{sliderProperty?.location?.title2 || t("main.searchBar.titleNone")},&nbsp;</p>
+              <p>{sliderProperty?.location?.title3 || t("main.searchBar.titleNone")}</p>
             </div>
             <div>
-              <p>{sliderProperty?.priceSquereFrom} ₽/м²</p>
-              <p>{sliderProperty?.priceSquereTo} ₽/м²</p>
+              <p>{sliderProperty?.priceSquereFrom || 0} ₽/м²</p>
+              <p>{sliderProperty?.priceSquereTo || 0} ₽/м²</p>
             </div>
           </div>
         </div>
@@ -175,30 +178,31 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ sliderProperty }) => {
         <ul className={s.slider_section_table_list}>
           <li className={s.slider_section_table_list_item}>
             <p>
-              {sliderProperty?.badroomsAmountFrom},
-              {sliderProperty?.badroomsAmountTo}
+              {sliderProperty?.badroomsAmountFrom || 0},
+              {sliderProperty?.badroomsAmountTo || 0}
               {t("main.searchBar.manyRooms")}
             </p>
           </li>
           <li className={s.slider_section_table_list_item}>
             <p>
-              {t("main.searchBar.apartmentArea")} {sliderProperty?.builtUpAreaFrom} - {" "}{sliderProperty?.builtUpAreaTo}{" "}
+              {t("main.searchBar.apartmentArea")} {sliderProperty?.builtUpAreaFrom || 0} - {" "}{sliderProperty?.builtUpAreaTo || 0}{" "}
               м²
             </p>
           </li>
           <li className={s.slider_section_table_list_item}>
             <p>
-              {t("main.searchBar.landArea")} {sliderProperty?.landAreaFrom} - {sliderProperty?.landAreaTo} м²
+              {t("main.searchBar.landArea")} {sliderProperty?.landAreaFrom || 0} - {sliderProperty?.landAreaTo || 0} м²
             </p>
           </li>
           <li className={s.slider_section_table_list_item}>
             <p>
-              {t("main.searchBar.yearOfConstruction")}{" "}
-              {sliderProperty?.yearBuilt}
+            {t("main.searchBar.beachBang")}{" "}
+              {sliderProperty?.beachBang || 0}
+              {t("main.searchBar.minuteOnBeach")}
             </p>
           </li>
           <li className={s.slider_section_table_list_item}>
-            <p>{t("main.searchBar.beach")} {sliderProperty?.beachLian} минут</p>
+            <p>{t("main.searchBar.beachLian")} {sliderProperty?.beachLian || 0} {t("main.searchBar.minuteOnBeach")}</p>
           </li>
           <li
             className={`${s.slider_section_table_list_item} ${s.slider_section_table_list_button}`}

@@ -68,7 +68,7 @@ const BuildCard = ({
       </div>
       <div className={s.card_name}>
         <p>{name.length > 20 ? `${name.slice(0, 16)}...` : name}</p>
-        <p>{millionBathFrom}-{millionBathTo} ฿</p>
+        <p>{millionBathFrom}-{millionBathTo} MB</p>
       </div>
       <div className={s.card_details}>
         <div className={s.card_detail_wrapper}>

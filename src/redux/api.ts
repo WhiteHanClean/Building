@@ -30,6 +30,7 @@ export interface RealEstate {
   priceSquereTo: number,
   badroomsAmountFrom: number,
   beachLian: number,
+  beachBang: number,
   badroomsAmountTo: number,
   priceMillionBahtFrom: number,
   priceMillionBahtTo: number,
