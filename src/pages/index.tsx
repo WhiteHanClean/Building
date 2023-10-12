@@ -55,7 +55,7 @@ const Home: React.FC<{
 export async function getServerSideProps() {
   try {
     const { data: allOffers } = await axios.get(
-      "https://propertylibphuket-production.up.railway.app/realEstates/"
+      "https://propertylibphuket-production.up.railway.app/getAllTopObjects/"
     );
 
     return {
