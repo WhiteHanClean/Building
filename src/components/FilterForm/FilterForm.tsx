@@ -35,12 +35,6 @@ const validationSchema = Yup.object({
     ],
     "Выберите Характеристики"
   ),
-  // pricMin: Yup.string()
-  //   .matches(/^[1-9][0-9]*$/, "Только цифры")
-  //   .max(15, "Не более 15 символов"),
-  // pricMax: Yup.string()
-  //   .matches(/^[1-9][0-9]*$/, "Только цифры")
-  //   .max(15, "Не более 15 символов"),
   pricMin: Yup.string()
     .matches(/^\s*(\d+(\s+\d+)*)?\s*$/, "Только цифры")
     .max(15, "Не более 15 символов"),
@@ -74,13 +68,13 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
   const [locationsData, setLocationsData] = useState<LocationResponse>([]);
   const { data, error, isLoading } = useGetLocationQuery();
   const dispatch = useDispatch();
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const currentLanguage = i18n.language;
+
   const infoFormMain = useSelector(
     (state: { mainForm: { mainForm: MainFormParams } }) =>
       state.mainForm.mainForm
   ) as MainFormParams;
-
-  console.log(infoFormMain);
 
   useEffect(() => {
     if (data) {
@@ -177,8 +171,11 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
       pricMax: "",
     };
     dispatch(setFormMain(mainForm));
+    setSelectedRealEstate("");
     setFilterParams({ isFilter: false });
   };
+
+  const [selectedRealEstate, setSelectedRealEstate] = useState("");
 
   return (
     <section className={s.filter_section}>
@@ -278,8 +275,33 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                       }
                       onBlur={formik.handleBlur}
                       value={formik.values.characteristics}
-                    />
+                    >
+                      <option value="" disabled className="">
+                        {t("buyingRealEstate.select")}
+                      </option>
+                      <option value="Характеристики 1">
+                        {t("main.searchBar.charVariants.char1")}
+                      </option>
+                      <option value="Характеристики 2">
+                        {t("main.searchBar.charVariants.char2")}
+                      </option>
+                      <option value="Характеристики 3">
+                        {t("main.searchBar.charVariants.char3")}
+                      </option>
+                      <option value="Характеристики 4">
+                        {t("main.searchBar.charVariants.char4")}
+                      </option>
+                      <option value="Характеристики 5">
+                        {t("main.searchBar.charVariants.char5")}
+                      </option>
+                    </select>
                   </div>
+                  {formik.touched.characteristics &&
+                  formik.errors.characteristics ? (
+                    <div className={s.form_error}>
+                      {formik.errors.characteristics}
+                    </div>
+                  ) : null}
                 </div>
                 {formik.touched.characteristics &&
                 formik.errors.characteristics ? (
@@ -354,7 +376,11 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                   className={`${s.form_wrapper_item} ${s.form_wrapper_itemArea}`}
                 >
                   <label className={s.form_label} htmlFor="areaMin">
-                    {t("buyingRealEstate.totalArea")}
+                    {selectedRealEstate === "Villa"
+                      ? t("buyingRealEstate.landArea")
+                      : selectedRealEstate === "Apartment"
+                      ? t("buyingRealEstate.livingArea")
+                      : t("buyingRealEstate.landArea")}
                   </label>
                   <div className={s.form_inputsWrapper}>
                     <div className={s.form_inputWrapper}>
@@ -402,7 +428,11 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                   className={`${s.form_wrapper_item} ${s.form_wrapper_itemArea}`}
                 >
                   <label className={s.form_label} htmlFor="areaHouseMin">
-                    {t("main.searchBar.squere")}
+                    {selectedRealEstate === "Villa"
+                      ? t("main.searchBar.squere")
+                      : selectedRealEstate === "Apartment"
+                      ? t("buyingRealEstate.totalArea")
+                      : t("buyingRealEstate.totalArea")}
                   </label>
                   <div className={s.form_inputsWrapper}>
                     <div className={s.form_inputWrapper}>
@@ -450,26 +480,32 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                   ) : null}
                 </div>
 
-                <div className={s.form_wrapper_button}>
-                  <button type="submit" className={s.form_button}>
-                    {t("main.searchBar.search")}
-                    <Image
-                      src={"/Arrow-upFilter.svg"}
-                      width={17}
-                      height={16}
-                      alt="arrow"
-                    ></Image>
-                  </button>
-                </div>
+                <div className={s.form_wrapper_twoButton}>
+                  <div className={s.form_wrapper_button}>
+                    <button type="submit" className={s.form_button}>
+                      {t("main.searchBar.search")}
+                      <Image
+                        src={"/Arrow-upFilter.svg"}
+                        width={17}
+                        height={16}
+                        alt="arrow"
+                      ></Image>
+                    </button>
+                  </div>
 
-                <div className={s.form_wrapper_button_reset}>
-                  <button
-                    type="button"
-                    className={s.form_button_reset}
-                    onClick={handleResetForm}
+                  <div
+                    className={`${s.form_wrapper_button_reset} ${
+                      currentLanguage === "en" ? s.marginLeftEn : s.marginLeftRu
+                    }`}
                   >
-                    {t("main.searchBar.reset")}
-                  </button>
+                    <button
+                      type="button"
+                      className={s.form_button_reset}
+                      onClick={handleResetForm}
+                    >
+                      {t("main.searchBar.reset")}
+                    </button>
+                  </div>
                 </div>
               </div>
             </form>

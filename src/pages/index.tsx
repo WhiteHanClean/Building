@@ -19,8 +19,7 @@ const Home: React.FC<{
   allOffers: RealEstate[];
   error?: any;
 }> = ({ allOffers, error }) => {
-
-  console.log(allOffers)
+  console.log(allOffers);
   return (
     <>
       <Head>

@@ -10,7 +10,7 @@
     .aside_button_items_btn {
       position: absolute;
       right: -70px;
-      bottom: 40px;
+      bottom: 130px;
       width: 50px;
       height: 50px;
       border-radius: 6px;
@@ -29,7 +29,7 @@
     .aside_button_window {
       position: absolute;
       right: 0;
-      top: -420px;
+      top: -453px;
       width: 386px;
       height: 324px;
       border-radius: 10px;
@@ -93,48 +93,15 @@
 
 @media only screen and (max-width: 1430px) {
   .aside_button {
-    display: none;
+    bottom: 0;
     .aside_button_items {
       .aside_button_items_btn {
-        right: -60px;
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: 1410px) {
-  .aside_button {
-    .aside_button_items {
-      .aside_button_items_btn {
-        right: -50px;
-        width: 40px;
-        height: 40px;
-        top: 9px;
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: 1385px) {
-  .aside_button {
-    .aside_button_items {
-      .aside_button_items_btn {
-        right: -45px;
-      }
-    }
-  }
-}
-
-@media only screen and (max-width: 1375px) {
-  .aside_button {
-    top: 92%;
-    .aside_button_items {
-      .aside_button_items_btn {
+        bottom: 20px;
         right: 0;
         border: solid 1px #000;
       }
       .aside_button_window {
-        right: 60px;
+        top: -415px;
       }
     }
   }
@@ -147,23 +114,33 @@
         right: 20px;
       }
       .aside_button_window {
-        right: 80px;
-        width: 340px;
+        right: 20px;
       }
     }
   }
 }
 
-@media only screen and (max-width: 440px) {
+@media only screen and (max-width: 840px) {
   .aside_button {
     .aside_button_items {
       .aside_button_items_btn {
-        right: 20px;
+        right: 15px;
+        bottom: 15px;
       }
       .aside_button_window {
-        right: 20px;
-        width: 320px;
-        top: -333px;
+        right: 15px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 416px) {
+  .aside_button {
+    .aside_button_items {
+      .aside_button_window {
+        top: -425px;
+        width: 330px;
+        height: 345px;
       }
     }
   }

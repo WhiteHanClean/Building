@@ -15,10 +15,6 @@ interface IProps {
 }
 
 const DetailProperty: React.FC<IProps> = ({ selectedProperty, error }) => {
-
-
-  
-
   return (
     <div>
       <>
@@ -28,7 +24,7 @@ const DetailProperty: React.FC<IProps> = ({ selectedProperty, error }) => {
         ) : (
           <p>Error: {error.message}</p>
         )}
-        <PropertyDesc/>
+        <PropertyDesc dataProperty={selectedProperty} />
         <Questions />
         <Consultation />
       </>
