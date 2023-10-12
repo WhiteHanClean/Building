@@ -66,9 +66,8 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ sliderProperty }) => {
             <button
               className={`
                 ${s.slider_section_image_swipper_buttonHolder_left_button}
-                ${
-                  number === 1 &&
-                  s.slider_section_image_swipper_buttonHolder_left_button_disabled
+                ${number === 1 &&
+                s.slider_section_image_swipper_buttonHolder_left_button_disabled
                 }
                 `}
               onClick={goToPrevSlide}
@@ -87,10 +86,9 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ sliderProperty }) => {
             <button
               className={`
                   ${s.slider_section_image_swipper_buttonHolder_right_button}
-                  ${
-                    number === imagesCount &&
-                    s.slider_section_image_swipper_buttonHolder_right_button_disabled
-                  }
+                  ${number === imagesCount &&
+                s.slider_section_image_swipper_buttonHolder_right_button_disabled
+                }
                 `}
               onClick={goToNextSlide}
             >
@@ -156,13 +154,20 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ sliderProperty }) => {
         {/* table title starts*/}
         <div className={s.slider_section_table_title}>
           <div className={s.slider_section_table_title_price}>
-            <h3>{sliderProperty?.title}</h3>
-            <h3>{sliderProperty?.price} ₽</h3>
+            <h3>{sliderProperty?.titleCard}</h3>
+            <h3>{sliderProperty?.priceMillionBahtFrom} - {sliderProperty?.priceMillionBahtTo} MB</h3>
           </div>
 
           <div className={s.slider_section_table_title_location}>
-            <p>{sliderProperty?.location?.title}</p>
-            <p>{sliderProperty?.pricePerSquareMeter} ₽/м²</p>
+            <div className={s.slider_section_table_title_location_title}>
+              <p>{sliderProperty?.location?.title1 || "Отсутствует"},&nbsp;</p>
+              <p>{sliderProperty?.location?.title2 || "Отсутствует"},&nbsp;</p>
+              <p>{sliderProperty?.location?.title3 || "Отсутствует"}</p>
+            </div>
+            <div>
+              <p>{sliderProperty?.priceSquereFrom} ₽/м²</p>
+              <p>{sliderProperty?.priceSquereTo} ₽/м²</p>
+            </div>
           </div>
         </div>
         {/* table title ends*/}
@@ -170,19 +175,20 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ sliderProperty }) => {
         <ul className={s.slider_section_table_list}>
           <li className={s.slider_section_table_list_item}>
             <p>
-              {sliderProperty?.roomsAmount}
+              {sliderProperty?.badroomsAmountFrom},
+              {sliderProperty?.badroomsAmountTo}
               {t("main.searchBar.manyRooms")}
             </p>
           </li>
           <li className={s.slider_section_table_list_item}>
             <p>
-              {t("main.searchBar.apartmentArea")} {sliderProperty?.builtUpArea}{" "}
+              {t("main.searchBar.apartmentArea")} {sliderProperty?.builtUpAreaFrom} - {" "}{sliderProperty?.builtUpAreaTo}{" "}
               м²
             </p>
           </li>
           <li className={s.slider_section_table_list_item}>
             <p>
-              {t("main.searchBar.landArea")} {sliderProperty?.landArea} м²
+              {t("main.searchBar.landArea")} {sliderProperty?.landAreaFrom} - {sliderProperty?.landAreaTo} м²
             </p>
           </li>
           <li className={s.slider_section_table_list_item}>
@@ -192,7 +198,7 @@ const ProductSlider: React.FC<ProductSliderProps> = ({ sliderProperty }) => {
             </p>
           </li>
           <li className={s.slider_section_table_list_item}>
-            <p>{t("main.searchBar.beach")} 0.5 км</p>
+            <p>{t("main.searchBar.beach")} {sliderProperty?.beachLian} минут</p>
           </li>
           <li
             className={`${s.slider_section_table_list_item} ${s.slider_section_table_list_button}`}

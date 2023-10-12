@@ -11,8 +11,16 @@ interface Props {
   name?: string;
   price?: number;
   rooms?: number;
+  roomsFrom?: number;
+  roomsTo?: number;
   landArea?: number;
+  millionBathFrom?: number;
+  millionBathTo?: number;
+  landAreaFrom?: number;
+  landAreaTo?: number;
   builtUpArea?: number;
+  builtUpAreaFrom?: number;
+  builtUpAreaTo?: number;
   location?: any;
 }
 
@@ -25,8 +33,16 @@ const BuildCard = ({
   name = "Housing",
   price = 0,
   rooms = 0,
+  roomsFrom = 0,
+  roomsTo = 0,
+  millionBathFrom = 0,
+  millionBathTo = 0,
   landArea = 0,
   builtUpArea = 0,
+  builtUpAreaFrom = 0,
+  builtUpAreaTo = 0,
+  landAreaFrom = 0,
+  landAreaTo = 0,
   location = "Необходимо уточнить",
 }: Props) => {
   const imageWidth = 413;
@@ -52,7 +68,7 @@ const BuildCard = ({
       </div>
       <div className={s.card_name}>
         <p>{name.length > 20 ? `${name.slice(0, 16)}...` : name}</p>
-        <p>{price} ฿</p>
+        <p>{millionBathFrom}-{millionBathTo} ฿</p>
       </div>
       <div className={s.card_details}>
         <div className={s.card_detail_wrapper}>
@@ -64,7 +80,7 @@ const BuildCard = ({
               height={12}
               alt="Icon bet"
             />
-            {rooms} {t("main.searchBar.room")}
+            {roomsFrom},{roomsTo} {t("main.searchBar.room")}
           </span>
           <span>
             <Image
@@ -74,7 +90,7 @@ const BuildCard = ({
               height={15}
               alt="Square icon"
             />
-            {builtUpArea} м² - {builtUpArea} м²
+            {builtUpAreaFrom} м² - {builtUpAreaTo} м²
           </span>
           <span>
             <Image
@@ -84,11 +100,17 @@ const BuildCard = ({
               height={15}
               alt="square common icon"
             />
-            {landArea} м² - {landArea} м²
+            {landAreaFrom} м² - {landAreaTo} м²
           </span>
         </div>
         <div>
-          <span>{location && location.title}</span>
+          
+            <span>
+              {location?.title1 || "Отсутствует"},&nbsp;
+              {location?.title2 || "Отсутствует"},&nbsp;
+              {location?.title3 || "Отсутствует"}
+            </span>
+         
         </div>
       </div>
     </div>

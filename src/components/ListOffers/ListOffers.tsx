@@ -174,8 +174,16 @@ const ListOffers = ({ isRent, filterParams }: Props) => {
                   name={card.title}
                   price={card.price}
                   rooms={card.roomsAmount}
+                  roomsFrom={card.badroomsAmountFrom}
+                  roomsTo={card.badroomsAmountTo}
+                  millionBathFrom={card.priceMillionBahtFrom}
+                  millionBathTo={card.priceMillionBahtTo}
                   builtUpArea={card.builtUpArea}
+                  builtUpAreaFrom={card.builtUpAreaFrom}
+                  builtUpAreaTo={card.builtUpAreaTo}
                   landArea={card.landArea}
+                  landAreaFrom={card.landAreaFrom}
+                  landAreaTo={card.landAreaTo}
                   location={card.location}
                 />
               </li>

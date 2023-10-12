@@ -131,6 +131,11 @@
         display: flex;
         justify-content: space-between;
 
+        .slider_section_table_title_location_title {
+          width: 200px;
+          display: flex;
+          flex-wrap: wrap;
+        }
         p {
           color: var(--color-text, #6c6c6a);
           font-family: "Inter", sans-serif;
