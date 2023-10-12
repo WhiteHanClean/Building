@@ -18,19 +18,31 @@ export interface RealEstate {
   title: string;
   price: number;
   roomsAmount: number;
+  roomsAmountFrom: number;
+  roomsAmountTo: number;
   landArea: number;
+  landAreaFrom: number;
+  landAreaTo: number;
   builtUpArea: number;
   kitchenArea: string;
   floor: string;
+  priceSquereFrom: number,
+  priceSquereTo: number,
+  badroomsAmountFrom: number,
+  beachLian: number,
+  beachBang: number,
+  badroomsAmountTo: number,
+  priceMillionBahtFrom: number,
+  priceMillionBahtTo: number,
   bathroomAmount: string;
   balconyAmount: string;
   buildingType: string;
+  builtUpAreaFrom: number;
+  builtUpAreaTo: number;
   yearBuilt: string;
   description: string;
   location: Location;
   hasRestaurant: boolean; // Fixed typo
-
-
   hasParking: boolean;
   hasSpa: boolean;
   hasCommunalPool: boolean;
