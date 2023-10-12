@@ -13,6 +13,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { MainFormParams } from "@/redux/store";
 import { useEffect, useState } from "react";
+import CustomSelect from "@/shared/ui/Select/Select";
 
 const validationSchema = Yup.object({
   RealEstate: Yup.string().oneOf(
@@ -187,36 +188,25 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
               <div className={s.form_wrapper}>
                 <div className={s.form_wrapper_item}>
                   <label htmlFor="RealEstate" className={s.form_label}>
-                    {t("buyingRealEstate.realEstate")}
+                    {t("main.searchBar.realty")}
                   </label>
-                  <div className="">
-                    <select
-                      id="RealEstate"
-                      name="RealEstate"
-                      className={`${s.form_select} ${s.custom_select}`}
-                      onChange={(e) => {
-                        formik.handleChange(e);
-                        setSelectedRealEstate(e.target.value);
-                      }}
+                  <div className={s.form_select}>
+                    <CustomSelect
+                      options={[
+                        t("main.searchBar.villa"),
+                        t("main.searchBar.apartment"),
+                        t("main.searchBar.showAllOptions"),
+                      ]}
+                      defaultValue={t("main.searchBar.select")}
+                      onChange={(value) =>
+                        formik.setFieldValue("RealEstate", value)
+                      }
                       onBlur={formik.handleBlur}
                       value={formik.values.RealEstate}
-                    >
-                      <option value="" disabled className="">
-                        {t("buyingRealEstate.select")}
-                      </option>
-                      <option value="Villa">{t("main.searchBar.villa")}</option>
-                      <option value="Apartment">
-                        {t("main.searchBar.apartment")}
-                      </option>
-                      <option value="AllOptions">
-                        {t("main.searchBar.showAllOptions")}
-                      </option>
-                    </select>
+                    />
                   </div>
                   {formik.touched.RealEstate && formik.errors.RealEstate ? (
-                    <div className={s.form_error}>
-                      {formik.errors.RealEstate}
-                    </div>
+                    <div className="">{formik.errors.RealEstate}</div>
                   ) : null}
                 </div>
 
@@ -224,71 +214,45 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                   <label htmlFor="location" className={s.form_label}>
                     {t("main.searchBar.district")}
                   </label>
-                  <div className="">
-                    <select
-                      id="location"
-                      name="location"
-                      className={`${s.form_select} ${s.custom_select}`}
-                      onChange={formik.handleChange}
+                  <div className={s.form_select}>
+                    <CustomSelect
+                      options={locationsData.map((location) => location.title)}
+                      defaultValue={t("main.searchBar.select")}
+                      onChange={(value) =>
+                        formik.setFieldValue("location", value)
+                      }
                       onBlur={formik.handleBlur}
                       value={formik.values.location}
-                    >
-                      <option value="" disabled className="">
-                        {t("buyingRealEstate.select")}
-                      </option>
-                      {locationsData.map((location) => (
-                        <option key={location._id} value={location._id}>
-                          {location.title}
-                        </option>
-                      ))}
-                    </select>
+                    />
                   </div>
                   {formik.touched.location && formik.errors.location ? (
-                    <div className={s.form_error}>{formik.errors.location}</div>
+                    <div className="">{formik.errors.location}</div>
                   ) : null}
                 </div>
 
                 <div className={s.form_wrapper_item}>
                   <label htmlFor="rooms" className={s.form_label}>
-                    {t("buyingRealEstate.additionalFeatures")}
+                    {t("main.searchBar.rooms")}
                   </label>
-                  <div className="">
-                    <select
-                      id="rooms"
-                      name="rooms"
-                      className={`${s.form_select} ${s.custom_select}`}
-                      onChange={formik.handleChange}
+                  <div className={s.form_select}>
+                    <CustomSelect
+                      options={[
+                        t("main.searchBar.roomVariant.studio"),
+                        t("main.searchBar.roomVariant.bedroom1"),
+                        t("main.searchBar.roomVariant.bedroom2"),
+                        t("main.searchBar.roomVariant.bedroom3"),
+                        t("main.searchBar.roomVariant.bedroom4"),
+                        t("main.searchBar.roomVariant.bedroom5"),
+                        t("main.searchBar.roomVariant.allOptions"),
+                      ]}
+                      defaultValue={t("main.searchBar.select")}
+                      onChange={(value) => formik.setFieldValue("rooms", value)}
                       onBlur={formik.handleBlur}
                       value={formik.values.rooms}
-                    >
-                      <option value="" disabled className="">
-                        {t("buyingRealEstate.select")}
-                      </option>
-                      <option value="Studio">
-                        {t("main.searchBar.roomVariant.studio")}
-                      </option>
-                      <option value="1">
-                        {t("main.searchBar.roomVariant.bedroom1")}
-                      </option>
-                      <option value="2">
-                        {t("main.searchBar.roomVariant.bedroom2")}
-                      </option>
-                      <option value="3">
-                        {t("main.searchBar.roomVariant.bedroom3")}
-                      </option>
-                      <option value="4">
-                        {t("main.searchBar.roomVariant.bedroom4")}
-                      </option>
-                      <option value="5">
-                        {t("main.searchBar.roomVariant.bedroom5")}
-                      </option>
-                      <option value="AllOptions">
-                        {t("main.searchBar.roomVariant.allOptions")}
-                      </option>
-                    </select>
+                    />
                   </div>
                   {formik.touched.rooms && formik.errors.rooms ? (
-                    <div className={s.form_error}>{formik.errors.rooms}</div>
+                    <div className="">{formik.errors.rooms}</div>
                   ) : null}
                 </div>
 
@@ -296,34 +260,22 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                   <label htmlFor="characteristics" className={s.form_label}>
                     {t("main.searchBar.dops")}
                   </label>
-                  <div className="">
-                    <select
-                      id="characteristics"
-                      name="characteristics"
-                      className={`${s.form_select} ${s.custom_select}`}
-                      onChange={formik.handleChange}
+                  <div className={s.form_select}>
+                    <CustomSelect
+                      options={[
+                        t("main.searchBar.charVariants.char1"),
+                        t("main.searchBar.charVariants.char2"),
+                        t("main.searchBar.charVariants.char3"),
+                        t("main.searchBar.charVariants.char4"),
+                        t("main.searchBar.charVariants.char5"),
+                      ]}
+                      defaultValue={t("main.searchBar.select")}
+                      onChange={(value) =>
+                        formik.setFieldValue("characteristics", value)
+                      }
                       onBlur={formik.handleBlur}
                       value={formik.values.characteristics}
-                    >
-                      <option value="" disabled className="">
-                        {t("buyingRealEstate.select")}
-                      </option>
-                      <option value="Характеристики 1">
-                        {t("main.searchBar.charVariants.char1")}
-                      </option>
-                      <option value="Характеристики 2">
-                        {t("main.searchBar.charVariants.char2")}
-                      </option>
-                      <option value="Характеристики 3">
-                        {t("main.searchBar.charVariants.char3")}
-                      </option>
-                      <option value="Характеристики 4">
-                        {t("main.searchBar.charVariants.char4")}
-                      </option>
-                      <option value="Характеристики 5">
-                        {t("main.searchBar.charVariants.char5")}
-                      </option>
-                    </select>
+                    />
                   </div>
                   {formik.touched.characteristics &&
                   formik.errors.characteristics ? (
@@ -332,6 +284,10 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                     </div>
                   ) : null}
                 </div>
+                {formik.touched.characteristics &&
+                formik.errors.characteristics ? (
+                  <div className="">{formik.errors.characteristics}</div>
+                ) : null}
 
                 <div className={s.form_wrapper_item}>
                   <label className={s.form_label} htmlFor="pricMin">
