@@ -275,26 +275,7 @@ const FilterForm = ({ titleSection, setFilterParams }: Props) => {
                       }
                       onBlur={formik.handleBlur}
                       value={formik.values.characteristics}
-                    >
-                      <option value="" disabled className="">
-                        {t("buyingRealEstate.select")}
-                      </option>
-                      <option value="Характеристики 1">
-                        {t("main.searchBar.charVariants.char1")}
-                      </option>
-                      <option value="Характеристики 2">
-                        {t("main.searchBar.charVariants.char2")}
-                      </option>
-                      <option value="Характеристики 3">
-                        {t("main.searchBar.charVariants.char3")}
-                      </option>
-                      <option value="Характеристики 4">
-                        {t("main.searchBar.charVariants.char4")}
-                      </option>
-                      <option value="Характеристики 5">
-                        {t("main.searchBar.charVariants.char5")}
-                      </option>
-                    </select>
+                    />
                   </div>
                   {formik.touched.characteristics &&
                   formik.errors.characteristics ? (
